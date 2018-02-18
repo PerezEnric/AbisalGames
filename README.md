@@ -14,22 +14,22 @@ Our team has decided that we will make the game X-Multiply. This game came out i
 ### Management:
 Ivan Ropero Garcia
 
-Github account: [github](https://github.com/RoperoIvan)
+[Github account](https://github.com/RoperoIvan)
 
 ### Code:
 Dídac Llop Serna
 
-Github account: [github](https://github.com/didaclis)
+[Github account](https://github.com/didaclis)
 
 ### Art:
 Héctor Pons Barroso
 
-Github account: [github](https://github.com/hectorpb32)
+[Github account](https://github.com/hectorpb32)
 
 ### QA:
 Enric Pérez Rifà
 
-Github account: [github](https://github.com/PerezEnric)
+[Github account](https://github.com/PerezEnric)
 
 ## Team photo
 
