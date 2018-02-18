@@ -4,7 +4,7 @@ Welcome to the AbisalGames wiki!
 
 ## Short Description of the game
 
-Our team has decided that we will make the game X-Multiply. This game that came out in 1989 developed by Irem, a japanese videogames studio. It came out for the PlayStation and Sega Saturn platforms, although there was also the arcade version of it. Its genre is the side-scroller shooter, it differs from the other games of this style by the two tentacles that come out of the spaceship that we control and by the dark setting that it has. The game has 7 levels each, with its corresponding final boss. The story that tells this video game is the adventure of the spaceship inside the body of a woman who has been infected by an alien queen.
+Our team has decided that we will make the game X-Multiply. This game came out in 1989 developed by Irem, a japanese videogames studio. It came out for the PlayStation and Sega Saturn platforms, although there was also the arcade version of it. Its genre is the side-scroller shooter, it differs from the other games of this style by the two tentacles that come out of the spaceship that we control and by the dark setting that it has. The game has 7 levels each, with its corresponding final boss. The story that tells this video game is the adventure of the spaceship inside the body of a woman who has been infected by an alien queen.
 
 ![X-Multiply Screenshot](http://www.theisozone.com/images/screens/playstation-43150-31334417703.png)
 
