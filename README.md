@@ -14,7 +14,7 @@ Our team has decided that we will make the game X-Multiply. This game came out i
 ### Management:
 Ivan Ropero Garcia
 
-Github account: [https://github.com/didaclis](https://github.com/didaclis)
+Github account: [https://github.com/RoperoIvan](https://github.com/RoperoIvan)
 
 ### Code:
 Dídac Llop Serna
