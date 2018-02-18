@@ -29,7 +29,7 @@ Github account: https://github.com/hectorpb32
 ### QA:
 Enric Pérez Rifà
 
-Github account: https://github.com/PerezEnric
+Github account: [https://github.com/PerezEnric](https://github.com/PerezEnric)
 
 ## Team photo
 
