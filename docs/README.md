@@ -32,7 +32,8 @@ Enric Pérez Rifà
 [Github account](https://github.com/PerezEnric)
 
 ## Team photo
-![Team Photo](https://mail.google.com/mail/u/0/?ui=2&ik=152ed7139f&view=fimg&th=161bf72e4e58d12d&attid=0.1&disp=emb&realattid=161bf72ca02c09a8efd1&attbid=ANGjdJ8nOOqIRbxHFKCWGid6cm_F6sOLhT64K6vhdrL3eERa5aMToCft4pFLKwklsVRKYU357U30_6yI8ZDqhhDXsMLOLjIvTwuJ-OjixDjJBcDDJpgnu5lEzK72CQ0&sz=s0-l75-ft&ats=1519335449613&rm=161bf72e4e58d12d&zw&atsh=1)
+![Team Photo](https://mail.google.com/mail/u/0/?ui=2&ik=152ed7139f&view=fimg&th=161bf72e4e58d12d&attid=0.1&disp=emb&realattid=161bf72ca02c09a8efd1&attbid=ANGjdJ-yz_QNSCUQQb1M2UEm1SnsRINIMOKT7rKD86FfM8y0nrvt4__OqeGpqP0fScY8OPw8WPq5Q7Q95d1biTmY-j7NGb11fyTwrlBhQ5fE_XI57-qSWDol8MhyK4g&sz=s0-l75-ft&ats=1519335941424&rm=161bf72e4e58d12d&zw&atsh=1)
+
 ## Gameplay
 
 [![IMAGE](https://www.satakore.com/satengine/screenshots/T-26/T-26110G_4,,Sega-Saturn-Screenshot-4-Image-Fight-and-XMultiply-Arcade-Gears-JPN.jpg)](https://www.youtube.com/watch?v=GcoOZxjrLdk)
