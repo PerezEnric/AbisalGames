@@ -32,7 +32,7 @@ Enric Pérez Rifà
 [Github account](https://github.com/PerezEnric)
 
 ## Team photo
-![Team Photo](https://gm1.ggpht.com/zp-pkC0xZ8SRFJwV9LROVf7ZTB8zthlVS9zQPmCn9ConHTMvwR-GaKYpt2qL5vat6vhBe38MUHcbT9kKQR2vhUvIfNxYVZACgkRuLw-QnTHmUXT35REFi9dgXzsUne63dW5pWPaFVfukPyzz9jm5QvvAjd1pJxK2OvZuMYPgaeOlHheeEwqZLaJgtI0z3yO255WkxXLHk1azwd15JlEnRyWE9OYv3iRguq2AGGSYDMT1ZF3YUvP_b-PGIeCxAuvDEemMQOvsVoTV9Ay-lagqLkGMr7XNezhI_nnnw9Qdt-uIK8I7K-xfqDYxkcGO5-42mxhP8BLqJMamEOAx3zSHGk-vNpEbbTpjoGNrUXp5HxCnzAv4P9oT4GQBRNfvN-bbupYOL20yItwESPX7S1HDFx1ddbGaKqTUa_wGZFdIw4MueqcqZUKSP5eqTPHeBbEqccCgOPfZOPX4iS9PhFe5fGcOswTm81GmVbVxyGwX5lw3PWrSWUSRQQ7qtmKKpjzMijm8W3UOhhtndjxqymHFxcbXbkWS0-s9FEtJyUtFVeGsv0CcI9UOvce76-bHL16pAycCM5k55SxDDGhZd1bk49a162tDvGcJ8NaWupfr1Sg3DFvQZ0U2t9Q4DPaAzkSwkFU-RAUQAS6R990AKzqsWe2X0lcThuozWNkrm34ESQ6uHVYBr-aaRY2vZeM=s0-l75-ft-l75-ft.jpg)
+![Team Photo](https://i.imgur.com/g5eWiot.jpg)
 
 ## Gameplay
 
