@@ -17,7 +17,7 @@ ModulePlayer::ModulePlayer()
 	
 	idle.speed = 0.2f;
 
-	//forward animation
+	//forward animations
 
 	forward.PushBack({ 90, 0, 50, 18 });
 	forward.speed = 0.1f;
