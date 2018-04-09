@@ -3,7 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
-
+#include "ModuleAudio.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -47,7 +47,9 @@ bool ModuleBackground::Start()
 	graphics10 = App->textures->Load("Map10.png");
 	graphicswall = App->textures->Load("FirstLvlMap1.png");
 	graphicswall2 = App->textures->Load("FirstLvlMap3.png");
-
+	
+	firstlvlmusic = App->audio->LoadMusic("Into_the_Human_Body_(Stage_1).ogg");
+	App->audio->PlayMusic(firstlvlmusic);
 	return ret;
 }
 
@@ -70,9 +72,7 @@ update_status ModuleBackground::Update()
 	//App->render->Blit(graphics8, 1252, -144, &background2, 0.75f);
 	//App->render->Blit(graphics9, 1764, -144, &background2, 0.75f);
 	//App->render->Blit(graphics10, 2276, -144, &background2, 0.75f);
-
-
-
+	
 	
 
 	return UPDATE_CONTINUE;
