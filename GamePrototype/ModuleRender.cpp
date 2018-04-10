@@ -50,7 +50,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()
 {
 	int speed = 3;
-	// TODO 1: Make the camera move left and right
+	
 
 	camera.x -= speed;
 
@@ -107,4 +107,6 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 
 	return ret;
 }
+
+
 

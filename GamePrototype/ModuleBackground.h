@@ -19,6 +19,7 @@ public:
 
 public:
 	
+	Mix_Music* firstlvlmusic = nullptr;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* graphics3 = nullptr;
@@ -35,7 +36,7 @@ public:
 	SDL_Rect wall;
 	SDL_Rect background;
 	SDL_Rect background2;
-	Mix_Music* firstlvlmusic = nullptr;
+	
 };
 
 #endif

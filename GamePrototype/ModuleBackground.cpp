@@ -35,6 +35,7 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
+	
 	graphics = App->textures->Load("Map1.png");
 	graphics2 = App->textures->Load("Map2.png");
 	graphics3 = App->textures->Load("Map3.png");
@@ -47,8 +48,7 @@ bool ModuleBackground::Start()
 	graphics10 = App->textures->Load("Map10.png");
 	graphicswall = App->textures->Load("FirstLvlMap1.png");
 	graphicswall2 = App->textures->Load("FirstLvlMap3.png");
-	
-	firstlvlmusic = App->audio->LoadMusic("Into_the_Human_Body_(Stage_1).ogg");
+	//firstlvlmusic = App->audio->LoadMusic("Stage_1_Music.ogg");
 	App->audio->PlayMusic(firstlvlmusic);
 	return ret;
 }

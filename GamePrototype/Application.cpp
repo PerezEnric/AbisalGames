@@ -3,9 +3,12 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
-#include "ModuleAudio.h"
+#include "ModuleParticles.h"
+
+
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
@@ -15,7 +18,7 @@ Application::Application()
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = background = new ModuleBackground();
 	modules[6] = player = new ModulePlayer();
-	
+	modules[7] = particles = new ModuleParticles();
 }	
 
 Application::~Application()

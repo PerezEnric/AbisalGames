@@ -3,13 +3,11 @@
 
 #include "Globals.h"
 #include "Module.h"
+
 #include "SDL_mixer/include/SDL_mixer.h"
-#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
-
-#define MAX_MUSIC 15
-#define MAX_FX 15
-
+#define MAX_MUSIC 25
+#define MAX_FX 25
 
 class ModuleAudio :public Module
 {
@@ -18,21 +16,27 @@ public:
 	~ModuleAudio();
 
 	bool Init();
+
 	bool CleanUp();
 
 	void PlayMusic(Mix_Music* music_to_play, int repetitions = -1);
 	void PlaySoundEffect(Mix_Chunk* effect_to_play);
-	void UnloadMusic(Mix_Music* music);
-	void UnloadSoundEffect(Mix_Chunk* effect);
+
 	Mix_Music* const LoadMusic(const char* path);
 	Mix_Chunk* const LoadSoundEffect(const char* path);
+
+	void UnloadMusic(Mix_Music* music);
+	void UnloadSoundEffect(Mix_Chunk* effect);
+
 public:
+
 	Mix_Music* songs[MAX_MUSIC];
 	uint last_song = 0;
 
-	Mix_Chunk* sound_effect[MAX_FX];
+	Mix_Chunk* sound_effects[MAX_FX];
 	uint last_effect = 0;
-};
 
+};
 #endif
+
 
