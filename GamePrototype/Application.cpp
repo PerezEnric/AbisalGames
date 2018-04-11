@@ -7,7 +7,7 @@
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
-
+#include "ModuleIntroScene.h"
 
 Application::Application()
 {
@@ -16,9 +16,10 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
-	modules[5] = background = new ModuleBackground();
-	modules[6] = player = new ModulePlayer();
-	modules[7] = particles = new ModuleParticles();
+	modules[5] = intro = new ModuleIntroScene();
+	modules[6] = background = new ModuleBackground();
+	modules[7] = player = new ModulePlayer();
+	modules[8] = particles = new ModuleParticles();
 }	
 
 Application::~Application()

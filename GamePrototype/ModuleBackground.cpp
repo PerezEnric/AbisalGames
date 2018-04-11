@@ -4,14 +4,17 @@
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 
 ModuleBackground::ModuleBackground()
 {
 	// Background 
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
+	background.x = 54;
+	background.y = 491;
+	background.w = 4961;
+	background.h = 513;
+
+	
 
 	wall.x = 100;
 	wall.y = 150;
@@ -23,6 +26,7 @@ ModuleBackground::ModuleBackground()
 	background2.w = 512;
 	background2.h = 512;
 
+	
 	
 }
 
@@ -36,38 +40,39 @@ bool ModuleBackground::Start()
 	bool ret = true;
 
 	
-	graphics = App->textures->Load("Map1.png");
-	graphics2 = App->textures->Load("Map2.png");
-	graphics3 = App->textures->Load("Map3.png");
-	graphics4 = App->textures->Load("Map4.png");
-	graphics5 = App->textures->Load("Map5.png");
-	graphics6 = App->textures->Load("Map6.png");
-	graphics7 = App->textures->Load("Map7.png");
-	graphics8 = App->textures->Load("Map8.png");
-	graphics9 = App->textures->Load("Map9.png");
-	graphics10 = App->textures->Load("Map10.png");
+	graphics = App->textures->Load("TileMap1.png");
 	graphicswall = App->textures->Load("FirstLvlMap1.png");
 	graphicswall2 = App->textures->Load("FirstLvlMap3.png");
 	//firstlvlmusic = App->audio->LoadMusic("Stage_1_Music.ogg");
 	App->audio->PlayMusic(firstlvlmusic);
+	App->player->Enable();
 	return ret;
 }
 
+// UnLoad assets
+bool ModuleBackground::CleanUp()
+{
+	LOG("Unloading space scene");
+
+	App->textures->Unload(graphics);
+	App->player->Disable();
+
+	return true;
+}
 // Update: draw background
 update_status ModuleBackground::Update()
 {
+	
+
 	// Draw everything --------------------------------------
 	App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
 	App->render->Blit(graphicswall, 500, 0, &wall, 0.75f);
 	App->render->Blit(graphicswall, 1000, 0, &wall, 0.75f);
 	App->render->Blit(graphicswall, 1500, 0, &wall, 0.75f);
 	App->render->Blit(graphicswall2, 2000, 0, &wall, 0.75f);
-	App->render->Blit(graphics, 0, 157, &background, 0.75f); 
-	App->render->Blit(graphics2, 740, -126, &background2, 0.75f);
-	App->render->Blit(graphics3, 1252, -144, &background2, 0.75f);
-	App->render->Blit(graphics4, 1764,-144, &background2, 0.75f);
-	App->render->Blit(graphics5, 2276, -144, &background2, 0.75f);
-	App->render->Blit(graphics6, 2788, -95, &background2, 0.75f);
+	App->render->Blit(graphics, 0, 0, &background, 0.75f); 
+
+	
 	//App->render->Blit(graphics7, 512, 0, &background2, 0.75f);
 	//App->render->Blit(graphics8, 1252, -144, &background2, 0.75f);
 	//App->render->Blit(graphics9, 1764, -144, &background2, 0.75f);

@@ -47,7 +47,14 @@ bool ModulePlayer::Start()
 }
 
 
+bool ModulePlayer::CleanUp()
+{
+	LOG("Unloading player");
 
+	App->textures->Unload(graphics);
+
+	return true;
+}
 
 
 // Update: draw background

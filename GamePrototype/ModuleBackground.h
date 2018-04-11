@@ -16,20 +16,12 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 
 public:
 	
 	Mix_Music* firstlvlmusic = nullptr;
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* graphics2 = nullptr;
-	SDL_Texture* graphics3 = nullptr;
-	SDL_Texture* graphics4 = nullptr;
-	SDL_Texture* graphics5 = nullptr;
-	SDL_Texture* graphics6 = nullptr;
-	SDL_Texture* graphics7 = nullptr;
-	SDL_Texture* graphics8 = nullptr;
-	SDL_Texture* graphics9 = nullptr;
-	SDL_Texture* graphics10 = nullptr;
 	SDL_Texture* graphicswall = nullptr;
 	SDL_Texture* graphicswall2 = nullptr;
 	Animation back;

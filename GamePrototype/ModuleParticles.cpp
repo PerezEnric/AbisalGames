@@ -44,7 +44,6 @@ bool ModuleParticles::CleanUp()
 			active[i] = nullptr;
 		}
 	}
-
 	return true;
 }
 
