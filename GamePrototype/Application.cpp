@@ -34,6 +34,7 @@ bool Application::Init()
 
 	// Disable all stopped modules here
 	player->Disable();
+	background->Disable();
 	// ---
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

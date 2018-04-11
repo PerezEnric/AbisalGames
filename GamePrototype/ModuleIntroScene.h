@@ -16,7 +16,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	bool flag = false;
 	SDL_Texture* introBackground = nullptr;
 
 };

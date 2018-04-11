@@ -41,12 +41,14 @@ bool ModuleIntroScene::CleanUp()
 // Update: draw background
 update_status ModuleIntroScene::Update()
 {
+	
 	// Draw everything --------------------------------------
 	App->render->Blit(introBackground, 0, 0, NULL);
 	if (App->input->keyboard[SDL_SCANCODE_Q])
 	{
 		App->player->Enable();
 		App->background->Enable();
+		flag = true;
 	}
 
 

@@ -5,6 +5,7 @@
 #include "ModuleBackground.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleIntroScene.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -63,15 +64,14 @@ bool ModuleBackground::CleanUp()
 update_status ModuleBackground::Update()
 {
 	
-
-	// Draw everything --------------------------------------
-	App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 500, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 1000, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 1500, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall2, 2000, 0, &wall, 0.75f);
-	App->render->Blit(graphics, 0, 0, &background, 0.75f); 
-
+	
+		// Draw everything --------------------------------------
+		App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
+		App->render->Blit(graphicswall, 500, 0, &wall, 0.75f);
+		App->render->Blit(graphicswall, 1000, 0, &wall, 0.75f);
+		App->render->Blit(graphicswall, 1500, 0, &wall, 0.75f);
+		App->render->Blit(graphicswall2, 2000, 0, &wall, 0.75f);
+		App->render->Blit(graphics, 0, 0, &background, 0.75f);
 	
 	//App->render->Blit(graphics7, 512, 0, &background2, 0.75f);
 	//App->render->Blit(graphics8, 1252, -144, &background2, 0.75f);

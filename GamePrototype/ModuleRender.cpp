@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
+#include "ModuleIntroScene.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -51,9 +52,10 @@ update_status ModuleRender::Update()
 {
 	int speed = 3;
 	
-
-	camera.x -= speed;
-
+	if (App->intro->flag)
+	{
+		camera.x -= speed;
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
