@@ -52,7 +52,7 @@ bool ModuleBackground::Start()
 // UnLoad assets
 bool ModuleBackground::CleanUp()
 {
-	LOG("Unloading space scene");
+	LOG("Unloading first level scene scene");
 
 	App->textures->Unload(graphics);
 	App->player->Disable();
