@@ -1,0 +1,59 @@
+#include "Globals.h"
+#include "Application.h"
+#include "ModuleTextures.h"
+#include "ModuleRender.h"
+#include "ModulePlayer.h"
+#include "ModuleBackground.h"
+#include "ModuleInput.h"
+#include "ModuleIntroScene.h"
+#include "ModuleFadeToBlack.h"
+
+
+
+ModuleIntroScene::ModuleIntroScene()
+{}
+
+ModuleIntroScene::~ModuleIntroScene()
+{}
+
+// Load assets
+bool ModuleIntroScene::Start()
+{
+	LOG("Loading space scene");
+
+	introBackground = App->textures->Load("Ui_2.png");
+
+	App->player->Disable();
+	App->background->Disable();
+
+	return true;
+}
+
+// UnLoad assets
+bool ModuleIntroScene::CleanUp()
+{
+	LOG("Unloading intro scene");
+
+	App->textures->Unload(introBackground);
+
+	return true;
+}
+
+// Update: draw background
+update_status ModuleIntroScene::Update()
+{
+	
+	// Draw everything --------------------------------------
+	App->render->Blit(introBackground, -15, -240, NULL);
+	if (App->input->keyboard[SDL_SCANCODE_Q])
+	{
+		App->player->Enable();
+		App->background->Enable();
+		flag = true;
+	}
+
+
+	
+
+	return UPDATE_CONTINUE;
+}

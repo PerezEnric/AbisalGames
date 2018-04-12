@@ -1,0 +1,22 @@
+﻿  Application.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  Globals.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleBackground.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\isabel\desktop\sdl1_handout\abisalgames\modulebackground.cpp(108): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  ModuleFadeToBlack.cpp
+  ModuleInput.cpp
+  ModuleIntroScene.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  ModuleParticles.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  ModulePlayer.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  ModuleRender.cpp
+c:\users\isabel\desktop\sdl1_handout\abisalgames\animation.h(39): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  Generando código...
+  SDL Game.vcxproj -> C:\Users\Isabel\Desktop\SDL1_handout\AbisalGames\Debug\SDL4 Handout.exe
