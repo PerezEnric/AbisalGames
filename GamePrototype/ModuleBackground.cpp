@@ -3,27 +3,58 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
+#include "ModuleAudio.h"
+#include "ModulePlayer.h"
+#include "ModuleIntroScene.h"
 
 
 ModuleBackground::ModuleBackground()
 {
 	// Background 
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
-
-	wall.x = 100;
-	wall.y = 150;
-	wall.w = 500;
-	wall.h = 600;
-
-	background2.x = 0;
-	background2.y = 0;
-	background2.w = 512;
-	background2.h = 512;
+	background.x = 54;
+	background.y = 492;
+	background.w = 4961;
+	background.h = 513;
 
 	
+
+	wall.x = 250;
+	wall.y = 1000;
+	wall.w = 4961;
+	wall.h = 513;
+
+}
+
+bool ModuleBackground::Init()
+{
+
+	//Spaceship drop animation
+	injectionanim.PushBack({ 28,24,48,102 });
+	injectionanim.PushBack({ 107,24,48,105 });
+	injectionanim.PushBack({ 188,24,48,103 });
+	injectionanim.PushBack({ 266,24,48,113 });
+	injectionanim.PushBack({ 335,24,48,121 });
+	injectionanim.PushBack({ 414,24,48,123 });
+	injectionanim.PushBack({ 414,157,48,122 });
+	injectionanim.PushBack({ 335,157,48,120 });
+	injectionanim.PushBack({ 266,157,48,112 });
+	injectionanim.PushBack({ 188,157,48,103 });
+	injectionanim.PushBack({ 107,157,48,105 });
+	injectionanim.PushBack({ 28,157,48,102 });
+
+	injectionanim.loop = false;
+	injectionanim.speed = 0.2f;
+
+	//Injection Measurements
+	injection.x = 50;
+	injection.y = 100;
+	injection.w = 48;
+	injection.h = 102;
+
+	inject = true;
+
+	return true;
+
 }
 
 ModuleBackground::~ModuleBackground()
@@ -35,45 +66,97 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
-	graphics = App->textures->Load("Map1.png");
-	graphics2 = App->textures->Load("Map2.png");
-	graphics3 = App->textures->Load("Map3.png");
-	graphics4 = App->textures->Load("Map4.png");
-	graphics5 = App->textures->Load("Map5.png");
-	graphics6 = App->textures->Load("Map6.png");
-	graphics7 = App->textures->Load("Map7.png");
-	graphics8 = App->textures->Load("Map8.png");
-	graphics9 = App->textures->Load("Map9.png");
-	graphics10 = App->textures->Load("Map10.png");
-	graphicswall = App->textures->Load("FirstLvlMap1.png");
-	graphicswall2 = App->textures->Load("FirstLvlMap3.png");
-
+	
+	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
+	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
+	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
+	firstlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_1_Music.ogg");
+	spaceshipdrop = App->audio->LoadSoundEffect("Audio_Assets/injection.wav");
+	
+	App->audio->PlayMusic(firstlvlmusic);
+	App->audio->PlaySoundEffect(spaceshipdrop);
+	App->audio->PlayMusic(firstlvlmusic);
+	App->player->Enable();
 	return ret;
 }
 
+// UnLoad assets
+bool ModuleBackground::CleanUp()
+{
+	LOG("Unloading first level scene scene");
+
+	App->textures->Unload(graphics);
+	App->textures->Unload(graphicswall);
+	App->player->Disable();
+	App->audio->UnloadSoundEffect(spaceshipdrop);
+	spaceshipdrop = nullptr;
+
+
+	return true;
+}
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	// Draw everything --------------------------------------
+	animinject();
+		// Draw everything --------------------------------------
 	App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 500, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 1000, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall, 1500, 0, &wall, 0.75f);
-	App->render->Blit(graphicswall2, 2000, 0, &wall, 0.75f);
-	App->render->Blit(graphics, 0, 157, &background, 0.75f); 
-	App->render->Blit(graphics2, 740, -126, &background2, 0.75f);
-	App->render->Blit(graphics3, 1252, -144, &background2, 0.75f);
-	App->render->Blit(graphics4, 1764,-144, &background2, 0.75f);
-	App->render->Blit(graphics5, 2276, -144, &background2, 0.75f);
-	App->render->Blit(graphics6, 2788, -95, &background2, 0.75f);
-	//App->render->Blit(graphics7, 512, 0, &background2, 0.75f);
-	//App->render->Blit(graphics8, 1252, -144, &background2, 0.75f);
-	//App->render->Blit(graphics9, 1764, -144, &background2, 0.75f);
-	//App->render->Blit(graphics10, 2276, -144, &background2, 0.75f);
+	App->render->Blit(graphics, 0, 0, &background, 0.75f);
+	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 0.75f);
 
 
+	if (App->intro->flag)
+	{
+		int vspeed = 1.5;
+		if (App->render->camera.x <= -10600
+			&& App->render->camera.x >= -13620)
+		{
+			App->render->camera.y -= vspeed;
+			App->player->position.y -= vspeed;
+		}
+		
+		if (!move)
+		{
+			App->render->camera.x = 0;
+			App->player->position.x = 0;
+		}
+	}
 
 	
 
 	return UPDATE_CONTINUE;
+}
+
+//Dropping animation creation
+
+void ModuleBackground::animinject()
+{
+	if (yinject >= -4 && inject)
+	{
+		if (injectionanim.GetCurrentFrameIndex() == 6)
+		{
+			App->player->Enable();
+			right = true;
+			inject = false;
+		}
+		injection = injectionanim.GetCurrentFrame();
+	}
+	else
+	{
+		if (!inject)
+		{
+
+			if (injectionanim.Done())
+			{
+				yinject--;
+			}
+			else
+			{
+				injection = injectionanim.GetCurrentFrame();
+			}
+		}
+		else
+		{
+			yinject++;
+		}
+	}
 }

@@ -3,7 +3,6 @@
 
 #include "Module.h"
 #include "Animation.h"
-#include "Globals.h"
 #include "p2Point.h"
 
 struct SDL_Texture;
@@ -16,18 +15,16 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 
 public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
-	Animation forward;
-	Animation backward;
+	Animation* current_animation = nullptr;
 	Animation up;
-	Animation up2;
 	Animation down;
 	iPoint position;
-
 };
 
 #endif

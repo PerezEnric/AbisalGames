@@ -3,38 +3,36 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleBackground.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 100;
-	position.y = 220;
+	graphics = NULL;
+	current_animation = NULL;
 
-	// idle animation (arcade sprite sheet)
-	idle.PushBack({90, 0, 50, 18});
+	position.x = 100;
+	position.y = 100;
+
+	// idle animation
+	idle.PushBack({101, 1, 35, 14});
 	
 	idle.speed = 0.2f;
 
-	//forward animations
+	//upwards animation
+	up.PushBack({ 54, 2, 34, 11 });
+	up.PushBack({ 6, 4, 35, 12 });
+	up.loop = false;
+	up.speed = 0.1f;
 
-	forward.PushBack({ 90, 0, 50, 18 });
-	forward.speed = 0.1f;
-
-	//backward animation
-	backward.PushBack({ 90, 0, 50, 18 });
-	backward.speed = 0.1f;
-
-	//upward animation
-
-	up.PushBack({ 0, 0, 50, 18 });
-
-	//downward animation
+	//downwards animation
 	
-
-	down.PushBack({ 185, 0, 50, 18 });
-	
+	down.PushBack({ 149, 3, 35, 12 });
+	down.PushBack({ 197, 5, 35, 12 });
+	down.loop = false;
+	down.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -49,44 +47,67 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
+
+bool ModulePlayer::CleanUp()
+{
+	LOG("Unloading player");
+
+	App->textures->Unload(graphics);
+
+	return true;
+}
+
+
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	Animation* current_animation = &idle;
 
 	int speed = 1;
 
 	position.x += speed;
 
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
+	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &forward;
-		position.x += speed;
+		position.x += (speed * 2);
+		App->background->move = true;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &up;
-	
 		position.y -= (speed * 2);
+
+		if (current_animation != &up)
+		{
+			up.Reset();
+			current_animation = &up;
+		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_S] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &down;
 		position.y += (speed * 2);
+		if (current_animation != &down)
+		{
+			down.Reset();
+			current_animation = &down;
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &backward;
+		
 		position.x -= (speed * 2);
 	}
 
-	// Draw everything --------------------------------------
-	SDL_Rect r = current_animation->GetCurrentFrame();
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
+	{
+		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		current_animation = &idle;
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	
 	return UPDATE_CONTINUE;
 }

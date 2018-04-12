@@ -4,8 +4,12 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
-
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 struct SDL_Texture;
+struct Rect;
+struct _Mix_Music;
+struct Mix_Chunk;
 
 class ModuleBackground : public Module
 {
@@ -13,27 +17,30 @@ public:
 	ModuleBackground();
 	~ModuleBackground();
 
+	bool Init();
 	bool Start();
 	update_status Update();
+	bool CleanUp();
+	bool inject, right;
+	bool move = false;
+	int cont = 0;
+	int xinject = 75;
+	int yinject = -100;
+	void animinject();
 
 public:
 	
+	Mix_Music* firstlvlmusic = nullptr;
+	Mix_Chunk* spaceshipdrop = nullptr;
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* graphics2 = nullptr;
-	SDL_Texture* graphics3 = nullptr;
-	SDL_Texture* graphics4 = nullptr;
-	SDL_Texture* graphics5 = nullptr;
-	SDL_Texture* graphics6 = nullptr;
-	SDL_Texture* graphics7 = nullptr;
-	SDL_Texture* graphics8 = nullptr;
-	SDL_Texture* graphics9 = nullptr;
-	SDL_Texture* graphics10 = nullptr;
 	SDL_Texture* graphicswall = nullptr;
 	SDL_Texture* graphicswall2 = nullptr;
+	SDL_Texture* graphicsinjection = nullptr;
 	Animation back;
+	Animation injectionanim;
 	SDL_Rect wall;
 	SDL_Rect background;
-	SDL_Rect background2;
+	SDL_Rect injection;
 };
 
 #endif
