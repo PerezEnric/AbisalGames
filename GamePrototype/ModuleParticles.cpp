@@ -86,7 +86,11 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->position.x = x;
 	p->position.y = y;
 
+<<<<<<< HEAD
   	active[last_particle++] = p;
+=======
+	active[last_particle++] = p;
+>>>>>>> 7f4b37ed64346f679b9b64575ab1dcd995f58c2d
 }
 
 

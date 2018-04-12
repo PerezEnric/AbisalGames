@@ -91,7 +91,10 @@ bool ModuleBackground::CleanUp()
 	App->audio->UnloadSoundEffect(spaceshipdrop);
 	spaceshipdrop = nullptr;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f4b37ed64346f679b9b64575ab1dcd995f58c2d
 	return true;
 }
 // Update: draw background
