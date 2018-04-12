@@ -20,6 +20,7 @@ Application::Application()
 	modules[6] = background = new ModuleBackground();
 	modules[7] = player = new ModulePlayer();
 	modules[8] = particles = new ModuleParticles();
+
 }	
 
 Application::~Application()

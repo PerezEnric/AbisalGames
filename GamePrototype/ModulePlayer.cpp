@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleBackground.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -68,8 +69,8 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		
 		position.x += (speed * 2);
+		App->background->move = true;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)

@@ -6,6 +6,7 @@
 #include "ModuleBackground.h"
 #include "ModuleInput.h"
 #include "ModuleIntroScene.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -43,7 +44,7 @@ update_status ModuleIntroScene::Update()
 {
 	
 	// Draw everything --------------------------------------
-	App->render->Blit(introBackground, 0, 0, NULL);
+	App->render->Blit(introBackground, -15, -240, NULL);
 	if (App->input->keyboard[SDL_SCANCODE_Q])
 	{
 		App->player->Enable();

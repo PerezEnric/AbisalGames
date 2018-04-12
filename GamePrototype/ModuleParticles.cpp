@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -15,7 +16,8 @@ ModuleParticles::ModuleParticles()
 }
 
 ModuleParticles::~ModuleParticles()
-{}
+{
+}
 
 // Load assets
 bool ModuleParticles::Start()

@@ -22,6 +22,22 @@ public:
 	{
 		frames[last_frame++] = rect;
 	}
+	bool Done()
+	{
+		if (current_frame == last_frame - 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	int GetCurrentFrameIndex()
+	{
+		return current_frame;
+	}
 
 	SDL_Rect& GetCurrentFrame()
 	{
