@@ -2,6 +2,8 @@
 #define __ModuleIntroScene_H__
 
 #include "Module.h"
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
 struct SDL_Texture;
 
@@ -18,6 +20,6 @@ public:
 public:
 	bool flag = false;
 	SDL_Texture* introBackground = nullptr;
-
+	Mix_Music* intro_music = nullptr;
 };
 #endif

@@ -5,8 +5,8 @@
 #include "ModulePlayer.h"
 #include "ModuleBackground.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 #include "ModuleIntroScene.h"
-#include "ModuleFadeToBlack.h"
 
 
 
@@ -21,8 +21,10 @@ bool ModuleIntroScene::Start()
 {
 	LOG("Loading space scene");
 
-	introBackground = App->textures->Load("Ui_2.png");
+	introBackground = App->textures->Load("Sprites_Assets/UI_2.png");
 
+	intro_music = App->audio->LoadMusic("Audio_Assets/X-Multiply_Title.ogg");
+	App->audio->PlayMusic(intro_music);
 	App->player->Disable();
 	App->background->Disable();
 
@@ -35,25 +37,23 @@ bool ModuleIntroScene::CleanUp()
 	LOG("Unloading intro scene");
 
 	App->textures->Unload(introBackground);
-
+	introBackground = nullptr;
+	App->audio->UnloadMusic(intro_music);
+	intro_music = nullptr;
 	return true;
 }
 
 // Update: draw background
 update_status ModuleIntroScene::Update()
 {
-	
 	// Draw everything --------------------------------------
-	App->render->Blit(introBackground, -15, -240, NULL);
+	App->render->Blit(introBackground, 0, 0, NULL);
 	if (App->input->keyboard[SDL_SCANCODE_Q])
 	{
-		App->player->Enable();
+		App->audio->Disable();
 		App->background->Enable();
+		App->player->Enable();
 		flag = true;
 	}
-
-
-	
-
 	return UPDATE_CONTINUE;
 }
