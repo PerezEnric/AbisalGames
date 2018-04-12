@@ -7,11 +7,16 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleIntroScene.h"
+#include "ModuleFadeToBlack.h"
 
 
 
 ModuleIntroScene::ModuleIntroScene()
-{}
+{
+	game_title = { 0, 270, 384, 51 };
+	game_company = { 0, 359, 152, 38 };
+
+}
 
 ModuleIntroScene::~ModuleIntroScene()
 {}
@@ -48,9 +53,14 @@ update_status ModuleIntroScene::Update()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(introBackground, 0, 0, NULL);
+	App->render->Blit(introBackground, 0, 0, &game_title);
+	App->render->Blit(introBackground, 116, 183, &game_company);
+
 	if (App->input->keyboard[SDL_SCANCODE_Q])
 	{
+		App->fade->FadeToBlack(this, App->background, 2.0f);
 		App->audio->Disable();
+		App->background->firstlvlmusic;
 		App->background->Enable();
 		App->player->Enable();
 		flag = true;

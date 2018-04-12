@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Player.png"); // arcade version
+	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
 	return ret;
 }
 
@@ -103,6 +103,7 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6);
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;

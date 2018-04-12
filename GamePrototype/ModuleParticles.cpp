@@ -23,7 +23,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("player.png");
+	graphics = App->textures->Load("Sprites_Assets/Player.png");
 	shot_particle = App->audio->LoadSoundEffect("shotp.wav");
 	// Template for a new particle "laser"
 

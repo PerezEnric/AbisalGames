@@ -8,7 +8,7 @@
 #include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 300
 
 struct SDL_Texture;
 

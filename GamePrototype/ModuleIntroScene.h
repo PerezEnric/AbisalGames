@@ -21,5 +21,7 @@ public:
 	bool flag = false;
 	SDL_Texture* introBackground = nullptr;
 	Mix_Music* intro_music = nullptr;
+	SDL_Rect game_title;
+	SDL_Rect game_company;
 };
 #endif
