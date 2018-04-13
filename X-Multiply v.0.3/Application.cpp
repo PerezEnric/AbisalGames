@@ -9,7 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleIntroScene.h"
-
+#include "ModuleCollision.h"
 
 Application::Application()
 {
@@ -19,11 +19,12 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = intro = new ModuleIntroScene();
-	modules[6] = background = new ModuleBackground();
-	modules[7] = player = new ModulePlayer();
-	modules[8] = particles = new ModuleParticles();
-	modules[9] = fade = new ModuleFadeToBlack();
-
+	modules[6] = collision = new ModuleCollision();
+	modules[7] = background = new ModuleBackground();
+	modules[8] = player = new ModulePlayer();
+	modules[9] = particles = new ModuleParticles();
+	modules[10] = fade = new ModuleFadeToBlack();
+	
 }	
 
 Application::~Application()

@@ -2,7 +2,7 @@
 #define __ModuleRenderer_H__
 
 #include "Module.h"
-#include "SDL\include\SDL_rect.h"
+
 
 #define MAX_TEXTURES 50
 
@@ -26,6 +26,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera = true);
 };
 
 #endif //__ModuleRenderer_H__
