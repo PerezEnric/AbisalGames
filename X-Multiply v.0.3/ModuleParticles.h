@@ -46,7 +46,7 @@ private:
 	uint last_particle = 0;
 
 public:
-	Mix_Chunk* shot_particle;
+	Mix_Chunk* shot_particle = nullptr;
 	Particle laser;
 	Particle explosion_shot;
 };

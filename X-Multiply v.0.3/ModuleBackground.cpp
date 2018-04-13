@@ -5,6 +5,8 @@
 #include "ModuleBackground.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
 #include "ModuleIntroScene.h"
 
 
@@ -77,6 +79,7 @@ bool ModuleBackground::Start()
 	App->audio->PlaySoundEffect(spaceshipdrop);
 	App->audio->PlayMusic(firstlvlmusic);
 	App->player->Enable();
+
 	return ret;
 }
 
@@ -90,7 +93,8 @@ bool ModuleBackground::CleanUp()
 	App->player->Disable();
 	App->audio->UnloadSoundEffect(spaceshipdrop);
 	spaceshipdrop = nullptr;
-
+	
+	App->collision->Disable();
 
 	return true;
 }

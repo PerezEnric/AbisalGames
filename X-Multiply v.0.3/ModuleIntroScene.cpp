@@ -59,8 +59,6 @@ update_status ModuleIntroScene::Update()
 	if (App->input->keyboard[SDL_SCANCODE_Q])
 	{
 		App->fade->FadeToBlack(this, App->background, 2.0f);
-		App->audio->Disable();
-		App->background->firstlvlmusic;
 		App->background->Enable();
 		App->player->Enable();
 		flag = true;
