@@ -48,6 +48,7 @@ private:
 public:
 	Mix_Chunk* shot_particle;
 	Particle laser;
+	Particle explosion_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

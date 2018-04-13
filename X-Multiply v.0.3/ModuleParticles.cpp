@@ -25,8 +25,13 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites_Assets/Player.png");
 	shot_particle = App->audio->LoadSoundEffect("shotp.wav");
-	// Template for a new particle "laser"
+	
+	// Template for a new particle "explosion_shot"
+	explosion_shot.anim.PushBack({ 33, 36, 7, 8 });
+	explosion_shot.anim.PushBack({ 49, 34, 12, 12 });
+	explosion_shot.anim.speed = 0.2f;
 
+	// Template for a new particle "laser"
 	laser.anim.PushBack({ 64, 39, 16, 3 });
 	laser.anim.loop = false;
 	laser.anim.speed = 0.3f;
