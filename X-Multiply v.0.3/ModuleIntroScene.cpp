@@ -60,7 +60,6 @@ update_status ModuleIntroScene::Update()
 	{
 		App->fade->FadeToBlack(this, App->background, 2.0f);
 		App->background->Enable();
-		App->player->Enable();
 		flag = true;
 	}
 	return UPDATE_CONTINUE;

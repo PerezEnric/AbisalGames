@@ -37,19 +37,19 @@ bool ModuleBackground::Init()
 	injectionanim.PushBack({ 266,24,48,113 });
 	injectionanim.PushBack({ 335,24,48,121 });
 	injectionanim.PushBack({ 414,24,48,123 });
-	injectionanim.PushBack({ 414,157,48,122 });
-	injectionanim.PushBack({ 335,157,48,120 });
-	injectionanim.PushBack({ 266,157,48,112 });
-	injectionanim.PushBack({ 188,157,48,103 });
-	injectionanim.PushBack({ 107,157,48,105 });
-	injectionanim.PushBack({ 28,157,48,102 });
+	injectionanim.PushBack({ 414,24,48,122 });
+	injectionanim.PushBack({ 335,24,48,120 });
+	injectionanim.PushBack({ 266,24,48,112 });
+	injectionanim.PushBack({ 188,24,48,103 });
+	injectionanim.PushBack({ 107,24,48,105 });
+	injectionanim.PushBack({ 28,24,48,102 });
 
 	injectionanim.loop = false;
 	injectionanim.speed = 0.2f;
 
 	//Injection Measurements
-	injection.x = 50;
-	injection.y = 100;
+	injection.x = 28;
+	injection.y = 15;
 	injection.w = 48;
 	injection.h = 102;
 
@@ -78,7 +78,7 @@ bool ModuleBackground::Start()
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
 	App->audio->PlayMusic(firstlvlmusic);
-	App->player->Enable();
+
 
 	return ret;
 }
@@ -118,10 +118,9 @@ update_status ModuleBackground::Update()
 			App->player->position.y -= vspeed;
 		}
 		
-		if (!move)
+		if (move == false)
 		{
 			App->render->camera.x = 0;
-			App->player->position.x = 0;
 		}
 	}
 
@@ -139,7 +138,11 @@ void ModuleBackground::animinject()
 		if (injectionanim.GetCurrentFrameIndex() == 6)
 		{
 			App->player->Enable();
-			right = true;
+			move = true;
+		}
+		if (injectionanim.GetCurrentFrameIndex() == 11)
+		{
+			App->player->Enable();
 			inject = false;
 		}
 		injection = injectionanim.GetCurrentFrame();
