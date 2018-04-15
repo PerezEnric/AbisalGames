@@ -34,7 +34,6 @@ public:
 	Mix_Chunk* spaceshipdrop = nullptr;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphicswall = nullptr;
-	SDL_Texture* graphicswall2 = nullptr;
 	SDL_Texture* graphicsinjection = nullptr;
 	Animation back;
 	Animation injectionanim;

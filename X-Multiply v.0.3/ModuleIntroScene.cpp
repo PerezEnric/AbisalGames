@@ -30,8 +30,7 @@ bool ModuleIntroScene::Start()
 
 	intro_music = App->audio->LoadMusic("Audio_Assets/X-Multiply_Title.ogg");
 	App->audio->PlayMusic(intro_music);
-	App->player->Disable();
-	App->background->Disable();
+
 
 	return true;
 }
@@ -43,8 +42,6 @@ bool ModuleIntroScene::CleanUp()
 
 	App->textures->Unload(introBackground);
 	introBackground = nullptr;
-	App->audio->UnloadMusic(intro_music);
-	intro_music = nullptr;
 	return true;
 }
 

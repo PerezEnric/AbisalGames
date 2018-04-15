@@ -78,7 +78,10 @@ bool ModuleBackground::Start()
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
 	App->audio->PlayMusic(firstlvlmusic);
+	App->collision->Enable();
+	App->particles->Enable();
 
+	App->collision->AddCollider({ 10,10,100,100 }, COLLIDER_WALL);
 
 	return ret;
 }
@@ -89,12 +92,16 @@ bool ModuleBackground::CleanUp()
 	LOG("Unloading first level scene scene");
 
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 	App->textures->Unload(graphicswall);
+	graphicswall = nullptr;
+	App->textures->Unload(graphicsinjection);
+	graphicsinjection = nullptr;
 	App->player->Disable();
-	App->audio->UnloadSoundEffect(spaceshipdrop);
-	spaceshipdrop = nullptr;
-	
 	App->collision->Disable();
+	App->particles->Disable();
+
+
 
 	return true;
 }
@@ -106,13 +113,12 @@ update_status ModuleBackground::Update()
 	App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
 	App->render->Blit(graphics, 0, 0, &background, 0.75f);
 	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 0.75f);
-
-
+	
 	if (App->intro->flag)
 	{
 		int vspeed = 1.5;
 		if (App->render->camera.x <= -10600
-			&& App->render->camera.x >= -13620)
+			&& App->render->camera.x >= -13652)
 		{
 			App->render->camera.y -= vspeed;
 			App->player->position.y -= vspeed;

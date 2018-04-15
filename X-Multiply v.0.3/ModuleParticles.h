@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "ModuleCollision.h"
 #include "p2Point.h"
 #include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
@@ -11,9 +12,12 @@
 #define MAX_ACTIVE_PARTICLES 300
 
 struct SDL_Texture;
+struct Collider;
+enum COLLIDER_TYPE;
 
 struct Particle
 {
+	Collider* collider = nullptr;
 	Animation anim;
 	uint fx = 0;
 	iPoint position;
@@ -24,6 +28,7 @@ struct Particle
 
 	Particle();
 	Particle(const Particle& p);
+	~Particle();
 	bool Update();
 };
 
@@ -36,8 +41,9 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddParticle(const Particle& particle, int x, int y, Uint32 delay = 0);
+	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 
 private:
 

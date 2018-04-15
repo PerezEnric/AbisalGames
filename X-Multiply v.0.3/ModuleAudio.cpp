@@ -41,7 +41,7 @@ bool ModuleAudio::Init()
 
 bool ModuleAudio::CleanUp()
 {
-	LOG("Cleaning Audio Module .............");
+	LOG("Cleaning Audio Module");
 
 	for (uint i = 0; i < MAX_MUSIC; ++i)
 	{
