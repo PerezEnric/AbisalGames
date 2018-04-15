@@ -43,8 +43,6 @@ bool ModuleIntroScene::CleanUp()
 
 	App->textures->Unload(introBackground);
 	introBackground = nullptr;
-	App->audio->UnloadMusic(intro_music);
-	intro_music = nullptr;
 	return true;
 }
 

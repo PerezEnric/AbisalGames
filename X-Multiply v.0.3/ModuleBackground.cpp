@@ -89,11 +89,12 @@ bool ModuleBackground::CleanUp()
 	LOG("Unloading first level scene scene");
 
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 	App->textures->Unload(graphicswall);
+	graphicswall = nullptr;
+	App->textures->Unload(graphicsinjection);
+	graphicsinjection = nullptr;
 	App->player->Disable();
-	App->audio->UnloadSoundEffect(spaceshipdrop);
-	spaceshipdrop = nullptr;
-	
 	App->collision->Disable();
 
 	return true;
