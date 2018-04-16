@@ -6,14 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
 #include "ModuleCollision.h"
-
-=======
->>>>>>> f1e23e72bb2a73054da8e76b0d2a65c9c44bab14
-=======
->>>>>>> 1a5973a823d67f2be84369edfab31f986c725a99
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
