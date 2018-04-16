@@ -55,6 +55,8 @@ public:
 	Mix_Chunk* shot_particle = nullptr;
 	Particle laser;
 	Particle explosion_shot;
+	Particle explosion;
+
 };
 
 #endif // __MODULEPARTICLES_H__

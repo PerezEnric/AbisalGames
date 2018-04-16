@@ -81,7 +81,8 @@ bool ModuleBackground::Start()
 	App->collision->Enable();
 	App->particles->Enable();
 
-	App->collision->AddCollider({ 0,0,10000,10000 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,212,2000,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 450, 190,50,50 }, COLLIDER_WALL);
 
 	return ret;
 }
@@ -110,7 +111,7 @@ update_status ModuleBackground::Update()
 {
 	animinject();
 		// Draw everything --------------------------------------
-	App->render->Blit(graphicswall, 0, 0, &wall, 0.75f);
+	App->render->Blit(graphicswall, -10, 0, &wall, 0.75f);
 	App->render->Blit(graphics, 0, 0, &background, 0.75f);
 	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 0.75f);
 	

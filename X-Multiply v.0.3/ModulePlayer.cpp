@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleBackground.h"
+#include "ModuleFadeToBlack.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -43,7 +44,11 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
+	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
+
+	col = App->collision->AddCollider({ position.x, position.y, 35, 16 }, COLLIDER_PLAYER, this);
+
 	return ret;
 }
 
@@ -53,6 +58,9 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
+
+	if (col != nullptr)
+		col->to_delete = true;
 
 	return true;
 }
@@ -109,7 +117,24 @@ update_status ModulePlayer::Update()
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;
 
+	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	
 	return UPDATE_CONTINUE;
+}
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
+		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
+		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
+		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
+
+		destroyed = true;
+	}
 }
