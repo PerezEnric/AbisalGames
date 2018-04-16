@@ -47,7 +47,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
 
-	col = App->collision->AddCollider({ position.x, position.y, 35, 16 }, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
 	return ret;
 }
