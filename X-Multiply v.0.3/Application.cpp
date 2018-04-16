@@ -26,6 +26,7 @@ Application::Application()
 	modules[9] = particles = new ModuleParticles(); 
 	modules[10] = collision = new ModuleCollision();
 	modules[11] = fade = new ModuleFadeToBlack();
+
 	
 }	
 

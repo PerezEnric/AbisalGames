@@ -81,11 +81,18 @@ bool ModuleBackground::Start()
 	App->audio->PlayMusic(firstlvlmusic);
 	App->collision->Enable();
 	App->particles->Enable();
+
 	App->enemies->Enable();
 	//Collider
 	App->collision->AddCollider({ 0,0,100,100 }, COLLIDER_WALL);
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 0, 0);
+
+
+
+	App->collision->AddCollider({ 0,212,2000,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 410, 188,50,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 510, 188,70,40 }, COLLIDER_WALL);
 
 
 	return ret;
@@ -115,18 +122,18 @@ update_status ModuleBackground::Update()
 {
 	animinject();
 		// Draw everything --------------------------------------
-	App->render->Blit(graphicswall, -10, 0, &wall, 0.75f);
-	App->render->Blit(graphics, 0, 0, &background, 0.75f);
-	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 0.75f);
+	App->render->Blit(graphicswall, -10, 0, &wall, 1.0f);
+	App->render->Blit(graphics, 0, 0, &background, 1.0f);
+	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 1.0f);
 	
 	if (App->intro->flag)
 	{
-		int vspeed = 1;
+		int vspeed = 1.5;
 		if (App->render->camera.x <= -10600
 			&& App->render->camera.x >= -13652)
 		{
 			App->render->camera.y -= vspeed;
-			App->player->position.y += 0.4f;
+			App->player->position.y += vspeed;
 		}
 		
 		if (move == false)
