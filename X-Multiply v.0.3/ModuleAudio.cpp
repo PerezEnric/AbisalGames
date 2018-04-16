@@ -121,6 +121,7 @@ void ModuleAudio::UnloadMusic(Mix_Music * music)
 		if (songs[i] == music)
 		{
 			Mix_FreeMusic(music);
+			songs[i] = nullptr;
 			break;
 		}
 	}
@@ -133,6 +134,7 @@ void ModuleAudio::UnloadSoundEffect(Mix_Chunk * effect)
 		if (sound_effects[i] == effect)
 		{
 			Mix_FreeChunk(effect);
+			sound_effects[i] = nullptr;
 			break;
 		}
 	}
