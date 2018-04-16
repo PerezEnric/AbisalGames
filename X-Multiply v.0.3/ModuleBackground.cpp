@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleIntroScene.h"
+#include "ModuleEnemies.h"
 
 
 ModuleBackground::ModuleBackground()
@@ -80,8 +81,12 @@ bool ModuleBackground::Start()
 	App->audio->PlayMusic(firstlvlmusic);
 	App->collision->Enable();
 	App->particles->Enable();
-
+	App->enemies->Enable();
+	//Collider
 	App->collision->AddCollider({ 0,0,100,100 }, COLLIDER_WALL);
+	//Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 0, 0);
+
 
 	return ret;
 }
@@ -100,7 +105,7 @@ bool ModuleBackground::CleanUp()
 	App->player->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
-
+	App->enemies->Disable();
 
 
 	return true;

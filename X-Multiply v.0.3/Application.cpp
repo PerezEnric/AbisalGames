@@ -5,12 +5,12 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleBackground.h"
+#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleIntroScene.h"
 #include "ModuleCollision.h"
-#include "ModuleEnemies.h"
 
 Application::Application()
 {
