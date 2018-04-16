@@ -81,7 +81,7 @@ bool ModuleBackground::Start()
 	App->collision->Enable();
 	App->particles->Enable();
 
-	App->collision->AddCollider({ 10,10,100,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,0,10000,10000 }, COLLIDER_WALL);
 
 	return ret;
 }
@@ -116,12 +116,12 @@ update_status ModuleBackground::Update()
 	
 	if (App->intro->flag)
 	{
-		int vspeed = 1.5;
+		int vspeed = 1;
 		if (App->render->camera.x <= -10600
 			&& App->render->camera.x >= -13652)
 		{
 			App->render->camera.y -= vspeed;
-			App->player->position.y -= vspeed;
+			App->player->position.y += 0.4f;
 		}
 		
 		if (move == false)
