@@ -126,7 +126,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		
+		case ENEMY_TYPES::BALL:
+			enemies[i] = new Enemy_Ball(info.x, info.y);
+			break;
 		}
 	}
 }

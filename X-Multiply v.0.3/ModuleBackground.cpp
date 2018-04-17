@@ -81,20 +81,14 @@ bool ModuleBackground::Start()
 	App->audio->PlayMusic(firstlvlmusic);
 	App->collision->Enable();
 	App->particles->Enable();
-
 	App->enemies->Enable();
 	//Collider
-	App->collision->AddCollider({ 0,0,100,100 }, COLLIDER_WALL);
-	//Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 0, 0);
-
-
-
 	App->collision->AddCollider({ 0,212,2000,20 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 410, 188,50,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 510, 188,70,40 }, COLLIDER_WALL);
-
-
+	//Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 400, 100);
+	
 	return ret;
 }
 

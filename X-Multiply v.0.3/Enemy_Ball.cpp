@@ -4,13 +4,13 @@
 
 Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ -24, -16, 24,24 });
-	fly.PushBack({ -52, -16, 24,24 });
-	fly.PushBack({ -80, -16, 24,24 });
-	fly.speed = 0.2f;
+	fly.PushBack({ 24, 16, 24,24 });
+	fly.PushBack({ 52, 16, 24,24 });
+	fly.PushBack({ 80, 16, 24,24 });
+	fly.speed = 0.1f;
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	original_y;
+	original_y = y;
 }
 void Enemy_Ball::Move()
 {

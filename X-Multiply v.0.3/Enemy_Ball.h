@@ -14,7 +14,7 @@ private:
 public:
 
 	Enemy_Ball(int x, int y);
-
+	~Enemy_Ball() {};
 	void Move();
 };
 
