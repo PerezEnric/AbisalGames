@@ -83,11 +83,16 @@ bool ModuleBackground::Start()
 	App->particles->Enable();
 	App->enemies->Enable();
 	//Collider
-	App->collision->AddCollider({ 0,212,2000,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,212,2800,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 505, 0,2020,10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 410, 188,50,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 510, 188,70,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 640, 0,70,25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 760, 0,50,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1012, 0,93,40 }, COLLIDER_WALL);
+	
 	//Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 400, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
 	
 	return ret;
 }
@@ -123,7 +128,7 @@ update_status ModuleBackground::Update()
 	if (App->intro->flag)
 	{
 		int vspeed = 1.5;
-		if (App->render->camera.x <= -10600
+		if (App->render->camera.x <= -10000
 			&& App->render->camera.x >= -13652)
 		{
 			App->render->camera.y -= vspeed;

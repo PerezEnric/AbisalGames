@@ -129,11 +129,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
 
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x, position.y, COLLIDER_NONE, 150);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 
 		destroyed = true;
 	}
