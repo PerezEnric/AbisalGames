@@ -11,6 +11,7 @@
 #include "ModuleParticles.h"
 #include "ModuleIntroScene.h"
 #include "ModuleCollision.h"
+#include "ModuleWinLoseScene.h"
 
 Application::Application()
 {
@@ -21,11 +22,12 @@ Application::Application()
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = intro = new ModuleIntroScene();
 	modules[6] = background = new ModuleBackground();
-	modules[7] = enemies = new ModuleEnemies();
-	modules[8] = player = new ModulePlayer();
-	modules[9] = particles = new ModuleParticles(); 
-	modules[10] = collision = new ModuleCollision();
-	modules[11] = fade = new ModuleFadeToBlack();
+	modules[7] = win_lose = new ModuleWinLoseScene();
+	modules[8] = enemies = new ModuleEnemies();
+	modules[9] = player = new ModulePlayer();
+	modules[10] = particles = new ModuleParticles(); 
+	modules[11] = collision = new ModuleCollision();
+	modules[12] = fade = new ModuleFadeToBlack();
 
 	
 }	

@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleIntroScene.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleWinLoseScene.h"
 
 
 
@@ -30,7 +31,7 @@ bool ModuleIntroScene::Start()
 
 	intro_music = App->audio->LoadMusic("Audio_Assets/X-Multiply_Title.ogg");
 	App->audio->PlayMusic(intro_music);
-
+	App->win_lose->Disable();
 
 	return true;
 }
@@ -48,6 +49,7 @@ bool ModuleIntroScene::CleanUp()
 // Update: draw background
 update_status ModuleIntroScene::Update()
 {
+	App->render->camera.x = App->render->camera.y = 0;
 	// Draw everything --------------------------------------
 	App->render->Blit(introBackground, 0, 0, NULL);
 	App->render->Blit(introBackground, 0, 0, &game_title);
