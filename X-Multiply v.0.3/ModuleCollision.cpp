@@ -93,8 +93,31 @@ update_status ModuleCollision::PreUpdate()
 // Called before render is available
 update_status ModuleCollision::Update()
 {
-
+	
 	DebugDraw();
+
+	//god mode
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+		god_mode = !god_mode;
+
+	if (god_mode == false)
+	{
+		matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
+		matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = true;
+		matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = true;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
+	}
+	else
+	{
+		matrix[COLLIDER_PLAYER][COLLIDER_WALL] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
+		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = false;
+		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = false;
+	}
 
 	return UPDATE_CONTINUE;
 }
