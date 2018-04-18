@@ -99,7 +99,7 @@ bool ModuleBackground::Start()
 	
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
-	
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	return ret;
 }
 
