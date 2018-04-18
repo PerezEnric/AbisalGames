@@ -37,6 +37,16 @@ bool ModuleParticles::Start()
 	laser.speed.x = 10;
 	laser.life = 3000;
 
+	//Template for a new particle "explosion"
+	explosion.anim.PushBack({ 0, 160, 24, 23 });
+	explosion.anim.PushBack({ 3, 201, 26, 22 });
+	explosion.anim.PushBack({ 35, 201, 26, 22 });
+	explosion.anim.PushBack({ 66, 196, 44, 32 });
+	explosion.anim.PushBack({ 117, 197, 37, 28 });
+	explosion.anim.PushBack({ 162, 197, 42, 31 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 0.3f;
+
 	return true;
 }
 
