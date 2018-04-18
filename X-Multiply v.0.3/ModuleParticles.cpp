@@ -24,7 +24,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites_Assets/Player.png");
-	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 	
 	// Template for a new particle "explosion_shot"
 	explosion_shot.anim.PushBack({ 33, 36, 7, 8 });
@@ -79,7 +78,7 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				// Play particle fx here
-				App->audio->PlaySoundEffect(shot_particle);
+				
 			}
 		}
 	}

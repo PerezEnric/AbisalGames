@@ -29,11 +29,11 @@ bool ModuleAudio::Init()
 	}
 	else
 	{
-		if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) < 0)
-		{
-			LOG("Audio Module can't open: %s/n", Mix_GetError());
-			ret = false;
-		}
+		//if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) < 0)
+		//{
+		//	LOG("Audio Module can't open: %s/n", Mix_GetError());
+		//	ret = false;
+		//}
 	}
 
 	return ret;

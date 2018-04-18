@@ -6,8 +6,7 @@
 #include "Globals.h"
 #include "ModuleCollision.h"
 #include "p2Point.h"
-#include "SDL_mixer/include/SDL_mixer.h"
-#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
+
 
 #define MAX_ACTIVE_PARTICLES 300
 
@@ -52,7 +51,7 @@ private:
 	uint last_particle = 0;
 
 public:
-	Mix_Chunk* shot_particle = nullptr;
+	
 	Particle laser;
 	Particle explosion_shot;
 	Particle explosion;

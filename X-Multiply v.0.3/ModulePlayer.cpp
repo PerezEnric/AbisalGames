@@ -7,6 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleBackground.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -46,6 +47,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
+	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
@@ -110,7 +112,8 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
-		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6);
+		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+		App->audio->PlaySoundEffect(shot_particle);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -128,13 +131,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
+		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
+		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
+		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 
-		App->particles->AddParticle(App->particles->explosion_shot, position.x, position.y, COLLIDER_NONE, 150);
-		App->particles->AddParticle(App->particles->explosion_shot, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
-		App->particles->AddParticle(App->particles->explosion_shot, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
-		App->particles->AddParticle(App->particles->explosion_shot, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion_shot, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
-
-		destroyed = true;
+		if (live == 0)
+		{
+			destroyed = true;
+		}
+		else
+		{
+			live--;
+		}
 	}
 }

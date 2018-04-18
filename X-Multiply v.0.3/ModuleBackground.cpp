@@ -75,6 +75,12 @@ bool ModuleBackground::Start()
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
 	firstlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_1_Music.ogg");
 	spaceshipdrop = App->audio->LoadSoundEffect("Audio_Assets/injection.wav");
+	if (App->player->live < 3 && App->player->live > 0)
+	{
+		App->player->Enable();
+		App->player->position.y = 103;
+
+	}
 	
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
@@ -83,13 +89,13 @@ bool ModuleBackground::Start()
 	App->particles->Enable();
 	App->enemies->Enable();
 	//Collider
-	App->collision->AddCollider({ 0,212,2800,20 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 505, 0,2020,10 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 410, 188,50,40 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 510, 188,70,40 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 640, 0,70,25 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 760, 0,50,40 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1012, 0,93,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,213,2800,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 505, -3,2020,10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 410, 190,50,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 510, 190,70,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 640, -3,70,25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 760, -3,47,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1012, -3,96,40 }, COLLIDER_WALL);
 	
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
