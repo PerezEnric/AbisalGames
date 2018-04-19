@@ -135,6 +135,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::ANEMONE:
 			enemies[i] = new Enemy_Anemone(info.x, info.y);
 			break;
+		case ENEMY_TYPES::PU:
+			enemies[i] = new Enemy_PU(info.x, info.y);
+			break;
 		}
 	}
 }

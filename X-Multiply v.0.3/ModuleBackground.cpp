@@ -102,6 +102,8 @@ bool ModuleBackground::Start()
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
 	return ret;
 }
 
