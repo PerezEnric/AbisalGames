@@ -126,7 +126,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		if (turbo = false)
+		if (turbo == false)
 		{
 			position.x -= (speed/2);
 		}
@@ -157,6 +157,11 @@ update_status ModulePlayer::Update()
 	if(position.x > cameraback + App->render->camera.w)
 		position.x = cameraback + App->render->camera.w;
 
+	if (turbo2)
+	{
+		App->particles->AddParticle(App->particles->speedpowerup, position.x, position.y);
+		turbo2 = false;
+	}
 	return UPDATE_CONTINUE;
 }
 

@@ -23,6 +23,6 @@ void PowerUp_SpeedUp::Move()
 
 void PowerUp_SpeedUp::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->speedpowerup, position.x, position.y);
+	App->player->turbo2 = true;
 	App->player->turbo = true;
 }
