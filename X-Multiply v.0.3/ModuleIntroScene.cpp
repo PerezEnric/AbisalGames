@@ -55,7 +55,7 @@ update_status ModuleIntroScene::Update()
 	App->render->Blit(introBackground, 0, 0, &game_title);
 	App->render->Blit(introBackground, 116, 183, &game_company);
 
-	if (App->input->keyboard[SDL_SCANCODE_Q])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
 		App->fade->FadeToBlack(this, App->background, 2.0f);
 		App->background->Enable();

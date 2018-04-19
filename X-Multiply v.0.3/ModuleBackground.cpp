@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModuleIntroScene.h"
 #include "ModuleEnemies.h"
+#include "ModuleFadeToBlack.h"
 
 
 ModuleBackground::ModuleBackground()
@@ -56,6 +57,7 @@ bool ModuleBackground::Init()
 
 	inject = true;
 
+
 	return true;
 
 }
@@ -69,17 +71,17 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
-	
+	move = false;
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
 	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
 	firstlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_1_Music.ogg");
 	spaceshipdrop = App->audio->LoadSoundEffect("Audio_Assets/injection.wav");
+	App->player->destroyed = false;
 	if (App->player->live < 3 && App->player->live > 0)
 	{
 		App->player->Enable();
 		App->player->position.y = 103;
-
 	}
 	
 	App->audio->PlayMusic(firstlvlmusic);
@@ -146,7 +148,18 @@ update_status ModuleBackground::Update()
 			App->render->camera.x = 0;
 		}
 	}
-
+	
+	if (App->player->live == 0 && App->player->destroyed == true)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		Disable();
+	}
+	else if(App->player->live > 0 && App->player->destroyed == true)
+	{
+		
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+		
+	}
 	
 
 	return UPDATE_CONTINUE;
