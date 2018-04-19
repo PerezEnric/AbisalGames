@@ -75,21 +75,31 @@ update_status ModulePlayer::Update()
 {
 
 	position.x += speed;
+	if (App->background->move)
+		cameraback += speed;
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo == false)
+		{
 			position.x += (speed * 2);
+		}
 		else
+		{
 			position.x += 6;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo == false)
+		{
 			position.y -= (speed * 2);
+		}
 		else
+		{
 			position.y -= 6;
+		}
 
 		if (current_animation != &up)
 		{
@@ -101,9 +111,13 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo == false)
+		{
 			position.y += (speed * 2);
+		}
 		else
+		{
 			position.y += 6;
+		}
 		if (current_animation != &down)
 		{
 			down.Reset();
@@ -113,9 +127,13 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo = false)
-			position.x -= (speed * 2);
+		{
+			position.x -= (speed/2);
+		}
 		else
+		{
 			position.x -= 6;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -131,6 +149,13 @@ update_status ModulePlayer::Update()
 
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+
+	if (position.y < 0)
+		position.y = 0;
+	if (position.x < cameraback)
+		position.x = cameraback;
+	if(position.x > cameraback + App->render->camera.w)
+		position.x = cameraback + App->render->camera.w;
 
 	return UPDATE_CONTINUE;
 }

@@ -32,6 +32,7 @@ public:
 	bool destroyed = false;
 	int live = 3;
 	int speed = 1;
+	int cameraback = 0;
 	bool turbo = false;
 };
 

@@ -25,8 +25,8 @@ Application::Application()
 	modules[6] = background = new ModuleBackground();
 	modules[7] = win_lose = new ModuleWinLoseScene();
 	modules[8] = enemies = new ModuleEnemies();
-	modules[9] = powerup = new ModulePowerUp();
-	modules[10] = player = new ModulePlayer();
+	modules[9] = player = new ModulePlayer();
+	modules[10] = powerup = new ModulePowerUp();
 	modules[11] = particles = new ModuleParticles(); 
 	modules[12] = collision = new ModuleCollision();
 	modules[13] = fade = new ModuleFadeToBlack();
