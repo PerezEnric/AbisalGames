@@ -21,8 +21,8 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	bool inject, right;
-	bool move = false;
+	bool inject;
+	bool move;
 	int cont = 0;
 	int xinject = 75;
 	int yinject = -100;

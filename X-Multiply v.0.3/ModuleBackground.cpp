@@ -56,6 +56,7 @@ bool ModuleBackground::Init()
 	injection.h = 102;
 
 	inject = true;
+	if (App->player->live == 3) move = false;
 
 
 	return true;
@@ -71,7 +72,6 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
-	move = false;
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
 	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
@@ -102,7 +102,6 @@ bool ModuleBackground::Start()
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	return ret;
 }
 
