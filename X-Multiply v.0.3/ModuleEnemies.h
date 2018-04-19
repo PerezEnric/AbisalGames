@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Enemy_Ball.h"
 #include "Enemy_LittleShrimp.h"
+#include "Enemy_Anemone.h"
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
@@ -21,6 +22,7 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	BALL,
 	SHRIMP,
+	ANEMONE,
 };
 
 class Enemy;

@@ -83,6 +83,9 @@
     <ClInclude Include="ModuleWinLoseScene.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Anemone.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -141,6 +144,9 @@
     </ClCompile>
     <ClCompile Include="ModuleWinLoseScene.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Anemone.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
