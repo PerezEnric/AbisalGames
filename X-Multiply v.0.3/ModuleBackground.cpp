@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModuleIntroScene.h"
 #include "ModuleEnemies.h"
+#include "ModulePowerUp.h"
 #include "ModuleFadeToBlack.h"
 
 
@@ -104,6 +105,10 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
+
+	//Power Ups
+	App->powerup->AddPowerUp(POWERUP_TYPES::SPEEDUP, 700, 100);
+
 	return ret;
 }
 

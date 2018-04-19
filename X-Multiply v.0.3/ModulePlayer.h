@@ -31,6 +31,8 @@ public:
 	Collider* col;
 	bool destroyed = false;
 	int live = 3;
+	int speed = 1;
+	bool turbo = false;
 };
 
 #endif

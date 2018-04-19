@@ -55,6 +55,7 @@ public:
 	Particle laser;
 	Particle explosion_shot;
 	Particle explosion;
+	Particle speedpowerup;
 
 };
 

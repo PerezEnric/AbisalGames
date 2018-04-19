@@ -74,20 +74,22 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 
-	int speed = 1;
-
 	position.x += speed;
-
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += (speed * 2);
-		App->background->move = true;
+		if (turbo == false)
+			position.x += (speed * 2);
+		else
+			position.x += 6;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= (speed * 2);
+		if (turbo == false)
+			position.y -= (speed * 2);
+		else
+			position.y -= 6;
 
 		if (current_animation != &up)
 		{
@@ -98,7 +100,10 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += (speed * 2);
+		if (turbo == false)
+			position.y += (speed * 2);
+		else
+			position.y += 6;
 		if (current_animation != &down)
 		{
 			down.Reset();
@@ -107,8 +112,10 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		
-		position.x -= (speed * 2);
+		if (turbo = false)
+			position.x -= (speed * 2);
+		else
+			position.x -= 6;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -130,9 +137,10 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	 
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
-		live --;
+		live--;
 		destroyed = true;
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);

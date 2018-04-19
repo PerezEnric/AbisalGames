@@ -37,7 +37,7 @@ bool ModuleParticles::Start()
 	laser.speed.x = 10;
 	laser.life = 3000;
 
-	//Template for a new particle "explosion"
+	// Template for a new particle "explosion"
 	explosion.anim.PushBack({ 0, 160, 24, 23 });
 	explosion.anim.PushBack({ 3, 201, 26, 22 });
 	explosion.anim.PushBack({ 35, 201, 26, 22 });
@@ -46,6 +46,19 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({ 162, 197, 42, 31 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
+
+	// Template for a new particle "turbo"
+
+	speedpowerup.anim.PushBack({139, 145, 18, 14});
+	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
+	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
+	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
+	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
+	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
+	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
+	speedpowerup.anim.loop = false;
+	speedpowerup.anim.speed = 0.2f;
+
 
 	return true;
 }

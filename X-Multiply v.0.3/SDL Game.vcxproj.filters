@@ -15,6 +15,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{78a3443d-7d47-4ef9-ad82-8980d0957564}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\PowerUps">
+      <UniqueIdentifier>{13a21ec2-11d2-4026-bad9-7a6b21c433ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -89,6 +92,15 @@
     <ClInclude Include="Enemy_PU.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="PowerUp.h">
+      <Filter>Modules\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePowerUp.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerUp_SpeedUp.h">
+      <Filter>Modules\PowerUps</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -153,6 +165,15 @@
     </ClCompile>
     <ClCompile Include="Enemy_PU.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePowerUp.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp_SpeedUp.cpp">
+      <Filter>Modules\PowerUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
