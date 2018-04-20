@@ -24,8 +24,8 @@ ModulePlayer::ModulePlayer()
 	position.y = 103;
 
 	// idle animation
-	idle.PushBack({101, 1, 35, 14});
-	
+	idle.PushBack({ 101, 1, 35, 14 });
+
 	idle.speed = 0.2f;
 
 	//upwards animation
@@ -35,7 +35,7 @@ ModulePlayer::ModulePlayer()
 	up.speed = 0.1f;
 
 	//downwards animation
-	
+
 	down.PushBack({ 149, 3, 35, 12 });
 	down.PushBack({ 197, 5, 35, 12 });
 	down.loop = false;
@@ -53,7 +53,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
 	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
-	font_score = App->fonts->Load("Assets/fonts.1.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
+	font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
 	return ret;
@@ -65,7 +65,6 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
-	App->fonts->UnLoad(font_score);
 
 	if (col != nullptr)
 		col->to_delete = true;
@@ -82,7 +81,7 @@ update_status ModulePlayer::Update()
 	if (App->background->move)
 		cameraback += speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo == false)
 		{
@@ -142,10 +141,11 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		
+
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 		App->audio->PlaySoundEffect(shot_particle);
+
 
 		if (cd < 5)
 		{
@@ -153,7 +153,7 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
-			
+
 			if (bomb)
 			{
 				App->particles->AddParticle(App->particles->bombPU, position.x, position.y + 7, COLLIDER_PLAYER_SHOT);
@@ -175,18 +175,19 @@ update_status ModulePlayer::Update()
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
-	
+
 	//UI
 	sprintf_s(text, 10, "%7d", score);
-	App->fonts->BlitText(80, 240, font_score, text);
-	App->fonts->BlitText(32, 240, font_score, "score");
+
+	App->fonts->BlitText(50, 238, font_score, text);
+	//App->fonts->BlitText(32, 150, font_score, "score");
 
 	return UPDATE_CONTINUE;
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	 
+
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
 		turbo = false;
@@ -198,7 +199,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
 		Disable();
-		
-		
+
+
 	}
 }

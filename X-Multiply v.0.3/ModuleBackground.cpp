@@ -20,7 +20,7 @@ ModuleBackground::ModuleBackground()
 	background.w = 4961;
 	background.h = 513;
 
-	
+
 
 	wall.x = 250;
 	wall.y = 1000;
@@ -55,7 +55,7 @@ bool ModuleBackground::Init()
 	injection.w = 48;
 	injection.h = 102;
 
-	inject = true; 
+	inject = true;
 
 	return true;
 
@@ -104,13 +104,12 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 640, -3,70,25 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 760, -3,47,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1012, -3,96,40 }, COLLIDER_WALL);
-	
+
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 630, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
-	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 1050, 165);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
 
 	//Power Ups
@@ -133,7 +132,6 @@ bool ModuleBackground::CleanUp()
 	graphicsinjection = nullptr;
 	App->textures->Unload(ui);
 	ui = nullptr;
-	
 	App->player->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
@@ -151,12 +149,12 @@ bool ModuleBackground::CleanUp()
 update_status ModuleBackground::Update()
 {
 	animinject();
-		// Draw everything --------------------------------------
+	// Draw everything --------------------------------------
 	App->render->Blit(graphicswall, -10, 0, &wall, 1.0f);
 	App->render->Blit(graphics, 0, 0, &background, 1.0f);
 	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 1.0f);
 	App->render->Blit(ui, 0, 224, NULL, 0.0f, false);
-	
+
 	if (App->intro->flag)
 	{
 		int vspeed = 1;
@@ -166,24 +164,24 @@ update_status ModuleBackground::Update()
 			App->render->camera.y -= vspeed;
 			//App->player->position.y += vspeed;
 		}
-		
+
 		if (move == false)
 		{
 			App->render->camera.x = 0;
 		}
 	}
-	
+
 	if (App->player->live == 0 && App->player->destroyed == true)
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		Disable();
 	}
-	else if(App->player->live > 0 && App->player->destroyed == true)
+	else if (App->player->live > 0 && App->player->destroyed == true)
 	{
-		
+
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
 	}
-	
+
 
 	return UPDATE_CONTINUE;
 }

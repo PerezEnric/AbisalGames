@@ -36,7 +36,7 @@ public:
 	int font_score = -1;
 	bool turbo = false;
 	bool bomb = false;
-	char text[20];
+	char text[10];
 	int cd = 0;
 	uint score = 0;
 };

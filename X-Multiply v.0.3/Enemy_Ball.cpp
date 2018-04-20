@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_Ball.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 {
@@ -11,6 +12,8 @@ Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
+
+	App->enemies->points = 100;
 }
 void Enemy_Ball::Move()
 {
