@@ -77,8 +77,8 @@ bool ModuleParticles::Start()
 	bombPU.anim.PushBack({185, 171, 4, 15});
 	bombPU.anim.loop = false;
 	bombPU.anim.speed = 0.2f;
-	bombPU.speed.y = 5;
-	bombPU.life = 400;
+	bombPU.speed = { 2,3 };
+	bombPU.life = 1500;
 
 	return true;
 }

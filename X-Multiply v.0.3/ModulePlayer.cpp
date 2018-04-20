@@ -147,7 +147,7 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 		App->audio->PlaySoundEffect(shot_particle);
 
-		if (cd < 15)
+		if (cd < 5)
 		{
 			cd++;
 		}
@@ -157,7 +157,6 @@ update_status ModulePlayer::Update()
 			if (bomb)
 			{
 				App->particles->AddParticle(App->particles->bombPU, position.x, position.y + 7, COLLIDER_PLAYER_SHOT);
-				
 			}
 			cd = 0;
 		}
