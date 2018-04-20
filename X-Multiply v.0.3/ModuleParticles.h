@@ -56,6 +56,7 @@ public:
 	Particle explosion_shot;
 	Particle explosion;
 	Particle speedpowerup;
+	Particle enemy_shot;
 
 };
 

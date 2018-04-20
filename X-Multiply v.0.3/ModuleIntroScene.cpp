@@ -41,6 +41,7 @@ bool ModuleIntroScene::Start()
 	App->background->injectionanim.current_frame = 0;
 	App->player->position.y = 103;
 	App->player->position.x = 87;
+	App->player->live = 3;
 
 	return true;
 }

@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_Anemone.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 Enemy_Anemone::Enemy_Anemone(int x, int y) : Enemy(x, y)
 {
@@ -12,3 +13,8 @@ Enemy_Anemone::Enemy_Anemone(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 47, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
 }
+
+void Enemy_Anemone::Move()
+{
+
+	}

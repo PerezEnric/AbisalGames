@@ -28,6 +28,7 @@ bool ModuleParticles::Start()
 	// Template for a new particle "explosion_shot"
 	explosion_shot.anim.PushBack({ 33, 36, 7, 8 });
 	explosion_shot.anim.PushBack({ 49, 34, 12, 12 });
+	explosion_shot.anim.loop = false;
 	explosion_shot.anim.speed = 0.2f;
 
 	// Template for a new particle "laser"
@@ -58,6 +59,15 @@ bool ModuleParticles::Start()
 	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
 	speedpowerup.anim.loop = false;
 	speedpowerup.anim.speed = 0.2f;
+
+	//Enemy shot
+
+	enemy_shot.anim.PushBack({ 47,166,8,8 });
+	enemy_shot.anim.PushBack({ 64,181,8,8 });
+	enemy_shot.anim.PushBack({ 47,181,8,8 });
+	enemy_shot.anim.PushBack({ 64,166,8,8 });
+	enemy_shot.anim.loop = false;
+	enemy_shot.anim.speed = 0.2f;
 
 
 	return true;

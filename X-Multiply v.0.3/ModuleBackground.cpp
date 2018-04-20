@@ -86,7 +86,6 @@ bool ModuleBackground::Start()
 	{
 		App->player->Enable();
 		App->player->position.y = 103;
-		App->player->position.x = 20;
 	}
 
 
@@ -177,7 +176,6 @@ update_status ModuleBackground::Update()
 	{
 		
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
-		App->player->live--;
 	}
 	
 
