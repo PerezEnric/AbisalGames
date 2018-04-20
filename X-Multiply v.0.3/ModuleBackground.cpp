@@ -110,6 +110,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 630, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 1050, 165);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
 
 	//Power Ups
@@ -130,6 +131,8 @@ bool ModuleBackground::CleanUp()
 	graphicswall = nullptr;
 	App->textures->Unload(graphicsinjection);
 	graphicsinjection = nullptr;
+	App->textures->Unload(ui);
+	ui = nullptr;
 	
 	App->player->Disable();
 	App->collision->Disable();

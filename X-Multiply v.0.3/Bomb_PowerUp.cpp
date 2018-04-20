@@ -18,6 +18,7 @@ Bomb_PowerUp::Bomb_PowerUp(int x, int y) : Enemy(x, y)
 void Bomb_PowerUp ::OnCollision(Collider* collider)
 {
 	App->player->bomb = true;
+	
 }
 
 void Bomb_PowerUp::Move()
