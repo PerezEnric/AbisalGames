@@ -34,6 +34,7 @@ public:
 	int speed = 1;
 	int cameraback = 0;
 	bool turbo = false;
+	bool bomb = false;
 };
 
 #endif

@@ -142,6 +142,10 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 		App->audio->PlaySoundEffect(shot_particle);
+		if (bomb)
+		{
+
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE

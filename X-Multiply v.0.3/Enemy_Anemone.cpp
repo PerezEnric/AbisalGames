@@ -11,10 +11,10 @@ Enemy_Anemone::Enemy_Anemone(int x, int y) : Enemy(x, y)
 	anem.speed = 0.1f;
 	animation = &anem;
 	collider = App->collision->AddCollider({ 0, 0, 47, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	original_y = y;
+
 }
 
 void Enemy_Anemone::Move()
 {
-
-	}
+	
+}

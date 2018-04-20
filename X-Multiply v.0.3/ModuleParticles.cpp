@@ -70,6 +70,8 @@ bool ModuleParticles::Start()
 	enemy_shot.anim.speed = 0.2f;
 
 
+	bombPU.anim.PushBack({});
+
 	return true;
 }
 

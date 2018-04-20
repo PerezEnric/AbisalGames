@@ -6,9 +6,7 @@
 class Enemy_Anemone : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
-	int original_y = 0;
+
 	Animation anem;
 
 public:
