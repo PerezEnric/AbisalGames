@@ -84,11 +84,11 @@ bool ModuleBackground::Start()
 	firstlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_1_Music.ogg");
 	spaceshipdrop = App->audio->LoadSoundEffect("Audio_Assets/injection.wav");
 	App->player->destroyed = false;
-	/*if (App->player->live < 3 && App->player->live > 0)
+	if (App->player->live < 3 && App->player->live > 0)
 	{
 		App->player->Enable();
 		App->player->position.y = 103;
-	}*/
+	}
 
 
 	App->audio->PlayMusic(firstlvlmusic);
