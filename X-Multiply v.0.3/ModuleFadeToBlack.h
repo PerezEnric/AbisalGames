@@ -15,6 +15,7 @@ public:
 	bool FadeToBlack(Module* module_off, Module* module_on, float time = 2.0f);
 	bool IsFading() const;
 
+
 private:
 
 	enum fade_step
