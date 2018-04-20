@@ -46,7 +46,7 @@ bool ModuleTextures::CleanUp()
 			SDL_DestroyTexture(textures[i]);
 
 	IMG_Quit();
-	return true;
+ 	return true;
 }
 
 // Load new texture from file path

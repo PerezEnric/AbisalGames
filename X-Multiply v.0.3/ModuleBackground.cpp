@@ -71,6 +71,13 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
+	App->player->Disable();
+	App->collision->Disable();
+	App->particles->Disable();
+	App->enemies->Disable();
+	App->powerup->Disable();
+	App->textures->Disable();
+
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
 	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
@@ -86,10 +93,11 @@ bool ModuleBackground::Start()
 
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
-	App->audio->PlayMusic(firstlvlmusic);
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
+	App->powerup->Enable();
+	App->textures->Enable();
 	//Collider
 	App->collision->AddCollider({ 0,213,2800,20 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 505, -3,2020,10 }, COLLIDER_WALL);
@@ -123,11 +131,18 @@ bool ModuleBackground::CleanUp()
 	graphicswall = nullptr;
 	App->textures->Unload(graphicsinjection);
 	graphicsinjection = nullptr;
+	
 	App->player->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
+	App->powerup->Disable();
+	App->textures->Disable();
 
+	App->audio->UnloadMusic(firstlvlmusic);
+	firstlvlmusic = nullptr;
+	App->audio->UnloadSoundEffect(spaceshipdrop);
+	spaceshipdrop = nullptr;
 
 	return true;
 }

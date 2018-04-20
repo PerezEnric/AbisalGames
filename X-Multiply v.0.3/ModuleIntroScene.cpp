@@ -34,6 +34,14 @@ bool ModuleIntroScene::Start()
 	App->win_lose->Disable();
 	App->background->Disable();
 
+	App->background->move = false;
+	App->background->xinject = 75;
+	App->background->yinject = -100;
+	App->background->inject = true;
+	App->background->injectionanim.current_frame = 0;
+	App->player->position.y = 103;
+	App->player->position.x = 87;
+
 	return true;
 }
 

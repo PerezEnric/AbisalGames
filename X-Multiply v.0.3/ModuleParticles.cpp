@@ -35,7 +35,7 @@ bool ModuleParticles::Start()
 	laser.anim.loop = false;
 	laser.anim.speed = 0.3f;
 	laser.speed.x = 10;
-	laser.life = 3000;
+	laser.life = 600;
 
 	// Template for a new particle "explosion"
 	explosion.anim.PushBack({ 0, 160, 24, 23 });
@@ -76,6 +76,8 @@ bool ModuleParticles::CleanUp()
 			active[i] = nullptr;
 		}
 	}
+
+
 	return true;
 }
 

@@ -150,6 +150,12 @@ update_status ModulePlayer::Update()
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;
 
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+
+	}
+
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
@@ -169,13 +175,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 		Disable();
-		App->background->move = false;
-		App->background->xinject = 75;
-		App->background->yinject = -100;
-		App->background->inject = true;
-		App->background->injectionanim.current_frame = 0;
-		App->player->position.y = 103;
-		App->player->position.x = 87;
+		turbo = false;
 		
 	}
 }
