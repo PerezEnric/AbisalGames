@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Enemy_Ball.h"
+#include "Enemy_Ball2.h"
 #include "Enemy_LittleShrimp.h"
 #include "Enemy_Anemone.h"
 #include "Enemy_PU.h"
@@ -22,6 +23,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	BALL,
+	BALL2,
 	SHRIMP,
 	ANEMONE,
 	PU,

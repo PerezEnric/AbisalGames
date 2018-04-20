@@ -101,6 +101,9 @@
     <ClInclude Include="PowerUp_SpeedUp.h">
       <Filter>Modules\PowerUps</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Ball2.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -174,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="PowerUp_SpeedUp.cpp">
       <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Ball2.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

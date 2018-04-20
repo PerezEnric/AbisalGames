@@ -23,6 +23,5 @@ void PowerUp_SpeedUp::Move()
 
 void PowerUp_SpeedUp::OnCollision(Collider* collider)
 {
-	App->player->turbo2 = true;
 	App->player->turbo = true;
 }

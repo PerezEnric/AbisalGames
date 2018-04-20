@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleWinLoseScene.h"
+#include "ModuleEnemies.h"
 
 
 
@@ -52,6 +53,8 @@ bool ModulePlayer::Start()
 	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
+
+	App->player->live = 3;
 
 	return ret;
 }
@@ -128,7 +131,7 @@ update_status ModulePlayer::Update()
 	{
 		if (turbo == false)
 		{
-			position.x -= (speed/2);
+			position.x -= (speed * 2);
 		}
 		else
 		{
@@ -150,18 +153,7 @@ update_status ModulePlayer::Update()
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
-	if (position.y < 0)
-		position.y = 0;
-	if (position.x < cameraback)
-		position.x = cameraback;
-	if(position.x > cameraback + App->render->camera.w)
-		position.x = cameraback + App->render->camera.w;
 
-	if (turbo2)
-	{
-		App->particles->AddParticle(App->particles->speedpowerup, position.x, position.y);
-		turbo2 = false;
-	}
 	return UPDATE_CONTINUE;
 }
 
@@ -170,14 +162,20 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	 
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
-		live--;
-		destroyed = true;
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 		Disable();
-
+		App->background->move = false;
+		App->background->xinject = 75;
+		App->background->yinject = -100;
+		App->background->inject = true;
+		App->background->injectionanim.current_frame = 0;
+		App->player->position.y = 103;
+		App->player->position.x = 87;
+		
 	}
 }

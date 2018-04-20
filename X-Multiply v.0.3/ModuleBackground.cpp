@@ -56,9 +56,7 @@ bool ModuleBackground::Init()
 	injection.w = 48;
 	injection.h = 102;
 
-	inject = true;
-	if (App->player->live == 3) move = false;
-
+	inject = true; 
 
 	return true;
 
@@ -84,7 +82,8 @@ bool ModuleBackground::Start()
 		App->player->Enable();
 		App->player->position.y = 103;
 	}
-	
+
+
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
 	App->audio->PlayMusic(firstlvlmusic);
@@ -102,6 +101,7 @@ bool ModuleBackground::Start()
 	
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 630, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
@@ -142,12 +142,12 @@ update_status ModuleBackground::Update()
 	
 	if (App->intro->flag)
 	{
-		int vspeed = 1.5;
-		if (App->render->camera.x <= -10000
-			&& App->render->camera.x >= -13652)
+		int vspeed = 1;
+		if (App->render->camera.x <= -8010
+			&& App->render->camera.x >= -10370)
 		{
 			App->render->camera.y -= vspeed;
-			App->player->position.y += vspeed;
+			//App->player->position.y += vspeed;
 		}
 		
 		if (move == false)
@@ -156,18 +156,18 @@ update_status ModuleBackground::Update()
 		}
 	}
 	
-	if (App->player->live == 0 && App->player->destroyed == true)
-	{
-		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
-		Disable();
-	}
-	else if(App->player->live > 0 && App->player->destroyed == true)
-	{
-		
-		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
-		
-	}
-	
+	//if (App->player->live == 0 && App->player->destroyed == true)
+	//{
+	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+	//	Disable();
+	//}
+	//else if(App->player->live > 0 && App->player->destroyed == true)
+	//{
+	//	
+	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+	//	
+	//}
+	//
 
 	return UPDATE_CONTINUE;
 }
@@ -178,15 +178,11 @@ void ModuleBackground::animinject()
 {
 	if (yinject >= -4 && inject)
 	{
-		if (injectionanim.GetCurrentFrameIndex() == 6)
-		{
-			App->player->Enable();
-			move = true;
-		}
-		if (injectionanim.GetCurrentFrameIndex() == 11)
+		if (injectionanim.GetCurrentFrameIndex() == 3)
 		{
 			App->player->Enable();
 			inject = false;
+			move = true;
 		}
 		injection = injectionanim.GetCurrentFrame();
 	}

@@ -32,6 +32,7 @@ bool ModuleIntroScene::Start()
 	intro_music = App->audio->LoadMusic("Audio_Assets/X-Multiply_Title.ogg");
 	App->audio->PlayMusic(intro_music);
 	App->win_lose->Disable();
+	App->background->Disable();
 
 	return true;
 }
@@ -58,7 +59,6 @@ update_status ModuleIntroScene::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
 		App->fade->FadeToBlack(this, App->background, 2.0f);
-		App->background->Enable();
 		flag = true;
 	}
 	return UPDATE_CONTINUE;
