@@ -89,7 +89,7 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
-			position.x += 6;
+			position.x += 3;
 		}
 	}
 
@@ -101,7 +101,7 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
-			position.y -= 6;
+			position.y -= 3;
 		}
 
 		if (current_animation != &up)
@@ -119,7 +119,7 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
-			position.y += 6;
+			position.y += 3;
 		}
 		if (current_animation != &down)
 		{
@@ -135,18 +135,29 @@ update_status ModulePlayer::Update()
 		}
 		else
 		{
-			position.x -= 6;
+			position.x -= 3;
 		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
+		
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 		App->audio->PlaySoundEffect(shot_particle);
-		if (bomb)
-		{
 
+		if (cd < 25)
+		{
+			cd++;
+		}
+		else
+		{
+			
+			if (bomb)
+			{
+				App->particles->AddParticle(App->particles->bombPU, position.x, position.y + 7, COLLIDER_PLAYER_SHOT);
+			}
+			cd = 0;
 		}
 	}
 

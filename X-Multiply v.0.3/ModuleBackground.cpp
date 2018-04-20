@@ -114,6 +114,7 @@ bool ModuleBackground::Start()
 
 	//Power Ups
 	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 700, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 800, 100);
 
 	return ret;
 }

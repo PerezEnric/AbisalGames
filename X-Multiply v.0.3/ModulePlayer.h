@@ -37,6 +37,7 @@ public:
 	bool turbo = false;
 	bool bomb = false;
 	char text[20];
+	int cd = 0;
 	uint score = 0;
 };
 

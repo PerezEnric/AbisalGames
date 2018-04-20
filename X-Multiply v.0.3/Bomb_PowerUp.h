@@ -13,7 +13,7 @@ public:
 	Bomb_PowerUp(int x, int y);
 	~Bomb_PowerUp() {};
 	void OnCollision(Collider* collider);
-
+	void Move();
 };
 
 #endif

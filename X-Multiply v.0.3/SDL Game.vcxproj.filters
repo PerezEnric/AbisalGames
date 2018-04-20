@@ -102,7 +102,7 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Bomb_PowerUp.h">
-      <Filter>Modules</Filter>
+      <Filter>Modules\PowerUps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +179,7 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Bomb_PowerUp.cpp">
-      <Filter>Core</Filter>
+      <Filter>Modules\PowerUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

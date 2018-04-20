@@ -19,3 +19,9 @@ void Bomb_PowerUp ::OnCollision(Collider* collider)
 {
 	App->player->bomb = true;
 }
+
+void Bomb_PowerUp::Move()
+{
+	position.y = int(float(original_y));
+	position.x -= 0;
+}
