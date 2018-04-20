@@ -79,6 +79,7 @@ bool ModuleBackground::Start()
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
 	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");
+	ui = App->textures->Load("Sprites_Assets/UI_1.png");
 	firstlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_1_Music.ogg");
 	spaceshipdrop = App->audio->LoadSoundEffect("Audio_Assets/injection.wav");
 	App->player->destroyed = false;
@@ -150,6 +151,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(graphicswall, -10, 0, &wall, 1.0f);
 	App->render->Blit(graphics, 0, 0, &background, 1.0f);
 	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 1.0f);
+	App->render->Blit(ui, 0, 224, NULL, 0.0f, false);
 	
 	if (App->intro->flag)
 	{

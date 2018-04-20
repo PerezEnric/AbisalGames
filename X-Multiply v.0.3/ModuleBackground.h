@@ -35,6 +35,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphicswall = nullptr;
 	SDL_Texture* graphicsinjection = nullptr;
+	SDL_Texture* ui = nullptr;
 	Animation back;
 	Animation injectionanim;
 	SDL_Rect wall;

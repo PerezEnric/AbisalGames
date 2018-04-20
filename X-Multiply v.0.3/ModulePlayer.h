@@ -33,8 +33,11 @@ public:
 	int live = 3;
 	int speed = 1;
 	int cameraback = 0;
+	int font_score = -1;
 	bool turbo = false;
 	bool bomb = false;
+	char text[20];
+	uint score = 0;
 };
 
 #endif

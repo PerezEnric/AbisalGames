@@ -10,6 +10,8 @@
 #include "ModuleAudio.h"
 #include "ModuleWinLoseScene.h"
 #include "ModuleEnemies.h"
+#include "ModuleFonts.h"
+#include <stdio.h>
 
 
 
@@ -51,7 +53,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
 	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
-
+	font_score = App->fonts->Load("Assets/fonts.1.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
 	return ret;
@@ -161,6 +163,11 @@ update_status ModulePlayer::Update()
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
+	
+	//UI
+	sprintf_s(text, 10, "%7d", score);
+	App->fonts->BlitText(80, 240, font_score, text);
+	App->fonts->BlitText(32, 240, font_score, "score");
 
 	return UPDATE_CONTINUE;
 }
