@@ -54,8 +54,6 @@ bool ModulePlayer::Start()
 
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
-	App->player->live = 3;
-
 	return ret;
 }
 
@@ -141,9 +139,9 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		/*App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
+		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-		App->audio->PlaySoundEffect(shot_particle);*/
+		App->audio->PlaySoundEffect(shot_particle);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -168,7 +166,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	 
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		
 		/*App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
@@ -176,6 +174,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
 		Disable();
 		turbo = false;
+		destroyed = true;
 		
 	}
 }

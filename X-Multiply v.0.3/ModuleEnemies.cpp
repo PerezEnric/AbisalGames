@@ -141,6 +141,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::PU:
 			enemies[i] = new Enemy_PU(info.x, info.y);
 			break;
+		case ENEMY_TYPES::SPEEDUP:
+			enemies[i] = new PowerUp_SpeedUp(info.x, info.y);
+			break;
 		}
 	}
 }

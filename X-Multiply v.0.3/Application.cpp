@@ -12,7 +12,7 @@
 #include "ModuleIntroScene.h"
 #include "ModuleCollision.h"
 #include "ModuleWinLoseScene.h"
-#include "ModulePowerUp.h"
+
 
 Application::Application()
 {
@@ -26,10 +26,9 @@ Application::Application()
 	modules[7] = win_lose = new ModuleWinLoseScene();
 	modules[8] = enemies = new ModuleEnemies();
 	modules[9] = player = new ModulePlayer();
-	modules[10] = powerup = new ModulePowerUp();
-	modules[11] = particles = new ModuleParticles(); 
-	modules[12] = collision = new ModuleCollision();
-	modules[13] = fade = new ModuleFadeToBlack();
+	modules[10] = particles = new ModuleParticles(); 
+	modules[11] = collision = new ModuleCollision();
+	modules[12] = fade = new ModuleFadeToBlack();
 
 	
 }	

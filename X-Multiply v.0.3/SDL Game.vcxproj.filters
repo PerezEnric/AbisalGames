@@ -92,12 +92,6 @@
     <ClInclude Include="Enemy_PU.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="PowerUp.h">
-      <Filter>Modules\PowerUps</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePowerUp.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="PowerUp_SpeedUp.h">
       <Filter>Modules\PowerUps</Filter>
     </ClInclude>
@@ -168,12 +162,6 @@
     </ClCompile>
     <ClCompile Include="Enemy_PU.cpp">
       <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="PowerUp.cpp">
-      <Filter>Modules\PowerUps</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePowerUp.cpp">
-      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="PowerUp_SpeedUp.cpp">
       <Filter>Modules\PowerUps</Filter>

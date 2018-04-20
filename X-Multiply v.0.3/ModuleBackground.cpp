@@ -9,7 +9,6 @@
 #include "ModuleCollision.h"
 #include "ModuleIntroScene.h"
 #include "ModuleEnemies.h"
-#include "ModulePowerUp.h"
 #include "ModuleFadeToBlack.h"
 
 
@@ -75,7 +74,6 @@ bool ModuleBackground::Start()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
-	App->powerup->Disable();
 	App->textures->Disable();
 
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
@@ -88,6 +86,7 @@ bool ModuleBackground::Start()
 	{
 		App->player->Enable();
 		App->player->position.y = 103;
+		App->player->position.x = 20;
 	}
 
 
@@ -96,7 +95,6 @@ bool ModuleBackground::Start()
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
-	App->powerup->Enable();
 	App->textures->Enable();
 	//Collider
 	App->collision->AddCollider({ 0,213,2800,20 }, COLLIDER_WALL);
@@ -115,7 +113,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
 
 	//Power Ups
-	App->powerup->AddPowerUp(POWERUP_TYPES::SPEEDUP, 700, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 700, 100);
 
 	return ret;
 }
@@ -136,7 +134,6 @@ bool ModuleBackground::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
-	App->powerup->Disable();
 	App->textures->Disable();
 
 	App->audio->UnloadMusic(firstlvlmusic);
@@ -171,18 +168,18 @@ update_status ModuleBackground::Update()
 		}
 	}
 	
-	//if (App->player->live == 0 && App->player->destroyed == true)
-	//{
-	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
-	//	Disable();
-	//}
-	//else if(App->player->live > 0 && App->player->destroyed == true)
-	//{
-	//	
-	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
-	//	
-	//}
-	//
+	if (App->player->live == 0 && App->player->destroyed == true)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		Disable();
+	}
+	else if(App->player->live > 0 && App->player->destroyed == true)
+	{
+		
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+		App->player->live--;
+	}
+	
 
 	return UPDATE_CONTINUE;
 }

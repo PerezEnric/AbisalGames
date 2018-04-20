@@ -1,8 +1,8 @@
 #ifndef __PowerUp_SpeedUp_H__
 #define __PowerUp_SpeedUp_H__
-#include "PowerUp.h"
+#include "Enemy.h"
 
-class PowerUp_SpeedUp : public PowerUp
+class PowerUp_SpeedUp : public Enemy
 {
 private:
 	float wave = -1.0f;
