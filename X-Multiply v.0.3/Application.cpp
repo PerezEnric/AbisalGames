@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+#include "ModuleFonts.h"
 #include "ModuleAudio.h"
 #include "ModuleBackground.h"
 #include "ModuleEnemies.h"
@@ -20,15 +21,16 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = audio = new ModuleAudio();
-	modules[5] = intro = new ModuleIntroScene();
-	modules[6] = background = new ModuleBackground();
-	modules[7] = win_lose = new ModuleWinLoseScene();
-	modules[8] = enemies = new ModuleEnemies();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = particles = new ModuleParticles(); 
-	modules[11] = collision = new ModuleCollision();
-	modules[12] = fade = new ModuleFadeToBlack();
+	modules[4] = fonts = new ModuleFonts();
+	modules[5] = audio = new ModuleAudio();
+	modules[6] = intro = new ModuleIntroScene();
+	modules[7] = background = new ModuleBackground();
+	modules[8] = win_lose = new ModuleWinLoseScene();
+	modules[9] = enemies = new ModuleEnemies();
+	modules[10] = player = new ModulePlayer();
+	modules[11] = particles = new ModuleParticles(); 
+	modules[12] = collision = new ModuleCollision();
+	modules[13] = fade = new ModuleFadeToBlack();
 
 	
 }	
