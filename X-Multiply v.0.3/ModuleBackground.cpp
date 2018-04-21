@@ -70,12 +70,6 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
-	App->player->Disable();
-	App->collision->Disable();
-	App->particles->Disable();
-	App->enemies->Disable();
-	App->textures->Disable();
-
 	graphics = App->textures->Load("Sprites_Assets/TileMap1.png");
 	graphicswall = App->textures->Load("Sprites_Assets/FirstLvlMap.png");
 	graphicsinjection = App->textures->Load("Sprites_Assets/Injection.png");

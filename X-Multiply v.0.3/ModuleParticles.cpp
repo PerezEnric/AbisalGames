@@ -13,18 +13,7 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
-}
 
-ModuleParticles::~ModuleParticles()
-{
-}
-
-// Load assets
-bool ModuleParticles::Start()
-{
-	LOG("Loading particles");
-	graphics = App->textures->Load("Sprites_Assets/Player.png");
-	
 	// Template for a new particle "explosion_shot"
 	explosion_shot.anim.PushBack({ 33, 36, 7, 8 });
 	explosion_shot.anim.PushBack({ 49, 34, 12, 12 });
@@ -50,7 +39,7 @@ bool ModuleParticles::Start()
 
 	// Template for a new particle "turbo"
 
-	speedpowerup.anim.PushBack({139, 145, 18, 14});
+	speedpowerup.anim.PushBack({ 139, 145, 18, 14 });
 	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
 	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
 	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
@@ -70,11 +59,11 @@ bool ModuleParticles::Start()
 	enemy_shot.life = 3000;
 
 	//Bomb Power Up
-	bombPU.anim.PushBack({92, 177, 15, 4});
-	bombPU.anim.PushBack({117, 176, 14, 8});
-	bombPU.anim.PushBack({143, 172, 12, 12});
-	bombPU.anim.PushBack({162, 170, 9 ,14});
-	bombPU.anim.PushBack({185, 171, 4, 15});
+	bombPU.anim.PushBack({ 92, 177, 15, 4 });
+	bombPU.anim.PushBack({ 117, 176, 14, 8 });
+	bombPU.anim.PushBack({ 143, 172, 12, 12 });
+	bombPU.anim.PushBack({ 162, 170, 9 ,14 });
+	bombPU.anim.PushBack({ 185, 171, 4, 15 });
 	bombPU.anim.loop = false;
 	bombPU.anim.speed = 0.2f;
 	bombPU.speed = { 2,3 };
@@ -91,6 +80,19 @@ bool ModuleParticles::Start()
 	explosion_player.anim.PushBack({ 0,144,16,16 });
 	explosion_player.anim.loop = false;
 	explosion_player.anim.speed = 0.5f;
+}
+
+ModuleParticles::~ModuleParticles()
+{
+}
+
+// Load assets
+bool ModuleParticles::Start()
+{
+	LOG("Loading particles");
+	graphics = App->textures->Load("Sprites_Assets/Player.png");
+	
+	
 	return true;
 }
 
@@ -107,8 +109,6 @@ bool ModuleParticles::CleanUp()
 			active[i] = nullptr;
 		}
 	}
-
-
 	return true;
 }
 

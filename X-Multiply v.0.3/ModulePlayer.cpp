@@ -194,6 +194,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		turbo = false;
 		destroyed = true;
 		live--;
+		bomb = false;
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
 	}
