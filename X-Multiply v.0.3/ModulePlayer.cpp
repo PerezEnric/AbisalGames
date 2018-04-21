@@ -163,6 +163,8 @@ update_status ModulePlayer::Update()
 			tentacles_front = false;
 			tentacles_mid = false;
 			tentacles_back = true;
+			tentacles_up = false;
+			tentacles_down = false;
 		}
 		else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
@@ -184,6 +186,50 @@ update_status ModulePlayer::Update()
 			tentacles_front = true;
 			tentacles_mid = false;
 			tentacles_back = false;
+			tentacles_up = false;
+			tentacles_down = false;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
+			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 8, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 16, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 24, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 5, position.y - 27, &App->particles->tentaclehand);
+			//down
+			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 18, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 26, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 34, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 42, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 50, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 5, position.y + 53, &App->particles->tentaclehand);
+			tentacles_mid = false;
+			tentacles_back = false;
+			tentacles_front = false;
+			tentacles_up = true;
+			tentacles_down = false;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 8, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 16, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 24, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 32, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y - 40, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 5, position.y - 43, &App->particles->tentaclehand);
+			//down
+			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 18, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 26, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 18, position.y + 34, &App->particles->tentacle1);
+			App->render->Blit(graphics, position.x + 5, position.y + 37, &App->particles->tentaclehand);
+			tentacles_mid = false;
+			tentacles_back = false;
+			tentacles_front = false;
+			tentacles_up = false;
+			tentacles_down = true;
 		}
 		else
 		{
@@ -245,6 +291,18 @@ update_status ModulePlayer::Update()
 		{
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
+			tentacles_back = false;
+		}
+		if (tentacles && tentacles_up)
+		{
+			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 27, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
+			tentacles_back = false;
+		}
+		if (tentacles && tentacles_down)
+		{
+			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 37, COLLIDER_PLAYER_SHOT);
 			tentacles_back = false;
 		}
 	}
