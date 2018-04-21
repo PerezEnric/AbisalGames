@@ -95,9 +95,39 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 505, -3,2020,10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 410, 190,50,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 510, 190,70,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 500, 190,20,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 580, 200,20,50 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 640, -3,70,25 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 760, -3,47,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1012, -3,96,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1030, 200,60,30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1150, -3,70,25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1270, 188,80,30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1340, 195,20,30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1460, 135,85,200 }, COLLIDER_WALL);
+
+	//First stretch part
+	App->collision->AddCollider({ 1430, 170,50,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1460, -3,85,95 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1430, -3,50,42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1445, -3,50,60 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 1670, -3,60,25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1790, 185,35,40 }, COLLIDER_WALL);
+
+	//Second stretch part
+	App->collision->AddCollider({ 2020, 170,200,50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2030, 150,120,80 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2010, 130,140,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2020, -3,200,42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2040, 10,120,80 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2010, 75,140,20 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 2420, -3,55,42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2550, 190,100,42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2650, 200,170,42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2700, 185,130,80 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2690, 177,95,50 }, COLLIDER_WALL);
 
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
