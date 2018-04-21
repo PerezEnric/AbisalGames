@@ -107,6 +107,9 @@
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
     </ClInclude>
+    <ClInclude Include="Tentacles_PowerUp.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -183,6 +186,9 @@
     </ClCompile>
     <ClCompile Include="Bomb_PowerUp.cpp">
       <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Tentacles_PowerUp.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

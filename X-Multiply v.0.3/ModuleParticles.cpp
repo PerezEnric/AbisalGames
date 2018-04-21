@@ -80,6 +80,24 @@ ModuleParticles::ModuleParticles()
 	explosion_player.anim.PushBack({ 0,144,16,16 });
 	explosion_player.anim.loop = false;
 	explosion_player.anim.speed = 0.5f;
+
+	//tentacles
+	tentacle1 = {6,19,4,11};
+	tentacle2 = { 21,19,7,10 };
+	tentacle3 = { 36,20,9,8 };
+	tentacle4 = { 51,21,10,6 };
+	tentacle5 = { 67,22,11,4 };
+	tentacle6 = { 186,35,7,10 };
+	tentacle7 = { 200,36,9,8 };
+	tentacle8 = { 215,37,10,6 };
+	tentacle2_back = { 208,55,10,6 };
+	tentacle3_back = {224,54,9,8};
+	tentacle4_back = {241,53,7,10};
+	tentacle5_back = { 212,96,11,4 };
+	tentacle6_back = {221,77,10,6};
+	tentacle7_back = {227,76,9,8};
+	tentacle8_back = {243,75,7,10};
+	tentaclehand = { 90,18,19,9 };
 }
 
 ModuleParticles::~ModuleParticles()

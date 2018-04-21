@@ -10,6 +10,7 @@
 #include "Enemy_PU.h"
 #include "PowerUp_SpeedUp.h"
 #include "Bomb_PowerUp.h"
+#include "Tentacles_PowerUp.h"
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
@@ -32,6 +33,7 @@ enum ENEMY_TYPES
 	PU,
 	SPEEDUP,
 	BOMB,
+	TENTACLES,
 };
 
 class Enemy;
@@ -61,6 +63,7 @@ public:
 	bool lets;
 	bool letb;
 	bool lett;
+	
 private:
 
 	void SpawnEnemy(const EnemyInfo& info);

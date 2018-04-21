@@ -27,7 +27,7 @@ void Enemy_Ball::Move()
 	}
 	else
 	{
-		if ((position.x < 250 && position.x > 240) || (position.x < 620 && position.x > 610))
+		if ((position.x < 250 && position.x > 240) || (position.x < 670 && position.x > 660))
 			right = true;
 
 		if (going_up)

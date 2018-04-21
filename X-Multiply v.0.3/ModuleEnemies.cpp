@@ -154,6 +154,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BOMB:
 			enemies[i] = new Bomb_PowerUp(info.x, info.y);
+			break;
+		case ENEMY_TYPES::TENTACLES:
+			enemies[i] = new Tentacles_PowerUp(info.x, info.y);
+			break;
 
 		}
 	}
