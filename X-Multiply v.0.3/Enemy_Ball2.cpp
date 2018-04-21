@@ -18,34 +18,41 @@ Enemy_Ball2::Enemy_Ball2(int x, int y) : Enemy(x, y)
 void Enemy_Ball2::Move()
 
 {
-	if (cd > 188)
-		right = true;
-	cd++;
-
-	if (going_up)
+	if (position.x >= 530)
 	{
-		if (wave > 1.5f)
-			going_up = false;
-		else
-			wave += 0.1f;
+		position.x -= 1;
+		right = false;
 	}
 	else
 	{
-		if (wave < -1.5f)
-			going_up = true;
+		if (position.x < 250)
+			right = true;
+
+		if (going_up)
+		{
+			if (wave > 1.5f)
+				going_up = false;
+			else
+				wave += 0.1f;
+		}
 		else
-			wave -= 0.1f;
-	}
+		{
+			if (wave < -1.5f)
+				going_up = true;
+			else
+				wave -= 0.1f;
+		}
 
-	position.y = int(float(original_y) + (30.0f * sinf(wave)));
+		position.y = int(float(original_y) + (30.0f * sinf(wave)));
 
-	if (right)
-	{
-		position.x += 2.7;
-	}
-	else
-	{
-		position.x -= 1.7;
+		if (right)
+		{
+			position.x += 2.7;
+		}
+		else
+		{
+			position.x -= 1.7;
+		}
 	}
 
 }

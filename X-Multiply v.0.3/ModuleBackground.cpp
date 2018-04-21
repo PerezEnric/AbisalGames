@@ -130,25 +130,38 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 2690, 177,95,50 }, COLLIDER_WALL);
 
 	//Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 530, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 540, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 550, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 560, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 570, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 580, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 590, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 530, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 540, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 550, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 560, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 570, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 580, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 590, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 620, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 630, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 610, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 620, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 630, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 630, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 660, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 760, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 760, 135);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
 
 	//Power Ups
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 700, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 820, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 820, 145);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 800, 100);
 
 	return ret;
 }
-
 // UnLoad assets
 bool ModuleBackground::CleanUp()
 {

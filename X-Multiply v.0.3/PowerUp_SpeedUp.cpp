@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 
 PowerUp_SpeedUp::PowerUp_SpeedUp(int x, int y) : Enemy(x, y)
@@ -16,10 +17,15 @@ PowerUp_SpeedUp::PowerUp_SpeedUp(int x, int y) : Enemy(x, y)
 }
 void PowerUp_SpeedUp::Move()
 {
-	
-
 	position.y = int(float(original_y));
-	position.x -= 0;
+	if (App->enemies->let == false) 
+	{	
+		position.x -= 1;
+	}
+	else 
+	{
+		position.x -= 0;
+	}
 }
 
 void PowerUp_SpeedUp::OnCollision(Collider* collider)

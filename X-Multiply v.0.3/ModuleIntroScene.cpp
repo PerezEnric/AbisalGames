@@ -43,7 +43,7 @@ bool ModuleIntroScene::Start()
 	App->player->position.y = 103;
 	App->player->position.x = 87;
 	App->player->live = 3;
-
+	App->player->pos = 15;
 	return true;
 }
 

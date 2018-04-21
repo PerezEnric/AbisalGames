@@ -7,7 +7,7 @@
 class Enemy_Ball : public Enemy
 {
 private:
-	float wave = 0.5f;
+	float wave = 1.5f;
 	bool going_up = true;
 	bool right = false;
 	int original_y = 0;
