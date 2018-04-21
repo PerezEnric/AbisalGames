@@ -27,7 +27,7 @@ public:
 	int xinject = 75;
 	int yinject = -100;
 	void animinject();
-
+	bool win = false;
 public:
 	
 	Mix_Music* firstlvlmusic = nullptr;

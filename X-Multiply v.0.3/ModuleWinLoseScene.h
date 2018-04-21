@@ -30,6 +30,17 @@ public:
 	SDL_Rect V;
 	SDL_Rect E2;
 	SDL_Rect R;
+	SDL_Rect C;
+	SDL_Rect L;
+	SDL_Rect S;
+	SDL_Rect T;
+	SDL_Rect ONE;
+	SDL_Rect D;
+	SDL_Rect B;
+	SDL_Rect N;
+	SDL_Rect U;
+	SDL_Rect ZERO;
+
 	SDL_Rect camera;
 	iPoint position;
 };

@@ -212,6 +212,12 @@ update_status ModuleBackground::Update()
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
 		App->player->pos += 1;
 	}
+	if (App->player->position.x == 2695 && !win)
+	{
+		win = true;
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+	}
+
 
 
 	return UPDATE_CONTINUE;
