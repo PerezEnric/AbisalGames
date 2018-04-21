@@ -18,6 +18,7 @@ public:
 	~Enemy_PU() {};
 	void Move();
 	void OnCollision(Collider* collider);
+	bool CleanUp();
 };
 
 #endif // __Enemy_PU_H__

@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 
 
 #define SPAWN_MARGIN 50
@@ -52,7 +53,10 @@ update_status ModuleEnemies::PreUpdate()
 update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Move();
+		if (enemies[i] != nullptr
+			&& queue[i].x < App->player->pos + 500
+			&& queue[i].x > App->player->pos)
+			enemies[i]->Move();
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
@@ -94,6 +98,7 @@ bool ModuleEnemies::CleanUp()
 			enemies[i] = nullptr;
 		}
 	}
+
 
 	return true;
 }

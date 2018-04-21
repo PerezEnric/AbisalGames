@@ -53,6 +53,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
 	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
+	player_death = App->audio->LoadSoundEffect("Audio_Assets/player_death.wav");
 	font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
@@ -65,6 +66,8 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
+	App->audio->UnloadSoundEffect(shot_particle);
+
 
 	if (col != nullptr)
 		col->to_delete = true;
@@ -180,7 +183,7 @@ update_status ModulePlayer::Update()
 	score = points;
 	sprintf_s(text, 10, "%7d", score);
 
-	App->fonts->BlitText(50, 238, font_score, text);
+	App->fonts->BlitText(50, 235, font_score, text);
 	//App->fonts->BlitText(32, 150, font_score, "score");
 
 		pos += 1;
@@ -196,13 +199,14 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-
+	
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
 		turbo = false;
 		destroyed = true;
 		live--;
 		bomb = false;
+		App->audio->PlaySoundEffect(player_death);
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
 	}

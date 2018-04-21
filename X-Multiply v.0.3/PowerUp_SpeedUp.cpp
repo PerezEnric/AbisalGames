@@ -12,6 +12,7 @@ PowerUp_SpeedUp::PowerUp_SpeedUp(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 13 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
 	original_y = y;
+	boost_sound = App->audio->LoadSoundEffect("Audio_Assets/power_up.wav");
 }
 void PowerUp_SpeedUp::Move()
 {
@@ -24,4 +25,5 @@ void PowerUp_SpeedUp::Move()
 void PowerUp_SpeedUp::OnCollision(Collider* collider)
 {
 	App->player->turbo = true;
+	App->audio->PlaySoundEffect(boost_sound);
 }

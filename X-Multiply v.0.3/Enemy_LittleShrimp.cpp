@@ -50,3 +50,12 @@ void Enemy_LittleShrimp::OnCollision(Collider* collider)
 	App->player->points += points;
 	App->audio->PlaySoundEffect(shrimp_death);
 }
+
+bool Enemy_LittleShrimp::CleanUp()
+{
+	LOG("Freeing enemy audio");
+	App->audio->UnloadSoundEffect(shrimp_death);
+	shrimp_death = nullptr;
+
+	return true;
+}

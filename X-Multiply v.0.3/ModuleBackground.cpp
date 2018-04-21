@@ -132,6 +132,12 @@ bool ModuleBackground::Start()
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 620, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 630, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 610, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 620, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 630, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);
@@ -177,7 +183,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(graphicswall, -10, 0, &wall, 1.0f);
 	App->render->Blit(graphics, 0, 0, &background, 1.0f);
 	App->render->Blit(graphicsinjection, xinject, yinject, &injection, 1.0f);
-	App->render->Blit(ui, 0, 224, NULL, 0.0f, false);
+	App->render->Blit(ui, 0, 220, NULL, 0.0f, false);
 
 	if (App->intro->flag)
 	{

@@ -19,6 +19,7 @@ public:
 	~Enemy_LittleShrimp() {};
 	void Move();
 	void OnCollision(Collider* collider);
+	bool CleanUp();
 };
 
 #endif //  __Enemy_LittleShrimp_H__

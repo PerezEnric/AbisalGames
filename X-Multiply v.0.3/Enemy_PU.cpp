@@ -26,3 +26,12 @@ void Enemy_PU::OnCollision(Collider* collider)
 	App->player->points += points;
 	App->audio->PlaySoundEffect(powerup_death);
 }
+
+bool Enemy_PU::CleanUp()
+{
+	LOG("Freeing enemy audio");
+	App->audio->UnloadSoundEffect(powerup_death);
+	powerup_death = nullptr;
+
+	return true;
+}

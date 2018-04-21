@@ -10,7 +10,7 @@ private:
 	
 
 public:
-
+	Mix_Chunk* boost_sound = nullptr;
 	PowerUp_SpeedUp(int x, int y);
 	~PowerUp_SpeedUp() {};
 	void Move();

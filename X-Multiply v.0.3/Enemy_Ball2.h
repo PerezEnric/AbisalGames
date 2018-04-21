@@ -20,6 +20,7 @@ public:
 	~Enemy_Ball2() {};
 	void Move();
 	void OnCollision(Collider* collider);
+	bool CleanUp();
 };
 
 #endif //  __Enemy_Ball2_H__

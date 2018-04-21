@@ -99,6 +99,7 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="ModuleWinLoseScene.h" />
     <ClInclude Include="p2Point.h" />
+    <ClInclude Include="Path.h" />
     <ClInclude Include="PowerUp_SpeedUp.h" />
   </ItemGroup>
   <ItemGroup>

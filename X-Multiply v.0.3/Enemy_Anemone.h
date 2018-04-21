@@ -17,6 +17,7 @@ public:
 	void OnCollision(Collider* collider);
 	int cd = 0;
 	int points = 600;
+	bool CleanUp();
 };
 
 #endif //  __Enemy_Anemone_H__

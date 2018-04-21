@@ -12,13 +12,14 @@ Bomb_PowerUp::Bomb_PowerUp(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 21, 16 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
 	original_y = y;
+	powerup_sound = App->audio->LoadSoundEffect("Audio_Assets/power_up2.wav");
 }
 
 
 void Bomb_PowerUp ::OnCollision(Collider* collider)
 {
 	App->player->bomb = true;
-	
+	App->audio->PlaySoundEffect(powerup_sound);
 }
 
 void Bomb_PowerUp::Move()

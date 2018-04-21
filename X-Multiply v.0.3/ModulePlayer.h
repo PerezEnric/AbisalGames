@@ -22,6 +22,7 @@ public:
 
 public:
 	Mix_Chunk* shot_particle = nullptr;
+	Mix_Chunk* player_death = nullptr;
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	Animation* current_animation = nullptr;

@@ -40,7 +40,7 @@ struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
 	int x, y;
-	bool start_enemic;
+
 };
 
 class ModuleEnemies : public Module

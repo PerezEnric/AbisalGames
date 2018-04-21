@@ -104,6 +104,9 @@
     <ClInclude Include="Bomb_PowerUp.h">
       <Filter>Modules\PowerUps</Filter>
     </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

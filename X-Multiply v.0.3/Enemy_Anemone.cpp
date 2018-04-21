@@ -41,3 +41,12 @@ void Enemy_Anemone::OnCollision(Collider* collider)
 	App->player->points += points;
 	App->audio->PlaySoundEffect(anemone_death);
 }
+
+bool Enemy_Anemone::CleanUp()
+{
+	LOG("Freeing enemy audio");
+	App->audio->UnloadSoundEffect(anemone_death);
+	anemone_death = nullptr;
+
+	return true;
+}

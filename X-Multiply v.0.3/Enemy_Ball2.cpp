@@ -56,3 +56,12 @@ void Enemy_Ball2::OnCollision(Collider* collider)
 	App->player->points += points;
 	App->audio->PlaySoundEffect(ball2_death);
 }
+
+bool Enemy_Ball2::CleanUp()
+{
+	LOG("Freeing enemy audio");
+	App->audio->UnloadSoundEffect(ball2_death);
+	ball2_death = nullptr;
+
+	return true;
+}
