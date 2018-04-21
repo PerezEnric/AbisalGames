@@ -20,14 +20,14 @@ Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 }
 void Enemy_Ball::Move()
 {
-	if (position.x >= 530)
+	if ((position.x >= 530 && position.x < 540)||(position.x >= 900))
 	{
 		position.x -= 1;
 		right = false;
 	}
 	else
 	{
-		if (position.x < 250)
+		if ((position.x < 250 && position.x > 240) || (position.x < 620 && position.x > 610))
 			right = true;
 
 		if (going_up)

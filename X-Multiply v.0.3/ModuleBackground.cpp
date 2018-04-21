@@ -147,18 +147,48 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 590, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 600, 80);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 890, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 900, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 910, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 920, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 930, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 940, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 950, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 960, 100);
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 890, 100); 
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 900, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 910, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 920, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 930, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 940, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 950, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 960, 100);
+	
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 630, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 660, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 760, 110);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 760, 135);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1320, 115);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1390, 35);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1390, 70);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 930, 178);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 1300, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2240, 178);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2290, 178);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2390, 178);
+
 
 	//Power Ups
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 820, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 820, 145);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 800, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1010, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1010, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1040, 90);
 
 	return ret;
 }

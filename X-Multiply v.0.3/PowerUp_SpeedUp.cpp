@@ -18,7 +18,7 @@ PowerUp_SpeedUp::PowerUp_SpeedUp(int x, int y) : Enemy(x, y)
 void PowerUp_SpeedUp::Move()
 {
 	position.y = int(float(original_y));
-	if (App->enemies->let == false) 
+	if (App->enemies->lets == false) 
 	{	
 		position.x -= 1;
 	}

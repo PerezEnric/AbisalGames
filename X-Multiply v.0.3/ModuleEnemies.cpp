@@ -24,6 +24,9 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
+	bool lets = false;
+	bool letb = false;
+	bool lett = false;
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Sprites_Assets/monsters.png");
 	return true;

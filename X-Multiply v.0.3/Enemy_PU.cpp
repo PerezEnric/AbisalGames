@@ -17,7 +17,6 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 }
 void Enemy_PU::Move()
 {
-	App->enemies->let = false;
 	position.y = int(float(original_y));;
 	position.x -= 1;
 }
@@ -25,7 +24,12 @@ void Enemy_PU::Move()
 void Enemy_PU::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->enemies->let = true;
+	if(position.x < 820)
+		App->enemies->lets = true;
+	else if(position.y < 115 && position.y > 100)
+		App->enemies->letb = true;
+	else 
+		App->enemies->lett = true;
 	App->player->points += points;
 	App->audio->PlaySoundEffect(powerup_death);
 	

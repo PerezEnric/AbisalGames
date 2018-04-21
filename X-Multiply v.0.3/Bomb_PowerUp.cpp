@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 
 Bomb_PowerUp::Bomb_PowerUp(int x, int y) : Enemy(x, y)
@@ -25,5 +26,12 @@ void Bomb_PowerUp ::OnCollision(Collider* collider)
 void Bomb_PowerUp::Move()
 {
 	position.y = int(float(original_y));
-	position.x -= 0;
+	if (App->enemies->letb == false)
+	{
+		position.x -= 1;
+	}
+	else
+	{
+		position.x -= 0;
+	}
 }
