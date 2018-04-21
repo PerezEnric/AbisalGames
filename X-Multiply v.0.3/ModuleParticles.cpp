@@ -67,7 +67,7 @@ bool ModuleParticles::Start()
 	enemy_shot.anim.PushBack({ 47,181,8,8 });
 	enemy_shot.anim.PushBack({ 64,181,8,8 });
 	enemy_shot.anim.speed = 0.5f;
-	enemy_shot.life = 1800;
+	enemy_shot.life = 3000;
 
 	//Bomb Power Up
 	bombPU.anim.PushBack({92, 177, 15, 4});

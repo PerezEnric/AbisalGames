@@ -14,6 +14,7 @@ public:
 	Enemy_Anemone(int x, int y);
 	~Enemy_Anemone() {};
 	void Move();
+	int cd = 0;
 };
 
 #endif //  __Enemy_Anemone_H__
