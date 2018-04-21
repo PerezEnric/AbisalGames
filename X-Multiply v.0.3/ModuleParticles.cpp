@@ -80,6 +80,17 @@ bool ModuleParticles::Start()
 	bombPU.speed = { 2,3 };
 	bombPU.life = 1500;
 
+	//explosion player
+	explosion_player.anim.PushBack({ 112,144,16,16 });
+	explosion_player.anim.PushBack({ 96,144,16,16 });
+	explosion_player.anim.PushBack({ 80,144,16,16 });
+	explosion_player.anim.PushBack({ 64,144,16,16 });
+	explosion_player.anim.PushBack({ 48,144,16,16 });
+	explosion_player.anim.PushBack({ 32,144,16,16 });
+	explosion_player.anim.PushBack({ 16,144,16,16 });
+	explosion_player.anim.PushBack({ 0,144,16,16 });
+	explosion_player.anim.loop = false;
+	explosion_player.anim.speed = 0.5f;
 	return true;
 }
 
