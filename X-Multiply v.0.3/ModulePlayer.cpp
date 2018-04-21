@@ -177,6 +177,7 @@ update_status ModulePlayer::Update()
 
 
 	//UI
+	score = points;
 	sprintf_s(text, 10, "%7d", score);
 
 	App->fonts->BlitText(50, 238, font_score, text);

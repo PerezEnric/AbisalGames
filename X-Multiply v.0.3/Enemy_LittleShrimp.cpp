@@ -45,5 +45,6 @@ void Enemy_LittleShrimp::Move()
 
 void Enemy_LittleShrimp::OnCollision(Collider* collider)
 {
+	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
 }

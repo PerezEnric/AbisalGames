@@ -2,6 +2,7 @@
 #include "Enemy_Ball2.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 Enemy_Ball2::Enemy_Ball2(int x, int y) : Enemy(x, y)
 {
@@ -50,5 +51,6 @@ void Enemy_Ball2::Move()
 
 void Enemy_Ball2::OnCollision(Collider* collider)
 {
+	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
 }
