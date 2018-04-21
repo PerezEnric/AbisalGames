@@ -12,6 +12,7 @@ Enemy_Ball2::Enemy_Ball2(int x, int y) : Enemy(x, y)
 	fly.speed = 0.1f;
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	ball2_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 	original_y = y;
 }
 void Enemy_Ball2::Move()
@@ -53,4 +54,5 @@ void Enemy_Ball2::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
+	App->audio->PlaySoundEffect(ball2_death);
 }

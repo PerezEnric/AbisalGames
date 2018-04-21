@@ -3,6 +3,7 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 struct Collider;

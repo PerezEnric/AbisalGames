@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 {
@@ -14,7 +15,7 @@ Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
-
+	ball_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 	App->enemies->points = 100;
 }
 void Enemy_Ball::Move()
@@ -55,4 +56,5 @@ void Enemy_Ball::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
+	App->audio->PlaySoundEffect(ball_death);
 }
