@@ -2,6 +2,7 @@
 #include "Enemy_Ball.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
 
 Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 {
@@ -17,7 +18,7 @@ Enemy_Ball::Enemy_Ball(int x, int y) : Enemy(x, y)
 }
 void Enemy_Ball::Move()
 {
-	if (cd > 170)
+	if (cd > 180)
 		right = true;
 	cd++; 
 	
@@ -40,11 +41,16 @@ void Enemy_Ball::Move()
 
 	if (right)
 	{
-		position.x += 1.7;
+		position.x += 2.7;
 	}
 	else
 	{
 		position.x -= 1.7;
 	}
 
+}
+
+void Enemy_Ball::OnCollision(Collider* collider)
+{
+	App->player->points += points;
 }

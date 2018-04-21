@@ -2,6 +2,7 @@
 #include "Enemy_LittleShrimp.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 {
@@ -40,4 +41,9 @@ void Enemy_LittleShrimp::Move()
 
 	position.y = int(float(original_y) + (25.0f * sinf(wave)));
 	position.x -= 1;
+}
+
+void Enemy_LittleShrimp::OnCollision(Collider* collider)
+{
+	App->player->points += points;
 }

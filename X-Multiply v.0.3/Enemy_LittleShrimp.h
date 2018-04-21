@@ -11,12 +11,14 @@ private:
 	int original_y = 0;
 	Animation fly_shrimp;
 	int cd = 0;
+	int points = 400;
 
 public:
 
 	Enemy_LittleShrimp(int x, int y);
 	~Enemy_LittleShrimp() {};
 	void Move();
+	void OnCollision(Collider* collider);
 };
 
 #endif //  __Enemy_LittleShrimp_H__

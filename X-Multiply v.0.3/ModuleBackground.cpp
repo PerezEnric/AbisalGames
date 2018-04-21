@@ -88,14 +88,14 @@ bool ModuleBackground::Start()
 		App->player->Enable();
 		App->player->position.y = 103;
 	}
-
-
 	App->audio->PlayMusic(firstlvlmusic);
 	App->audio->PlaySoundEffect(spaceshipdrop);
 	App->collision->Enable();
 	App->particles->Enable();
 	App->enemies->Enable();
 	App->textures->Enable();
+
+
 	//Collider
 	App->collision->AddCollider({ 0,213,2800,20 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 505, -3,2020,10 }, COLLIDER_WALL);
@@ -107,6 +107,7 @@ bool ModuleBackground::Start()
 
 	//Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BALL, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BALL2, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 600, 100);

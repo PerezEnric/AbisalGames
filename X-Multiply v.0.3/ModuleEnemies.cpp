@@ -146,7 +146,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BOMB:
 			enemies[i] = new Bomb_PowerUp(info.x, info.y);
-		
+
 		}
 	}
 }

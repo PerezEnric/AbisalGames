@@ -10,12 +10,14 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	Animation fly_PU;
+	int points = 1000;
 
 public:
 
 	Enemy_PU(int x, int y);
 	~Enemy_PU() {};
 	void Move();
+	void OnCollision(Collider* collider);
 };
 
 #endif // __Enemy_PU_H__

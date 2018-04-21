@@ -2,6 +2,7 @@
 #include "Enemy_Anemone.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 Enemy_Anemone::Enemy_Anemone(int x, int y) : Enemy(x, y)
 {
@@ -32,4 +33,9 @@ void Enemy_Anemone::Move()
 		cd = 0;
 	}
 	cd++;
+}
+
+void Enemy_Anemone::OnCollision(Collider* collider)
+{
+	App->player->points += points;
 }

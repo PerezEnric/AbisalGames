@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_PU.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
 
 Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 {
@@ -15,4 +16,9 @@ void Enemy_PU::Move()
 {
 	position.y = int(float(original_y));;
 	position.x -= 1;
+}
+
+void Enemy_PU::OnCollision(Collider* collider)
+{
+	App->player->points += points;
 }

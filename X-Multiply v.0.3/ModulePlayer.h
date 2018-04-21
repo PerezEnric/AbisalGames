@@ -39,6 +39,7 @@ public:
 	char text[10];
 	int cd = 0;
 	uint score = 0;
+	int points = 0;
 };
 
 #endif

@@ -34,6 +34,7 @@ bool ModuleIntroScene::Start()
 	App->win_lose->Disable();
 	App->background->Disable();
 
+
 	App->background->move = false;
 	App->background->xinject = 75;
 	App->background->yinject = -100;

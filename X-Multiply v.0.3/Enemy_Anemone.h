@@ -14,7 +14,9 @@ public:
 	Enemy_Anemone(int x, int y);
 	~Enemy_Anemone() {};
 	void Move();
+	void OnCollision(Collider* collider);
 	int cd = 0;
+	int points = 600;
 };
 
 #endif //  __Enemy_Anemone_H__
