@@ -48,9 +48,12 @@ bool ModuleWinLoseScene::Start()
 	lose_screen = App->textures->Load("Sprites_Assets/UI_1.png");
 
 	game_over_music = App->audio->LoadMusic("Audio_Assets/Game_Over.ogg");
-	App->audio->PlayMusic(game_over_music);
+	win_music = App->audio->LoadMusic("Audio_assets/Stage_Clear.ogg");
 
-
+	if (!App->background->win)
+		App->audio->PlayMusic(game_over_music);
+	else
+		App->audio->PlayMusic(win_music);
 	
 	return true;
 }
@@ -59,7 +62,10 @@ bool ModuleWinLoseScene::Start()
 bool ModuleWinLoseScene::CleanUp()
 {
 	LOG("Unloading losing scene");
-
+	App->audio->UnloadMusic(game_over_music);
+	game_over_music = nullptr;
+	App->audio->UnloadMusic(win_music);
+	win_music = nullptr;
 	App->textures->Unload(lose_screen);
 	lose_screen = nullptr;
 	return true;
@@ -70,7 +76,6 @@ update_status ModuleWinLoseScene::Update()
 {
 	if (App->background->win == false)
 	{
-		App->audio->PlayMusic(game_over_music);
 		App->render->camera.x = App->render->camera.y = 0;
 		// Draw everything --------------------------------------
 		App->render->Blit(lose_screen, 160, SCREEN_HEIGHT / 2, &G);

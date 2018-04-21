@@ -22,6 +22,7 @@ public:
 public:
 	SDL_Texture* lose_screen = nullptr;
 	Mix_Music* game_over_music = nullptr;
+	Mix_Music* win_music = nullptr;
 	SDL_Rect G;
 	SDL_Rect A;
 	SDL_Rect M;
