@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_LittleShrimp.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 {
@@ -16,7 +17,16 @@ void Enemy_LittleShrimp::Move()
 	if (going_up)
 	{
 		if (wave > 1.0f)
+		{
 			going_up = false;
+			cd++;
+			if (cd > 2)
+			{
+				App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+				App->particles->enemy_shot.speed = { -1,1 };
+				cd = 0;
+			}
+		}
 		else
 			wave += 0.05f;
 	}
@@ -24,7 +34,7 @@ void Enemy_LittleShrimp::Move()
 	{
 		if (wave < -1.0f)
 			going_up = true;
-		else
+	else 
 			wave -= 0.05f;
 	}
 
