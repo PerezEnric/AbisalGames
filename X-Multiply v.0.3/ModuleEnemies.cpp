@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
+#include "ModuleAudio.h"
 
 
 #define SPAWN_MARGIN 50

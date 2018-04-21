@@ -17,7 +17,7 @@ private:
 	
 
 public:
-	Mix_Chunk* ball_death = nullptr;
+	
 	Enemy_Ball(int x, int y);
 	~Enemy_Ball() {};
 	void Move();

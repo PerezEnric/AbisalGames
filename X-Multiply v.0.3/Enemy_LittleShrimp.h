@@ -14,7 +14,7 @@ private:
 	int points = 400;
 
 public:
-
+	
 	Enemy_LittleShrimp(int x, int y);
 	~Enemy_LittleShrimp() {};
 	void Move();

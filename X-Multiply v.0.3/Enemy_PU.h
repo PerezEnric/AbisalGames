@@ -13,7 +13,7 @@ private:
 	int points = 1000;
 
 public:
-
+	
 	Enemy_PU(int x, int y);
 	~Enemy_PU() {};
 	void Move();

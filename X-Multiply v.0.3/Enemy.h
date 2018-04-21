@@ -22,7 +22,11 @@ public:
 	virtual ~Enemy();
 
 	const Collider* GetCollider() const;
-
+	Mix_Chunk* anemone_death = nullptr;
+	Mix_Chunk* powerup_death = nullptr;
+	Mix_Chunk* shrimp_death = nullptr;
+	Mix_Chunk* ball_death = nullptr;
+	Mix_Chunk* ball2_death = nullptr;
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider) = 0;

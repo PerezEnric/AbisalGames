@@ -15,7 +15,7 @@ private:
 	Animation fly;
 
 public:
-	Mix_Chunk* ball2_death = nullptr;
+	
 	Enemy_Ball2(int x, int y);
 	~Enemy_Ball2() {};
 	void Move();

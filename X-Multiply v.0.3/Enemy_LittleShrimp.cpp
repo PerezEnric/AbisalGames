@@ -12,6 +12,7 @@ Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 	animation = &fly_shrimp;
 	collider = App->collision->AddCollider({ 0, 0, 42, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
+	shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 }
 void Enemy_LittleShrimp::Move()
 {
@@ -47,4 +48,5 @@ void Enemy_LittleShrimp::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
+	App->audio->PlaySoundEffect(shrimp_death);
 }

@@ -12,6 +12,7 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 	animation = &fly_PU;
 	collider = App->collision->AddCollider({ 0, 0, 31, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
+	powerup_death = App->audio->LoadSoundEffect("Audio_Assets/powerup_death.wav");
 }
 void Enemy_PU::Move()
 {
@@ -23,4 +24,5 @@ void Enemy_PU::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
+	App->audio->PlaySoundEffect(powerup_death);
 }
