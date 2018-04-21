@@ -57,7 +57,6 @@ update_status ModuleRender::Update()
 	if (App->intro->flag)
 	{
 		camera.x -= speed;
-
 	}
 
 

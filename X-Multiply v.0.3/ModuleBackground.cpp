@@ -199,11 +199,12 @@ update_status ModuleBackground::Update()
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		Disable();
+		App->player->pos = 15;
 	}
 	else if (App->player->live > 0 && App->player->destroyed == true)
 	{
-
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+		App->player->pos += 1;
 	}
 
 

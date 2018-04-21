@@ -40,6 +40,7 @@ public:
 	int cd = 0;
 	uint score = 0;
 	int points = 0;
+	int pos = 15;
 };
 
 #endif

@@ -18,7 +18,7 @@ Enemy_Ball2::Enemy_Ball2(int x, int y) : Enemy(x, y)
 void Enemy_Ball2::Move()
 
 {
-	if (cd > 180)
+	if (cd > 188)
 		right = true;
 	cd++;
 

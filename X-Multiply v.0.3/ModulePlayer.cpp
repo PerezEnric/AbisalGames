@@ -183,6 +183,14 @@ update_status ModulePlayer::Update()
 	App->fonts->BlitText(50, 238, font_score, text);
 	//App->fonts->BlitText(32, 150, font_score, "score");
 
+		pos += 1;
+	
+	if (position.x < pos) 
+		position.x = pos;
+	if (position.x > pos + 298)
+		position.x = pos + 298;
+	if (position.y < 0) position.y = 0;
+
 	return UPDATE_CONTINUE;
 }
 
