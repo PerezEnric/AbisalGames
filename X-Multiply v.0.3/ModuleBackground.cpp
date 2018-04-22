@@ -174,6 +174,29 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1390, 35);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1390, 70);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3400, 220);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3400, 255);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3470, 255);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3470, 280);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3510, 239);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3600, 260);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3600, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3630, 260);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3630, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3660, 260);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3660, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3690, 260);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3690, 300);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3720, 263);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3720, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3720, 337);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3750, 263);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3750, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3750, 337);
+
+
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 930, 178);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 1300, 150);
@@ -232,7 +255,7 @@ update_status ModuleBackground::Update()
 	{
 		int vspeed = 1;
 		if (App->render->camera.x <= -8010
-			&& App->render->camera.x >= -10370)
+			&& App->render->camera.x >= -10358)
 		{
 			App->render->camera.y -= vspeed;
 			//App->player->position.y += vspeed;
@@ -256,8 +279,14 @@ update_status ModuleBackground::Update()
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
 		App->player->pos += 1;
 		win = false;
+		if (App->player->position.x < 1000)
+		{
+			App->render->camera.x = 0;
+			App->player->position.x = 87;
+			App->player->pos = 15;
+		}
 	}
-	if (App->player->position.x == 2695 && !win)
+	if (App->player->position.x == 4600 && !win)
 	{
 		win = true;
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);

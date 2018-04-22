@@ -63,6 +63,8 @@ public:
 	bool lets;
 	bool letb;
 	bool lett;
+	EnemyInfo queue[MAX_ENEMIES];
+	Enemy* enemies[MAX_ENEMIES];
 	
 private:
 
@@ -70,8 +72,7 @@ private:
 
 private:
 
-	EnemyInfo queue[MAX_ENEMIES];
-	Enemy* enemies[MAX_ENEMIES];
+	
 	SDL_Texture* sprites;
 };
 

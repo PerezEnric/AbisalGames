@@ -291,19 +291,19 @@ update_status ModulePlayer::Update()
 		{
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
-			tentacles_back = false;
+			tentacles_mid = false;
 		}
 		if (tentacles && tentacles_up)
 		{
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 27, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
-			tentacles_back = false;
+			tentacles_up = false;
 		}
 		if (tentacles && tentacles_down)
 		{
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 37, COLLIDER_PLAYER_SHOT);
-			tentacles_back = false;
+			tentacles_down = false;
 		}
 	}
 
@@ -362,5 +362,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->audio->PlaySoundEffect(player_death);
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
+		points = 0;
 	}
 }

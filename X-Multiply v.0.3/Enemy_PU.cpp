@@ -28,7 +28,7 @@ void Enemy_PU::OnCollision(Collider* collider)
 		App->enemies->lets = true;
 	else if(position.y < 115 && position.y > 100)
 		App->enemies->letb = true;
-	else if(position.y > 116)
+	else if(position.y < 105)
 		App->enemies->lett = true;
 	App->player->points += points;
 	App->audio->PlaySoundEffect(powerup_death);
