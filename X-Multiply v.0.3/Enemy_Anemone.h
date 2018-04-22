@@ -18,6 +18,7 @@ public:
 	int cd = 0;
 	int points = 600;
 	bool CleanUp();
+	int live = 3;
 };
 
 #endif //  __Enemy_Anemone_H__

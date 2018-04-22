@@ -70,7 +70,10 @@ bool ModulePlayer::CleanUp()
 
 
 	if (col != nullptr)
+	{
 		col->to_delete = true;
+		col = nullptr;
+	}
 
 	return true;
 }
@@ -143,7 +146,7 @@ update_status ModulePlayer::Update()
 	}
 	if (tentacles)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
 			App->render->Blit(graphics, position.x + 14, position.y - 8, &App->particles->tentacle4_back);
@@ -160,13 +163,15 @@ update_status ModulePlayer::Update()
 			App->render->Blit(graphics, position.x - 11, position.y + 28, &App->particles->tentacle5_back);
 			App->render->Blit(graphics, position.x - 20, position.y + 28, &App->particles->tentacle5_back);
 			App->render->Blit(graphics, position.x - 30, position.y + 25, &App->particles->tentaclehand);
+			//animacion hands
+
 			tentacles_front = false;
 			tentacles_mid = false;
 			tentacles_back = true;
 			tentacles_up = false;
 			tentacles_down = false;
 		}
-		else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
 			App->render->Blit(graphics, position.x + 20, position.y - 8, &App->particles->tentacle3);
@@ -251,6 +256,8 @@ update_status ModulePlayer::Update()
 			tentacles_mid = true;
 			tentacles_back = false;
 			tentacles_front = false;
+			tentacles_up = false;
+			tentacles_down = false;
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -259,7 +266,6 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 		App->audio->PlaySoundEffect(shot_particle);
-
 
 		if (cd < 5)
 		{
@@ -322,9 +328,18 @@ update_status ModulePlayer::Update()
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		App->background->win = true;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_T] == KEY_STATE::KEY_DOWN)
+	//powerup
+	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
 	{
 		tentacles = !tentacles;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
+	{
+		bomb = !bomb;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
+	{
+		turbo = !turbo;
 	}
 
 	col->SetPos(position.x, position.y);

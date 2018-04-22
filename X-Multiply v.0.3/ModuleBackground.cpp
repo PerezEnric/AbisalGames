@@ -196,14 +196,12 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3750, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 3750, 337);
 
-
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 520, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 930, 178);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 1300, 150);
-	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2240, 178);
 	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2290, 178);
-	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2390, 178);
-
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2350, 178);
+	App->enemies->AddEnemy(ENEMY_TYPES::ANEMONE, 2460, 178);
 
 	//Power Ups
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 820, 130);

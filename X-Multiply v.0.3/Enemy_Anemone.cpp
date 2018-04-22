@@ -37,9 +37,12 @@ void Enemy_Anemone::Move()
 
 void Enemy_Anemone::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
-	App->audio->PlaySoundEffect(anemone_death);
+	if (live == 0) {
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->player->points += points;
+		App->audio->PlaySoundEffect(anemone_death);
+	}
+	else live--;
 }
 
 bool Enemy_Anemone::CleanUp()

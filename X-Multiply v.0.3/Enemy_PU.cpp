@@ -14,11 +14,15 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 31, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
 	powerup_death = App->audio->LoadSoundEffect("Audio_Assets/powerup_death.wav");
+	App->enemies->lets = false;
+	App->enemies->letb = false;
+	App->enemies->lett = false;
 }
 void Enemy_PU::Move()
 {
 	position.y = int(float(original_y));;
 	position.x -= 1;
+
 }
 
 void Enemy_PU::OnCollision(Collider* collider)

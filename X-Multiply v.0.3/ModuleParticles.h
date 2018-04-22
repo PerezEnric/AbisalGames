@@ -59,6 +59,7 @@ public:
 	Particle enemy_shot;
 	Particle bombPU;
 	Particle explosion_player;
+
 	SDL_Rect tentacle1;
 	SDL_Rect tentacle2;
 	SDL_Rect tentacle3;
