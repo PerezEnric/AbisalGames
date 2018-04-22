@@ -56,8 +56,8 @@ update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr
-			&& queue[i].x < App->player->pos + 500
-			&& queue[i].x > App->player->pos)
+			&& queue[i].x < App->player->limitx + 500
+			&& queue[i].x > App->player->limitx)
 			enemies[i]->Move();
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)

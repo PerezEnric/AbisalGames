@@ -133,19 +133,6 @@ update_status ModuleCollision::Update()
 		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = false;
 	}
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (App->enemies->enemies[i] != nullptr
-			&& App->enemies->queue[i].x < App->player->pos + 500
-			&& App->enemies->queue[i].x > App->player->pos)
-		{
-			matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY] = false;
-			matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHOT] = false;
-		}
-		else
-		{
-			matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY] = true;
-			matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHOT] = true;
-		}
 			
 	return UPDATE_CONTINUE;
 }

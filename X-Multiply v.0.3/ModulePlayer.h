@@ -47,7 +47,8 @@ public:
 	int cd = 0;
 	uint score = 0;
 	int points = 0;
-	int pos = 15;
+	int limitx = 15;
+	float limity = 0;
 };
 
 #endif

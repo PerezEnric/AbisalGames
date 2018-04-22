@@ -257,8 +257,9 @@ update_status ModuleBackground::Update()
 		if (App->render->camera.x <= -8010
 			&& App->render->camera.x >= -10358)
 		{
+			App->player->limity += 0.33;
 			App->render->camera.y -= vspeed;
-			//App->player->position.y += vspeed;
+			//App->player->position.y += 0.33f;
 		}
 
 		if (move == false)
@@ -271,19 +272,25 @@ update_status ModuleBackground::Update()
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		Disable();
-		App->player->pos = 15;
+		App->player->limitx = 15;
+		App->player->limity = 0;
 		win = false;
 	}
 	else if (App->player->live > 0 && App->player->destroyed == true)
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
-		App->player->pos += 1;
+		
+		App->player->limitx += 1;
+		if (App->render->camera.x <= -8010
+			&& App->render->camera.x >= -10358)
+				App->player->limity += 0.33;
+
 		win = false;
 		if (App->player->position.x < 1000)
 		{
 			App->render->camera.x = 0;
 			App->player->position.x = 87;
-			App->player->pos = 15;
+			App->player->limitx = 15;
 		}
 	}
 	if (App->player->position.x == 4600 && !win)
