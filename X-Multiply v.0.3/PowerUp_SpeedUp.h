@@ -15,7 +15,8 @@ public:
 	~PowerUp_SpeedUp() {};
 	void Move();
 	void OnCollision(Collider* collider);
-	
+	bool CleanUp();
+
 };
 
 #endif //  __PowerUp_SpeedUp_H__

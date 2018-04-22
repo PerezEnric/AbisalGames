@@ -14,6 +14,7 @@ public:
 	~Bomb_PowerUp() {};
 	void OnCollision(Collider* collider);
 	void Move();
+	bool CleanUp();
 };
 
 #endif

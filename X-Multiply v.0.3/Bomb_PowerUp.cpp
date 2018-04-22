@@ -35,3 +35,10 @@ void Bomb_PowerUp::Move()
 		position.x -= 0;
 	}
 }
+
+bool  Bomb_PowerUp::CleanUp()
+{
+	LOG("Unload power up audio");
+	App->audio->UnloadSoundEffect(powerup_sound);
+	powerup_sound = nullptr;
+}

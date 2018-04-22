@@ -67,7 +67,13 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->audio->UnloadSoundEffect(shot_particle);
+	graphics = nullptr;
 
+	shot_particle = nullptr;
+
+	App->audio->UnloadSoundEffect(player_death);
+
+	player_death = nullptr;
 
 	if (col != nullptr)
 	{

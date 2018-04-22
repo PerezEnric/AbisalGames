@@ -108,7 +108,7 @@
       <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="Tentacles_PowerUp.h">
-      <Filter>Modules</Filter>
+      <Filter>Modules\PowerUps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +188,7 @@
       <Filter>Modules\PowerUps</Filter>
     </ClCompile>
     <ClCompile Include="Tentacles_PowerUp.cpp">
-      <Filter>Core</Filter>
+      <Filter>Modules\PowerUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

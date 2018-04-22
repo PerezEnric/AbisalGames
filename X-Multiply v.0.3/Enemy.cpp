@@ -11,6 +11,7 @@ Enemy::~Enemy()
 {
 	if (collider != nullptr)
 		collider->to_delete = true;
+	collider = nullptr;
 }
 
 const Collider* Enemy::GetCollider() const
