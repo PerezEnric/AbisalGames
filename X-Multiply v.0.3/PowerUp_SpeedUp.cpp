@@ -39,4 +39,5 @@ bool  PowerUp_SpeedUp::CleanUp()
 	LOG("Unload power up audio");
 	App->audio->UnloadSoundEffect(boost_sound);
 	boost_sound = nullptr;
+	return true;
 }
