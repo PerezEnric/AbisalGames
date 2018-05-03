@@ -49,13 +49,24 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
+
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+
 	int speed = 3;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == 1)
+	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
+	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		camera.y -= speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		camera.x += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		camera.x -= speed;
 
 	// TODO 1: Make the camera move left and right
 

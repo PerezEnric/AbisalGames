@@ -18,10 +18,15 @@ public:
 
 public:
 	
-	SDL_Texture* graphics = nullptr;
-	SDL_Rect ground;
+	SDL_Texture* black_background = nullptr;
 	SDL_Rect background;
-	Animation flag;
+	SDL_Texture* monster_head = nullptr;
+	SDL_Rect head;
+	SDL_Texture* monster_body = nullptr;
+	SDL_Rect body;
+	SDL_Texture* monster_tail = nullptr;
+	SDL_Rect tail;
+
 
 };
 

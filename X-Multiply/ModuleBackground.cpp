@@ -8,23 +8,31 @@
 
 ModuleBackground::ModuleBackground()
 {
-	// ground
-	ground.x = 8;
-	ground.y = 391;
-	ground.w = 896;
-	ground.h = 72;
+	// Black background
+	background.x = 0;
+	background.y = 128;
+	background.w = 512;
+	background.h = 256;
 
-	// Background / sky
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
+	// Sprite of Monster's Head
+	head.x = 96;
+	head.y = 98;
+	head.w = 61;
+	head.h = 64;
 
-	// flag animation
-	flag.PushBack({848, 208, 40, 40});
-	flag.PushBack({848, 256, 40, 40});
-	flag.PushBack({848, 304, 40, 40});
-	flag.speed = 0.08f;
+	// Sprite of Monster's body
+	body.x = 0;
+	body.y = 148;
+	body.w = 512;
+	body.h = 216;
+
+	// Sprite of Monster's Tail
+	tail.x = 77;
+	tail.y = 69;
+	tail.w = 364;
+	tail.h = 186;
+
+
 }
 
 ModuleBackground::~ModuleBackground()
@@ -35,7 +43,15 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Player.png");
+	// Loading black background
+	black_background = App->textures->Load("Sprites_Assets/Background2.png");
+	// Loading Monster's Head
+	monster_head = App->textures->Load("Sprites_Assets/head.png");
+	// Loading Monster's Body
+	monster_body = App->textures->Load("Sprites_Assets/body.png");
+	// Loading Monster's Tail
+	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
+
 	return ret;
 }
 
@@ -43,8 +59,11 @@ bool ModuleBackground::Start()
 update_status ModuleBackground::Update()
 {
 	// Draw everything --------------------------------------
-
-	App->render->Blit(graphics, 0, 170, &ground);
+	
+	App->render->Blit(black_background, 0, 0, &background); // background
+	App->render->Blit(monster_head, 180, 150, &head); // head
+	App->render->Blit(monster_body, 241, 119, &body); // body
+	App->render->Blit(monster_tail, 753, 160, &tail); // tail
 
 	return UPDATE_CONTINUE;
 }
