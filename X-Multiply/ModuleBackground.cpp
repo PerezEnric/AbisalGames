@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 #include "ModuleBackground.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -51,6 +52,10 @@ bool ModuleBackground::Start()
 	monster_body = App->textures->Load("Sprites_Assets/body.png");
 	// Loading Monster's Tail
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
+	// Loading second level music
+	secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
+	// Playing second level music
+	App->audio->PlayMusic(secondlvlmusic);
 
 	return ret;
 }

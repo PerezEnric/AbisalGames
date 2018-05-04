@@ -18,6 +18,7 @@ public:
 
 public:
 	
+	Mix_Music* secondlvlmusic = nullptr;
 	SDL_Texture* black_background = nullptr;
 	SDL_Rect background;
 	SDL_Texture* monster_head = nullptr;
