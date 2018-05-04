@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 #include "ModuleBackground.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -56,6 +57,22 @@ bool ModuleBackground::Start()
 	secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
 	App->audio->PlayMusic(secondlvlmusic);
+
+	//Head colliders
+	App->collision->AddCollider({ 182, 157, 30, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 242, 148, 12, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 256, 142, 30, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 275, 139, 10, 5 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 285, 135, 20, 5 }, COLLIDER_WALL); //fin
+	App->collision->AddCollider({ 295, 130, 20, 5 }, COLLIDER_WALL); // fin
+	App->collision->AddCollider({ 307, 123, 20, 5 }, COLLIDER_WALL); // fin
+	App->collision->AddCollider({ 296, 142, 50, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 347, 145, 10, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 188, 180, 31, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 214, 197, 61, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 203, 152, 40, 15 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 260, 201, 35, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 290, 210, 35, 10 }, COLLIDER_WALL);
 
 	return ret;
 }
