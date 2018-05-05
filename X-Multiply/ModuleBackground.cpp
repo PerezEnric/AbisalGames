@@ -40,7 +40,7 @@ ModuleBackground::ModuleBackground()
 	left_dorsal.w = 63;
 	left_dorsal.h = 99;
 
-	//Sprite of enemy middle dorsal
+	// Sprite of enemy middle dorsal
 	middle_dorsal.x = 143;
 	middle_dorsal.y = 11;
 	middle_dorsal.w = 70;
@@ -52,6 +52,11 @@ ModuleBackground::ModuleBackground()
 	right_dorsal.w = 109;
 	right_dorsal.h = 108;
 
+	// Sprite of enemy monster eye
+	eye.x = 138;
+	eye.y = 24;
+	eye.w = 86;
+	eye.h = 69;
 
 }
 
@@ -77,6 +82,8 @@ bool ModuleBackground::Start()
 	enemy_middle_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
 	// Loading Monster's right dorsal
 	enemy_right_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	// Loading Monster's mini boss eye
+	monster_eye = App->textures->Load("Sprites_Assets/Enemies/monstereye.png");
 	// Loading second level music
 	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
@@ -99,16 +106,33 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 290, 210, 35, 10 }, COLLIDER_WALL);
 
 	// Body colliders
-	App->collision->AddCollider({370, 147, 15, 10}, COLLIDER_WALL);
-	App->collision->AddCollider({ 390, 143, 40, 10 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 430, 146, 12, 10 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 442, 149, 12, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({370, 147, 15, 10}, COLLIDER_WALL); // top body
+	App->collision->AddCollider({ 390, 143, 40, 10 }, COLLIDER_WALL); // top body
+	App->collision->AddCollider({ 430, 146, 12, 10 }, COLLIDER_WALL); // top body
+	App->collision->AddCollider({ 442, 149, 12, 10 }, COLLIDER_WALL); // top body
+	App->collision->AddCollider({ 640, 238, 100, 10 }, COLLIDER_WALL); // top body
+	App->collision->AddCollider({ 730, 219, 12, 30 }, COLLIDER_WALL); // top body
+
+	App->collision->AddCollider({ 735, 200, 12, 20 }, COLLIDER_ENEMY); // monster eye
+	App->collision->AddCollider({ 738, 185, 12, 12 }, COLLIDER_ENEMY); // monster eye
+	App->collision->AddCollider({ 741, 170, 24, 24 }, COLLIDER_ENEMY); // monster eye
+	App->collision->AddCollider({ 747, 165, 24, 10 }, COLLIDER_ENEMY); // monster eye
+	App->collision->AddCollider({ 760, 162, 24, 10 }, COLLIDER_ENEMY); // monster eye
 
 	// Dorsal fin colliders
 	App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
 	App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
-	App->collision->AddCollider({ 515, 138, 50, 40 }, COLLIDER_ENEMY); // middle dorsal collider
+	App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
 	App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
+
+	// Tail colliders
+	App->collision->AddCollider({ 785, 162, 48, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 835, 167, 15, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 850, 169, 18, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 870, 174, 15, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 885, 178, 12, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 892, 188, 14, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 900, 192, 9, 10 }, COLLIDER_WALL); // top tail
 
 	return ret;
 }
@@ -125,6 +149,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(enemy_left_dorsal, 452, 124, &left_dorsal); // left dorsal
 	App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
 	App->render->Blit(enemy_right_dorsal, 531, 130, &right_dorsal); // right dorsal
+	App->render->Blit(monster_eye, 730, 160, &eye); // monster eye mini boss
 
 	return UPDATE_CONTINUE;
 }

@@ -33,6 +33,8 @@ public:
 	SDL_Rect middle_dorsal;
 	SDL_Texture* enemy_right_dorsal = nullptr;
 	SDL_Rect right_dorsal;
+	SDL_Texture* monster_eye;
+	SDL_Rect eye;
 
 };
 
