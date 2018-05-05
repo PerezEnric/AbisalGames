@@ -36,6 +36,9 @@ public:
 	SDL_Texture* monster_eye;
 	SDL_Rect eye;
 
+	void camera();
+	int move_cont = 0;
+
 };
 
 #endif

@@ -25,6 +25,11 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+	bool move_front = false;
+	bool move_down = false;
+	bool move_back = false;
+	bool move_up = false;
+	bool change_move = false;
 	
 };
 

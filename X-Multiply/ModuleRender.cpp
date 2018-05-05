@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
+#include "ModulePlayer.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -53,9 +54,8 @@ update_status ModuleRender::Update()
 	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
-
+	//camera move with arrows
 	int speed = 3;
-
 	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
@@ -68,7 +68,20 @@ update_status ModuleRender::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		camera.x -= speed;
 
-	// TODO 1: Make the camera move left and right
+	//scroll
+
+	if (move_front == true)
+		camera.x -= 1;
+
+	if (move_back == true)
+		camera.x += 1;
+
+	if (move_up == true)
+		camera.y += 1;
+
+	if (move_down == true)
+		camera.y -= 1;
+
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -286,6 +286,7 @@ update_status ModulePlayer::Update()
 			cd = 0;
 		}
 
+		// shot hands
 		if (tentacles && tentacles_front)
 		{
 			App->particles->AddParticle(App->particles->laser, position.x + 52, position.y - 15, COLLIDER_PLAYER_SHOT);
