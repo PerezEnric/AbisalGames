@@ -27,7 +27,12 @@ public:
 	SDL_Rect body;
 	SDL_Texture* monster_tail = nullptr;
 	SDL_Rect tail;
-
+	SDL_Texture* enemy_left_dorsal = nullptr;
+	SDL_Rect left_dorsal;
+	SDL_Texture* enemy_middle_dorsal = nullptr;
+	SDL_Rect middle_dorsal;
+	SDL_Texture* enemy_right_dorsal = nullptr;
+	SDL_Rect right_dorsal;
 
 };
 

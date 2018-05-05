@@ -34,6 +34,24 @@ ModuleBackground::ModuleBackground()
 	tail.w = 364;
 	tail.h = 186;
 
+	// Sprite of enemy left dorsal
+	left_dorsal.x = 22;
+	left_dorsal.y = 21;
+	left_dorsal.w = 63;
+	left_dorsal.h = 99;
+
+	//Sprite of enemy middle dorsal
+	middle_dorsal.x = 143;
+	middle_dorsal.y = 11;
+	middle_dorsal.w = 70;
+	middle_dorsal.h = 110;
+
+	// Sprite of enemy right dorsal
+	right_dorsal.x = 257;
+	right_dorsal.y = 9;
+	right_dorsal.w = 109;
+	right_dorsal.h = 108;
+
 
 }
 
@@ -53,12 +71,18 @@ bool ModuleBackground::Start()
 	monster_body = App->textures->Load("Sprites_Assets/body.png");
 	// Loading Monster's Tail
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
+	// Loading Monster's left dorsal
+	enemy_left_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	// Loading Monster's middle dorsal
+	enemy_middle_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	// Loading Monster's right dorsal
+	enemy_right_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
 	// Loading second level music
-	secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
+	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
-	App->audio->PlayMusic(secondlvlmusic);
+	//App->audio->PlayMusic(secondlvlmusic);
 
-	//Head colliders
+	// Head colliders
 	App->collision->AddCollider({ 182, 157, 30, 30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 242, 148, 12, 10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 256, 142, 30, 10 }, COLLIDER_WALL);
@@ -74,6 +98,12 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 260, 201, 35, 10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 290, 210, 35, 10 }, COLLIDER_WALL);
 
+	// Body colliders
+	App->collision->AddCollider({370, 147, 15, 10}, COLLIDER_WALL);
+	App->collision->AddCollider({ 390, 143, 40, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 430, 146, 12, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 442, 149, 12, 10 }, COLLIDER_WALL);
+
 	return ret;
 }
 
@@ -86,6 +116,9 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_head, 180, 150, &head); // head
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
+	App->render->Blit(enemy_left_dorsal, 452, 124, &left_dorsal); // left dorsal
+	App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
+	App->render->Blit(enemy_right_dorsal, 531, 130, &right_dorsal); // right dorsal
 
 	return UPDATE_CONTINUE;
 }
