@@ -104,6 +104,12 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 430, 146, 12, 10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 442, 149, 12, 10 }, COLLIDER_WALL);
 
+	// Dorsal fin colliders
+	App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
+	App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
+	App->collision->AddCollider({ 515, 138, 50, 40 }, COLLIDER_ENEMY); // middle dorsal collider
+	App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
+
 	return ret;
 }
 
