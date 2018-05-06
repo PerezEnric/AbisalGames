@@ -71,16 +71,28 @@ update_status ModuleRender::Update()
 	//scroll
 
 	if (move_front == true)
+	{
 		camera.x -= 1;
+		App->player->position.x += 1;
+	}
 
 	if (move_back == true)
+	{
 		camera.x += 1;
+		App->player->position.x -= 1;
+	}
 
 	if (move_up == true)
+	{
 		camera.y += 1;
+		App->player->position.y -= 1;
+	}
 
 	if (move_down == true)
+	{
 		camera.y -= 1;
+		App->player->position.y += 1;
+	}
 
 
 	return update_status::UPDATE_CONTINUE;
