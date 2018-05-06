@@ -166,82 +166,149 @@ update_status ModuleBackground::Update()
 //camera move
 void ModuleBackground::camera()
 {
-
-	if (App->render->camera.x <= 250 && App->render->camera.x > -380)
+	if (!go_back)
 	{
-		App->render->move_front = !App->render->move_front;
-	}
-	if (App->render->camera.x <= -220 && App->render->camera.x > -320)
-	{
-		App->render->move_down = !App->render->move_down;
-	}
-	if (App->render->camera.x <= -320 && App->render->camera.x > -380)
-	{
-		App->render->move_down = false;
-		App->render->move_up = !App->render->move_up;
-	}
-
-	if (App->render->camera.x == -380)
-	{
-		App->render->move_front = false;
-
-		if (App->render->camera.y == -5)
-		{
-			App->render->change_move = true;
-			move_cont++;
-		}
-
-		if ((App->render->camera.y == -65 && move_cont % 2 == 1)
-			|| (App->render->camera.y == -85 && move_cont % 2 == 0))
-			App->render->change_move = false;
-
-		if (move_cont == 4)
+		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
 			App->render->move_front = !App->render->move_front;
-			App->render->move_up = false;
-			App->render->move_down = false;
 		}
-
-		else if (App->render->change_move == true)
+		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
-			App->render->move_up = false;
 			App->render->move_down = !App->render->move_down;
 		}
-		else if (App->render->change_move == false && move_cont % 2 == 1)
+		if (App->render->camera.x <= -320 && App->render->camera.x > -380)
 		{
-			App->render->move_up = !App->render->move_up;
 			App->render->move_down = false;
+			App->render->move_up = !App->render->move_up;
 		}
 
-		else if (App->render->change_move == false && move_cont % 2 == 0)
+		if (App->render->camera.x == -380)
 		{
-			App->render->move_up = !App->render->move_up;
-			App->render->move_down = false;
+			App->render->move_front = false;
+
+			if (App->render->camera.y == -5)
+			{
+				App->render->change_move = true;
+				move_cont++;
+			}
+
+			if ((App->render->camera.y == -65 && move_cont % 2 == 1)
+				|| (App->render->camera.y == -85 && move_cont % 2 == 0))
+				App->render->change_move = false;
+
+			if (move_cont == 4)
+			{
+				App->render->move_front = !App->render->move_front;
+				App->render->move_up = false;
+				App->render->move_down = false;
+			}
+
+			else if (App->render->change_move == true)
+			{
+				App->render->move_up = false;
+				App->render->move_down = !App->render->move_down;
+			}
+			else if (App->render->change_move == false && move_cont % 2 == 1)
+			{
+				App->render->move_up = !App->render->move_up;
+				App->render->move_down = false;
+			}
+
+			else if (App->render->change_move == false && move_cont % 2 == 0)
+			{
+				App->render->move_up = !App->render->move_up;
+				App->render->move_down = false;
+			}
+
 		}
 
+		if (App->render->camera.x <= -381 && App->render->camera.x > -430)
+		{
+			App->render->move_front = !App->render->move_front;
+		}
+
+		if (App->render->camera.x <= -430 && App->render->camera.x > -570)
+		{
+			App->render->move_down = !App->render->move_down;
+			App->render->move_front = true;
+
+		}
+
+		if (App->render->camera.x <= -570 && App->render->camera.x > -720)
+		{
+			App->render->move_front = !App->render->move_front;
+		}
+
+		if (App->render->camera.x <= -720 && App->render->camera.x > -870)
+		{
+			App->render->move_down = !App->render->move_down;
+			App->render->move_front = !App->render->move_front;
+		}
+
+		if (App->render->camera.x == -870)
+		{
+			App->render->move_down = false;
+			App->render->move_front = false;
+			go_back = true;
+		}
 	}
-
-	if (App->render->camera.x <= -381 && App->render->camera.x > -400)
+	//back move
+	else
 	{
-		App->render->move_front = !App->render->move_front;
-	}
+		if (App->render->camera.x < -830)
+		{
+			App->render->move_up = false;
+			App->render->move_down = false;
+			App->render->move_front = false;
+			App->render->move_back = true;
+		}
+		else if (App->render->camera.x < -740)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_up = !App->render->move_up;
+		}
+		else if(App->render->camera.x < -680)
+		{
+			App->render->move_up = false;
+			App->render->move_back = !App->render->move_back;
+			App->render->move_down = !App->render->move_down;
+		}
+		else if(App->render->camera.x < -540)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_down = false;
+		}
+		else if (App->render->camera.x < -450)
+		{
+			App->render->move_back = true;
+			App->render->move_up = true;
+		}
 
-	if (App->render->camera.x <= -430 && App->render->camera.x > -520)
-	{
-		App->render->move_down = !App->render->move_down;
-		App->render->move_front = true;
+		else if (App->render->camera.x < -310)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_up = false;
+		}
 
-	}
+		else if (App->render->camera.x < -220)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_down = !App->render->move_down;
+		}
 
-	if (App->render->camera.x <= -670 && App->render->camera.x > -770)
-	{
-		App->render->move_down = !App->render->move_down;
-		App->render->move_front = !App->render->move_front;
-	}
+		else if (App->render->camera.x < -180)
+		{
+			App->render->move_down = false;
+			App->render->move_back = !App->render->move_back;
+			App->render->move_up = !App->render->move_up;
+		}
 
-	if (App->render->camera.x == -870)
-	{
-		App->render->move_down = false;
-		App->render->move_front = false;
+		else
+		{
+			App->render->move_back = false;
+			App->render->move_up = false;
+			App->render->move_down = false;
+			App->render->move_front = false;
+		}
 	}
 }

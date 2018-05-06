@@ -38,6 +38,7 @@ public:
 
 	void camera();
 	int move_cont = 0;
+	bool go_back = false;
 
 };
 
