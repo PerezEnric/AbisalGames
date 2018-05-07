@@ -1,6 +1,7 @@
 TASKS:
 
 - 0.6:
+
       * All background textures
       
       * Scroll with aprox speed 
@@ -12,6 +13,7 @@ TASKS:
       * Game pad
 
 - 0.7:
+
       * Tentacles 
       
       * Power-ups sprites
@@ -20,6 +22,7 @@ TASKS:
       
 
 - 0.8:
+
      * All stage enemies (sprites, audio, colliders, life, points) except boss
         1. Shrimp (almost done)
         2. Green worm
@@ -33,6 +36,7 @@ TASKS:
        10. Power-up ship
 
 - 0.9:
+
      * Power-up boost
         1. Shooting waves
         2. Tentacles
@@ -42,6 +46,7 @@ TASKS:
      * Boss (sprites, shot, audio)
 
 - 1.0:
+
       * UI
       
       * High score
