@@ -25,6 +25,30 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 
+	//Controller
+
+	LOG("Init controller");
+
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("GamePad controller could not initialize! SDL_Error: %s\n", SDL_GetError());
+	}
+
+
+	int maxJoys = SDL_NumJoysticks();
+
+
+	for (int i = 0; i < maxJoys; ++i)
+
+	{
+		if (i >= MAX_GAMEPADS) break;
+
+		if (SDL_IsGameController(i))
+		{
+			gamepads[i] = SDL_GameControllerOpen(i);
+		}
+	}
+
 	return ret;
 }
 
@@ -63,6 +87,70 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
+	//Controller inputs : Button
+
+	if (ev.type == SDL_CONTROLLERBUTTONDOWN)
+	{
+		/*if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A)
+		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;*/
+
+		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
+		{
+			App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
+		}
+
+	}
+
+
+
+	if (ev.type == SDL_CONTROLLERDEVICEADDED)
+	{
+		if (ev.cdevice.which > MAX_GAMEPADS - 1)
+		{
+			LOG("Maximum number of gamepads reached, you cannot connect more...");
+
+		}
+
+		else if (SDL_IsGameController(ev.cdevice.which))
+		{
+			gamepads[ev.cdevice.which] = SDL_GameControllerOpen(ev.cdevice.which);
+			LOG("Controller added: %d", ev.cdevice.which);
+		}
+
+	}
+
+	// Controller inputs: Axis
+	for (int i = 0; i < MAX_GAMEPADS; ++i)
+	{
+		if (gamepads[i] != nullptr)
+		{
+			GamepadDir[i].axisX = SDL_GameControllerGetAxis(gamepads[i], SDL_CONTROLLER_AXIS_LEFTX);
+			GamepadDir[i].axisY = SDL_GameControllerGetAxis(gamepads[i], SDL_CONTROLLER_AXIS_LEFTY);
+		}
+	}
+
+
+	if (GamepadDir[0].axisX > GamepadDir[0].deadzone)
+	{
+		keyboard[SDL_SCANCODE_D] = KEY_REPEAT;
+	}
+
+	else if (GamepadDir[0].axisX < -GamepadDir[0].deadzone)
+	{
+		keyboard[SDL_SCANCODE_A] = KEY_REPEAT;
+	}
+
+
+	if (GamepadDir[0].axisY < -GamepadDir[0].deadzone)
+	{
+		keyboard[SDL_SCANCODE_W] = KEY_REPEAT;
+	}
+
+	else if (GamepadDir[0].axisY > GamepadDir[0].deadzone)
+	{
+		keyboard[SDL_SCANCODE_S] = KEY_REPEAT;
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -71,5 +159,14 @@ bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
+	LOG("Quitting controllers");
+	for (int i = 0; i < MAX_GAMEPADS; ++i)
+	{
+		if (gamepads[i] != nullptr)
+			SDL_GameControllerClose(gamepads[i]);
+		gamepads[i] = nullptr;
+	}
+
 	return true;
 }
