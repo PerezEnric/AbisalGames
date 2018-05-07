@@ -1,6 +1,9 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModulePlayer.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -91,12 +94,13 @@ update_status ModuleInput::PreUpdate()
 
 	if (ev.type == SDL_CONTROLLERBUTTONDOWN)
 	{
-		/*if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A)
-		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;*/
+		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A)
+		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
 
 		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
 		{
 			App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
+
 		}
 
 	}

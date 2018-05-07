@@ -59,6 +59,17 @@ ModuleBackground::ModuleBackground()
 	eye.w = 86;
 	eye.h = 69;
 
+	// Sprite of Green Worm Spawn
+	spawn.x = 14;
+	spawn.y = 10;
+	spawn.w = 99;
+	spawn.h = 45;
+
+	// Sprite of enemy Monster Tail
+	tail2.x = 34;
+	tail2.y = 13;
+	tail2.w = 219;
+	tail2.h = 57;
 }
 
 ModuleBackground::~ModuleBackground()
@@ -85,6 +96,10 @@ bool ModuleBackground::Start()
 	enemy_right_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
 	// Loading Monster's mini boss eye
 	monster_eye = App->textures->Load("Sprites_Assets/Enemies/monstereye.png");
+	// Loading Green Worm Spawn
+	greenworm_spawn = App->textures->Load("Sprites_Assets/Enemies/monsterhouse.png");
+	// Loading Monster's Tail
+	monster_tail2 = App->textures->Load("Sprites_Assets/Enemies/tail.png");
 	// Loading second level music
 	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
@@ -134,6 +149,19 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 885, 178, 12, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 892, 188, 14, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 900, 192, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 907, 197, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 909, 207, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 918, 215, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 921, 221, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 925, 225, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 927, 233, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 935, 236, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 940, 243, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 944, 250, 9, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({ 955, 258, 50, 10 }, COLLIDER_WALL); // top tail
+	App->collision->AddCollider({997, 252, 9, 10 }, COLLIDER_ENEMY); // monster house
+	App->collision->AddCollider({ 1006, 250, 9, 10 }, COLLIDER_ENEMY); // monster house
+	App->collision->AddCollider({ 1015, 255, 35, 10 }, COLLIDER_ENEMY); // monster house
 
 	
 	App->render->camera.x += 201;//inical camera posicion
@@ -156,159 +184,162 @@ update_status ModuleBackground::Update()
 	App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
 	App->render->Blit(enemy_right_dorsal, 531, 130, &right_dorsal); // right dorsal
 	App->render->Blit(monster_eye, 730, 160, &eye); // monster eye mini boss
+	App->render->Blit(monster_tail2, 1000, 270, &tail2); // monster tail
+	App->render->Blit(greenworm_spawn, 992, 252, &spawn); //green worm spawn
+	
 
-	camera();
+	//camera();
 
 	return UPDATE_CONTINUE;
 }
 
 
 //camera move
-void ModuleBackground::camera()
-{
-	if (!go_back)
-	{
-		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
-		{
-			App->render->move_front = !App->render->move_front;
-		}
-		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
-		{
-			App->render->move_down = !App->render->move_down;
-		}
-		if (App->render->camera.x <= -320 && App->render->camera.x > -380)
-		{
-			App->render->move_down = false;
-			App->render->move_up = !App->render->move_up;
-		}
-
-		if (App->render->camera.x == -380)
-		{
-			App->render->move_front = false;
-
-			if (App->render->camera.y == -5)
-			{
-				App->render->change_move = true;
-				move_cont++;
-			}
-
-			if ((App->render->camera.y == -65 && move_cont % 2 == 1)
-				|| (App->render->camera.y == -85 && move_cont % 2 == 0))
-				App->render->change_move = false;
-
-			if (move_cont == 4)
-			{
-				App->render->move_front = !App->render->move_front;
-				App->render->move_up = false;
-				App->render->move_down = false;
-			}
-
-			else if (App->render->change_move == true)
-			{
-				App->render->move_up = false;
-				App->render->move_down = !App->render->move_down;
-			}
-			else if (App->render->change_move == false && move_cont % 2 == 1)
-			{
-				App->render->move_up = !App->render->move_up;
-				App->render->move_down = false;
-			}
-
-			else if (App->render->change_move == false && move_cont % 2 == 0)
-			{
-				App->render->move_up = !App->render->move_up;
-				App->render->move_down = false;
-			}
-
-		}
-
-		if (App->render->camera.x <= -381 && App->render->camera.x > -430)
-		{
-			App->render->move_front = !App->render->move_front;
-		}
-
-		if (App->render->camera.x <= -430 && App->render->camera.x > -570)
-		{
-			App->render->move_down = !App->render->move_down;
-			App->render->move_front = true;
-
-		}
-
-		if (App->render->camera.x <= -570 && App->render->camera.x > -720)
-		{
-			App->render->move_front = !App->render->move_front;
-		}
-
-		if (App->render->camera.x <= -720 && App->render->camera.x > -870)
-		{
-			App->render->move_down = !App->render->move_down;
-			App->render->move_front = !App->render->move_front;
-		}
-
-		if (App->render->camera.x == -870)
-		{
-			App->render->move_down = false;
-			App->render->move_front = false;
-			go_back = true;
-		}
-	}
-	//back move
-	else
-	{
-		if (App->render->camera.x < -830)
-		{
-			App->render->move_up = false;
-			App->render->move_down = false;
-			App->render->move_front = false;
-			App->render->move_back = true;
-		}
-		else if (App->render->camera.x < -740)
-		{
-			App->render->move_back = !App->render->move_back;
-			App->render->move_up = !App->render->move_up;
-		}
-		else if(App->render->camera.x < -680)
-		{
-			App->render->move_up = false;
-			App->render->move_back = !App->render->move_back;
-			App->render->move_down = !App->render->move_down;
-		}
-		else if(App->render->camera.x < -540)
-		{
-			App->render->move_back = !App->render->move_back;
-			App->render->move_down = false;
-		}
-		else if (App->render->camera.x < -450)
-		{
-			App->render->move_back = true;
-			App->render->move_up = true;
-		}
-
-		else if (App->render->camera.x < -310)
-		{
-			App->render->move_back = !App->render->move_back;
-			App->render->move_up = false;
-		}
-
-		else if (App->render->camera.x < -220)
-		{
-			App->render->move_back = !App->render->move_back;
-			App->render->move_down = !App->render->move_down;
-		}
-
-		else if (App->render->camera.x < -180)
-		{
-			App->render->move_down = false;
-			App->render->move_back = !App->render->move_back;
-			App->render->move_up = !App->render->move_up;
-		}
-
-		else
-		{
-			App->render->move_back = false;
-			App->render->move_up = false;
-			App->render->move_down = false;
-			App->render->move_front = false;
-		}
-	}
-}
+//void ModuleBackground::camera()
+//{
+//	if (!go_back)
+//	{
+//		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
+//		{
+//			App->render->move_front = !App->render->move_front;
+//		}
+//		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
+//		{
+//			App->render->move_down = !App->render->move_down;
+//		}
+//		if (App->render->camera.x <= -320 && App->render->camera.x > -380)
+//		{
+//			App->render->move_down = false;
+//			App->render->move_up = !App->render->move_up;
+//		}
+//
+//		if (App->render->camera.x == -380)
+//		{
+//			App->render->move_front = false;
+//
+//			if (App->render->camera.y == -5)
+//			{
+//				App->render->change_move = true;
+//				move_cont++;
+//			}
+//
+//			if ((App->render->camera.y == -65 && move_cont % 2 == 1)
+//				|| (App->render->camera.y == -85 && move_cont % 2 == 0))
+//				App->render->change_move = false;
+//
+//			if (move_cont == 4)
+//			{
+//				App->render->move_front = !App->render->move_front;
+//				App->render->move_up = false;
+//				App->render->move_down = false;
+//			}
+//
+//			else if (App->render->change_move == true)
+//			{
+//				App->render->move_up = false;
+//				App->render->move_down = !App->render->move_down;
+//			}
+//			else if (App->render->change_move == false && move_cont % 2 == 1)
+//			{
+//				App->render->move_up = !App->render->move_up;
+//				App->render->move_down = false;
+//			}
+//
+//			else if (App->render->change_move == false && move_cont % 2 == 0)
+//			{
+//				App->render->move_up = !App->render->move_up;
+//				App->render->move_down = false;
+//			}
+//
+//		}
+//
+//		if (App->render->camera.x <= -381 && App->render->camera.x > -430)
+//		{
+//			App->render->move_front = !App->render->move_front;
+//		}
+//
+//		if (App->render->camera.x <= -430 && App->render->camera.x > -570)
+//		{
+//			App->render->move_down = !App->render->move_down;
+//			App->render->move_front = true;
+//
+//		}
+//
+//		if (App->render->camera.x <= -570 && App->render->camera.x > -720)
+//		{
+//			App->render->move_front = !App->render->move_front;
+//		}
+//
+//		if (App->render->camera.x <= -720 && App->render->camera.x > -870)
+//		{
+//			App->render->move_down = !App->render->move_down;
+//			App->render->move_front = !App->render->move_front;
+//		}
+//
+//		if (App->render->camera.x == -870)
+//		{
+//			App->render->move_down = false;
+//			App->render->move_front = false;
+//			go_back = true;
+//		}
+//	}
+//	//back move
+//	else
+//	{
+//		if (App->render->camera.x < -830)
+//		{
+//			App->render->move_up = false;
+//			App->render->move_down = false;
+//			App->render->move_front = false;
+//			App->render->move_back = true;
+//		}
+//		else if (App->render->camera.x < -740)
+//		{
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_up = !App->render->move_up;
+//		}
+//		else if(App->render->camera.x < -680)
+//		{
+//			App->render->move_up = false;
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_down = !App->render->move_down;
+//		}
+//		else if(App->render->camera.x < -540)
+//		{
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_down = false;
+//		}
+//		else if (App->render->camera.x < -450)
+//		{
+//			App->render->move_back = true;
+//			App->render->move_up = true;
+//		}
+//
+//		else if (App->render->camera.x < -310)
+//		{
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_up = false;
+//		}
+//
+//		else if (App->render->camera.x < -220)
+//		{
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_down = !App->render->move_down;
+//		}
+//
+//		else if (App->render->camera.x < -180)
+//		{
+//			App->render->move_down = false;
+//			App->render->move_back = !App->render->move_back;
+//			App->render->move_up = !App->render->move_up;
+//		}
+//
+//		else
+//		{
+//			App->render->move_back = false;
+//			App->render->move_up = false;
+//			App->render->move_down = false;
+//			App->render->move_front = false;
+//		}
+//	}
+//}
