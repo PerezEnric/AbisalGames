@@ -2,15 +2,22 @@ TASKS:
 
 - 0.6:
       * All background textures
+      
       * Scroll with aprox speed 
+      
       * Background colliders
+      
       * Stage audio
+      
       * Game pad
 
 - 0.7:
       * Tentacles 
+      
       * Power-ups sprites
+      
       * Camera limits
+      
 
 - 0.8:
      * All stage enemies (sprites, audio, colliders, life, points) except boss
@@ -31,10 +38,14 @@ TASKS:
         2. Tentacles
         3. Bombs
         4. Missiles
+        
      * Boss (sprites, shot, audio)
 
 - 1.0:
       * UI
+      
       * High score
+      
       * Ready player screen
+      
       * Intro animation
