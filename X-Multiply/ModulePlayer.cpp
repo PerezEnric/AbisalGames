@@ -265,7 +265,7 @@ update_status ModulePlayer::Update()
 			tentacles_down = false;
 		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
 	{
 
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);

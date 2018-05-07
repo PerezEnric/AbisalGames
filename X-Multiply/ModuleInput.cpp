@@ -92,17 +92,29 @@ update_status ModuleInput::PreUpdate()
 
 	//Controller inputs : Button
 
-	if (ev.type == SDL_CONTROLLERBUTTONDOWN)
+	for (int i = 0; i < MAX_GAMEPADS; ++i)
 	{
-		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A)
-	App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
-
-		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
+		if (gamepads[i] != nullptr)
 		{
-		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
-
+			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepads[i], SDL_CONTROLLER_BUTTON_A);
+		}
 	}
-		
+
+	for (int i = 0; i < MAX_BUTTONS; ++i)
+	{
+		if (controller_state[i] == 1) {
+			if (controller[i] == KEY_IDLE)
+				controller[i] = KEY_DOWN;
+			else
+				controller[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (controller[i] == KEY_REPEAT || controller[i] == KEY_DOWN)
+				controller[i] = KEY_UP;
+			else
+				controller[i] = KEY_IDLE;
+		}
 	}
 	
 

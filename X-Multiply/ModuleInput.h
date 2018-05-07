@@ -9,6 +9,7 @@
 
 
 #define MAX_KEYS 200
+#define MAX_BUTTONS 4
 #define MAX_GAMEPADS 1
 
 enum KEY_STATE
@@ -17,6 +18,11 @@ enum KEY_STATE
 	KEY_DOWN,
 	KEY_REPEAT,
 	KEY_UP
+};
+
+enum BUTTONS {
+
+	BUTTON_A
 };
 
 class ModuleInput : public Module
@@ -33,7 +39,8 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event ev;
-
+	bool controller_state[MAX_BUTTONS];
+	KEY_STATE controller[MAX_BUTTONS];
 	SDL_GameController* gamepads[MAX_GAMEPADS] = { nullptr };
 
 
