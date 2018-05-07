@@ -95,16 +95,16 @@ update_status ModuleInput::PreUpdate()
 	if (ev.type == SDL_CONTROLLERBUTTONDOWN)
 	{
 		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_A)
-		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
+	App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
 
 		if (ev.cbutton.button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
 		{
-			App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
-
-		}
+		App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_DOWN;
 
 	}
-
+		
+	}
+	
 
 
 	if (ev.type == SDL_CONTROLLERDEVICEADDED)

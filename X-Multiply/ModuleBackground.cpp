@@ -129,6 +129,19 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 640, 238, 100, 10 }, COLLIDER_WALL); // top body
 	App->collision->AddCollider({ 730, 219, 12, 30 }, COLLIDER_WALL); // top body
 
+	App->collision->AddCollider({ 340, 287, 35, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 377, 292, 10, 15 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 391, 306, 10, 18 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 400, 315, 100, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 430, 322, 10, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 500, 310, 20, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 510, 304, 20, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 530, 298, 20, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 550, 305, 50, 10 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 560, 305, 20, 17 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 600, 310, 20, 9 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 632, 315, 46, 11 }, COLLIDER_WALL); // down body
+
 	App->collision->AddCollider({ 735, 200, 12, 20 }, COLLIDER_ENEMY); // monster eye
 	App->collision->AddCollider({ 738, 185, 12, 12 }, COLLIDER_ENEMY); // monster eye
 	App->collision->AddCollider({ 741, 170, 24, 24 }, COLLIDER_ENEMY); // monster eye
@@ -159,9 +172,19 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 940, 243, 9, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 944, 250, 9, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 955, 258, 50, 10 }, COLLIDER_WALL); // top tail
+
 	App->collision->AddCollider({997, 252, 9, 10 }, COLLIDER_ENEMY); // monster house
 	App->collision->AddCollider({ 1006, 250, 9, 10 }, COLLIDER_ENEMY); // monster house
 	App->collision->AddCollider({ 1015, 255, 35, 10 }, COLLIDER_ENEMY); // monster house
+
+	App->collision->AddCollider({ 1055, 263, 20, 10 }, COLLIDER_ENEMY); // monster tail
+	App->collision->AddCollider({ 1072, 269, 20, 10 }, COLLIDER_ENEMY); // monster tail
+	App->collision->AddCollider({ 1090, 275, 20, 10 }, COLLIDER_ENEMY); // monster tail
+	App->collision->AddCollider({ 1110, 275, 16, 10 }, COLLIDER_WALL); // monster tail
+	App->collision->AddCollider({ 1128, 280, 55, 10 }, COLLIDER_WALL); // monster tail
+	App->collision->AddCollider({ 1180, 285, 30, 10 }, COLLIDER_WALL); // monster tail
+	App->collision->AddCollider({ 1210, 278, 10, 10 }, COLLIDER_WALL); // monster tail
+
 
 	
 	App->render->camera.x += 201;//inical camera posicion
@@ -184,7 +207,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
 	App->render->Blit(enemy_right_dorsal, 531, 130, &right_dorsal); // right dorsal
 	App->render->Blit(monster_eye, 730, 160, &eye); // monster eye mini boss
-	App->render->Blit(monster_tail2, 1000, 270, &tail2); // monster tail
+	App->render->Blit(monster_tail2, 1022, 270, &tail2); // monster tail
 	App->render->Blit(greenworm_spawn, 992, 252, &spawn); //green worm spawn
 	
 
