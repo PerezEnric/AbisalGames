@@ -2,7 +2,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
-//#include "ModuleEnemies.h"
+#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
 ModuleCollision::ModuleCollision()

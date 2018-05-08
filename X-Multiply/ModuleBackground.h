@@ -39,7 +39,7 @@ public:
 	SDL_Rect spawn;
 	SDL_Texture* monster_tail2 = nullptr;
 	SDL_Rect tail2;
-	//void camera();
+	void camera();
 	int move_cont = 0;
 	bool go_back = false;
 

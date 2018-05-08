@@ -9,7 +9,7 @@
 //#include "ModuleFadeToBlack.h"
 //#include "ModuleAudio.h"
 //#include "ModuleWinLoseScene.h"
-//#include "ModuleEnemies.h"
+#include "ModuleEnemies.h"
 //#include "ModuleFonts.h"
 #include <stdio.h>
 

@@ -12,6 +12,12 @@
     <Filter Include="Containers">
       <UniqueIdentifier>{78a7f487-1d77-4fdc-9f51-f067eccd6239}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies">
+      <UniqueIdentifier>{05392d5e-ad0a-4617-8d00-03c98f032f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\PowerUps">
+      <UniqueIdentifier>{fc3c1871-8885-4f97-939e-423f884241cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -59,6 +65,21 @@
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="PowerUp_SpeedUp.h">
+      <Filter>Modules\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Tentacles_PowerUp.h">
+      <Filter>Modules\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Waves_PowerUp.h">
+      <Filter>Modules\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -96,6 +117,21 @@
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp_SpeedUp.cpp">
+      <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Tentacles_PowerUp.cpp">
+      <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Waves_PowerUp.cpp">
+      <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
