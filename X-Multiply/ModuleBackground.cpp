@@ -141,6 +141,10 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 560, 305, 20, 17 }, COLLIDER_WALL); // down body
 	App->collision->AddCollider({ 600, 310, 20, 9 }, COLLIDER_WALL); // down body
 	App->collision->AddCollider({ 632, 315, 46, 11 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 675, 310, 46, 11 }, COLLIDER_WALL); // down body
+	App->collision->AddCollider({ 717, 315, 30, 11 }, COLLIDER_WALL); // down body
+
+
 
 	App->collision->AddCollider({ 735, 200, 12, 20 }, COLLIDER_ENEMY); // monster eye
 	App->collision->AddCollider({ 738, 185, 12, 12 }, COLLIDER_ENEMY); // monster eye
@@ -172,6 +176,18 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 940, 243, 9, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 944, 250, 9, 10 }, COLLIDER_WALL); // top tail
 	App->collision->AddCollider({ 955, 258, 50, 10 }, COLLIDER_WALL); // top tail
+
+	App->collision->AddCollider({ 750, 310, 30, 11 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 775, 312, 20, 14 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 782, 315, 20, 14 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 795, 325, 20, 10 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 815, 327, 33, 10 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 860, 333, 33, 6 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 892, 337, 53, 6 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 942, 330, 20, 10 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 950, 328, 30, 6 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 980, 326, 60, 6 }, COLLIDER_WALL); // down tail
+	App->collision->AddCollider({ 1040, 325, 60, 6 }, COLLIDER_WALL); // down tail
 
 	App->collision->AddCollider({997, 252, 9, 10 }, COLLIDER_ENEMY); // monster house
 	App->collision->AddCollider({ 1006, 250, 9, 10 }, COLLIDER_ENEMY); // monster house
