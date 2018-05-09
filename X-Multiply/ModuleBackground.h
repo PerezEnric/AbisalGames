@@ -15,6 +15,8 @@ public:
 
 	bool Start();
 	update_status Update();
+	void camera();
+	void cameralimit();
 
 public:
 	
@@ -39,7 +41,6 @@ public:
 	SDL_Rect spawn;
 	SDL_Texture* monster_tail2 = nullptr;
 	SDL_Rect tail2;
-	void camera();
 	int move_cont = 0;
 	bool go_back = false;
 

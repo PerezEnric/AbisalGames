@@ -11,6 +11,8 @@ ModuleRender::ModuleRender() : Module()
 	camera.x = camera.y = 0;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
+
+	back_limit = up_limit = 0;
 }
 
 // Destructor
@@ -74,24 +76,28 @@ update_status ModuleRender::Update()
 	{
 		camera.x -= 1;
 		App->player->position.x += 1;
+		back_limit += 1;
 	}
 
 	if (move_back == true)
 	{
 		camera.x += 1;
 		App->player->position.x -= 1;
+		back_limit -= 1;
 	}
 
 	if (move_up == true)
 	{
 		camera.y += 1;
 		App->player->position.y -= 1;
+		up_limit -= 1;
 	}
 
 	if (move_down == true)
 	{
 		camera.y -= 1;
 		App->player->position.y += 1;
+		up_limit += 1;
 	}
 
 

@@ -351,16 +351,6 @@ update_status ModulePlayer::Update()
 	col->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
-	//camera limits
-	//limitx += 1;
-
-	//if (position.x < limitx)
-	//	position.x = limitx;
-	//if (position.x > limitx + 298)
-	//	position.x = limitx + 298;
-	//if (position.y < limity) position.y = limity;
-	//if (position.y > limity + 210) position.y = limity + 210;
-
 	return UPDATE_CONTINUE;
 }
 

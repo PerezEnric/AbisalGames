@@ -208,8 +208,10 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	
-	App->render->camera.x += 201;//inical camera posicion
+	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
+	App->render->back_limit -= 201;//inicial limit position
+	App->render->up_limit -= 30;
 	App->player->position.x -= 201;// inicial player position
 
 	return ret;
@@ -233,6 +235,7 @@ update_status ModuleBackground::Update()
 	
 
 	camera();
+	cameralimit();
 
 	return UPDATE_CONTINUE;
 }
@@ -385,5 +388,29 @@ void ModuleBackground::camera()
 			App->render->move_down = false;
 			App->render->move_front = false;
 		}
+	}
+}
+
+void ModuleBackground::cameralimit()
+{
+	//back limit
+	if (App->render->back_limit > App->player->position.x)
+	{
+		App->player->position.x = App->render->back_limit;
+	}
+	//front limit
+	if (App->render->back_limit + App->render->camera.w - 35 < App->player->position.x)
+	{
+		App->player->position.x = App->render->back_limit + App->render->camera.w - 35;
+	}
+	//up limit
+	if (App->render->up_limit > App->player->position.y)
+	{
+		App->player->position.y = App->render->up_limit;
+	}
+	//down limit
+	if (App->render->up_limit + App->render->camera.h - 14 < App->player->position.y)
+	{
+		App->player->position.y = App->render->up_limit + App->render->camera.h - 14;
 	}
 }

@@ -30,6 +30,8 @@ public:
 	bool move_back = false;
 	bool move_up = false;
 	bool change_move = false;
+
+	float back_limit, up_limit;
 	
 };
 
