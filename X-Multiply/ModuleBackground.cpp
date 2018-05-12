@@ -14,9 +14,9 @@ ModuleBackground::ModuleBackground()
 {
 	// Black background
 	background.x = 0;
-	background.y = 128;
-	background.w = 512;
-	background.h = 256;
+	background.y = 0;
+	background.w = 2048;
+	background.h = 768;
 
 	// Sprite of Monster's Head
 	head.x = 96;
@@ -82,7 +82,7 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	// Loading black background
-	black_background = App->textures->Load("Sprites_Assets/Background2.png");
+	black_background = App->textures->Load("Sprites_Assets/prova.png");
 	// Loading Monster's Head
 	monster_head = App->textures->Load("Sprites_Assets/head.png");
 	// Loading Monster's Body
@@ -222,7 +222,7 @@ update_status ModuleBackground::Update()
 {
 	// Draw everything --------------------------------------
 	
-	App->render->Blit(black_background, 0, 0, &background); // background
+	App->render->Blit(black_background, -201, 0, &background); // background
 	App->render->Blit(monster_head, 180, 150, &head); // head
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
