@@ -139,9 +139,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			//case ENEMY_TYPES::BALL2:
 			//	enemies[i] = new Enemy_Ball2(info.x, info.y);
 			//	break;
-			//case ENEMY_TYPES::SHRIMP:
-			//	enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
-			//	break;
+			case ENEMY_TYPES::SHRIMP:
+				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
+				break;
 			//case ENEMY_TYPES::ANEMONE:
 			//	enemies[i] = new Enemy_Anemone(info.x, info.y);
 			//	break;

@@ -207,7 +207,8 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 300, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
-	
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
+
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
 	App->render->back_limit -= 201;//inicial limit position

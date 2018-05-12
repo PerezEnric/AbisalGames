@@ -5,7 +5,7 @@
 #include "Module.h"
 //#include "Enemy_Ball.h"
 //#include "Enemy_Ball2.h"
-//#include "Enemy_LittleShrimp.h"
+#include "Enemy_LittleShrimp.h"
 //#include "Enemy_Anemone.h"
 //#include "Enemy_PU.h"
 #include "PowerUp_SpeedUp.h"
