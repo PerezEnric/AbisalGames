@@ -27,7 +27,8 @@ bool ModuleEnemies::Start()
 	bool lets = false;
 	bool letb = false;
 	bool lett = false;
-	sprites = App->textures->Load("Sprites_Assets/monsters.png");
+	
+	sprites = App->textures->Load("Sprites_Assets/all_enemies.png");
 	return true;
 }
 
@@ -133,9 +134,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-			//case ENEMY_TYPES::BALL:
-			//	enemies[i] = new Enemy_Ball(info.x, info.y);
-			//	break;
+			case ENEMY_TYPES::LEFTDORSAL:
+				enemies[i] = new EnemyLeftDorsal(info.x, info.y);
+				break;
 			//case ENEMY_TYPES::BALL2:
 			//	enemies[i] = new Enemy_Ball2(info.x, info.y);
 			//	break;

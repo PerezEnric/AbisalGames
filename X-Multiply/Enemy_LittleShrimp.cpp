@@ -6,8 +6,8 @@
 
 Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 {
-	fly_shrimp.PushBack({ 37, 74, 43, 27 });
-	fly_shrimp.PushBack({ 37, 127, 41, 32 });
+	fly_shrimp.PushBack({ 41, 48, 43, 27 });
+	fly_shrimp.PushBack({ 41, 101, 41, 32 });
 	fly_shrimp.speed = 0.1f;
 	animation = &fly_shrimp;
 	collider = App->collision->AddCollider({ 0, 0, 42, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);

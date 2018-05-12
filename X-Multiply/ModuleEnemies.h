@@ -3,7 +3,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
-//#include "Enemy_Ball.h"
+#include "EnemyLeftDorsal.h"
 //#include "Enemy_Ball2.h"
 #include "Enemy_LittleShrimp.h"
 //#include "Enemy_Anemone.h"
@@ -21,8 +21,7 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	BALL,
-	BALL2,
+	LEFTDORSAL,
 	SHRIMP,
 	ANEMONE,
 	PU,
@@ -68,7 +67,7 @@ private:
 
 private:
 
-
+	SDL_Texture* dorsal_sprites;
 	SDL_Texture * sprites;
 };
 

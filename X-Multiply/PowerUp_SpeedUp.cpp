@@ -8,7 +8,7 @@
 
 PowerUp_SpeedUp::PowerUp_SpeedUp(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 325, 37, 24,13 });
+	fly.PushBack({ 123, 96, 24,13 });
 	fly.speed = 0.1f;
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 13 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);

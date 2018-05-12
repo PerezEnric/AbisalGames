@@ -8,7 +8,7 @@
 
 Tentacles_PowerUp::Tentacles_PowerUp(int x, int y) : Enemy(x, y)
 {
-	tentacleanim.PushBack({ 404, 41, 18,15 });
+	tentacleanim.PushBack({ 202, 100, 18,15 });
 	tentacleanim.speed = 0.1f;
 	animation = &tentacleanim;
 	collider = App->collision->AddCollider({ 0,0,18,15 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);

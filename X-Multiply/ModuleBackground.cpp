@@ -37,38 +37,38 @@ ModuleBackground::ModuleBackground()
 	tail.h = 186;
 
 	// Sprite of enemy left dorsal
-	left_dorsal.x = 22;
+	/*left_dorsal.x = 22;
 	left_dorsal.y = 21;
 	left_dorsal.w = 63;
-	left_dorsal.h = 99;
+	left_dorsal.h = 99;*/
 
 	// Sprite of enemy middle dorsal
-	middle_dorsal.x = 143;
-	middle_dorsal.y = 11;
+	middle_dorsal.x = 168;
+	middle_dorsal.y = 423;
 	middle_dorsal.w = 70;
 	middle_dorsal.h = 110;
 
 	// Sprite of enemy right dorsal
-	right_dorsal.x = 257;
-	right_dorsal.y = 9;
+	right_dorsal.x = 282;
+	right_dorsal.y = 411;
 	right_dorsal.w = 109;
 	right_dorsal.h = 108;
 
 	// Sprite of enemy monster eye
-	eye.x = 138;
-	eye.y = 24;
+	eye.x = 310;
+	eye.y = 195;
 	eye.w = 86;
 	eye.h = 69;
 
 	// Sprite of Green Worm Spawn
-	spawn.x = 14;
-	spawn.y = 10;
+	spawn.x = 173;
+	spawn.y = 313;
 	spawn.w = 99;
 	spawn.h = 45;
 
 	// Sprite of enemy Monster Tail
-	tail2.x = 34;
-	tail2.y = 13;
+	tail2.x = 426;
+	tail2.y = 65;
 	tail2.w = 219;
 	tail2.h = 57;
 }
@@ -90,17 +90,17 @@ bool ModuleBackground::Start()
 	// Loading Monster's Tail
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
 	// Loading Monster's left dorsal
-	enemy_left_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	enemy_left_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
 	// Loading Monster's middle dorsal
-	enemy_middle_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	enemy_middle_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
 	// Loading Monster's right dorsal
-	enemy_right_dorsal = App->textures->Load("Sprites_Assets/Enemies/dorsal.png");
+	enemy_right_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
 	// Loading Monster's mini boss eye
-	monster_eye = App->textures->Load("Sprites_Assets/Enemies/monstereye.png");
+	monster_eye = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
 	// Loading Green Worm Spawn
-	greenworm_spawn = App->textures->Load("Sprites_Assets/Enemies/monsterhouse.png");
+	greenworm_spawn = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
 	// Loading Monster's Tail
-	monster_tail2 = App->textures->Load("Sprites_Assets/Enemies/tail.png");
+	monster_tail2 = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
 	// Loading second level music
 	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
@@ -154,7 +154,9 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 760, 162, 24, 10 }, COLLIDER_ENEMY); // monster eye
 
 	// Dorsal fin colliders
-	App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
+
+	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
+	//App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
 	App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
 	App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
 	App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider

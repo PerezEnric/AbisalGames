@@ -8,7 +8,7 @@
 
 Waves_PowerUp::Waves_PowerUp(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 424, 41, 18, 15 });
+	fly.PushBack({ 222, 100, 18, 15 });
 	fly.speed = 0.1f;
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 13 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
