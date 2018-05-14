@@ -136,12 +136,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 			case ENEMY_TYPES::LEFTDORSAL:
 				enemies[i] = new EnemyLeftDorsal(info.x, info.y);
+				queue[i].enemy_life = 5;
 				break;
 			//case ENEMY_TYPES::BALL2:
 			//	enemies[i] = new Enemy_Ball2(info.x, info.y);
 			//	break;
 			case ENEMY_TYPES::SHRIMP:
 				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
+				queue[i].enemy_life = 1;
 				break;
 			//case ENEMY_TYPES::ANEMONE:
 			//	enemies[i] = new Enemy_Anemone(info.x, info.y);
@@ -172,10 +174,15 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2);
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
+			if (queue[i].enemy_life > 0)
+				queue[i].enemy_life--;
+
+			if (queue[i].enemy_life == 0)
+			{
+				enemies[i]->OnCollision(c2);
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
 		}
 	}
 }

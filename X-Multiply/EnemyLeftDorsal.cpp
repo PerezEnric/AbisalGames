@@ -15,15 +15,12 @@ EnemyLeftDorsal::EnemyLeftDorsal(int x, int y) : Enemy(x, y)
 
 void EnemyLeftDorsal::OnCollision(Collider* collider)
 {
-	enemy_life--;
+
+
 	//App->audio->PlaySoundEffect(boost_sound);
 }
 
 void EnemyLeftDorsal::Enemy_Death()
 {
-	while (alive)
-	{
-		if (enemy_life == 3) alive = true;
-		else if (enemy_life == 0) alive = false;
-	}
+	
 }

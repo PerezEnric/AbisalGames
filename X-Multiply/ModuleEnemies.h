@@ -36,7 +36,7 @@ class Enemy;
 struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
-	int x, y;
+	int x, y, enemy_life;
 
 };
 
@@ -60,6 +60,7 @@ public:
 	bool lett;
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
+	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
 
 private:
 
@@ -67,7 +68,6 @@ private:
 
 private:
 
-	SDL_Texture* dorsal_sprites;
 	SDL_Texture * sprites;
 };
 

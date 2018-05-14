@@ -15,8 +15,7 @@ ModuleTentacles::ModuleTentacles()
 	//idle.PushBack({ 101, 1, 35, 14 });
 
 	//idle.speed = 0.2f;
-	App->player->position.x += 1;
-	App->player->position.x -= 1;
+
 }
 
 ModuleTentacles::~ModuleTentacles()
