@@ -61,26 +61,6 @@ public:
 	Particle bombPU;
 	Particle explosion_player;
 
-	SDL_Rect tentacle1;
-	SDL_Rect tentacle2;
-	SDL_Rect tentacle3;
-	SDL_Rect tentacle4;
-	SDL_Rect tentacle5;
-	//down
-	SDL_Rect tentacle6;
-	SDL_Rect tentacle7;
-	SDL_Rect tentacle8;
-
-	SDL_Rect tentacle2_back;
-	SDL_Rect tentacle3_back;
-	SDL_Rect tentacle4_back;
-	SDL_Rect tentacle5_back;
-	//down
-	SDL_Rect tentacle6_back;
-	SDL_Rect tentacle7_back;
-	SDL_Rect tentacle8_back;
-	SDL_Rect tentaclehand;
-
 };
 
 #endif // __MODULEPARTICLES_H__

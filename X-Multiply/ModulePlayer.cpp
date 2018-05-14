@@ -10,6 +10,7 @@
 //#include "ModuleAudio.h"
 //#include "ModuleWinLoseScene.h"
 #include "ModuleEnemies.h"
+#include "ModuleTentacles.h"
 //#include "ModuleFonts.h"
 #include <stdio.h>
 
@@ -149,122 +150,6 @@ update_status ModulePlayer::Update()
 			position.x -= 3;
 		}
 	}
-	if (tentacles)
-	{
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		{
-			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 14, position.y - 8, &App->particles->tentacle4_back);
-			App->render->Blit(graphics, position.x + 6, position.y - 12, &App->particles->tentacle2_back);
-			App->render->Blit(graphics, position.x - 3, position.y - 12, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 12, position.y - 12, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 21, position.y - 12, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 30, position.y - 14, &App->particles->tentaclehand);
-			//down
-			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 14, position.y + 18, &App->particles->tentacle8_back);
-			App->render->Blit(graphics, position.x + 8, position.y + 22, &App->particles->tentacle7_back);
-			App->render->Blit(graphics, position.x - 3, position.y + 28, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 11, position.y + 28, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 20, position.y + 28, &App->particles->tentacle5_back);
-			App->render->Blit(graphics, position.x - 30, position.y + 25, &App->particles->tentaclehand);
-			//animacion hands
-
-			tentacles_front = false;
-			tentacles_mid = false;
-			tentacles_back = true;
-			tentacles_up = false;
-			tentacles_down = false;
-		}
-		else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		{
-			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 20, position.y - 8, &App->particles->tentacle3);
-			App->render->Blit(graphics, position.x + 26, position.y - 12, &App->particles->tentacle4);
-			App->render->Blit(graphics, position.x + 33, position.y - 12, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 42, position.y - 12, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 51, position.y - 12, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 52, position.y - 15, &App->particles->tentaclehand);
-			//down
-			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 20, position.y + 18, &App->particles->tentacle6);
-			App->render->Blit(graphics, position.x + 24, position.y + 22, &App->particles->tentacle7);
-			App->render->Blit(graphics, position.x + 31, position.y + 28, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 40, position.y + 28, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 49, position.y + 28, &App->particles->tentacle5);
-			App->render->Blit(graphics, position.x + 52, position.y + 25, &App->particles->tentaclehand);
-			tentacles_front = true;
-			tentacles_mid = false;
-			tentacles_back = false;
-			tentacles_up = false;
-			tentacles_down = false;
-		}
-		else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-		{
-			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 8, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 16, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 24, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y - 27, &App->particles->tentaclehand);
-			//down
-			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 18, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 26, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 34, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 42, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 50, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y + 53, &App->particles->tentaclehand);
-			tentacles_mid = false;
-			tentacles_back = false;
-			tentacles_front = false;
-			tentacles_up = true;
-			tentacles_down = false;
-		}
-		else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-		{
-			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 8, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 16, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 24, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 32, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 40, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y - 43, &App->particles->tentaclehand);
-			//down
-			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 18, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 26, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 34, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y + 37, &App->particles->tentaclehand);
-			tentacles_mid = false;
-			tentacles_back = false;
-			tentacles_front = false;
-			tentacles_up = false;
-			tentacles_down = true;
-		}
-		else
-		{
-			App->render->Blit(graphics, position.x + 18, position.y, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 8, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 16, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 24, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 32, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y - 40, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y - 43, &App->particles->tentaclehand);
-			//down
-			App->render->Blit(graphics, position.x + 18, position.y + 10, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 18, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 26, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 34, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 42, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 18, position.y + 50, &App->particles->tentacle1);
-			App->render->Blit(graphics, position.x + 5, position.y + 53, &App->particles->tentaclehand);
-			tentacles_mid = true;
-			tentacles_back = false;
-			tentacles_front = false;
-			tentacles_up = false;
-			tentacles_down = false;
-		}
-	}
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
 	{
 
@@ -284,38 +169,6 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bombPU, position.x, position.y + 7, COLLIDER_PLAYER_SHOT);
 			}
 			cd = 0;
-		}
-
-		// shot hands
-		if (tentacles && tentacles_front)
-		{
-			App->particles->AddParticle(App->particles->laser, position.x + 52, position.y - 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, position.x + 52, position.y + 25, COLLIDER_PLAYER_SHOT);
-			tentacles_front = false;
-		}
-		if (tentacles && tentacles_back)
-		{
-			App->particles->AddParticle(App->particles->laser, position.x - 30, position.y - 14, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, position.x - 30, position.y + 25, COLLIDER_PLAYER_SHOT);
-			tentacles_back = false;
-		}
-		if (tentacles && tentacles_mid)
-		{
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
-			tentacles_mid = false;
-		}
-		if (tentacles && tentacles_up)
-		{
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 27, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 53, COLLIDER_PLAYER_SHOT);
-			tentacles_up = false;
-		}
-		if (tentacles && tentacles_down)
-		{
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y - 43, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, position.x + 5, position.y + 37, COLLIDER_PLAYER_SHOT);
-			tentacles_down = false;
 		}
 	}
 
@@ -353,5 +206,4 @@ update_status ModulePlayer::Update()
 
 	return UPDATE_CONTINUE;
 }
-
 

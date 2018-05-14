@@ -37,11 +37,6 @@ public:
 	bool turbo = false;
 	bool bomb = false;
 	bool tentacles = false;
-	bool tentacles_front = false;
-	bool tentacles_mid = false;
-	bool tentacles_back = false;
-	bool tentacles_up = false;
-	bool tentacles_down = false;
 	char text[10];
 	int cd = 0;
 	/*uint score = 0;*/

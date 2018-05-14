@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleTentacles.h"
 
 Application::Application()
 {
@@ -18,9 +19,10 @@ Application::Application()
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = background = new ModuleBackground();
 	modules[6] = player = new ModulePlayer();
-	modules[7] = particles = new ModuleParticles();
-	modules[8] = collision = new ModuleCollision();
-	modules[9] = enemies = new ModuleEnemies();
+	modules[7] = tentacle = new ModuleTentacles();
+	modules[8] = particles = new ModuleParticles();
+	modules[9] = collision = new ModuleCollision();
+	modules[10] = enemies = new ModuleEnemies();
 }	
 
 Application::~Application()
