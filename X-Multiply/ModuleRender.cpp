@@ -78,6 +78,7 @@ update_status ModuleRender::Update()
 		camera.x -= 1;
 		App->player->position.x += 1;
 		App->tentacle->position.x += 1;
+		App->tentacle->tentacleposition.x += 1;
 		back_limit += 1;
 	}
 
@@ -86,6 +87,7 @@ update_status ModuleRender::Update()
 		camera.x += 1;
 		App->player->position.x -= 1;
 		App->tentacle->position.x -= 1;
+		App->tentacle->tentacleposition.x -= 1;
 		back_limit -= 1;
 	}
 
@@ -94,6 +96,7 @@ update_status ModuleRender::Update()
 		camera.y += 1;
 		App->player->position.y -= 1;
 		App->tentacle->position.y -= 1;
+		App->tentacle->tentacleposition.y -= 1;
 		up_limit -= 1;
 	}
 
@@ -102,6 +105,7 @@ update_status ModuleRender::Update()
 		camera.y -= 1;
 		App->player->position.y += 1;
 		App->tentacle->position.y += 1;
+		App->tentacle->tentacleposition.y += 1;
 		up_limit += 1;
 	}
 

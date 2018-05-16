@@ -141,6 +141,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
+		App->tentacle->start = true;
 		if (turbo == false)
 		{
 			position.y += (speed * 2);

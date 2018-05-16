@@ -18,6 +18,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void limitTentacles();
+	void tentaclemove();
 
 public:
 	SDL_Texture* graphics = nullptr;
@@ -25,6 +26,12 @@ public:
 	Animation* current_animation = nullptr;
 	iPoint position;
 	
+	Animation toptentacle;
+	Animation* current_animationTentacle = nullptr;
+	iPoint tentacleposition;
+	Animation toptentaclefront;
+
+	bool start = false;
 
 };
 #endif
