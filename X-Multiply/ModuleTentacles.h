@@ -17,11 +17,14 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void limitTentacles();
 
 public:
 	SDL_Texture* graphics = nullptr;
-	Animation idle;
+	Animation tentacl;
 	Animation* current_animation = nullptr;
 	iPoint position;
+	
+
 };
 #endif

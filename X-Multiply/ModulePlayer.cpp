@@ -92,7 +92,7 @@ update_status ModulePlayer::Update()
 
 	/*if (App->background->move)
 		cameraback += speed;*/
-
+	int tentacle_speed = 4;
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		if (turbo == false)
@@ -102,6 +102,17 @@ update_status ModulePlayer::Update()
 		else
 		{
 			position.x += 3;
+		}
+		
+		//tentacle top
+		App->tentacle->position.x -= tentacle_speed;
+		if (App->tentacle->position.x > App->player->position.x)
+		{
+			App->tentacle->position.y -= tentacle_speed;
+		}
+		else
+		{
+			App->tentacle->position.y += tentacle_speed;
 		}
 	}
 
@@ -115,12 +126,17 @@ update_status ModulePlayer::Update()
 		{
 			position.y -= 3;
 		}
+		
 
 		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
+
+		//tentacle top
+		App->tentacle->position.y += tentacle_speed;
+
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -128,16 +144,31 @@ update_status ModulePlayer::Update()
 		if (turbo == false)
 		{
 			position.y += (speed * 2);
+
 		}
 		else
 		{
 			position.y += 3;
 		}
+		
 		if (current_animation != &down)
 		{
 			down.Reset();
 			current_animation = &down;
 		}
+
+		//tentacle top
+		App->tentacle->position.y -= tentacle_speed;
+
+		if (App->tentacle->position.x - tentacle_speed >= App->player->position.x)
+		{
+			App->tentacle->position.x -= tentacle_speed;
+		}
+		else if (App->tentacle->position.x + tentacle_speed <= App->player->position.x)
+		{
+			App->tentacle->position.x += tentacle_speed;
+		}
+		
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
@@ -148,6 +179,18 @@ update_status ModulePlayer::Update()
 		else
 		{
 			position.x -= 3;
+		}
+
+		//tentacle top
+		App->tentacle->position.x += tentacle_speed;
+
+		if (App->tentacle->position.x > App->player->position.x)
+		{
+			App->tentacle->position.y += tentacle_speed;
+		}
+		else
+		{
+			App->tentacle->position.y -= tentacle_speed;
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
