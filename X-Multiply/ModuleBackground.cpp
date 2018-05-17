@@ -43,10 +43,10 @@ ModuleBackground::ModuleBackground()
 	left_dorsal.h = 99;*/
 
 	// Sprite of enemy middle dorsal
-	middle_dorsal.x = 168;
+	/*middle_dorsal.x = 168;
 	middle_dorsal.y = 423;
 	middle_dorsal.w = 70;
-	middle_dorsal.h = 110;
+	middle_dorsal.h = 110;*/
 
 	// Sprite of enemy right dorsal
 	right_dorsal.x = 282;
@@ -90,9 +90,9 @@ bool ModuleBackground::Start()
 	// Loading Monster's Tail
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
 	// Loading Monster's left dorsal
-	enemy_left_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
+	/*enemy_left_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");*/
 	// Loading Monster's middle dorsal
-	enemy_middle_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
+	//enemy_middle_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
 	// Loading Monster's right dorsal
 	enemy_right_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
 	// Loading Monster's mini boss eye
@@ -155,10 +155,15 @@ bool ModuleBackground::Start()
 
 	// Dorsal fin colliders
 
+	App->enemies->AddEnemy(ENEMY_TYPES::LEFTLITTLEDORSAL, 452, 124);
 	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
+	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
+
 	//App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
-	App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
-	App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
+	//App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
+	//App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
 	App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
 
 	// Tail colliders
@@ -229,9 +234,9 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_head, 180, 150, &head); // head
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
-	App->render->Blit(enemy_left_dorsal, 452, 124, &left_dorsal); // left dorsal
-	App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
-	App->render->Blit(enemy_right_dorsal, 531, 130, &right_dorsal); // right dorsal
+	//App->render->Blit(enemy_left_dorsal, 452, 124, &left_dorsal); // left dorsal
+	//App->render->Blit(enemy_middle_dorsal, 510, 115, &middle_dorsal); // middle dorsal
+	App->render->Blit(enemy_right_dorsal, 529, 130, &right_dorsal); // right dorsal
 	App->render->Blit(monster_eye, 730, 160, &eye); // monster eye mini boss
 	App->render->Blit(monster_tail2, 1022, 270, &tail2); // monster tail
 	App->render->Blit(greenworm_spawn, 992, 252, &spawn); //green worm spawn

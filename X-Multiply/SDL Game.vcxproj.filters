@@ -89,6 +89,15 @@
     <ClInclude Include="ModuleTentacles.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyLeftLittleDorsal.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMiddleDorsal.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMiddleLittleDorsal.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -150,6 +159,15 @@
     </ClCompile>
     <ClCompile Include="ModuleTentacles.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyLeftLittleDorsal.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMiddleDorsal.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMiddleLittleDorsal.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

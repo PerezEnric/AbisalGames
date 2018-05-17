@@ -4,6 +4,9 @@
 
 #include "Module.h"
 #include "EnemyLeftDorsal.h"
+#include "EnemyLeftLittleDorsal.h"
+#include "EnemyMiddleDorsal.h"
+#include "EnemyMiddleLittleDorsal.h"
 //#include "Enemy_Ball2.h"
 #include "Enemy_LittleShrimp.h"
 //#include "Enemy_Anemone.h"
@@ -22,6 +25,9 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	LEFTDORSAL,
+	LEFTLITTLEDORSAL,
+	MIDDLEDORSAL,
+	MIDDLELITTLEDORSAL,
 	SHRIMP,
 	ANEMONE,
 	PU,

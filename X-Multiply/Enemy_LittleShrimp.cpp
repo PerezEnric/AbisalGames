@@ -48,7 +48,7 @@ void Enemy_LittleShrimp::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
-	App->audio->PlaySoundEffect(shrimp_death);
+	//App->audio->PlaySoundEffect(shrimp_death);
 }
 
 bool Enemy_LittleShrimp::CleanUp()

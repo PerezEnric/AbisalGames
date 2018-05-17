@@ -1,27 +1,27 @@
 #include "Application.h"
-#include "EnemyLeftDorsal.h"
+#include "EnemyLeftLittleDorsal.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
-EnemyLeftDorsal::EnemyLeftDorsal(int x, int y) : Enemy(x, y)
+EnemyLeftLittleDorsal::EnemyLeftLittleDorsal(int x, int y) : Enemy(x, y)
 {
-	leftdorsal.PushBack({ 47, 423, 63, 99 });
-	animation = &leftdorsal;
+	leftlittledorsal.PushBack({ 41, 538, 63, 99 });
+	animation = &leftlittledorsal;
 	original_y = y;
 	collider = App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	/*leftdorsal_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
 }
 
-void EnemyLeftDorsal::OnCollision(Collider* collider)
+void EnemyLeftLittleDorsal::OnCollision(Collider* collider)
 {
 
 	//App->audio->PlaySoundEffect(leftdorsal_death);
 }
 
 
-bool EnemyLeftDorsal::CleanUp()
+bool EnemyLeftLittleDorsal::CleanUp()
 {
 	LOG("Freeing enemy audio");
 	App->audio->UnloadSoundEffect(leftdorsal_death);
