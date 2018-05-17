@@ -169,7 +169,7 @@ update_status ModulePlayer::Update()
 			current_animation = &down;
 		}
 
-		//tentacle top
+		//tentacle to
 		App->tentacle->position.y -= tentacle_speed;
 		App->tentacle->hand_down.y += tentacle_speed;//chhange sign
 		/*App->tentacle->tentacleposition.y += tentacle_speed;*/
