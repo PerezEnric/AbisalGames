@@ -18,6 +18,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void limitTentacles();
+	void limitArm(iPoint position);
 	void tentaclemove();
 
 public:
@@ -29,9 +30,5 @@ public:
 	Animation toptentacle;
 	Animation* current_animationTentacle = nullptr;
 	iPoint tentacleposition;
-	Animation toptentaclefront;
-
-	bool start = false;
-
 };
 #endif

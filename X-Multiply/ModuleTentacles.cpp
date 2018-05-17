@@ -23,19 +23,19 @@ ModuleTentacles::ModuleTentacles()
 	toptentacle.PushBack({ 21,19,7,10 }); //1st front - 1 
 	toptentacle.PushBack({ 36,20,9,8 });  //2nd front - 2
 	toptentacle.PushBack({ 51,21,10,6 }); //3rd front - 3
-	toptentacle.PushBack({ 67,22,11,4 }); //4th front - 4
-	toptentacle.PushBack({ 215,37,10,6 }); //5st front - 5
+	toptentacle.PushBack({ 67,22,11,4 }); //horitzontal front - 4
+	toptentacle.PushBack({ 215,37,10,6 }); //5st front down - 5
 	toptentacle.PushBack({ 200,36,9,8 }); //6st front - 6
 	toptentacle.PushBack({ 186,35,7,10 }); //7st front - 7
 	toptentacle.PushBack({ 241,53,7,10 }); //1st back - 8
 	toptentacle.PushBack({ 224,54,9,8 }); //2nd back - 9
 	toptentacle.PushBack({ 208,55,10,6 }); //3rd back - 10
-	toptentacle.PushBack({ 212,96,11,4 }); //4th back - 11
+	toptentacle.PushBack({ 212,96,11,4 }); //horitzontal back - 11
 	toptentacle.PushBack({ 211,77,10,6 }); //5st back - 12
 	toptentacle.PushBack({ 227,76,9,8 }); //6st back - 13
 	toptentacle.PushBack({ 243,75,7,10 }); //7st back - 14
 	toptentacle.loop = false;
-	toptentacle.speed = 0.2f;
+	toptentacle.speed = 0.0f;
 }
 
 ModuleTentacles::~ModuleTentacles()
@@ -45,8 +45,8 @@ bool ModuleTentacles::Start()
 {
 	position.x = App->player->position.x + 10;
 	position.y = App->player->position.y - 43;
-	tentacleposition.x = position.x + 8;
-	tentacleposition.y = position.y;
+	tentacleposition.x = 200;
+	tentacleposition.y = position.y + 10;
 	graphics = App->textures->Load("Sprites_Assets/Player.png");
 	return true;
 }
@@ -63,14 +63,12 @@ update_status ModuleTentacles::Update()
 	current_animationTentacle = &toptentacle;
 	limitTentacles();//tentacle limits
 	tentaclemove();
-	tentacleposition.y = position.y;
 
+	limitArm(position);
 	App->render->Blit(graphics, tentacleposition.x, tentacleposition.y, &(current_animationTentacle->GetCurrentFrame()));
 
 	current_animation = &tentacl;
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-
-	
 	return UPDATE_CONTINUE;
 }
 
@@ -99,21 +97,88 @@ void ModuleTentacles::limitTentacles()
 
 void ModuleTentacles::tentaclemove()
 {
-	if (tentacleposition.x > position.x && tentacleposition.x < position.x + 16)
+	if(tentacleposition.y <= position.y)
 	{
-		toptentacle.current_frame = 0;
+		if (tentacleposition.x == position.x + 1 && tentacleposition.x == position.x)
+		{
+			toptentacle.current_frame = 4;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 2)
+		{
+			toptentacle.current_frame = 5;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 3 || tentacleposition.x == position.x + 4)
+		{
+			toptentacle.current_frame = 6;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 5 || tentacleposition.x == position.x + 6)
+		{
+			toptentacle.current_frame = 7;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 7)
+		{
+			toptentacle.current_frame = 0;
+			tentacleposition.y = position.y - 10;
+		}
+
+		if (tentacleposition.x == position.x + 8 || tentacleposition.x == position.x + 9)
+		{
+			toptentacle.current_frame = 14;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 10 || tentacleposition.x == position.x + 11)
+		{
+			toptentacle.current_frame = 13;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 12)
+		{
+			toptentacle.current_frame = 12;
+			tentacleposition.y = position.y - 4;
+		}
+
+		if (tentacleposition.x == position.x + 13 && tentacleposition.x == position.x + 14)
+		{
+			toptentacle.current_frame = 11;
+			tentacleposition.y = position.y - 4;
+		}
 	}
 
-	else if (tentacleposition.x >= position.x + 16 && tentacleposition.x < position.x + 24)
-	{
-		toptentacle.current_frame = 1;
-	}
-	else if (tentacleposition.x >= position.x -16 && tentacleposition.x < position.x)
-	{
-		toptentacle.current_frame = 8;
-	}
 	else
 	{
-		toptentacle.current_frame = 3;
+
+	}
+}
+
+void ModuleTentacles::limitArm( iPoint pos)
+{
+	if (tentacleposition.x > pos.x + 12 || pos.x < App->player->position.x)
+	{
+		tentacleposition.x = pos.x + 12;
+	}
+
+	if (tentacleposition.x < pos.x + 3 || pos.x > App->player->position.x)
+	{
+		tentacleposition.x = pos.x + 3;
+	}
+
+	if (tentacleposition.y < pos.y - 4)
+	{
+		tentacleposition.y = pos.y - 4;
+	}
+
+	if (tentacleposition.y > pos.y + 3)
+	{
+		tentacleposition.y = pos.y + 3;
 	}
 }

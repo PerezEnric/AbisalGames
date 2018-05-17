@@ -106,13 +106,17 @@ update_status ModulePlayer::Update()
 		
 		//tentacle top
 		App->tentacle->position.x -= tentacle_speed;
+		App->tentacle->tentacleposition.x += tentacle_speed;
+
 		if (App->tentacle->position.x > App->player->position.x)
 		{
 			App->tentacle->position.y -= tentacle_speed;
+			/*App->tentacle->tentacleposition.y += tentacle_speed;*/
 		}
 		else
 		{
 			App->tentacle->position.y += tentacle_speed;
+			/*App->tentacle->tentacleposition.y -= tentacle_speed;*/
 		}
 	}
 
@@ -136,12 +140,12 @@ update_status ModulePlayer::Update()
 
 		//tentacle top
 		App->tentacle->position.y += tentacle_speed;
+		App->tentacle->tentacleposition.y -= tentacle_speed;
 
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		App->tentacle->start = true;
 		if (turbo == false)
 		{
 			position.y += (speed * 2);
@@ -160,14 +164,17 @@ update_status ModulePlayer::Update()
 
 		//tentacle top
 		App->tentacle->position.y -= tentacle_speed;
+		App->tentacle->tentacleposition.y += tentacle_speed;
 
 		if (App->tentacle->position.x - tentacle_speed >= App->player->position.x)
 		{
 			App->tentacle->position.x -= tentacle_speed;
+			App->tentacle->tentacleposition.x += tentacle_speed;
 		}
 		else if (App->tentacle->position.x + tentacle_speed <= App->player->position.x)
 		{
 			App->tentacle->position.x += tentacle_speed;
+			App->tentacle->tentacleposition.x -= tentacle_speed;
 		}
 		
 	}
@@ -184,14 +191,17 @@ update_status ModulePlayer::Update()
 
 		//tentacle top
 		App->tentacle->position.x += tentacle_speed;
+		App->tentacle->tentacleposition.x -= tentacle_speed;
 
 		if (App->tentacle->position.x > App->player->position.x)
 		{
 			App->tentacle->position.y += tentacle_speed;
+			/*App->tentacle->tentacleposition.y -= tentacle_speed;*/
 		}
 		else
 		{
 			App->tentacle->position.y -= tentacle_speed;
+			/*App->tentacle->tentacleposition.y += tentacle_speed;*/
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
