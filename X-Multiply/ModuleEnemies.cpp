@@ -150,25 +150,20 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new EnemyMiddleLittleDorsal(info.x, info.y);
 				queue[i].enemy_life = 10;
 				break;
-			//case ENEMY_TYPES::BALL2:
-			//	enemies[i] = new Enemy_Ball2(info.x, info.y);
-			//	break;
+			case ENEMY_TYPES::MASK:
+				enemies[i] = new Enemy_Mask(info.x, info.y);
+				queue[i].enemy_life = 10;
+				break;
 			case ENEMY_TYPES::SHRIMP:
 				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
 				queue[i].enemy_life = 1;
 				break;
-			//case ENEMY_TYPES::ANEMONE:
-			//	enemies[i] = new Enemy_Anemone(info.x, info.y);
-			//	break;
 			//case ENEMY_TYPES::PU:
 			//	enemies[i] = new Enemy_PU(info.x, info.y);
 			//	break;
 		case ENEMY_TYPES::SPEEDUP:
 			enemies[i] = new PowerUp_SpeedUp(info.x, info.y);
 			break;
-			//case ENEMY_TYPES::BOMB:
-			//	enemies[i] = new Bomb_PowerUp(info.x, info.y);
-			//	break;
 		case ENEMY_TYPES::TENTACLES:
 			enemies[i] = new Tentacles_PowerUp(info.x, info.y);
 			break;

@@ -7,9 +7,8 @@
 #include "EnemyLeftLittleDorsal.h"
 #include "EnemyMiddleDorsal.h"
 #include "EnemyMiddleLittleDorsal.h"
-//#include "Enemy_Ball2.h"
 #include "Enemy_LittleShrimp.h"
-//#include "Enemy_Anemone.h"
+#include "Enemy_Mask.h"
 //#include "Enemy_PU.h"
 #include "PowerUp_SpeedUp.h"
 //#include "Bomb_PowerUp.h"
@@ -30,6 +29,7 @@ enum ENEMY_TYPES
 	MIDDLELITTLEDORSAL,
 	SHRIMP,
 	ANEMONE,
+	MASK,
 	PU,
 	SPEEDUP,
 	BOMB,
