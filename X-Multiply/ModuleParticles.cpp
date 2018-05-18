@@ -15,55 +15,55 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	// Template for a new particle "explosion_shot"
-	explosion_shot.anim.PushBack({ 33, 36, 7, 8 });
-	explosion_shot.anim.PushBack({ 49, 34, 12, 12 });
+	explosion_shot.anim.PushBack({ 760, 764, 7, 8 });
+	explosion_shot.anim.PushBack({ 776, 762, 12, 12 });
 	explosion_shot.anim.loop = false;
 	explosion_shot.anim.speed = 0.2f;
 
 	// Template for a new particle "laser"
-	laser.anim.PushBack({ 64, 39, 16, 3 });
+	laser.anim.PushBack({ 791, 767, 16, 3 });
 	laser.anim.loop = false;
 	laser.anim.speed = 0.3f;
 	laser.speed.x = 10;
 	laser.life = 600;
 
 	// Template for a new particle "explosion"
-	explosion.anim.PushBack({ 0, 160, 24, 23 });
-	explosion.anim.PushBack({ 3, 201, 26, 22 });
-	explosion.anim.PushBack({ 35, 201, 26, 22 });
-	explosion.anim.PushBack({ 66, 196, 44, 32 });
-	explosion.anim.PushBack({ 117, 197, 37, 28 });
-	explosion.anim.PushBack({ 162, 197, 42, 31 });
+	explosion.anim.PushBack({ 727, 888, 24, 23 });
+	explosion.anim.PushBack({ 730, 929, 26, 22 });
+	explosion.anim.PushBack({ 762, 929, 26, 22 });
+	explosion.anim.PushBack({ 793, 924, 44, 32 });
+	explosion.anim.PushBack({ 844, 925, 37, 28 });
+	explosion.anim.PushBack({ 889, 925, 42, 31 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
 	// Template for a new particle "turbo"
 
-	speedpowerup.anim.PushBack({ 139, 145, 18, 14 });
-	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
-	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
-	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
-	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
-	speedpowerup.anim.PushBack({ 165, 145, 24, 13 });
-	speedpowerup.anim.PushBack({ 194, 146, 42, 11 });
+	speedpowerup.anim.PushBack({ 866, 873, 18, 14 });
+	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
+	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
+	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
+	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
+	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
+	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
 	speedpowerup.anim.loop = false;
 	speedpowerup.anim.speed = 0.2f;
 
 	//Enemy shot
 
-	enemy_shot.anim.PushBack({ 47,166,8,8 });
-	enemy_shot.anim.PushBack({ 64,166,8,8 });
-	enemy_shot.anim.PushBack({ 47,181,8,8 });
-	enemy_shot.anim.PushBack({ 64,181,8,8 });
+	enemy_shot.anim.PushBack({ 774,894,8,8 });
+	enemy_shot.anim.PushBack({ 791,909,8,8 });
+	enemy_shot.anim.PushBack({ 774,909,8,8 });
+	enemy_shot.anim.PushBack({ 791,894,8,8 });
 	enemy_shot.anim.speed = 0.2f;
 	enemy_shot.life = 3000;
 
 	//Bomb Power Up
-	bombPU.anim.PushBack({ 92, 177, 15, 4 });
-	bombPU.anim.PushBack({ 117, 176, 14, 8 });
-	bombPU.anim.PushBack({ 143, 172, 12, 12 });
-	bombPU.anim.PushBack({ 162, 170, 9 ,14 });
-	bombPU.anim.PushBack({ 185, 171, 4, 15 });
+	bombPU.anim.PushBack({ 819, 905, 15, 4 });
+	bombPU.anim.PushBack({ 844, 904, 14, 8 });
+	bombPU.anim.PushBack({ 870, 900, 12, 12 });
+	bombPU.anim.PushBack({ 884, 898, 9 ,14 });
+	bombPU.anim.PushBack({ 912, 899, 4, 15 });
 	bombPU.anim.loop = false;
 	bombPU.anim.speed = 0.2f;
 	bombPU.speed = { 2,3 };
@@ -91,7 +91,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Sprites_Assets/Player.png");
+	graphics = App->textures->Load("Sprites_Assets/all_enemies.png");
 
 
 	return true;

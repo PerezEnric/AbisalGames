@@ -25,20 +25,20 @@ ModulePlayer::ModulePlayer()
 	position.y = 10;
 
 	// idle animation
-	idle.PushBack({ 101, 1, 35, 14 });
+	idle.PushBack({ 828, 729, 35, 14 });
 
 	idle.speed = 0.2f;
 
 	//upwards animation
-	up.PushBack({ 54, 2, 34, 11 });
-	up.PushBack({ 6, 4, 35, 12 });
+	up.PushBack({ 782, 730, 34, 11 });
+	up.PushBack({ 733, 732, 35, 12 });
 	up.loop = false;
 	up.speed = 0.1f;
 
 	//downwards animation
 
-	down.PushBack({ 149, 3, 35, 12 });
-	down.PushBack({ 197, 5, 35, 12 });
+	down.PushBack({ 876, 731, 35, 12 });
+	down.PushBack({ 924, 733, 35, 12 });
 	down.loop = false;
 	down.speed = 0.1f;
 }
@@ -52,7 +52,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	destroyed = false;
-	graphics = App->textures->Load("Sprites_Assets/Player.png"); // arcade version
+	graphics = App->textures->Load("Sprites_Assets/all_enemies.png"); // arcade version
 	/*shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 	player_death = App->audio->LoadSoundEffect("Audio_Assets/player_death.wav");
 	font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);*/

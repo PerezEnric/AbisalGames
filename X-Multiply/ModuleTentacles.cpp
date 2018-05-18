@@ -13,26 +13,26 @@ ModuleTentacles::ModuleTentacles()
 	current_animationTentacle = nullptr;
 
 	// idle animation
-	tentacl.PushBack({ 218, 19, 19, 9 });
-	tentacl.PushBack({ 122, 19, 19, 7 });
-	tentacl.PushBack({ 154, 20, 19, 6 });
-	tentacl.PushBack({ 186, 20, 19, 7 });
+	tentacl.PushBack({ 817, 746, 19, 9 });
+	tentacl.PushBack({ 849, 747, 19, 7 });
+	tentacl.PushBack({ 881, 748, 19, 6 });
+	tentacl.PushBack({ 913, 748, 19, 7 });
 	tentacl.speed = 0.2f;
 
-	toptentacle.PushBack({ 6,19,4,11 }); //vertical - 0
-	toptentacle.PushBack({ 21,19,7,10 }); //1st front - 1 
-	toptentacle.PushBack({ 36,20,9,8 });  //2nd front - 2
-	toptentacle.PushBack({ 51,21,10,6 }); //3rd front - 3
-	toptentacle.PushBack({ 67,22,11,4 }); //horitzontal front - 4
+	toptentacle.PushBack({ 733,747,4,11 }); //vertical - 0
+	toptentacle.PushBack({ 748,747,7,10 }); //1st front - 1 
+	toptentacle.PushBack({ 763,748,9,8 });  //2nd front - 2
+	toptentacle.PushBack({ 778,749,10,6 }); //3rd front - 3
+	toptentacle.PushBack({ 794, 750,11,4 }); //horitzontal front - 4
 	toptentacle.loop = false;
 	toptentacle.speed = 0.2f;
 	//toptentacle.PushBack({ 215,37,10,6 }); //5st front down - 5
 	//toptentacle.PushBack({ 200,36,9,8 }); //6st front - 6
 	//toptentacle.PushBack({ 186,35,7,10 }); //7st front - 7
-	toptentacleback.PushBack({ 241,53,7,10 }); //1st back - 8
-	toptentacleback.PushBack({ 224,54,9,8 }); //2nd back - 9
-	toptentacleback.PushBack({ 208,55,10,6 }); //3rd back - 10
-	toptentacleback.PushBack({ 212,96,11,4 }); //horitzontal back - 11
+	toptentacleback.PushBack({ 913,763,7,10 }); //1st back - 8
+	toptentacleback.PushBack({ 927,764,9,8 }); //2nd back - 9
+	toptentacleback.PushBack({ 942,765,10,6 }); //3rd back - 10
+	toptentacleback.PushBack({ 939,824,11,4 }); //horitzontal back - 11
 	toptentacleback.loop = false;
 	toptentacleback.speed = 0.2f;
 	//toptentacle.PushBack({ 211,77,10,6 }); //5st back - 12
@@ -52,7 +52,7 @@ bool ModuleTentacles::Start()
 	hand_down.y = App->player->position.y + 57;
 	tentacleposition.x = position.x + 7;
 	tentacleposition.y = position.y + 10;
-	graphics = App->textures->Load("Sprites_Assets/Player.png");
+	graphics = App->textures->Load("Sprites_Assets/all_enemies.png");
 	return true;
 }
 
