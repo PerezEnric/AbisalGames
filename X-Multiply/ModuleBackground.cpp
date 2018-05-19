@@ -7,7 +7,7 @@
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
-#include "Enemy_Tail.h"
+
 
 
 ModuleBackground::ModuleBackground()
@@ -208,6 +208,8 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 730, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
+	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 770, 290);
+	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 530, 270);
 
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;

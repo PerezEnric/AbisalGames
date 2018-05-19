@@ -4,6 +4,7 @@
 
 #include "Module.h"
 #include "EnemyLeftDorsal.h"
+#include "Enemy_LateralFin.h"
 #include "EnemyLeftLittleDorsal.h"
 #include "EnemyMiddleDorsal.h"
 #include "EnemyMiddleLittleDorsal.h"
@@ -32,6 +33,7 @@ enum ENEMY_TYPES
 	ANEMONE,
 	MASK,
 	TAIL,
+	LATERALFIN,
 	PU,
 	SPEEDUP,
 	BOMB,
