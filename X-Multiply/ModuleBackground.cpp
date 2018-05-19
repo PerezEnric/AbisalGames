@@ -7,8 +7,8 @@
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "Enemy_Tail.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleBackground::ModuleBackground()
 {
@@ -66,11 +66,7 @@ ModuleBackground::ModuleBackground()
 	spawn.w = 99;
 	spawn.h = 45;
 
-	// Sprite of enemy Monster Tail
-	tail2.x = 426;
-	tail2.y = 65;
-	tail2.w = 219;
-	tail2.h = 57;
+	
 }
 
 ModuleBackground::~ModuleBackground()
@@ -95,8 +91,7 @@ bool ModuleBackground::Start()
 	monster_eye = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
 	// Loading Green Worm Spawn
 	greenworm_spawn = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
-	// Loading Monster's Tail
-	monster_tail2 = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
+	
 	// Loading second level music
 	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 	// Playing second level music
@@ -212,6 +207,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 730, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
 
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
@@ -232,7 +228,6 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
 	App->render->Blit(enemy_right_dorsal, 529, 130, &right_dorsal); // right dorsal
-	App->render->Blit(monster_tail2, 1022, 270, &tail2); // monster tail
 	App->render->Blit(greenworm_spawn, 992, 252, &spawn); //green worm spawn
 	
 

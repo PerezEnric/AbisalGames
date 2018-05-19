@@ -154,6 +154,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Mask(info.x, info.y);
 				queue[i].enemy_life = 10;
 				break;
+			case ENEMY_TYPES::TAIL:
+				enemies[i] = new Enemy_Tail(info.x, info.y);
+				queue[i].enemy_life = 30;
+				break;
 			case ENEMY_TYPES::SHRIMP:
 				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
 				queue[i].enemy_life = 1;

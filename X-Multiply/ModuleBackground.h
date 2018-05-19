@@ -39,8 +39,7 @@ public:
 	SDL_Rect eye;
 	SDL_Texture* greenworm_spawn = nullptr;
 	SDL_Rect spawn;
-	SDL_Texture* monster_tail2 = nullptr;
-	SDL_Rect tail2;
+	
 	int move_cont = 0;
 	bool go_back = false;
 

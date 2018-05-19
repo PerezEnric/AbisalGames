@@ -79,6 +79,7 @@
     <ClInclude Include="EnemyMiddleLittleDorsal.h" />
     <ClInclude Include="Enemy_LittleShrimp.h" />
     <ClInclude Include="Enemy_Mask.h" />
+    <ClInclude Include="Enemy_Tail.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="EnemyMiddleLittleDorsal.cpp" />
     <ClCompile Include="Enemy_LittleShrimp.cpp" />
     <ClCompile Include="Enemy_Mask.cpp" />
+    <ClCompile Include="Enemy_Tail.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
