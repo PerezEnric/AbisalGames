@@ -14,6 +14,7 @@ public:
 	EnemyLeftDorsal(int x, int y);
 	~EnemyLeftDorsal() {};
 	void OnCollision(Collider* collider);
+	void Move();
 	int cd = 0;
 	int points = 600;
 	bool CleanUp();

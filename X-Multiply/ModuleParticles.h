@@ -60,7 +60,7 @@ public:
 	Particle enemy_shot;
 	Particle bombPU;
 	Particle explosion_player;
-
+	Particle leftdorsal_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

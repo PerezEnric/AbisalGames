@@ -78,7 +78,7 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	// Loading black background
-	black_background = App->textures->Load("Sprites_Assets/prova.png");
+	black_background = App->textures->Load("Sprites_Assets/background2.png");
 	// Loading Monster's Head
 	monster_head = App->textures->Load("Sprites_Assets/head.png");
 	// Loading Monster's Body
@@ -206,7 +206,6 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 730, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 770, 290);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 530, 270);

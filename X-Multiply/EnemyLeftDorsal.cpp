@@ -29,3 +29,16 @@ bool EnemyLeftDorsal::CleanUp()
 
 	return true;
 }
+
+void EnemyLeftDorsal::Move()
+{
+	LOG("Couldn't do the action");
+	
+	if (cd == 500)
+	{
+		App->particles->AddParticle(App->particles->leftdorsal_shot, position.x - 5, position.y - 100, COLLIDER_ENEMY_SHOT);
+		cd = 0;
+	}
+
+	cd++;
+}

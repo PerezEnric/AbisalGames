@@ -81,6 +81,12 @@ ModuleParticles::ModuleParticles()
 	explosion_player.anim.loop = false;
 	explosion_player.anim.speed = 0.5f;
 
+	// leftdorsal shot
+	leftdorsal_shot.anim.PushBack({ 501, 446, 46, 93 });
+	leftdorsal_shot.anim.PushBack({ 437, 450, 46, 89 });
+	leftdorsal_shot.anim.speed = 0.05f;
+	leftdorsal_shot.life = 1000;
+
 }
 
 ModuleParticles::~ModuleParticles()
