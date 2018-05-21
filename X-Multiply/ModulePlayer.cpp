@@ -103,27 +103,8 @@ update_status ModulePlayer::Update()
 		{
 			position.x += 3;
 		}
-		
-		/*App->tentacle->gofront = true;*/
-
-		//tentacle top
-		App->tentacle->position.x -= tentacle_speed;
-
-		if (App->tentacle->position.x > App->player->position.x)
-		{
-			App->tentacle->position.y -= tentacle_speed;
-			App->tentacle->hand_down.y += tentacle_speed;
-			/*App->tentacle->tentacleposition.y += tentacle_speed;*/
-		}
-		else
-		{
-			App->tentacle->position.y += tentacle_speed;
-			App->tentacle->hand_down.y -= tentacle_speed;
-			/*App->tentacle->tentacleposition.y -= tentacle_speed;*/
-		}
 	}
 
-	//App->tentacle->gofront = false;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
@@ -143,10 +124,6 @@ update_status ModulePlayer::Update()
 			current_animation = &up;
 		}
 
-		//tentacle top
-		App->tentacle->position.y -= tentacle_speed;//change sign
-		App->tentacle->hand_down.y += tentacle_speed;
-		/*App->tentacle->tentacleposition.y -= tentacle_speed;*/
 
 	}
 
@@ -167,20 +144,6 @@ update_status ModulePlayer::Update()
 			down.Reset();
 			current_animation = &down;
 		}
-
-		//tentacle to
-		App->tentacle->position.y -= tentacle_speed;
-		App->tentacle->hand_down.y += tentacle_speed;//chhange sign
-		/*App->tentacle->tentacleposition.y += tentacle_speed;*/
-
-		if (App->tentacle->position.x - tentacle_speed >= App->player->position.x)
-		{
-			App->tentacle->position.x -= tentacle_speed;
-		}
-		else if (App->tentacle->position.x + tentacle_speed <= App->player->position.x)
-		{
-			App->tentacle->position.x += tentacle_speed;
-		}
 		
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
@@ -194,25 +157,8 @@ update_status ModulePlayer::Update()
 			position.x -= 3;
 		}
 
-		//tentacle top
-		/*App->tentacle->goback = true;*/
-		App->tentacle->position.x += tentacle_speed;
-
-		if (App->tentacle->position.x > App->player->position.x)
-		{
-			App->tentacle->position.y += tentacle_speed;
-			App->tentacle->hand_down.y -= tentacle_speed;
-			/*App->tentacle->tentacleposition.y -= tentacle_speed;*/
-		}
-		else
-		{
-			App->tentacle->position.y -= tentacle_speed;
-			App->tentacle->hand_down.y += tentacle_speed;
-			/*App->tentacle->tentacleposition.y += tentacle_speed;*/
-		}
 	}
 
-	/*App->tentacle->goback = false;*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
 	{
