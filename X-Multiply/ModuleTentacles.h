@@ -18,21 +18,25 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void limitTentacles();
-	void limitArm(iPoint);
-	/*void tentaclemove();*/
+	void limitArm(int*,int*,iPoint);
+	void tentaclemove(int*, int*, iPoint);
+	
 
 public:
 	SDL_Texture* graphics = nullptr;
 	Animation tentacl;
 	Animation* current_animation = nullptr;
 	iPoint position;
-	
-	Animation toptentacle;
-	Animation toptentacleback;
-	Animation* current_animationTentacle = nullptr;
-	iPoint tentacleposition;
 	iPoint hand_down;
-	bool gofront = false;
-	bool goback = false;
+
+public:
+	SDL_Rect arm0, arm1, arm2, arm3, arm4, arm5, arm6, arm7, arm8, arm9, arm10, arm11, arm12, arm13, arm14;
+
+public:
+	void movetentacle();
+	float cd = 0;
+	iPoint posArm0, posArm1, posArm2, posArm3, posArm4;
+
+
 };
 #endif

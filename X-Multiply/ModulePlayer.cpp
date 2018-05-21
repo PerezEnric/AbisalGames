@@ -108,7 +108,6 @@ update_status ModulePlayer::Update()
 
 		//tentacle top
 		App->tentacle->position.x -= tentacle_speed;
-		App->tentacle->tentacleposition.x += tentacle_speed;
 
 		if (App->tentacle->position.x > App->player->position.x)
 		{
@@ -177,12 +176,10 @@ update_status ModulePlayer::Update()
 		if (App->tentacle->position.x - tentacle_speed >= App->player->position.x)
 		{
 			App->tentacle->position.x -= tentacle_speed;
-			App->tentacle->tentacleposition.x += tentacle_speed;
 		}
 		else if (App->tentacle->position.x + tentacle_speed <= App->player->position.x)
 		{
 			App->tentacle->position.x += tentacle_speed;
-			App->tentacle->tentacleposition.x -= tentacle_speed;
 		}
 		
 	}
@@ -200,7 +197,6 @@ update_status ModulePlayer::Update()
 		//tentacle top
 		/*App->tentacle->goback = true;*/
 		App->tentacle->position.x += tentacle_speed;
-		App->tentacle->tentacleposition.x -= tentacle_speed;
 
 		if (App->tentacle->position.x > App->player->position.x)
 		{
