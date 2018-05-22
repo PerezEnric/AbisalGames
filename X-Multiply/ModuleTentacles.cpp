@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleInput.h"
+#include "ModuleParticles.h"
 
 
 ModuleTentacles::ModuleTentacles()
@@ -25,6 +26,7 @@ ModuleTentacles::ModuleTentacles()
 	 arm0.y = 747;
 	 arm0.w = 4;
 	 arm0.h = 11;
+
 	//1st front - 1 
 	arm1.x = 748;
 	arm1.y = 747;
@@ -100,6 +102,7 @@ ModuleTentacles::ModuleTentacles()
 	arm15.y = 747;
 	arm15.w = 4;
 	arm15.h = 11;
+
 }
 
 ModuleTentacles::~ModuleTentacles()
@@ -121,7 +124,7 @@ bool ModuleTentacles::Start()
 	posArm0.x = posArm1.x = posArm2.x = posArm3.x = posArm4.x = App->player->position.x;
 
 	posArm10.x = posArm11.x = posArm12.x = posArm13.x = posArm14.x = App->player->position.x + 10;
-	posArm10.y = App->player->position.y + 12;
+	posArm10.y = App->player->position.y + 8;
 	posArm11.y = posArm10.y + 8;
 	posArm12.y = posArm11.y + 8;
 	posArm13.y = posArm12.y + 8;
@@ -147,7 +150,7 @@ update_status ModuleTentacles::Update()
 	posArm4.y = App->player->position.y - 40;
 
 	posArm10.x = posArm11.x = posArm12.x = posArm13.x = posArm14.x = App->player->position.x + 10;
-	posArm10.y = App->player->position.y + 12;
+	posArm10.y = App->player->position.y + 8;
 	posArm11.y = posArm10.y + 8;
 	posArm12.y = posArm11.y + 8;
 	posArm13.y = posArm12.y + 8;
@@ -194,7 +197,7 @@ void ModuleTentacles::movetentacle()
 		posArm2.y = posArm1.y + 1;
 		posArm3.y = posArm2.y + 2;
 		posArm4.y = posArm3.y + 6;
-		position.y = posArm4.y + 6;
+		position.y = posArm4.y + 4;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
@@ -212,7 +215,7 @@ void ModuleTentacles::movetentacle()
 		posArm12.y = posArm11.y + 1;
 		posArm13.y = posArm12.y - 5;
 		posArm14.y = posArm13.y - 8;
-		hand_down.y = posArm14.y - 6;
+		hand_down.y = posArm14.y - 3;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
@@ -232,7 +235,7 @@ void ModuleTentacles::movetentacle()
 		posArm2.y = posArm1.y + 1;
 		posArm3.y = posArm2.y + 2;
 		posArm4.y = posArm3.y + 6;
-		position.y = posArm4.y + 6;
+		position.y = posArm4.y + 4;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
@@ -250,7 +253,7 @@ void ModuleTentacles::movetentacle()
 		posArm12.y = posArm11.y + 1;
 		posArm13.y = posArm12.y - 5;
 		posArm14.y = posArm13.y - 8;
-		hand_down.y = posArm14.y - 6;
+		hand_down.y = posArm14.y - 3;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
@@ -811,7 +814,7 @@ void ModuleTentacles::movetentacle()
 		posArm2.y = posArm1.y;
 		posArm3.y = posArm2.y + 4;
 		posArm4.y = posArm3.y + 7;
-		position.y = posArm4.y + 7;
+		position.y = posArm4.y + 5;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm2);
@@ -836,5 +839,13 @@ void ModuleTentacles::movetentacle()
 		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm3);
 		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm2);
 		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm1);
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
+	{
+
+		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
+		/*App->audio->PlaySoundEffect(shot_particle);*/
 	}
 }
