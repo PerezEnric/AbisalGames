@@ -218,7 +218,25 @@ bool ModuleBackground::Start()
 
 	return ret;
 }
-
+bool ModuleBackground::CleanUp()
+{
+	bool ret = true;
+	// Loading black background
+	black_background = nullptr;
+	// Loading Monster's Head
+	monster_head = nullptr;
+	// Loading Monster's Body
+	monster_body = nullptr;
+	// Loading Monster's Tail
+	monster_tail = nullptr;
+	// Loading Monster's right dorsal
+	enemy_right_dorsal = nullptr;
+	// Loading Monster's mini boss eye
+	monster_eye = nullptr;
+	// Loading Green Worm Spawn
+	greenworm_spawn = nullptr;
+	return ret;
+}
 // Update: draw background
 update_status ModuleBackground::Update()
 {

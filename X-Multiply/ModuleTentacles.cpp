@@ -20,22 +20,6 @@ ModuleTentacles::ModuleTentacles()
 	tentacl.PushBack({ 913, 748, 19, 7 });
 	tentacl.speed = 0.2f;
 
-	/*tentaclearm.PushBack({ 733,747,4,11 }); *///vertical - 0
-	//toptentacle.PushBack({ 748,747,7,10 }); //1st front - 1 
-	//toptentacle.PushBack({ 763,748,9,8 });  //2nd front - 2
-	//toptentacle.PushBack({ 778,749,10,6 }); //3rd front - 3
-	//toptentacle.PushBack({ 794, 750,11,4 }); //horitzontal front - 4
-	//toptentacle.PushBack({ 215,37,10,6 }); //5st front down - 5
-	//toptentacle.PushBack({ 200,36,9,8 }); //6st front - 6
-	//toptentacle.PushBack({ 186,35,7,10 }); //7st front - 7
-	//toptentacleback.PushBack({ 913,763,7,10 }); //1st back - 8
-	//toptentacleback.PushBack({ 927,764,9,8 }); //2nd back - 9
-	//toptentacleback.PushBack({ 942,765,10,6 }); //3rd back - 10
-	//toptentacleback.PushBack({ 939,824,11,4 }); //horitzontal back - 11
-	//toptentacle.PushBack({ 211,77,10,6 }); //5st back - 12
-	//toptentacle.PushBack({ 227,76,9,8 }); //6st back - 13
-	//toptentacle.PushBack({ 243,75,7,10 }); //7st back - 14
-
 	//vertical arm
 	 arm0.x = 733;
 	 arm0.y = 747;
@@ -62,33 +46,33 @@ ModuleTentacles::ModuleTentacles()
 	arm4.w = 11;
 	arm4.h = 4;
 	//5st front down - 5
-	arm5.x = 215;
-	arm5.y = 37;
+	arm5.x = 942;
+	arm5.y = 765;
 	arm5.w = 10;
 	arm5.h = 6;
 	//6st front - 6
-	arm6.x = 200;
-	arm6.y = 36;
+	arm6.x = 927;
+	arm6.y = 764;
 	arm6.w = 9;
 	arm6.h = 8;
 	//7st front - 7
-	arm7.x = 186;
-	arm7.y = 35;
+	arm7.x = 913;
+	arm7.y = 763;
 	arm7.w = 7;
 	arm7.h = 10;
 	//1st back - 8
-	arm8.x = 913;
-	arm8.y = 763;
+	arm8.x = 968;
+	arm8.y = 781;
 	arm8.w = 7;
 	arm8.h = 10;
 	//2nd back - 9
-	arm9.x = 927;
-	arm9.y = 764;
+	arm9.x = 951;
+	arm9.y = 782;
 	arm9.w = 9;
 	arm9.h = 8;
 	//3rd back - 10
-	arm10.x = 942;
-	arm10.y = 765;
+	arm10.x = 935;
+	arm10.y = 783;
 	arm10.w = 10;
 	arm10.h = 6;
 	//horitzontal back - 11
@@ -97,25 +81,25 @@ ModuleTentacles::ModuleTentacles()
 	arm11.w = 11;
 	arm11.h = 4;
 	//5st back - 12
-	arm12.x = 211;
-	arm12.y = 77;
+	arm12.x = 938;
+	arm12.y = 805;
 	arm12.w = 10;
 	arm12.h = 6;
 	//6st back - 13
-	arm13.x = 227;
-	arm13.y = 76;
+	arm13.x = 954;
+	arm13.y = 804;
 	arm13.w = 9;
 	arm13.h = 8;
 	//7st back - 14
-	arm14.x = 243;
-	arm14.y = 75;
+	arm14.x = 970;
+	arm14.y = 803;
 	arm14.w = 7;
 	arm14.h = 10;
 	// vertical down
-	arm14.x = 233;
-	arm14.y = 94;
-	arm14.w = 4;
-	arm14.h = 11;
+	arm15.x = 723;
+	arm15.y = 747;
+	arm15.w = 4;
+	arm15.h = 11;
 }
 
 ModuleTentacles::~ModuleTentacles()
@@ -137,7 +121,7 @@ bool ModuleTentacles::Start()
 	posArm0.x = posArm1.x = posArm2.x = posArm3.x = posArm4.x = App->player->position.x;
 
 	posArm10.x = posArm11.x = posArm12.x = posArm13.x = posArm14.x = App->player->position.x + 10;
-	posArm10.y = App->player->position.y + 14;
+	posArm10.y = App->player->position.y + 12;
 	posArm11.y = posArm10.y + 8;
 	posArm12.y = posArm11.y + 8;
 	posArm13.y = posArm12.y + 8;
@@ -155,18 +139,6 @@ update_status ModuleTentacles::Update()
 {
 	hand_down.x = position.x;
 	
-	/*current_animationTentacle = &toptentacle;
-	if (gofront == true)
-	{
-		current_animationTentacle = &toptentacle;
-		toptentacleback.Reset();
-	}
-
-	else if (goback == true)
-	{
-		current_animationTentacle = &toptentacleback;
-		toptentacle.Reset();
-	}*/
 	posArm0.x = posArm1.x = posArm2.x = posArm3.x = posArm4.x = App->player->position.x + 10;
 	posArm0.y = App->player->position.y - 8;
 	posArm1.y = App->player->position.y - 16;
@@ -175,7 +147,7 @@ update_status ModuleTentacles::Update()
 	posArm4.y = App->player->position.y - 40;
 
 	posArm10.x = posArm11.x = posArm12.x = posArm13.x = posArm14.x = App->player->position.x + 10;
-	posArm10.y = App->player->position.y + 14;
+	posArm10.y = App->player->position.y + 12;
 	posArm11.y = posArm10.y + 8;
 	posArm12.y = posArm11.y + 8;
 	posArm13.y = posArm12.y + 8;
@@ -212,150 +184,149 @@ void ModuleTentacles::movetentacle()
 	{
 		cd = -39;
 
-		posArm1.x = posArm0.x;
-		posArm2.x = posArm1.x;
-		posArm3.x = posArm2.x;
-		posArm4.x = posArm3.x;
-		position.x = posArm4.x - 4;	
+		posArm1.x = posArm0.x - 5;
+		posArm2.x = posArm1.x - 9;
+		posArm3.x = posArm2.x - 6;
+		posArm4.x = posArm3.x - 5;
+		position.x = posArm4.x - 10;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
-		position.y = posArm4.y + 4;
+		posArm1.y = posArm0.y - 5;
+		posArm2.y = posArm1.y + 1;
+		posArm3.y = posArm2.y + 2;
+		posArm4.y = posArm3.y + 6;
+		position.y = posArm4.y + 6;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
-		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12); // no es veu
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14); // no es veu
+		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12);
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13);
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14);
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x - 4;
+		posArm11.x = posArm10.x - 5;
+		posArm12.x = posArm11.x - 8;
+		posArm13.x = posArm12.x - 6;
+		posArm14.x = posArm13.x - 6;
+		hand_down.x = posArm14.x - 10;
 
 		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 4;
+		posArm12.y = posArm11.y + 1;
+		posArm13.y = posArm12.y - 5;
+		posArm14.y = posArm13.y - 8;
+		hand_down.y = posArm14.y - 6;
 
-		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm0);
-		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm9);
-		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm12); // no es veu
-		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm13); // no es veu
-		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm14); // no es veu
-
+		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
+		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
+		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm10);
+		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm9);
+		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm8);
 	}
 	else if (cd < -35)
 	{
-		posArm1.x = posArm0.x;
-		posArm2.x = posArm1.x;
-		posArm3.x = posArm2.x;
-		posArm4.x = posArm3.x;
-		position.x = posArm4.x - 4;
+		posArm1.x = posArm0.x - 5;
+		posArm2.x = posArm1.x - 9;
+		posArm3.x = posArm2.x - 6;
+		posArm4.x = posArm3.x - 5;
+		position.x = posArm4.x - 10;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
-		position.y = posArm4.y + 4;
+		posArm1.y = posArm0.y - 5;
+		posArm2.y = posArm1.y + 1;
+		posArm3.y = posArm2.y + 2;
+		posArm4.y = posArm3.y + 6;
+		position.y = posArm4.y + 6;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
-		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12); // no es veu
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14); // no es veu
+		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12); 
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13); 
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14); 
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x - 4;
+		posArm11.x = posArm10.x - 5;
+		posArm12.x = posArm11.x - 8;
+		posArm13.x = posArm12.x - 6;
+		posArm14.x = posArm13.x - 6;
+		hand_down.x = posArm14.x - 10;
 
 		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 4;
+		posArm12.y = posArm11.y + 1;
+		posArm13.y = posArm12.y - 5;
+		posArm14.y = posArm13.y - 8;
+		hand_down.y = posArm14.y - 6;
 
-		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm0);
-		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm9);
-		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm12); // no es veu
-		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm13); // no es veu
-		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm14); // no es veu
+		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
+		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
+		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm10);
+		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm9);
+		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm8);
 	}
 	else if (cd < -30) 
 	{
-		posArm1.x = posArm0.x;
-		posArm2.x = posArm1.x;
-		posArm3.x = posArm2.x;
-		posArm4.x = posArm3.x;
-		position.x = posArm4.x - 14;
+		posArm1.x = posArm0.x - 6;
+		posArm2.x = posArm1.x - 8;
+		posArm3.x = posArm2.x - 9;
+		posArm4.x = posArm3.x - 7;
+		position.x = posArm4.x - 11;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
-		position.y = posArm4.y + 2;
+		posArm1.y = posArm0.y - 7;
+		posArm2.y = posArm1.y - 1;
+		posArm3.y = posArm2.y + 2;
+		posArm4.y = posArm3.y + 5;
+		position.y = posArm4.y + 5;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
 		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm11);
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm12); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm13); // no es veu
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm12); 
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm13); 
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x - 14;
+		posArm11.x = posArm10.x - 7;
+		posArm12.x = posArm11.x - 7;
+		posArm13.x = posArm12.x - 10;
+		posArm14.x = posArm13.x - 7;
+		hand_down.x = posArm14.x - 11;
 
 		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 2;
+		posArm12.y = posArm11.y + 5;
+		posArm13.y = posArm12.y - 3;
+		posArm14.y = posArm13.y - 5;
+		hand_down.y = posArm14.y - 5;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
 		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm11);
-		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm10); // no es veu
-		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm9); // no es veu
+		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm10); 
+		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm9); 
 	}
 	else if (cd < -25)
 	{
 		posArm1.x = posArm0.x - 3;
 		posArm2.x = posArm1.x - 7;
 		posArm3.x = posArm2.x - 11;
-		posArm4.x = posArm3.x - 11;
-		position.x = posArm4.x - 16;
+		posArm4.x = posArm3.x - 9;
+		position.x = posArm4.x - 12;
 
 		posArm1.y = posArm0.y - 6;
 		posArm2.y = posArm1.y - 3;
 		posArm3.y = posArm2.y;
 		posArm4.y = posArm3.y + 2;
-		position.y = posArm4.y;
+		position.y = posArm4.y + 2;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm8);
 		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm10);
 		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm11);
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm12); // no es veu
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm12); 
 
-		posArm11.x = posArm10.x - 3;
+		posArm11.x = posArm10.x - 5;
 		posArm12.x = posArm11.x - 7;
-		posArm13.x = posArm12.x - 11;
-		posArm14.x = posArm13.x - 11;
+		posArm13.x = posArm12.x - 7;
+		posArm14.x = posArm13.x - 7;
 		hand_down.x = posArm14.x - 16;
 
-		posArm11.y = posArm10.y + 6;
-		posArm12.y = posArm11.y + 3;
-		posArm13.y = posArm12.y;
+		posArm11.y = posArm10.y + 8;
+		posArm12.y = posArm11.y + 10;
+		posArm13.y = posArm12.y + 2;
 		posArm14.y = posArm13.y - 2;
-		hand_down.y = posArm14.y;
+		hand_down.y = posArm14.y - 2;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm14);
@@ -369,7 +340,7 @@ void ModuleTentacles::movetentacle()
 		posArm1.x = posArm0.x - 3;
 		posArm2.x = posArm1.x - 6;
 		posArm3.x = posArm2.x - 9;
-		posArm4.x = posArm3.x - 11;
+		posArm4.x = posArm3.x - 10;
 		position.x = posArm4.x - 15;
 
 		posArm1.y = posArm0.y - 8;
@@ -392,9 +363,9 @@ void ModuleTentacles::movetentacle()
 
 		posArm11.y = posArm10.y + 8;
 		posArm12.y = posArm11.y + 6;
-		posArm13.y = posArm12.y + 4;
-		posArm14.y = posArm13.y + 1;
-		hand_down.y = posArm14.y + 1;
+		posArm13.y = posArm12.y + 5;
+		posArm14.y = posArm13.y + 2;
+		hand_down.y = posArm14.y - 1;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm14);
@@ -431,7 +402,7 @@ void ModuleTentacles::movetentacle()
 		posArm11.y = posArm10.y + 8;
 		posArm12.y = posArm11.y + 8;
 		posArm13.y = posArm12.y + 6;
-		posArm14.y = posArm13.y + 4;
+		posArm14.y = posArm13.y + 7;
 		hand_down.y = posArm14.y + 2;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
@@ -657,10 +628,10 @@ void ModuleTentacles::movetentacle()
 		posArm14.x = posArm13.x + 6;
 		hand_down.x = posArm14.x - 5;
 
-		posArm11.y = posArm10.y - 8;
-		posArm12.y = posArm11.y - 8;
-		posArm13.y = posArm12.y - 6;
-		posArm14.y = posArm13.y - 4;
+		posArm11.y = posArm10.y + 8;
+		posArm12.y = posArm11.y + 8;
+		posArm13.y = posArm12.y + 6;
+		posArm14.y = posArm13.y + 4;
 		hand_down.y = posArm14.y;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
@@ -734,12 +705,12 @@ void ModuleTentacles::movetentacle()
 		posArm12.x = posArm11.x + 6;
 		posArm13.x = posArm12.x + 9;
 		posArm14.x = posArm13.x + 9;
-		hand_down.x = posArm14.x - 1;
+		hand_down.x = posArm14.x - 3;
 
 		posArm11.y = posArm10.y + 6;
-		posArm12.y = posArm11.y + 3;
-		posArm13.y = posArm12.y;
-		posArm14.y = posArm13.y - 2;
+		posArm12.y = posArm11.y + 8;
+		posArm13.y = posArm12.y + 2;
+		posArm14.y = posArm13.y - 3;
 		hand_down.y = posArm14.y - 4;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
@@ -751,35 +722,35 @@ void ModuleTentacles::movetentacle()
 
 	else if (cd < 35)
 	{
-		posArm1.x = posArm0.x ;
-		posArm2.x = posArm1.x ;
-		posArm3.x = posArm2.x ;
-		posArm4.x = posArm3.x ;
-		position.x = posArm4.x + 1;
+		posArm1.x = posArm0.x + 2;
+		posArm2.x = posArm1.x + 6;
+		posArm3.x = posArm2.x + 9;
+		posArm4.x = posArm3.x + 7;
+		position.x = posArm4.x - 5;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
+		posArm1.y = posArm0.y - 7;
+		posArm2.y = posArm1.y;
+		posArm3.y = posArm2.y + 1;
+		posArm4.y = posArm3.y + 2;
 		position.y = posArm4.y + 6;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm2);
 		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm4);
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm5); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm6); // no es veu
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm5); 
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm6); 
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x + 1;
+		posArm11.x = posArm10.x + 2;
+		posArm12.x = posArm11.x + 6;
+		posArm13.x = posArm12.x + 9;
+		posArm14.x = posArm13.x + 7;
+		hand_down.x = posArm14.x - 5;
 
-		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 6;
+		posArm11.y = posArm10.y + 9;
+		posArm12.y = posArm11.y + 4;
+		posArm13.y = posArm12.y - 3;
+		posArm14.y = posArm13.y - 4;
+		hand_down.y = posArm14.y - 4;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm6);
@@ -790,80 +761,80 @@ void ModuleTentacles::movetentacle()
 
 	else if (cd < 40)
 	{
-		posArm1.x = posArm0.x;
-		posArm2.x = posArm1.x;
-		posArm3.x = posArm2.x;
-		posArm4.x = posArm3.x;
-		position.x = posArm4.x + 3;
+		posArm1.x = posArm0.x + 2;
+		posArm2.x = posArm1.x + 6;
+		posArm3.x = posArm2.x + 9;
+		posArm4.x = posArm3.x + 7;
+		position.x = posArm4.x - 8;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
-		position.y = posArm4.y + 8;
+		posArm1.y = posArm0.y - 7;
+		posArm2.y = posArm1.y;
+		posArm3.y = posArm2.y + 4;
+		posArm4.y = posArm3.y + 7;
+		position.y = posArm4.y + 7;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm2);
-		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm5); // no es veu
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm6); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm7); // no es veu
+		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm5);
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm6); 
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm7);
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x + 3;
+		posArm11.x = posArm10.x + 2;
+		posArm12.x = posArm11.x + 6;
+		posArm13.x = posArm12.x + 9;
+		posArm14.x = posArm13.x + 7;
+		hand_down.x = posArm14.x - 8;
 
-		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 8;
+		posArm11.y = posArm10.y + 9;
+		posArm12.y = posArm11.y + 2;
+		posArm13.y = posArm12.y - 5;
+		posArm14.y = posArm13.y - 9;
+		hand_down.y = posArm14.y - 5;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm6);
-		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm3); // no es veu
-		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm2); // no es veu
-		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm1); // no es veu
+		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm3); 
+		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm2); 
+		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm1); 
 	}
 	else if (cd >= 40)
 	{
 		cd = 39;
 
-		posArm1.x = posArm0.x;
-		posArm2.x = posArm1.x;
-		posArm3.x = posArm2.x;
-		posArm4.x = posArm3.x;
-		position.x = posArm4.x + 3;
+		posArm1.x = posArm0.x + 2;
+		posArm2.x = posArm1.x + 6;
+		posArm3.x = posArm2.x + 9;
+		posArm4.x = posArm3.x + 7;
+		position.x = posArm4.x - 8;
 
-		posArm1.y = posArm0.y - 8;
-		posArm2.y = posArm1.y - 8;
-		posArm3.y = posArm2.y - 8;
-		posArm4.y = posArm3.y - 8;
-		position.y = posArm4.y + 8;
+		posArm1.y = posArm0.y - 7;
+		posArm2.y = posArm1.y;
+		posArm3.y = posArm2.y + 4;
+		posArm4.y = posArm3.y + 7;
+		position.y = posArm4.y + 7;
 
 		App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
 		App->render->Blit(graphics, posArm1.x, posArm1.y, &arm2);
-		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm5); // no es veu
-		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm6); // no es veu
-		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm7); // no es veu
+		App->render->Blit(graphics, posArm2.x, posArm2.y, &arm5);
+		App->render->Blit(graphics, posArm3.x, posArm3.y, &arm6);
+		App->render->Blit(graphics, posArm4.x, posArm4.y, &arm7);
 
-		posArm11.x = posArm10.x;
-		posArm12.x = posArm11.x;
-		posArm13.x = posArm12.x;
-		posArm14.x = posArm13.x;
-		hand_down.x = posArm14.x + 3;
+		posArm11.x = posArm10.x + 2;
+		posArm12.x = posArm11.x + 6;
+		posArm13.x = posArm12.x + 9;
+		posArm14.x = posArm13.x + 7;
+		hand_down.x = posArm14.x - 8;
 
-		posArm11.y = posArm10.y + 8;
-		posArm12.y = posArm11.y + 8;
-		posArm13.y = posArm12.y + 8;
-		posArm14.y = posArm13.y + 8;
-		hand_down.y = posArm14.y - 8;
+		posArm11.y = posArm10.y + 9;
+		posArm12.y = posArm11.y + 2;
+		posArm13.y = posArm12.y - 5;
+		posArm14.y = posArm13.y - 9;
+		hand_down.y = posArm14.y - 5;
 
 		App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
 		App->render->Blit(graphics, posArm11.x, posArm11.y, &arm6);
-		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm3); // no es veu
-		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm2); // no es veu
-		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm1); // no es veu
+		App->render->Blit(graphics, posArm12.x, posArm12.y, &arm3);
+		App->render->Blit(graphics, posArm13.x, posArm13.y, &arm2);
+		App->render->Blit(graphics, posArm14.x, posArm14.y, &arm1);
 	}
 }
