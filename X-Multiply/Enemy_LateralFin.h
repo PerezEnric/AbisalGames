@@ -6,9 +6,6 @@
 class Enemy_LateralFin : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
-	int original_y = 0;
 	Animation latfin;
 	int cd = 0;
 	int points = 400;
@@ -20,7 +17,6 @@ public:
 	void Move();
 	void OnCollision(Collider* collider);
 	bool CleanUp();
-	int enemy_life = 2;
 };
 
 #endif //  __Enemy_LateralFin_H__

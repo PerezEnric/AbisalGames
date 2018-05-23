@@ -6,8 +6,6 @@
 class Enemy_Tail : public Enemy
 {
 private:
-	float wave = -1.0f;
-	
 	Animation tail_fall;
 	int points = 400;
 	bool deadtail = false;

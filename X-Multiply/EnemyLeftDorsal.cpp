@@ -9,7 +9,6 @@ EnemyLeftDorsal::EnemyLeftDorsal(int x, int y) : Enemy(x, y)
 {
 	leftdorsal.PushBack({ 47, 423, 63, 99 });
 	animation = &leftdorsal;
-	original_y = y;
 	collider = App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	/*leftdorsal_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
 }
@@ -24,7 +23,7 @@ void EnemyLeftDorsal::OnCollision(Collider* collider)
 bool EnemyLeftDorsal::CleanUp()
 {
 	LOG("Freeing enemy audio");
-	App->audio->UnloadSoundEffect(leftdorsal_death);
+	//App->audio->UnloadSoundEffect(leftdorsal_death);
 	shrimp_death = nullptr;
 
 	return true;

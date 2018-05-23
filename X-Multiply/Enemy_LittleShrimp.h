@@ -20,7 +20,6 @@ public:
 	void Move();
 	void OnCollision(Collider* collider);
 	bool CleanUp();
-	int enemy_life = 2;
 };
 
 #endif //  __Enemy_LittleShrimp_H__

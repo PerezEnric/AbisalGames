@@ -8,18 +8,15 @@ class EnemyLeftDorsal : public Enemy
 private:
 
 	Animation leftdorsal;
-	int original_y;
+	int cd = 0;
+	int points = 600;
 public:
 
 	EnemyLeftDorsal(int x, int y);
 	~EnemyLeftDorsal() {};
 	void OnCollision(Collider* collider);
 	void Move();
-	int cd = 0;
-	int points = 600;
 	bool CleanUp();
-	int enemy_life = 3;
-	bool alive = true;
 };
 
 #endif //  __EnemyLeftDorsal_H__

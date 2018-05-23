@@ -36,35 +36,23 @@ ModuleBackground::ModuleBackground()
 	tail.w = 364;
 	tail.h = 186;
 
-	// Sprite of enemy left dorsal
-	/*left_dorsal.x = 22;
-	left_dorsal.y = 21;
-	left_dorsal.w = 63;
-	left_dorsal.h = 99;*/
-
-	// Sprite of enemy middle dorsal
-	/*middle_dorsal.x = 168;
-	middle_dorsal.y = 423;
-	middle_dorsal.w = 70;
-	middle_dorsal.h = 110;*/
-
 	// Sprite of enemy right dorsal
-	right_dorsal.x = 282;
-	right_dorsal.y = 411;
-	right_dorsal.w = 109;
-	right_dorsal.h = 108;
+	parts.x = 282;
+	parts.y = 411;
+	parts.w = 109;
+	parts.h = 108;
 
 	// Sprite of enemy monster eye
-	eye.x = 310;
-	eye.y = 195;
-	eye.w = 86;
-	eye.h = 69;
+	parts.x = 310;
+	parts.y = 195;
+	parts.w = 86;
+	parts.h = 69;
 
 	// Sprite of Green Worm Spawn
-	spawn.x = 173;
-	spawn.y = 313;
-	spawn.w = 99;
-	spawn.h = 45;
+	parts.x = 173;
+	parts.y = 313;
+	parts.w = 99;
+	parts.h = 45;
 
 	
 }
@@ -85,18 +73,9 @@ bool ModuleBackground::Start()
 	monster_body = App->textures->Load("Sprites_Assets/body.png");
 	// Loading Monster's Tail
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
-	// Loading Monster's right dorsal
-	enemy_right_dorsal = App->textures->Load("Sprites_Assets/all_enemies.png");
-	// Loading Monster's mini boss eye
-	monster_eye = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
-	// Loading Green Worm Spawn
-	greenworm_spawn = App->textures->Load("Sprites_Assets/Enemies/all_enemies.png");
+	// Loading Monster's right dorsal && Loading Green Worm Spawn && Loading Monster's mini boss eye
+	enemy_parts = App->textures->Load("Sprites_Assets/all_enemies.png");
 	
-	// Loading second level music
-	//secondlvlmusic = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
-	// Playing second level music
-	//App->audio->PlayMusic(secondlvlmusic);
-
 	// Head colliders
 	App->collision->AddCollider({ 182, 157, 30, 30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 242, 148, 12, 10 }, COLLIDER_WALL);
@@ -144,13 +123,8 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 747, 165, 24, 10 }, COLLIDER_ENEMY); // monster eye
 	App->collision->AddCollider({ 760, 162, 24, 10 }, COLLIDER_ENEMY); // monster eye
 
-	// Dorsal fin colliders
 
-	App->enemies->AddEnemy(ENEMY_TYPES::LEFTLITTLEDORSAL, 452, 124);
-	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
-	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
+	//Dorsal Fin colliders
 
 	//App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
 	//App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
@@ -209,7 +183,13 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 770, 290);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 530, 270);
+	App->enemies->AddEnemy(ENEMY_TYPES::LEFTLITTLEDORSAL, 452, 124);
+	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
+	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
+	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
 
+
+	//Camera
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
 	App->render->back_limit -= 201;//inicial limit position
@@ -220,21 +200,18 @@ bool ModuleBackground::Start()
 }
 bool ModuleBackground::CleanUp()
 {
+	LOG("Unloading second level scene");
 	bool ret = true;
-	// Loading black background
+
+	App->textures->Unload(black_background);
 	black_background = nullptr;
-	// Loading Monster's Head
+	App->textures->Unload(monster_head);
 	monster_head = nullptr;
-	// Loading Monster's Body
+	App->textures->Unload(monster_body);
 	monster_body = nullptr;
-	// Loading Monster's Tail
+	App->textures->Unload(monster_tail);
 	monster_tail = nullptr;
-	// Loading Monster's right dorsal
-	enemy_right_dorsal = nullptr;
-	// Loading Monster's mini boss eye
-	monster_eye = nullptr;
-	// Loading Green Worm Spawn
-	greenworm_spawn = nullptr;
+
 	return ret;
 }
 // Update: draw background
@@ -246,10 +223,8 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_head, 180, 150, &head); // head
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
-	App->render->Blit(enemy_right_dorsal, 529, 130, &right_dorsal); // right dorsal
-	App->render->Blit(greenworm_spawn, 992, 252, &spawn); //green worm spawn
+	App->render->Blit(enemy_parts, 992, 252, &parts); //green worm spawn
 	
-
 	camera();
 	cameralimit();
 
