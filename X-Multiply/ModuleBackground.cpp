@@ -7,6 +7,7 @@
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleTentacles.h"
 
 
 
@@ -187,7 +188,6 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
-
 
 	//Camera
 	App->render->camera.x += 201;//inical camera position
