@@ -11,6 +11,7 @@
 #include "Enemy_LittleShrimp.h"
 #include "EnemyRightDorsal.h"
 #include "EnemyRightLittleDorsal.h"
+#include "Enemy_SpawnWorms.h"
 #include "Enemy_Tail.h"
 #include "Enemy_Mask.h"
 //#include "Enemy_PU.h"
@@ -33,6 +34,7 @@ enum ENEMY_TYPES
 	MIDDLELITTLEDORSAL,
 	SHRIMP,
 	MASK,
+	SPAWN,
 	RIGHTDORSAL,
 	RIGHTLITTLEDORSAL,
 	TAIL,

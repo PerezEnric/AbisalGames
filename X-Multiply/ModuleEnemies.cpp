@@ -160,7 +160,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				break;
 			case ENEMY_TYPES::MASK:
 				enemies[i] = new Enemy_Mask(info.x, info.y);
-				queue[i].enemy_life = 10;
+				queue[i].enemy_life = 20;
+				break;
+			case ENEMY_TYPES::SPAWN:
+				enemies[i] = new Enemy_SpawnWorms(info.x, info.y);
+				queue[i].enemy_life = 12;
 				break;
 			case ENEMY_TYPES::TAIL:
 				enemies[i] = new Enemy_Tail(info.x, info.y);

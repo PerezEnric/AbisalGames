@@ -191,6 +191,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 528, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 
 
 	//Camera
@@ -227,7 +228,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_head, 180, 150, &head); // head
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
-	App->render->Blit(enemy_parts, 992, 252, &parts); //green worm spawn
+	//App->render->Blit(enemy_parts, 992, 252, &parts); //green worm spawn
 	
 	camera();
 	cameralimit();
