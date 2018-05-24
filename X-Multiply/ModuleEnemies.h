@@ -12,6 +12,7 @@
 #include "EnemyRightDorsal.h"
 #include "EnemyRightLittleDorsal.h"
 #include "Enemy_Tail.h"
+#include "Enemy_Mask.h"
 //#include "Enemy_PU.h"
 #include "PowerUp_SpeedUp.h"
 //#include "Bomb_PowerUp.h"
@@ -31,7 +32,7 @@ enum ENEMY_TYPES
 	MIDDLEDORSAL,
 	MIDDLELITTLEDORSAL,
 	SHRIMP,
-	ANEMONE,
+	MASK,
 	RIGHTDORSAL,
 	RIGHTLITTLEDORSAL,
 	TAIL,
