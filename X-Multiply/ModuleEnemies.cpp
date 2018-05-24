@@ -147,6 +147,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new EnemyMiddleLittleDorsal(info.x, info.y);
 				queue[i].enemy_life = 10;
 				break;
+			case ENEMY_TYPES::RIGHTDORSAL:
+				enemies[i] = new EnemyRightDorsal(info.x, info.y);
+				queue[i].enemy_life = 5;
+				break;
+			case ENEMY_TYPES::RIGHTLITTLEDORSAL:
+				enemies[i] = new EnemyRightLittleDorsal(info.x, info.y);
+				queue[i].enemy_life = 10;
+				break;
 			case ENEMY_TYPES::TAIL:
 				enemies[i] = new Enemy_Tail(info.x, info.y);
 				queue[i].enemy_life = 30;

@@ -129,6 +129,7 @@ bool ModuleTentacles::Start()
 	posArm12.y = posArm11.y + 8;
 	posArm13.y = posArm12.y + 8;
 	posArm14.y = posArm13.y + 8;
+	cd = 0;
 	return true;
 }
 

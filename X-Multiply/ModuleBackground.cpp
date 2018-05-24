@@ -130,7 +130,7 @@ bool ModuleBackground::Start()
 	//App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
 	//App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
 	//App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
-	App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
+	//App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
 
 	// Tail colliders
 	App->collision->AddCollider({ 785, 162, 48, 10 }, COLLIDER_WALL); // top tail
@@ -188,6 +188,9 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LEFTDORSAL, 452, 124);
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 528, 130);
+
 
 	//Camera
 	App->render->camera.x += 201;//inical camera position
