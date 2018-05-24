@@ -9,7 +9,7 @@ EnemyRightDorsal::EnemyRightDorsal(int x, int y) : Enemy(x, y)
 {
 	rightdorsal.PushBack({ 282, 411, 109, 108 });
 	animation = &rightdorsal;
-	collider = App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 600, 138, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	/*leftdorsal_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
 }
 

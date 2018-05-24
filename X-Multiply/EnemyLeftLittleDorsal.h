@@ -9,12 +9,13 @@ private:
 
 	Animation leftlittledorsal;
 	int points = 600;
+	int cd = 0;
 public:
 
 	EnemyLeftLittleDorsal(int x, int y);
 	~EnemyLeftLittleDorsal() {};
 	void OnCollision(Collider* collider);
-	
+	void Move();
 	bool CleanUp();
 };
 

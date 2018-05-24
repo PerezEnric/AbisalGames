@@ -9,7 +9,7 @@ EnemyRightLittleDorsal::EnemyRightLittleDorsal(int x, int y) : Enemy(x, y)
 {
 	rightlittledorsal.PushBack({ 266, 536, 111, 111 });
 	animation = &rightlittledorsal;
-	collider = App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 600, 138, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	/*leftdorsal_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
 }
 
@@ -27,4 +27,14 @@ bool EnemyRightLittleDorsal::CleanUp()
 	shrimp_death = nullptr;
 
 	return true;
+}
+
+void EnemyRightLittleDorsal::Move()
+{
+	if (cd == 300)
+	{
+		App->particles->AddParticle(App->particles->rightdorsal_shot, position.x + 150, position.y - 34, COLLIDER_ENEMY_SHOT);
+		cd = 0;
+	}
+	cd++;
 }
