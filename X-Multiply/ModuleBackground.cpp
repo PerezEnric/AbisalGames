@@ -189,7 +189,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLELITTLEDORSAL, 510, 115);
 	App->enemies->AddEnemy(ENEMY_TYPES::MIDDLEDORSAL, 510, 115);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 528, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 531, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 

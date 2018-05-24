@@ -28,3 +28,13 @@ bool EnemyRightDorsal::CleanUp()
 
 	return true;
 }
+
+void EnemyRightDorsal::Move()
+{
+	if (cd == 300)
+	{
+		App->particles->AddParticle(App->particles->rightdorsal_shot, position.x + 150, position.y - 34, COLLIDER_ENEMY_SHOT);
+		cd = 0;
+	}
+	cd++;
+}

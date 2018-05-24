@@ -61,6 +61,9 @@ public:
 	Particle bombPU;
 	Particle explosion_player;
 	Particle leftdorsal_shot;
+	Particle middleleft_shot;
+	Particle middleright_shot;
+	Particle rightdorsal_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

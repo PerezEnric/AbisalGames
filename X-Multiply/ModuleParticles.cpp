@@ -87,6 +87,24 @@ ModuleParticles::ModuleParticles()
 	leftdorsal_shot.anim.speed = 0.05f;
 	leftdorsal_shot.life = 1000;
 
+	// middle left dorsal shot
+	middleleft_shot.anim.PushBack({ 429, 567, 16, 96 });
+	middleleft_shot.anim.PushBack({ 464, 567, 16, 96 });
+	middleleft_shot.anim.speed = 0.05f;
+	middleleft_shot.life = 1000;
+
+	// middle right dorsal shot
+	middleright_shot.anim.PushBack({ 469, 680, 46, 93 });
+	middleright_shot.anim.PushBack({ 406, 684, 46, 89 });
+	middleright_shot.anim.speed = 0.05f;
+	middleright_shot.life = 1000;
+
+	// right dorsal shot
+	rightdorsal_shot.anim.PushBack({ 61, 765, 71, 75 });
+	rightdorsal_shot.anim.PushBack({ 158, 774, 72, 68 });
+	rightdorsal_shot.anim.speed = 0.05f;
+	rightdorsal_shot.life = 1000;
+
 }
 
 ModuleParticles::~ModuleParticles()

@@ -14,6 +14,7 @@ public:
 
 	EnemyMiddleDorsal(int x, int y);
 	~EnemyMiddleDorsal() {};
+	void Move();
 	void OnCollision(Collider* collider);
 	bool CleanUp();
 };
