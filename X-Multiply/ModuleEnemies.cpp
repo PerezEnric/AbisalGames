@@ -176,19 +176,22 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
 				queue[i].enemy_life = 1;
 				break;
+			case ENEMY_TYPES::BLUE_JUMPING:
+				enemies[i] = new Enemy_BlueJumping(info.x, info.y);
+				break;
 			//case ENEMY_TYPES::PU:
 			//	enemies[i] = new Enemy_PU(info.x, info.y);
 			//	break;
-		case ENEMY_TYPES::SPEEDUP:
-			enemies[i] = new PowerUp_SpeedUp(info.x, info.y);
-			break;
-		case ENEMY_TYPES::TENTACLES:
-			enemies[i] = new Tentacles_PowerUp(info.x, info.y);
-			break;
+			case ENEMY_TYPES::SPEEDUP:
+				enemies[i] = new PowerUp_SpeedUp(info.x, info.y);
+				break;
+			case ENEMY_TYPES::TENTACLES:
+				enemies[i] = new Tentacles_PowerUp(info.x, info.y);
+				break;
 
-		case ENEMY_TYPES::WAVES:
-			enemies[i] = new Waves_PowerUp(info.x, info.y);
-			break;
+			case ENEMY_TYPES::WAVES:
+				enemies[i] = new Waves_PowerUp(info.x, info.y);
+				break;
 		}
 	}
 }

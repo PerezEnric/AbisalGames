@@ -105,6 +105,12 @@ ModuleParticles::ModuleParticles()
 	rightdorsal_shot.anim.speed = 0.05f;
 	rightdorsal_shot.life = 1000;
 
+	//blue jumping shot
+	bluejumping_shot.anim.PushBack({ 722,120,12,11 });
+	bluejumping_shot.anim.PushBack({ 752,118,16,15 });
+	bluejumping_shot.anim.speed = 0.1f;
+	bluejumping_shot.anim.loop = false;
+	bluejumping_shot.life = 1000;
 }
 
 ModuleParticles::~ModuleParticles()

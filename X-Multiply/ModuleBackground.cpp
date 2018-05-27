@@ -203,6 +203,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 100, -50);
 
 
 	//Camera
