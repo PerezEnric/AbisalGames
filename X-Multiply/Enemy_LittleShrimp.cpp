@@ -25,7 +25,6 @@ void Enemy_LittleShrimp::Move()
 			if (cd > 2)
 			{
 				App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-				App->particles->enemy_shot.speed = { -1,1 };
 				cd = 0;
 			}
 		}
@@ -39,7 +38,7 @@ void Enemy_LittleShrimp::Move()
 		else
 			wave -= 0.05f;
 	}
-
+	App->particles->enemy_shot.speed = { -1,1 };
 	position.y = int(float(original_y) + (25.0f * sinf(wave)));
 	position.x -= 1.5f;
 }

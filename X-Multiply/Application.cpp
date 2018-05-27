@@ -18,8 +18,8 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = background = new ModuleBackground();
-	modules[6] = player = new ModulePlayer();
-	modules[7] = tentacle = new ModuleTentacles();
+	modules[6] = tentacle = new ModuleTentacles();
+	modules[7] = player = new ModulePlayer();
 	modules[8] = particles = new ModuleParticles();
 	modules[9] = collision = new ModuleCollision();
 	modules[10] = enemies = new ModuleEnemies();

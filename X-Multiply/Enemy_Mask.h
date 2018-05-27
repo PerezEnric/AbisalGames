@@ -17,6 +17,7 @@ public:
 	void Move();
 	void OnCollision(Collider* collider);
 	bool CleanUp();
+	bool firsttime = true;
 
 };
 

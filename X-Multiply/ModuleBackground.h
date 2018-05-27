@@ -32,6 +32,10 @@ public:
 	SDL_Texture* enemy_parts = nullptr;
 	SDL_Rect parts;
 	
+	//tail
+	SDL_Rect tail2;
+	int tailpositionx, tailpositiony;
+	bool taildown;
 	
 	int move_cont = 0;
 	bool go_back = false;

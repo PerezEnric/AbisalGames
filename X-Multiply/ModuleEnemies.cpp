@@ -55,9 +55,7 @@ update_status ModuleEnemies::PreUpdate()
 update_status ModuleEnemies::Update()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr
-			&& queue[i].x < App->player->limitx + 500
-			&& queue[i].x > App->player->limitx)
+		if (enemies[i] != nullptr)
 			enemies[i]->Move();
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
@@ -211,5 +209,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 			}
 		}
+
 	}
 }
