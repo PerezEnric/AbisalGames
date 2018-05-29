@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+
 struct SDL_Texture;
 struct Collider;
 class ModuleTentacles : public Module
@@ -32,6 +33,6 @@ public:
 	void movetentacle();
 	float cd = 0;
 	iPoint posArm0, posArm1, posArm2, posArm3, posArm4, posArm10, posArm11, posArm12, posArm13, posArm14;
-	Collider *colhandtop, *colhanddown, *colArm1, *colArm2, *colArm3, *colArm4, *colArm10, *colArm11, *colArm12, *colArm13, *colArm14;
+	Collider *colhandtop, *colhanddown, *colArm0, *colArm1, *colArm2, *colArm3, *colArm4, *colArm10, *colArm11, *colArm12, *colArm13, *colArm14;
 };
 #endif
