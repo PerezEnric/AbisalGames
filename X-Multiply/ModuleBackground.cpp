@@ -339,7 +339,7 @@ void ModuleBackground::camera()
 		{
 			App->render->move_down = false;
 			App->render->move_front = false;
-			go_back = false;
+			go_back = true;
 		}
 	}
 	//back move

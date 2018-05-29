@@ -29,7 +29,7 @@ void Enemy_BlueJumping::Move()
 		jumping.current_frame = 1;
 		original_y = position.y;
 		App->particles->AddParticle(App->particles->bluejumping_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-		
+		App->particles->bluejumping_shot.speed = { -1,1 };
 	}
 	
 	else if (go_down == false)
@@ -52,7 +52,6 @@ void Enemy_BlueJumping::Move()
 			else
 				wave -= 0.03f;
 		}
-		App->particles->bluejumping_shot.speed = { -1 ,1 };
 		position.y = int(float(original_y) + (60.0f * sinf(wave)));
 		position.x -= 1.0f;
 	}

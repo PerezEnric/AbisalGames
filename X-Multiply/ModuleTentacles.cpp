@@ -103,6 +103,7 @@ ModuleTentacles::ModuleTentacles()
 	arm15.w = 4;
 	arm15.h = 11;
 
+
 }
 
 ModuleTentacles::~ModuleTentacles()
@@ -130,6 +131,20 @@ bool ModuleTentacles::Start()
 	posArm13.y = posArm12.y + 8;
 	posArm14.y = posArm13.y + 8;
 	cd = 0;
+
+	colhandtop = App->collision->AddCollider({ position.x, position.y, 19, 9 }, COLLIDER_HANDS, this);
+	colhanddown = App->collision->AddCollider({ hand_down.x, hand_down.y, 19, 9 }, COLLIDER_HANDS, this);
+
+	colArm0 = App->collision->AddCollider({ posArm0.x, posArm0.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm1 = App->collision->AddCollider({ posArm1.x, posArm1.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm2 = App->collision->AddCollider({ posArm2.x, posArm2.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm3 = App->collision->AddCollider({ posArm3.x, posArm3.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm4 = App->collision->AddCollider({ posArm4.x, posArm4.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm10 = App->collision->AddCollider({ posArm10.x, posArm10.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm11 = App->collision->AddCollider({ posArm11.x, posArm11.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm12 = App->collision->AddCollider({ posArm12.x, posArm12.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm13 = App->collision->AddCollider({ posArm13.x, posArm13.y, 9, 11 }, COLLIDER_ARMS, this);
+	colArm14 = App->collision->AddCollider({ posArm14.x, posArm14.y, 9, 11 }, COLLIDER_ARMS, this);
 	return true;
 }
 
@@ -163,7 +178,9 @@ update_status ModuleTentacles::Update()
 		current_animation = &tentacl;
 
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		colhandtop->SetPos(position.x, position.y);
 		App->render->Blit(graphics, hand_down.x, hand_down.y, &(current_animation->GetCurrentFrame()));
+		colhanddown->SetPos(hand_down.x, hand_down.y);
 	}
 	return UPDATE_CONTINUE;
 }
@@ -190,48 +207,10 @@ void ModuleTentacles::movetentacle()
 			cd -= 1;
 		}
 
-		if (cd < -35)
+		if (cd < -30)
 		{
-			cd = -34;
+			cd = -29;
 
-			posArm1.x = posArm0.x - 5;
-			posArm2.x = posArm1.x - 9;
-			posArm3.x = posArm2.x - 6;
-			posArm4.x = posArm3.x - 5;
-			position.x = posArm4.x - 10;
-
-			posArm1.y = posArm0.y - 5;
-			posArm2.y = posArm1.y + 1;
-			posArm3.y = posArm2.y + 2;
-			posArm4.y = posArm3.y + 6;
-			position.y = posArm4.y + 4;
-
-			App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
-			App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
-			App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12);
-			App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13);
-			App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14);
-
-			posArm11.x = posArm10.x - 5;
-			posArm12.x = posArm11.x - 8;
-			posArm13.x = posArm12.x - 6;
-			posArm14.x = posArm13.x - 6;
-			hand_down.x = posArm14.x - 10;
-
-			posArm11.y = posArm10.y + 8;
-			posArm12.y = posArm11.y + 1;
-			posArm13.y = posArm12.y - 5;
-			posArm14.y = posArm13.y - 8;
-			hand_down.y = posArm14.y - 3;
-
-			App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
-			App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
-			App->render->Blit(graphics, posArm12.x, posArm12.y, &arm10);
-			App->render->Blit(graphics, posArm13.x, posArm13.y, &arm9);
-			App->render->Blit(graphics, posArm14.x, posArm14.y, &arm8);
-		}
-		else if (cd < -30)
-		{
 			posArm1.x = posArm0.x - 5;
 			posArm2.x = posArm1.x - 9;
 			posArm3.x = posArm2.x - 6;
@@ -270,6 +249,44 @@ void ModuleTentacles::movetentacle()
 		}
 		else if (cd < -25)
 		{
+			posArm1.x = posArm0.x - 5;
+			posArm2.x = posArm1.x - 9;
+			posArm3.x = posArm2.x - 6;
+			posArm4.x = posArm3.x - 5;
+			position.x = posArm4.x - 10;
+
+			posArm1.y = posArm0.y - 5;
+			posArm2.y = posArm1.y + 1;
+			posArm3.y = posArm2.y + 2;
+			posArm4.y = posArm3.y + 6;
+			position.y = posArm4.y + 4;
+
+			App->render->Blit(graphics, posArm0.x, posArm0.y, &arm0);
+			App->render->Blit(graphics, posArm1.x, posArm1.y, &arm9);
+			App->render->Blit(graphics, posArm2.x, posArm2.y, &arm12);
+			App->render->Blit(graphics, posArm3.x, posArm3.y, &arm13);
+			App->render->Blit(graphics, posArm4.x, posArm4.y, &arm14);
+
+			posArm11.x = posArm10.x - 5;
+			posArm12.x = posArm11.x - 8;
+			posArm13.x = posArm12.x - 6;
+			posArm14.x = posArm13.x - 6;
+			hand_down.x = posArm14.x - 10;
+
+			posArm11.y = posArm10.y + 8;
+			posArm12.y = posArm11.y + 1;
+			posArm13.y = posArm12.y - 5;
+			posArm14.y = posArm13.y - 8;
+			hand_down.y = posArm14.y - 3;
+
+			App->render->Blit(graphics, posArm10.x, posArm10.y, &arm15);
+			App->render->Blit(graphics, posArm11.x, posArm11.y, &arm13);
+			App->render->Blit(graphics, posArm12.x, posArm12.y, &arm10);
+			App->render->Blit(graphics, posArm13.x, posArm13.y, &arm9);
+			App->render->Blit(graphics, posArm14.x, posArm14.y, &arm8);
+		}
+		else if (cd < -20)
+		{
 			posArm1.x = posArm0.x - 6;
 			posArm2.x = posArm1.x - 8;
 			posArm3.x = posArm2.x - 9;
@@ -306,7 +323,7 @@ void ModuleTentacles::movetentacle()
 			App->render->Blit(graphics, posArm13.x, posArm13.y, &arm10);
 			App->render->Blit(graphics, posArm14.x, posArm14.y, &arm9);
 		}
-		else if (cd < -20)
+		else if (cd < -15)
 		{
 			posArm1.x = posArm0.x - 3;
 			posArm2.x = posArm1.x - 7;
@@ -345,7 +362,7 @@ void ModuleTentacles::movetentacle()
 			App->render->Blit(graphics, posArm14.x, posArm14.y, &arm10);
 
 		}
-		else if (cd < -15)
+		else if (cd < -10)
 		{
 			posArm1.x = posArm0.x - 3;
 			posArm2.x = posArm1.x - 6;
@@ -383,7 +400,7 @@ void ModuleTentacles::movetentacle()
 			App->render->Blit(graphics, posArm13.x, posArm13.y, &arm12);
 			App->render->Blit(graphics, posArm14.x, posArm14.y, &arm11);
 		}
-		else if (cd < -10)
+		else if (cd < -5)
 		{
 			posArm1.x = posArm0.x;
 			posArm2.x = posArm1.x - 3;
@@ -856,4 +873,14 @@ void ModuleTentacles::movetentacle()
 			/*App->audio->PlaySoundEffect(shot_particle);*/
 		}
 	}
+	colArm0->SetPos(posArm0.x, posArm0.y);
+	colArm1->SetPos(posArm1.x, posArm1.y);
+	colArm2->SetPos(posArm2.x, posArm2.y);
+	colArm3->SetPos(posArm3.x, posArm3.y);
+	colArm4->SetPos(posArm4.x, posArm4.y);
+	colArm10->SetPos(posArm10.x, posArm10.y);
+	colArm11->SetPos(posArm11.x, posArm11.y);
+	colArm12->SetPos(posArm12.x, posArm12.y);
+	colArm13->SetPos(posArm13.x, posArm13.y);
+	colArm14->SetPos(posArm14.x, posArm14.y);
 }
