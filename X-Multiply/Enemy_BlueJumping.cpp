@@ -13,7 +13,7 @@ Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 29, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	go_down = true;
 	speed = 0;
-	shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
+	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 }
 void Enemy_BlueJumping::Move()
 {
@@ -59,7 +59,7 @@ void Enemy_BlueJumping::Move()
 
 void Enemy_BlueJumping::OnCollision(Collider* collider)
 {
-	App->audio->PlaySoundEffect(shrimp_death);
+	App->audio->PlaySoundEffect(blue_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
 }
@@ -67,7 +67,7 @@ void Enemy_BlueJumping::OnCollision(Collider* collider)
 bool Enemy_BlueJumping::CleanUp()
 {
 	LOG("Freeing enemy audio");
-	App->audio->UnloadSoundEffect(shrimp_death);
+	App->audio->UnloadSoundEffect(blue_death);
 	shrimp_death = nullptr;
 
 	return true;

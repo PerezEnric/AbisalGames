@@ -31,7 +31,9 @@ public:
 	SDL_Rect tail;
 	SDL_Texture* enemy_parts = nullptr;
 	SDL_Rect parts;
-	
+	Mix_Music * lvl2_music = nullptr;
+
+
 	//tail
 	SDL_Rect tail2;
 	int tailpositionx, tailpositiony;

@@ -83,7 +83,11 @@ bool ModuleBackground::Start()
 	monster_tail = App->textures->Load("Sprites_Assets/tail.png");
 	// Loading Monster's right dorsal && Loading Green Worm Spawn && Loading Monster's mini boss eye
 	enemy_parts = App->textures->Load("Sprites_Assets/all_enemies.png");
-	
+	//Loading Level Music
+	//lvl2_music = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
+
+	//App->audio->PlayMusic(lvl2_music);
+
 	tailpositionx = 1022;
 	tailpositiony = 270;
 	taildown = false;
@@ -228,6 +232,8 @@ bool ModuleBackground::CleanUp()
 	monster_body = nullptr;
 	App->textures->Unload(monster_tail);
 	monster_tail = nullptr;
+	/*App->audio->UnloadMusic(lvl2_music);
+	lvl2_music = nullptr;*/
 
 	return ret;
 }
