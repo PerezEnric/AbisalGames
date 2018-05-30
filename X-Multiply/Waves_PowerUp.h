@@ -7,10 +7,8 @@ class Waves_PowerUp : public Enemy
 private:
 	int original_y = 0;
 	Animation fly;
-
-
 public:
-	Mix_Chunk * boost_sound = nullptr;
+
 	Waves_PowerUp(int x, int y);
 	~Waves_PowerUp() {};
 	void Move();

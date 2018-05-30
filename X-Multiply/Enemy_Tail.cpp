@@ -14,23 +14,23 @@ Enemy_Tail::Enemy_Tail(int x, int y) : Enemy(x, y)
 	tail_fall.PushBack({ 426, 65, 219, 57 });
 	animation = &tail_fall;
 	collider = App->collision->AddCollider({ 0, 0, 219, 57 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	/*shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
+	tumour_death = App->audio->LoadSoundEffect("Audio_Assets/tumour_death.wav");
 }
 
 
 void Enemy_Tail::OnCollision(Collider* collider)
 {
+	App->audio->PlaySoundEffect(tumour_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
 	App->background->taildown = true;
-	//App->audio->PlaySoundEffect(shrimp_death);
 }
 
 bool Enemy_Tail::CleanUp()
 {
 	LOG("Freeing enemy audio");
-	//App->audio->UnloadSoundEffect(shrimp_death);
-	
+	App->audio->UnloadSoundEffect(tumour_death);
+	tumour_death = nullptr;
 
 	return true;
 }

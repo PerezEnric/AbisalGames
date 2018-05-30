@@ -11,13 +11,14 @@ Enemy_Mask::Enemy_Mask(int x, int y) : Enemy(x, y)
 	animation = &mask;
 
 	collider = App->collision->AddCollider({ 0, 0, 86, 69 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+	tumour_death = App->audio->LoadSoundEffect("Audio_Assets/tumour_death.wav");
 }
 
 void Enemy_Mask::OnCollision(Collider* collider)
 {
-
+	App->audio->PlaySoundEffect(tumour_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	//App->audio->PlaySoundEffect(boost_sound);
 }
 
 void Enemy_Mask::Move()
@@ -59,8 +60,8 @@ void Enemy_Mask::Move()
 bool Enemy_Mask::CleanUp()
 {
 	LOG("Freeing enemy audio");
-	App->audio->UnloadSoundEffect(shrimp_death);
-	shrimp_death = nullptr;
+	App->audio->UnloadSoundEffect(tumour_death);
+	tumour_death = nullptr;
 
 	return true;
 }

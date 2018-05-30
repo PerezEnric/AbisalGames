@@ -9,7 +9,6 @@ private:
 	int original_y = 0;
 
 public:
-	Mix_Chunk * powerup_sound = nullptr;
 	Tentacles_PowerUp(int x, int y);
 	~Tentacles_PowerUp() {};
 	void OnCollision(Collider* collider);

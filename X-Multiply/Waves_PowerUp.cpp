@@ -13,7 +13,7 @@ Waves_PowerUp::Waves_PowerUp(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	collider = App->collision->AddCollider({ 0, 0, 24, 13 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
 	original_y = y;
-	//boost_sound = App->audio->LoadSoundEffect("Audio_Assets/power_up.wav");
+	new_weapon = App->audio->LoadSoundEffect("Audio_Assets/power_up2.wav");
 }
 void Waves_PowerUp::Move()
 {
@@ -30,14 +30,13 @@ void Waves_PowerUp::Move()
 
 void Waves_PowerUp::OnCollision(Collider* collider)
 {
-	App->player->turbo = true;
-	//App->audio->PlaySoundEffect(boost_sound);
+	App->audio->PlaySoundEffect(new_weapon);
 }
 
 bool  Waves_PowerUp::CleanUp()
 {
 	LOG("Unload power up audio");
-	//App->audio->UnloadSoundEffect(boost_sound);
-	boost_sound = nullptr;
+	App->audio->UnloadSoundEffect(new_weapon);
+	new_weapon = nullptr;
 	return true;
 }

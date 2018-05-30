@@ -35,7 +35,7 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 28, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
-	/*shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
+	robot_death = App->audio->LoadSoundEffect("Audio_Assets/powerup_death.wav");
 }
 void Enemy_PU::Move()
 {
@@ -122,14 +122,14 @@ void Enemy_PU::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	App->player->points += points;
-	//App->audio->PlaySoundEffect(shrimp_death);
+	App->audio->PlaySoundEffect(robot_death);
 }
 
 bool Enemy_PU::CleanUp()
 {
 	LOG("Freeing enemy audio");
-	//App->audio->UnloadSoundEffect(shrimp_death);
-	shrimp_death = nullptr;
+	App->audio->UnloadSoundEffect(robot_death);
+	robot_death = nullptr;
 
 	return true;
 }

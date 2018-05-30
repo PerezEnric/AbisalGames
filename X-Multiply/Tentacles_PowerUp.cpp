@@ -13,14 +13,14 @@ Tentacles_PowerUp::Tentacles_PowerUp(int x, int y) : Enemy(x, y)
 	animation = &tentacleanim;
 	collider = App->collision->AddCollider({ 0,0,18,15 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
 	original_y = y;
-	//powerup_sound = App->audio->LoadSoundEffect("Audio_Assets/power_up2.wav");
+	new_weapon = App->audio->LoadSoundEffect("Audio_Assets/power_up2.wav");
 }
 
 
 void Tentacles_PowerUp::OnCollision(Collider* collider)
 {
+	App->audio->PlaySoundEffect(new_weapon);
 	App->player->tentacles = true;
-	//App->audio->PlaySoundEffect(powerup_sound);
 }
 
 void Tentacles_PowerUp::Move()
@@ -39,7 +39,7 @@ void Tentacles_PowerUp::Move()
 bool  Tentacles_PowerUp::CleanUp()
 {
 	LOG("Unload power up audio");
-	//App->audio->UnloadSoundEffect(powerup_sound);
-	powerup_sound = nullptr;
+	App->audio->UnloadSoundEffect(new_weapon);
+	new_weapon = nullptr;
 	return true;
 }

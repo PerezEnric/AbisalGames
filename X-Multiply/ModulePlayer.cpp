@@ -53,9 +53,9 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	destroyed = false;
 	graphics = App->textures->Load("Sprites_Assets/all_enemies.png"); // arcade version
-	/*shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
-	player_death = App->audio->LoadSoundEffect("Audio_Assets/player_death.wav");
-	font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);*/
+	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
+	/*player_death = App->audio->LoadSoundEffect("Audio_Assets/player_death.wav");*/
+	/*font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);*/
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
 
 	return ret;
@@ -66,15 +66,14 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
-	/*App->textures->Unload(graphics);
-	App->audio->UnloadSoundEffect(shot_particle);*/
+	App->textures->Unload(graphics);
 	graphics = nullptr;
 
+	App->audio->UnloadSoundEffect(shot_particle);
 	shot_particle = nullptr;
 
-	/*App->audio->UnloadSoundEffect(player_death);*/
-
-	player_death = nullptr;
+	/*App->audio->UnloadSoundEffect(player_death);
+	player_death = nullptr;*/
 
 	if (col != nullptr)
 	{
@@ -165,7 +164,7 @@ update_status ModulePlayer::Update()
 
 		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-		/*App->audio->PlaySoundEffect(shot_particle);*/
+		App->audio->PlaySoundEffect(shot_particle);
 
 		if (cd < 5)
 		{
