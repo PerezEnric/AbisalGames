@@ -14,6 +14,7 @@
 #include "Enemy_SpawnWorms.h"
 #include "Enemy_Tail.h"
 #include "Enemy_Mask.h"
+#include "Enemy_PU.h"
 #include "Enemy_BlueJumping.h"
 //#include "Enemy_PU.h"
 #include "PowerUp_SpeedUp.h"

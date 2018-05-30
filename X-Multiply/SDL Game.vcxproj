@@ -83,6 +83,7 @@
     <ClInclude Include="Enemy_LateralFin.h" />
     <ClInclude Include="Enemy_LittleShrimp.h" />
     <ClInclude Include="Enemy_Mask.h" />
+    <ClInclude Include="Enemy_PU.h" />
     <ClInclude Include="Enemy_SpawnWorms.h" />
     <ClInclude Include="Enemy_Tail.h" />
     <ClInclude Include="Globals.h" />
@@ -117,6 +118,7 @@
     <ClCompile Include="Enemy_LateralFin.cpp" />
     <ClCompile Include="Enemy_LittleShrimp.cpp" />
     <ClCompile Include="Enemy_Mask.cpp" />
+    <ClCompile Include="Enemy_PU.cpp" />
     <ClCompile Include="Enemy_SpawnWorms.cpp" />
     <ClCompile Include="Enemy_Tail.cpp" />
     <ClCompile Include="Globals.cpp" />
