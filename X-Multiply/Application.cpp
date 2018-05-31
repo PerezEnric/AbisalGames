@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleBackground.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
@@ -23,6 +24,7 @@ Application::Application()
 	modules[8] = particles = new ModuleParticles();
 	modules[9] = collision = new ModuleCollision();
 	modules[10] = enemies = new ModuleEnemies();
+	modules[11] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()

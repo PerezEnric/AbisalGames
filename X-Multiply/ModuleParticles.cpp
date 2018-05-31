@@ -127,6 +127,9 @@ ModuleParticles::ModuleParticles()
 	waves_shot.anim.speed = 0.5f;
 	waves_shot.speed.x = 20;
 	waves_shot.life = 1000;
+
+	//Missile shot
+
 }
 
 ModuleParticles::~ModuleParticles()
