@@ -37,6 +37,7 @@ public:
 	bool turbo = false;
 	bool bomb = false;
 	bool tentacles = false;
+	bool wave = false;
 	char text[10];
 	int cd = 0;
 	/*uint score = 0;*/

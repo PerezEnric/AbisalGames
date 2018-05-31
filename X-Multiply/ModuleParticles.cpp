@@ -111,6 +111,22 @@ ModuleParticles::ModuleParticles()
 	bluejumping_shot.anim.speed = 0.1f;
 	bluejumping_shot.anim.loop = false;
 	bluejumping_shot.life = 1000;
+
+	//Waves shot
+	waves_shot.anim.PushBack({ 732, 877, 6, 6 });
+	waves_shot.anim.PushBack({ 746, 875, 10, 10 });
+	waves_shot.anim.PushBack({ 761, 874, 12, 12 });
+	waves_shot.anim.PushBack({ 776, 873, 14, 14 });
+	waves_shot.anim.PushBack({ 791, 872, 16, 16 });
+	waves_shot.anim.PushBack({ 815, 872, 16, 16 });
+	waves_shot.anim.PushBack({ 832, 872, 16, 16 });
+	waves_shot.anim.PushBack({ 849, 872, 16, 16 });
+	waves_shot.anim.PushBack({ 858, 763, 10, 10 });
+	waves_shot.anim.PushBack({ 873, 762, 12, 12 });
+	waves_shot.anim.PushBack({ 889, 762, 12, 12 });
+	waves_shot.anim.speed = 0.5f;
+	waves_shot.speed.x = 20;
+	waves_shot.life = 1000;
 }
 
 ModuleParticles::~ModuleParticles()

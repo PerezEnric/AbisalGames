@@ -65,6 +65,7 @@ public:
 	Particle middleright_shot;
 	Particle rightdorsal_shot;
 	Particle bluejumping_shot;
+	Particle waves_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

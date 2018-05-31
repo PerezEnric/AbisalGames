@@ -1,6 +1,7 @@
 #include "ModuleTentacles.h"
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -116,6 +117,7 @@ bool ModuleTentacles::Start()
 	hand_down.x = position.x;
 	hand_down.y = App->player->position.y + 57;
 	graphics = App->textures->Load("Sprites_Assets/all_enemies.png");
+	basic_shot = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 
 	posArm0.y = App->player->position.y - 8;
 	posArm1.y = App->player->position.y - 16;
@@ -150,7 +152,11 @@ bool ModuleTentacles::Start()
 
 bool ModuleTentacles::CleanUp()
 {
+	App->textures->Unload(graphics);
 	graphics = nullptr;
+
+	App->audio->UnloadSoundEffect(basic_shot);
+	basic_shot = nullptr;
 	return true;
 }
 
@@ -867,10 +873,20 @@ void ModuleTentacles::movetentacle()
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
 		{
-
-			App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
-			/*App->audio->PlaySoundEffect(shot_particle);*/
+			if (App->player->wave == false)
+			{
+				App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
+				/*App->audio->PlaySoundEffect(shot_particle);*/
+			}
+			if (App->player->wave == true)
+			{
+				App->particles->AddParticle(App->particles->waves_shot, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->waves_shot, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
+				App->audio->PlaySoundEffect(basic_shot);
+			}
+			
+			
 		}
 	}
 	colArm0->SetPos(posArm0.x, posArm0.y);

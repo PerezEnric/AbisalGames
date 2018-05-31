@@ -68,7 +68,7 @@ bool Enemy_BlueJumping::CleanUp()
 {
 	LOG("Freeing enemy audio");
 	App->audio->UnloadSoundEffect(blue_death);
-	shrimp_death = nullptr;
+	blue_death = nullptr;
 
 	return true;
 }

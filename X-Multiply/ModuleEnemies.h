@@ -16,7 +16,7 @@
 #include "Enemy_Mask.h"
 #include "Enemy_PU.h"
 #include "Enemy_BlueJumping.h"
-//#include "Enemy_PU.h"
+#include "Enemy_GWorm.h"
 #include "PowerUp_SpeedUp.h"
 //#include "Bomb_PowerUp.h"
 #include "Waves_PowerUp.h"
@@ -40,6 +40,7 @@ enum ENEMY_TYPES
 	RIGHTDORSAL,
 	RIGHTLITTLEDORSAL,
 	TAIL,
+	GWORM,
 	LATERALFIN,
 	BLUE_JUMPING,
 	PU,

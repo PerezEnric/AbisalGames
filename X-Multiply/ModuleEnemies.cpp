@@ -176,6 +176,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_LittleShrimp(info.x, info.y);
 				queue[i].enemy_life = 1;
 				break;
+			case ENEMY_TYPES::GWORM:
+				enemies[i] = new Enemy_GWorm(info.x, info.y);
+				queue[i].enemy_life = 1;
+				break;
 			case ENEMY_TYPES::BLUE_JUMPING:
 				enemies[i] = new Enemy_BlueJumping(info.x, info.y);
 				queue[i].enemy_life = 3;

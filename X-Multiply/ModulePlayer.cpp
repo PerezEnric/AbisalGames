@@ -7,7 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleBackground.h"
 //#include "ModuleFadeToBlack.h"
-//#include "ModuleAudio.h"
+#include "ModuleAudio.h"
 //#include "ModuleWinLoseScene.h"
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
@@ -161,11 +161,12 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN)
 	{
-
-		App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
-		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-		App->audio->PlaySoundEffect(shot_particle);
-
+		if (wave == false)
+		{
+			App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
+			App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+			App->audio->PlaySoundEffect(shot_particle);
+		}
 		if (cd < 5)
 		{
 			cd++;

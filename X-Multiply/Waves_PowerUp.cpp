@@ -31,6 +31,7 @@ void Waves_PowerUp::Move()
 void Waves_PowerUp::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(new_weapon);
+	App->player->wave = true;
 }
 
 bool  Waves_PowerUp::CleanUp()

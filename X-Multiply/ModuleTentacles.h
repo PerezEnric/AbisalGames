@@ -25,6 +25,7 @@ public:
 	Animation* current_animation = nullptr;
 	iPoint position;
 	iPoint hand_down;
+	Mix_Chunk * basic_shot;
 
 public:
 	SDL_Rect arm0, arm1, arm2, arm3, arm4, arm5, arm6, arm7, arm8, arm9, arm10, arm11, arm12, arm13, arm14,arm15;
