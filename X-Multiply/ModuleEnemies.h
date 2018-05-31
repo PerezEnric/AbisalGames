@@ -18,7 +18,7 @@
 #include "Enemy_BlueJumping.h"
 #include "Enemy_GWorm.h"
 #include "PowerUp_SpeedUp.h"
-//#include "Bomb_PowerUp.h"
+#include "Bomb_PowerUp.h"
 #include "Waves_PowerUp.h"
 #include "Tentacles_PowerUp.h"
 #include "SDL/include/SDL.h"

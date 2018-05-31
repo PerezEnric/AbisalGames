@@ -198,6 +198,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::WAVES:
 				enemies[i] = new Waves_PowerUp(info.x, info.y);
 				break;
+			case ENEMY_TYPES::BOMB:
+				enemies[i] = new Bomb_PowerUp(info.x, info.y);
+				break;
 		}
 	}
 }

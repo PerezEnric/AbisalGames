@@ -192,9 +192,6 @@ bool ModuleBackground::Start()
 
 	//Enemies
 
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 300, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 770, 290);
@@ -209,7 +206,13 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 100, -50);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 200, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 300, 30);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 300, 30);
+
+	//Power Ups
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 300, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 360, 50);
 
 	//Camera
 	App->render->camera.x += 201;//inical camera position
