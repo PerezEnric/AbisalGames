@@ -44,6 +44,7 @@ public:
 	int points = 0;
 	int limitx = 15;
 	float limity = 0;
+	uint score;
 };
 
 #endif

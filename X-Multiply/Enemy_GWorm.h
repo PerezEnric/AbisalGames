@@ -8,7 +8,7 @@ class Enemy_GWorm : public Enemy
 private:
 	Animation greenw;
 	int cd = 0;
-	int points = 0;
+	int points = 100;
 	int original_y;
 	bool walk;
 public:

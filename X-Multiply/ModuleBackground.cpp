@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
+#include "ModuleUI.h"
 
 
 
@@ -251,6 +252,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(monster_body, 241, 119, &body); // body
 	App->render->Blit(monster_tail, 753, 160, &tail); // tail
 	App->render->Blit(enemy_parts, tailpositionx, tailpositiony, &tail2);
+	
 	//App->render->Blit(enemy_parts, 992, 252, &parts); //green worm spawn
 	
 	if (taildown == true)

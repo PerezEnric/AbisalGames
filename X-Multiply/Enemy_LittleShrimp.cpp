@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleUI.h"
 
 Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 {
@@ -13,6 +14,7 @@ Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 42, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
 	shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
+	points = 400;
 }
 void Enemy_LittleShrimp::Move()
 {
@@ -60,7 +62,7 @@ void Enemy_LittleShrimp::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(shrimp_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 }
 
 bool Enemy_LittleShrimp::CleanUp()

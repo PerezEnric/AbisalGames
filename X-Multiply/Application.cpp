@@ -11,6 +11,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
 #include "ModuleFonts.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -26,7 +27,8 @@ Application::Application()
 	modules[9] = collision = new ModuleCollision();
 	modules[10] = enemies = new ModuleEnemies();
 	modules[11] = fonts = new ModuleFonts();
-	modules[12] = fade = new ModuleFadeToBlack();
+	modules[12] = ui = new ModuleUI();
+	modules[13] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()

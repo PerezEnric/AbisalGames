@@ -22,7 +22,7 @@ public:
 	virtual ~Enemy();
 
 	const Collider* GetCollider() const;
-
+	uint points = 0;
 	Mix_Chunk* powerup_death = nullptr;
 	Mix_Chunk* shrimp_death = nullptr;
 	Mix_Chunk* blue_death = nullptr;

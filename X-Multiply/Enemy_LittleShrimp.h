@@ -11,7 +11,6 @@ private:
 	int original_y = 0;
 	Animation fly_shrimp;
 	int cd = 0;
-	int points = 400;
 
 public:
 
