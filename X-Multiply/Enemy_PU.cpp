@@ -9,28 +9,35 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 	//Basic fly
 	fly_robot.PushBack({ 122, 66, 28, 19 });
 	fly_robot.PushBack({ 154, 65, 31, 20 });
-	
+	fly_robot.speed = 0.1f;
 
 	//Landing
-	fly_robot.PushBack({ 241, 5, 28, 17 });
-	fly_robot.PushBack({ 209, 5, 31, 19 });
-	fly_robot.PushBack({ 177, 5, 28, 21 });
-	fly_robot.PushBack({ 145, 5, 31, 22 });
-	fly_robot.PushBack({ 113, 5, 28, 22 });
-	fly_robot.PushBack({ 305, 29, 28, 22 });
-	fly_robot.PushBack({ 277, 32, 28, 19 });
+	landing_robot.PushBack({ 241, 5, 28, 17 });
+	landing_robot.PushBack({ 209, 5, 31, 19 });
+	landing_robot.PushBack({ 177, 5, 28, 21 });
+	landing_robot.PushBack({ 145, 5, 31, 22 });
+	landing_robot.PushBack({ 113, 5, 28, 22 });
+	landing_robot.PushBack({ 305, 29, 28, 22 });
+	landing_robot.PushBack({ 277, 32, 28, 19 });
+	landing_robot.speed = 0.1f;
+
+
+	//Walking left
+	walking_robot.PushBack({ 241, 29, 28, 22 });
+	walking_robot.PushBack({ 209, 29, 28, 22 });
+	walking_robot.PushBack({ 177, 29, 28, 22 });
+	walking_robot.PushBack({ 145, 29, 28, 22 });
+	walking_robot.speed = 0.1f;
+
+	//Walking right
+	walkingr_robot.PushBack({ 346, 29, 28, 22 });
+	walkingr_robot.PushBack({ 378, 29, 28, 22 });
+	walkingr_robot.PushBack({ 410, 29, 28, 22 });
+	walkingr_robot.PushBack({ 442, 29, 28, 22 });
+	walkingr_robot.speed = 0.1f;
+
+
 	
-
-
-	//Walking
-	fly_robot.PushBack({ 241, 29, 28, 22 });
-	fly_robot.PushBack({ 209, 29, 28, 22 });
-	fly_robot.PushBack({ 177, 29, 28, 22 });
-	fly_robot.PushBack({ 145, 29, 28, 22 });
-
-
-
-	fly_robot.speed = 0.1f;
 	animation = &fly_robot;
 
 	collider = App->collision->AddCollider({ 0, 0, 28, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -53,6 +60,7 @@ void Enemy_PU::Move()
 		{
 			landing = true;
 			flying = false;
+			animation = &landing_robot;
 		}
 	}
 
@@ -74,7 +82,7 @@ void Enemy_PU::Move()
 		{
 			walking = true;
 			landing = false;
-
+			animation = &walkingr_robot;
 		}
 	}
 
@@ -96,6 +104,7 @@ void Enemy_PU::Move()
 				left = true;
 				right = false;
 				cd3 = 0;
+				animation = &walking_robot;
 			}
 		}
 		//Left walking movement
@@ -112,6 +121,7 @@ void Enemy_PU::Move()
 				right = true;
 				left = false;
 				cd3 = 0;
+				animation = &walkingr_robot;
 			}
 		}
 

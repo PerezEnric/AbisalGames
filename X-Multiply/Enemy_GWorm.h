@@ -7,6 +7,7 @@ class Enemy_GWorm : public Enemy
 {
 private:
 	Animation greenw;
+	Animation greenw_shoot;
 	int cd = 0;
 	int points = 100;
 	int original_y;

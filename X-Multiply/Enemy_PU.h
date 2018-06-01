@@ -16,6 +16,7 @@ private:
 	Animation fly_robot;
 	Animation landing_robot;
 	Animation walking_robot;
+	Animation walkingr_robot;
 	int cd = 0;
 	int cd2 = 0;
 	int cd3 = 0;
