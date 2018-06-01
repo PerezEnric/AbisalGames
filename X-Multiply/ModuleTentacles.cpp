@@ -135,7 +135,9 @@ bool ModuleTentacles::Start()
 	cd = 0;
 
 	colhandtop = App->collision->AddCollider({ position.x, position.y, 19, 9 }, COLLIDER_HANDS, this);
+	colhandtop->damage = 0.1;
 	colhanddown = App->collision->AddCollider({ hand_down.x, hand_down.y, 19, 9 }, COLLIDER_HANDS, this);
+	colhanddown->damage = 0.1;
 
 	colArm0 = App->collision->AddCollider({ posArm0.x, posArm0.y, 9, 11 }, COLLIDER_ARMS, this);
 	colArm1 = App->collision->AddCollider({ posArm1.x, posArm1.y, 9, 11 }, COLLIDER_ARMS, this);

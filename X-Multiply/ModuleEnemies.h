@@ -55,7 +55,8 @@ class Enemy;
 struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
-	int x, y, enemy_life;
+	int x, y;
+	float  enemy_life;
 
 };
 

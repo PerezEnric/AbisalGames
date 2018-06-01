@@ -212,9 +212,9 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			if (queue[i].enemy_life > 0)
-				queue[i].enemy_life--;
+				queue[i].enemy_life -= c2->damage;
 
-			if (queue[i].enemy_life == 0)
+			if (queue[i].enemy_life <= 0)
 			{
 				enemies[i]->OnCollision(c2);
 				delete enemies[i];
