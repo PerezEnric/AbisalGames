@@ -81,6 +81,7 @@
     <ClInclude Include="EnemyMiddleLittleDorsal.h" />
     <ClInclude Include="EnemyRightDorsal.h" />
     <ClInclude Include="EnemyRightLittleDorsal.h" />
+    <ClInclude Include="Enemy_BWorm.h" />
     <ClInclude Include="Enemy_GWorm.h" />
     <ClInclude Include="Enemy_LateralFin.h" />
     <ClInclude Include="Enemy_LittleShrimp.h" />
@@ -121,6 +122,7 @@
     <ClCompile Include="EnemyMiddleLittleDorsal.cpp" />
     <ClCompile Include="EnemyRightDorsal.cpp" />
     <ClCompile Include="EnemyRightLittleDorsal.cpp" />
+    <ClCompile Include="Enemy_BWorm.cpp" />
     <ClCompile Include="Enemy_GWorm.cpp" />
     <ClCompile Include="Enemy_LateralFin.cpp" />
     <ClCompile Include="Enemy_LittleShrimp.cpp" />
