@@ -12,7 +12,9 @@ Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 	animation = &jumping;
 	collider = App->collision->AddCollider({ 0, 0, 29, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	go_down = true;
+	going_back = false;
 	speed = 0;
+	cd = 40;
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 }
 void Enemy_BlueJumping::Move()
@@ -28,32 +30,31 @@ void Enemy_BlueJumping::Move()
 		go_down = false;
 		jumping.current_frame = 1;
 		original_y = position.y;
-		App->particles->AddParticle(App->particles->bluejumping_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-		App->particles->bluejumping_shot.speed = { -1,1 };
 	}
 	
-	else if (go_down == false)
+	else if (go_down == false && position.y > 40)
 	{
-		if (going_up)
+		position.y -= 2.5;
+		going_back = true;
+		original_y = position.y;
+	}
+
+	else if (going_back)
+	{
+		position.x -= 1;
+		position.y = original_y;
+		if (cd == 70) 
 		{
-			if (wave > 0.0f)
-			{
-				going_up = false;
-			}
-			else
-				wave += 0.03f;
+			App->particles->bluejumping_shot.speed = { -2 , 1 };
+			App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+			App->particles->bluejumping_shot.speed = { -2 , 0 };
+			App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+			App->particles->bluejumping_shot.speed = { -2 , -1 };
+			App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+			
+			cd = 0;
 		}
-		else
-		{
-			if (wave < -1.0f)
-			{
-				going_up = true;
-			}
-			else
-				wave -= 0.03f;
-		}
-		position.y = int(float(original_y) + (60.0f * sinf(wave)));
-		position.x -= 1.0f;
+		cd++;
 	}
 }
 

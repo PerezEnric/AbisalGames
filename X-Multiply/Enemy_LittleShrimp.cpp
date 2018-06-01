@@ -24,7 +24,21 @@ void Enemy_LittleShrimp::Move()
 			cd++;
 			if (cd > 2)
 			{
+				//shot direction
+				if (App->player->position.x < position.x && App->player->position.y < position.y)
+					App->particles->enemy_shot.speed = { -1,-1 };
+
+				else if (App->player->position.x > position.x && App->player->position.y < position.y)
+					App->particles->enemy_shot.speed = { 1,-1 };
+
+				else if (App->player->position.x > position.x && App->player->position.y > position.y)
+					App->particles->enemy_shot.speed = { 1,1 };
+
+				else if (App->player->position.x < position.x && App->player->position.y > position.y)
+					App->particles->enemy_shot.speed = { -1,1 };
+
 				App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+				
 				cd = 0;
 			}
 		}
@@ -38,7 +52,6 @@ void Enemy_LittleShrimp::Move()
 		else
 			wave -= 0.05f;
 	}
-	App->particles->enemy_shot.speed = { -1,1 };
 	position.y = int(float(original_y) + (25.0f * sinf(wave)));
 	position.x -= 1.5f;
 }

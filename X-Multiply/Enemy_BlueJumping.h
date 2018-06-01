@@ -9,7 +9,7 @@ private:
 	Animation jumping;
 	int cd = 0;
 	int points = 0;
-	bool going_up,go_down;
+	bool going_back,go_down;
 	float wave;
 	int original_y;
 	float speed;
