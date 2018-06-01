@@ -9,9 +9,11 @@ private:
 	Animation greenw;
 	Animation greenw_shoot;
 	int cd = 0;
+	int cd2 = 0;
 	int points = 100;
 	int original_y;
-	bool walk;
+	bool walk = true;
+	bool stop = false;
 public:
 
 	Enemy_GWorm(int x, int y);

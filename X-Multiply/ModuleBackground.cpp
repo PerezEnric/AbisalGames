@@ -207,7 +207,7 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 100, -50);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 200, 30);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 300, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 300, 30);
 
 	//Power Ups
 	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 300, 50);
