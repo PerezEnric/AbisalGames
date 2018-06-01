@@ -49,8 +49,6 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	fonts[id].rows = rows; // rows: rows of characters in the texture
 	fonts[id].len = strlen(characters); // len: length of the table
 
-										// TODO 1: Finish storing font data
-
 	strcpy_s(fonts[id].table, characters);// table: array of chars to have the list of characters
 	fonts[id].row_chars = fonts[id].len / rows;// row_chars: amount of chars per row of the texture
 	fonts[id].char_w = font_width / fonts[id].row_chars;// char_w: width of each character
