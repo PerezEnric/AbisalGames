@@ -37,6 +37,7 @@ void Enemy_Mask::Move()
 		App->particles->enemy_shot.speed = { -1, 2 };
 		firsttime = false;
 		cd = 0;
+		cd2 = 0;
 	}
 	if (cd == 500 && !firsttime)
 	{
@@ -51,9 +52,25 @@ void Enemy_Mask::Move()
 		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 40, COLLIDER_ENEMY_SHOT);
 		App->particles->enemy_shot.speed = { -1, 2 };
 		cd = 0;
+
+	}
+
+	if (cd2 == 520 && !firsttime)
+	{
+		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 20, COLLIDER_ENEMY_SHOT);
+		App->particles->enemy_shot.speed = { -1, 0 };
+		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 10, COLLIDER_ENEMY_SHOT);
+		App->particles->enemy_shot.speed = { -1, -1 };
+		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 30, COLLIDER_ENEMY_SHOT);
+		App->particles->enemy_shot.speed = { -1, 1 };
+		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 0, COLLIDER_ENEMY_SHOT);
+		App->particles->enemy_shot.speed = { -1, -2 };
+		App->particles->AddParticle(App->particles->enemy_shot, position.x - 5, position.y + 40, COLLIDER_ENEMY_SHOT);
+		App->particles->enemy_shot.speed = { -1, 2 };
+		cd2 = 0;
 	}
 	cd++;
-
+	cd2++;
 
 }
 

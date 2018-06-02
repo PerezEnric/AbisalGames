@@ -148,10 +148,9 @@ bool ModuleBackground::Start()
 
 	//Dorsal Fin colliders
 
-	//App->collision->AddCollider({ 452, 124, 63, 50 }, COLLIDER_ENEMY); // left dorsal collider
-	//App->collision->AddCollider({ 515, 115, 10, 30 }, COLLIDER_ENEMY); // middle dorsal collider
-	//App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_ENEMY); // middle dorsal collider
-	//App->collision->AddCollider({ 560, 130, 80, 108 }, COLLIDER_ENEMY); // right dorsal collider
+	App->collision->AddCollider({ 460, 160, 50, 70 }, COLLIDER_WALL); // left dorsal collider
+	App->collision->AddCollider({ 515, 160, 50, 70 }, COLLIDER_WALL); // middle dorsal collider
+	App->collision->AddCollider({ 560, 170, 50, 65 }, COLLIDER_WALL); // right dorsal collider
 
 	// Tail colliders
 	App->collision->AddCollider({ 785, 162, 48, 10 }, COLLIDER_WALL); // top tail
@@ -191,14 +190,10 @@ bool ModuleBackground::Start()
 	App->collision->AddCollider({ 1055, 263, 20, 10 }, COLLIDER_ENEMY); // monster tail
 	App->collision->AddCollider({ 1072, 269, 20, 10 }, COLLIDER_ENEMY); // monster tail
 	App->collision->AddCollider({ 1090, 275, 20, 10 }, COLLIDER_ENEMY); // monster tail
-	App->collision->AddCollider({ 1110, 275, 16, 10 }, COLLIDER_WALL); // monster tail
-	App->collision->AddCollider({ 1128, 280, 55, 10 }, COLLIDER_WALL); // monster tail
-	App->collision->AddCollider({ 1180, 285, 30, 10 }, COLLIDER_WALL); // monster tail
-	App->collision->AddCollider({ 1210, 278, 10, 10 }, COLLIDER_WALL); // monster tail
+
 
 	//Enemies
 
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 500, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::TAIL, 1022, 270);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 770, 290);
 	App->enemies->AddEnemy(ENEMY_TYPES::LATERALFIN, 530, 270);
@@ -210,16 +205,48 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 100, -50);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 200, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 300, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 400, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 290, -70);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 300, -55);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 460, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 400, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 520, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 550, -55);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 740, -55);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 992, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 993, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 994, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 995, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 996, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 997, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 998, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1075, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1075, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1082, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1082, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1070, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1075, 150);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 750, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 720, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 690, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 660, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 630, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 600, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 490, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 460, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 430, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 400, 300);
+
+
+
 
 	//Power Ups
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 300, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 250, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 360, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 460, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 400, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 520, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1070, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1075, 160);
 
 	// Enemy Boss
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 260, 217);

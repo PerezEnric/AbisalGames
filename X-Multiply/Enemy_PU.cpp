@@ -63,7 +63,7 @@ void Enemy_PU::Move()
 			position.y = int(float(original_y));;
 			position.x -= 1;
 			cd++;
-			if (cd > 100)
+			if (cd > 150)
 			{
 				landing = true;
 				flying = false;

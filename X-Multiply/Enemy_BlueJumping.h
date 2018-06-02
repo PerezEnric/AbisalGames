@@ -10,6 +10,7 @@ private:
 	int cd = 0;
 	int points = 0;
 	bool going_back,go_down;
+	bool action = false;
 	float wave;
 	int original_y;
 	float speed;

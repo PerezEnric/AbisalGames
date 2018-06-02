@@ -16,7 +16,10 @@ private:
 	Animation brown_rup2;
 	Animation brown_rup3;
 	Animation brown_dspawn;
-
+	Animation brown_dspawn2;
+	int original_x;
+	bool dspawn1 = true;
+	bool dspawn2 = false;
 	int cd = 0;
 	int cd2 = 0;
 	int points = 100;

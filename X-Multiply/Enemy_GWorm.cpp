@@ -40,7 +40,7 @@ void Enemy_GWorm::Move()
 			}
 			else
 			{
-				position.y = int(float(original_y) + 0);
+				position.y -= 0;
 				position.x -= 1.0f;
 				stop = true;
 			}
@@ -55,7 +55,7 @@ void Enemy_GWorm::Move()
 		}
 		else if (walk == false)
 		{
-			position.y = int(float(original_y) + 0);
+			position.y -= 0;
 			position.x += 0;
 			cd2++;
 			if (cd2 == 100)

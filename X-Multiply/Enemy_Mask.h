@@ -9,7 +9,7 @@ private:
 	Animation mask;
 	int cd = 0;
 	int points = 400;
-
+	int cd2 = 0;
 public:
 
 	Enemy_Mask(int x, int y);
