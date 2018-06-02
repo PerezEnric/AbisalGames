@@ -224,7 +224,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			if (queue[i].enemy_life > 0)
+			{
+				App->particles->AddParticle(App->particles->enemy_expl, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_NONE, 150);
 				queue[i].enemy_life -= c2->damage;
+			}
+				
 
 			if (queue[i].enemy_life <= 0)
 			{

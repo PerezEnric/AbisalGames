@@ -73,6 +73,7 @@ public:
 	Particle boss_explosion;
 	Particle trans;
 	SDL_Rect speedup;
+	Particle enemy_expl;
 };
 
 #endif // __MODULEPARTICLES_H__
