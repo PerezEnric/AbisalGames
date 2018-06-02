@@ -47,7 +47,9 @@ ModuleParticles::ModuleParticles()
 	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
 	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
 	speedpowerup.anim.loop = false;
-	speedpowerup.anim.speed = 0.2f;
+	speedpowerup.anim.speed = 0.05f;
+	speedpowerup.life = 50;
+
 
 	//Enemy shot
 
@@ -213,7 +215,7 @@ update_status ModuleParticles::Update()
 	{
 		if (cd < 50)
 		{
-			App->particles->AddParticle(App->particles->speedpowerup, App->player->position.x - 40, App->player->position.y, COLLIDER_NONE);
+			App->particles->AddParticle(App->particles->speedpowerup, App->player->position.x - 20, App->player->position.y, COLLIDER_NONE);
 			cd++;
 		}
 
