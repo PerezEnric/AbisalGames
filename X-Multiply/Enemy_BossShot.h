@@ -20,6 +20,7 @@ private:
 	Animation laservertical, laservertical2;
 	Animation laserpositive, laserpositive2;
 	Animation lasernegative, lasernegative2;
+	iPoint posplayer, posoriginal;
 	int cd = 0;
 	int points = 0;
 	Collider* col;

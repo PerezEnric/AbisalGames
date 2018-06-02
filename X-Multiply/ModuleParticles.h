@@ -69,6 +69,7 @@ public:
 	Particle waves_shot;
 	Particle tentacle_shot;
 	Particle boss_explosion;
+	Particle trans;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -48,7 +48,7 @@ void Enemy_Boss::Move()
 
 	if (cd == 150)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BOSS_SHOT, position.x, position.y + 10);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSS_SHOT, position.x + 12, position.y + 30);
 		App->enemies->shot = true;
 		cd = 0;
 		shot_num++;

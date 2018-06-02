@@ -95,28 +95,28 @@ Enemy_BossShot::Enemy_BossShot(int x, int y) : Enemy(x, y)
 	laservertical2.loop = false;
 
 	//positive diagonal
-	laserpositive.PushBack({ 938,525,9,7 }); //yellow
-	laserpositive.PushBack({ 902 ,513,17,6 });//black
-	laserpositive.PushBack({ 720,599,31,17 });
-	laserpositive.PushBack({ 809,448,49,23 });
-	laserpositive.PushBack({ 716,563,51,26 });
-	laserpositive.PushBack({ 809,448,49,23 });
-	laserpositive.PushBack({ 720,599,31,17 });
-	laserpositive.PushBack({ 902 ,513,17,6 });
-	laserpositive.PushBack({ 938,525,9,7 });
+	laserpositive.PushBack({ 793,619,11,16 }); //yellow
+	laserpositive.PushBack({ 709,579,17,32 });//black
+	laserpositive.PushBack({ 718,643,20,40 });
+	laserpositive.PushBack({ 748,564,23,48 });
+	laserpositive.PushBack({ 751,639,23,48 });
+	laserpositive.PushBack({ 748,564,23,48 });
+	laserpositive.PushBack({ 718,643,20,40 });
+	laserpositive.PushBack({ 709,579,17,32 });
+	laserpositive.PushBack({ 793,619,11,16 });
 	laserpositive.speed = 0.2f;
 	laserpositive.loop = false;
 
 	//negative diagonal
-	lasernegative.PushBack({ 646,633,8,12 }); //yellow
+	lasernegative.PushBack({ 592,618,11,16 }); //yellow
 	lasernegative.PushBack({ 670,578,17,32 });//black
-	lasernegative.PushBack({ 606,576,20,40 });
-	lasernegative.PushBack({ 614,500,23,48 });
-	lasernegative.PushBack({ 568,570,23,48 });
-	lasernegative.PushBack({ 614,500,23,48 });
-	lasernegative.PushBack({ 606,576,20,40 });
+	lasernegative.PushBack({ 658,542,20,40 });
+	lasernegative.PushBack({ 625,563,23,48 });
+	lasernegative.PushBack({ 622,638,23,48 });
+	lasernegative.PushBack({ 625,563,23,48 });
+	lasernegative.PushBack({ 658,542,20,40 });
 	lasernegative.PushBack({ 670,578,17,32 });
-	lasernegative.PushBack({ 646,633,8,12 });
+	lasernegative.PushBack({ 592,618,11,16 });
 	lasernegative.speed = 0.2f;
 	lasernegative.loop = false;
 }
@@ -129,23 +129,96 @@ bool Enemy_BossShot::CleanUp()
 
 void Enemy_BossShot::Move()
 {
-	if (ball.current_frame >= 10)
+	if (ball.current_frame < 10)
+	{
+		posoriginal.x = position.x;
+		posoriginal.y = position.y;
+		posplayer.x = App->player->position.x;
+		posplayer.y = App->player->position.y;
+	}
+	if (ball.current_frame >= 10 && posplayer.x < posoriginal.x
+		&& posplayer.y > posoriginal.y - 30 && posplayer.y < posoriginal.y + 48.0f)
 	{
 		animation = &laser;
 		position.x -= 3;
 	}
-	if (laser.current_frame >= 8)
-	{
-		ball.current_frame = 0;
-		animation = &ball2;
-	}
-	if (cd == 100)
-	{
 
-		App->enemies->shot = false;
-		App->particles->AddParticle(App->particles->laser, position.x + 10, position.y + 10, COLLIDER_ENEMY_SHOT);
+	else if (ball.current_frame >= 10 && posplayer.y > posoriginal.y
+		&& posplayer.x > posoriginal.x - 30 && posplayer.x < posoriginal.x + 30.0f)
+	{
+		animation = &laservertical;
+		position.y += 3;
 	}
-	cd++;
+
+	else if (ball.current_frame >= 8 && posplayer.x > posoriginal.x
+		&& posplayer.y > posoriginal.y - 30 && posplayer.y < posoriginal.y + 48.0f)
+	{
+		animation = &laser;
+		position.x += 3;
+	}
+
+	else if (ball.current_frame >= 10 && posplayer.y < posoriginal.y
+		&& posplayer.x > posoriginal.x - 30 && posplayer.x < posoriginal.x + 30.0f)
+	{
+		animation = &laservertical;
+		position.y -= 3;
+	}
+
+	else if (ball.current_frame >= 10
+		&& posplayer.y > posoriginal.y && posplayer.x < posoriginal.x)
+	{
+		animation = &lasernegative;
+		position.x += -2.0f;
+		position.y += 3.0f;
+	}
+
+	else if (ball.current_frame >= 10
+		&& posplayer.y < posoriginal.y && posplayer.x > posoriginal.x)
+	{
+		animation = &lasernegative;
+		position.x += 2.0f;
+		position.y += -3.0f;
+	}
+
+	else if (ball.current_frame >= 10
+		&& posplayer.y < posoriginal.y && posplayer.x < posoriginal.x)
+	{
+		animation = &laserpositive;
+		position.x += -2.0f;
+		position.y += -3.0f;
+	}
+
+	else if (ball.current_frame >= 10
+		&& posplayer.y > posoriginal.y && posplayer.x > posoriginal.x)
+	{
+		animation = &laserpositive;
+		position.x += 2.0f;
+		position.y += 3.0f;
+	}
+
+	if (laser.current_frame >= 8 || laservertical.current_frame >= 8 
+		|| lasernegative.current_frame >= 8 || laserpositive.current_frame >= 8)
+	{
+		if (cd == 2)
+		{
+
+			App->enemies->shot = false;
+			App->particles->trans.life = 30;
+			App->particles->AddParticle(App->particles->trans, position.x + 10, position.y + 10, COLLIDER_ENEMY_SHOT);
+			App->particles->trans.life = 1000;
+			cd = 0;
+		}
+
+		ball.Reset();
+		animation = &ball;
+		laser.Reset();
+		laservertical.Reset();
+		laserpositive.Reset();
+		lasernegative.Reset();
+		cd++;
+	}
+
+	
 }
 void Enemy_BossShot::OnCollision(Collider* collider)
 {

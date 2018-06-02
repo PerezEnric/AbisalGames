@@ -133,6 +133,11 @@ ModuleParticles::ModuleParticles()
 	tentacle_shot.speed.x = 20;
 	tentacle_shot.life = 1000;
 
+	//particle trans
+	trans.anim.PushBack({0,945,10,10});
+	trans.speed.x = 20;
+	trans.life = 1000;
+
 	//Boss Explosion
 	boss_explosion.anim.PushBack({350,817,46,40});
 	boss_explosion.anim.PushBack({ 398,817,46,40 });
