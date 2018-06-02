@@ -254,8 +254,8 @@ bool ModuleBackground::Start()
 	
 
 	//Camera
-	App->render->camera.x += 201;//inical camera position
-	App->render->camera.y += 30;
+	App->render->camera.x = 201;//inical camera position
+	App->render->camera.y = 30;
 	App->render->back_limit = -App->render->camera.x;//inicial limit position
 	App->render->up_limit = -App->render->camera.y;
 	App->player->position.x = -App->render->camera.x;// inicial player position
@@ -590,6 +590,7 @@ void ModuleBackground::die()
 	if (App->player->live > 0)
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+		App->enemies->Disable();
 	}
 	else if (App->player->live == 0)
 	{

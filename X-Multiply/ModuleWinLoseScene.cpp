@@ -23,15 +23,15 @@ ModuleWinLoseScene::ModuleWinLoseScene()
 	A = { 0, 73, 16, 16 };
 	M = { 197, 71, 16, 16 };
 	E = { 68, 73, 16, 16 };
-	O = { 231, 71, 18, 16 };
-	V = { 351, 71, 18, 16 };
+	O = { 231, 71, 16, 16 };
+	V = { 351, 71, 16, 16 };
 	E2 = { 68, 73, 16, 16 };
 	R = { 282, 71, 16, 16 };
 	C = { 34, 73, 16, 16 };
 	L = { 180, 71, 16, 16 };
 	S = { 299, 71, 16, 16 };
 	T = { 316, 71, 16, 16 };
-	ONE = { 20, 123, 8, 16 };
+	ONE = { 32, 123, 16, 16 };
 	D = { 51, 73, 16, 16 };
 	B = { 17, 73, 16, 16 };
 	N = { 214, 71, 16, 16 };
@@ -82,14 +82,14 @@ update_status ModuleWinLoseScene::Update()
 		App->player->Disable();
 		App->render->camera.x = App->render->camera.y = 0;
 		// Draw everything --------------------------------------
-		App->render->Blit(lose_screen, 160, SCREEN_HEIGHT / 2, &G);
-		App->render->Blit(lose_screen, 176, SCREEN_HEIGHT / 2, &A);
-		App->render->Blit(lose_screen, 192, SCREEN_HEIGHT / 2, &M);
-		App->render->Blit(lose_screen, 208, SCREEN_HEIGHT / 2, &E);
-		App->render->Blit(lose_screen, 236, SCREEN_HEIGHT / 2, &O);
-		App->render->Blit(lose_screen, 252, SCREEN_HEIGHT / 2, &V);
-		App->render->Blit(lose_screen, 268, SCREEN_HEIGHT / 2, &E);
-		App->render->Blit(lose_screen, 284, SCREEN_HEIGHT / 2, &R);
+		App->render->Blit(lose_screen, 140, SCREEN_HEIGHT / 2, &G);
+		App->render->Blit(lose_screen, 156, SCREEN_HEIGHT / 2, &A);
+		App->render->Blit(lose_screen, 172, SCREEN_HEIGHT / 2, &M);
+		App->render->Blit(lose_screen, 188, SCREEN_HEIGHT / 2, &E);
+		App->render->Blit(lose_screen, 216, SCREEN_HEIGHT / 2, &O);
+		App->render->Blit(lose_screen, 232, SCREEN_HEIGHT / 2, &V);
+		App->render->Blit(lose_screen, 248, SCREEN_HEIGHT / 2, &E);
+		App->render->Blit(lose_screen, 264, SCREEN_HEIGHT / 2, &R);
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE])
 		{
