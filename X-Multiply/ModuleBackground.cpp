@@ -221,7 +221,9 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 360, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 0, 0);
+	// Enemy Boss
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 260, 217);
+	
 
 	//Camera
 	App->render->camera.x += 201;//inical camera position
@@ -229,6 +231,9 @@ bool ModuleBackground::Start()
 	App->render->back_limit = -App->render->camera.x;//inicial limit position
 	App->render->up_limit = -App->render->camera.y;
 	App->player->position.x = -App->render->camera.x;// inicial player position
+
+	boss_wakeup = false;
+	go_back = false;
 
 	return ret;
 }
@@ -285,7 +290,7 @@ void ModuleBackground::camera()
 	{
 		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
-			App->render->move_front = false;
+			App->render->move_front = !App->render->move_front;
 		}
 		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
@@ -354,13 +359,13 @@ void ModuleBackground::camera()
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x <= -720 && App->render->camera.x > -870)
+		if (App->render->camera.x <= -720 && App->render->camera.x > -890)
 		{
 			App->render->move_down = !App->render->move_down;
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x == -870)
+		if (App->render->camera.x == -890)
 		{
 			App->render->move_down = false;
 			App->render->move_front = false;
@@ -396,7 +401,7 @@ void ModuleBackground::camera()
 		else if (App->render->camera.x < -470)
 		{
 			App->render->move_back = true;
-			App->render->move_up = true;
+			App->render->move_up = false;
 		}
 
 		else if (App->render->camera.x < -310)
@@ -411,11 +416,11 @@ void ModuleBackground::camera()
 			App->render->move_down = !App->render->move_down;
 		}
 
-		else if (App->render->camera.x < -180)
+		else if (App->render->camera.x < -160)
 		{
 			App->render->move_down = false;
 			App->render->move_back = !App->render->move_back;
-			App->render->move_up = !App->render->move_up;
+			App->render->move_up =true;
 		}
 
 		else if (App->render->camera.x < 0)
@@ -425,6 +430,12 @@ void ModuleBackground::camera()
 			App->render->move_down = false;
 			App->render->move_front = false;
 		}
+
+		else if (App->render->camera.x < 30)
+		{
+			boss_wakeup = true;
+		}
+
 		else if (App->render->camera.x < 80)
 		{
 			App->render->move_back = !App->render->move_back;
@@ -439,7 +450,7 @@ void ModuleBackground::camera()
 			App->render->move_down = false;
 			App->render->move_front = false;
 		}
-		else if (App->render->camera.x < 190)
+		else if (App->render->camera.x < 220)
 		{
 			App->render->move_back = true;
 			App->render->move_up = false;
@@ -452,6 +463,7 @@ void ModuleBackground::camera()
 			App->render->move_up = false;
 			App->render->move_down = false;
 			App->render->move_front = false;
+			fight_boss = true;
 		}
 	}
 }
@@ -475,9 +487,9 @@ void ModuleBackground::cameralimit()
 		App->player->position.y = App->render->up_limit;
 	}
 	//down limit
-	if (App->render->up_limit + App->render->camera.h - 14 < App->player->position.y)
+	if (App->render->up_limit + App->render->camera.h - 42 < App->player->position.y)
 	{
-		App->player->position.y = App->render->up_limit + App->render->camera.h - 14;
+		App->player->position.y = App->render->up_limit + App->render->camera.h - 42;
 	}
 }
 

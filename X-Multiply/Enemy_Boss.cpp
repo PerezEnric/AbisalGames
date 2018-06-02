@@ -6,12 +6,14 @@
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
 #include "ModuleBackground.h"
+#include "ModuleRender.h"
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
 	boss.PushBack({ 875,240,113,78 }); //smile
 	boss.PushBack({ 870,38,123,82 }); //tongue
 	boss.PushBack({ 868,141,123,75 });
+	boss.PushBack({ 717,272,96,84 }); //sleep
 	boss.speed = 0.0;
 	animation = &boss;
 	collider = App->collision->AddCollider({ 0, 0, 123, 82 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -22,18 +24,20 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	eye.PushBack({ 849,564,20,14 }); //backup
 	eye.PushBack({ 818,564,21,13 }); //up
 	eye.PushBack({ 849,585,16,12 }); //original
+	eye.PushBack({ 819,584,19,14 }); //close
 	eye.speed = 0.0;
 	eyeanim = &eye;
 
-	wake_up = going_front = going_up = true;
-	shot == false;
+	going_up = true;
+	App->background->fight_boss = false;
+	going_front = false;
+
 
 	//go front
-	cd = 50;
+	cd = 0;
 	cd2 = 0;
 	shot_num = 0;
-	original_x = position.x;
-	fight = false;
+	original_x = App->render->back_limit + App->render->camera.w - 123;
 
 }
 
@@ -45,79 +49,115 @@ bool Enemy_Boss::CleanUp()
 
 void Enemy_Boss::Move()
 {
-
-	if (cd == 150)
+	if (App->background->boss_wakeup)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BOSS_SHOT, position.x + 12, position.y + 30);
-		App->enemies->shot = true;
-		cd = 0;
-		shot_num++;
-
-		if (shot_num == 2)
+		boss.current_frame = 0;
+		if (App->render->move_back)
 		{
-			fight = true;
-		}
-	}
-
-	if (shot_num == 2)
-	{
-		if (fight == true && cd2 >= 30)
-		{
-			position.x -= 3;
-			boss.current_frame = 1;
+			position.x -= 2;
 		}
 
-		if (position.x <= App->render->back_limit)
+		if (App->render->move_up)
 		{
-			fight = false;
+			position.y -= 1;
 		}
 
-		if (fight == false && position.x < original_x)
+		if (App->render->move_down)
+		{
+			position.y += 1;
+		}
+
+		if (position.x < original_x)
 		{
 			position.x++;
-			boss.current_frame = 2;
 		}
+		
 
-		if (position.x >= original_x && cd2 >= 30)
+		if (App->background->fight_boss)
 		{
-			shot_num = 0;
-			boss.current_frame = 0;
-			cd2 = 0;
+			if (cd == 100)
+			{
+				App->enemies->AddEnemy(ENEMY_TYPES::BOSS_SHOT, position.x + 12, position.y + 30);
+				App->enemies->shot = true;
+				cd = 0;
+				shot_num++;
+
+				if (shot_num == 2)
+				{
+					going_front = true;
+				}
+			}
+
+			if (shot_num == 2)
+			{
+				if (going_front == true && cd2 >= 30)
+				{
+					position.x -= 3;
+					boss.current_frame = 1;
+				}
+
+				if (position.x <= App->render->back_limit)
+				{
+					going_front = false;
+				}
+
+				if (going_front == false && position.x < original_x)
+				{
+					position.x++;
+					boss.current_frame = 2;
+				}
+
+				if (position.x >= original_x && cd2 >= 30)
+				{
+					shot_num = 0;
+					boss.current_frame = 0;
+					cd2 = 0;
+				}
+
+				cd2++;
+			}
+
+			else if (going_up && !App->enemies->shot)
+			{
+				if (position.y <= App->render->up_limit)
+				{
+					going_up = false;
+				}
+
+				else
+				{
+					position.y -= 2;
+				}
+			}
+
+			else if (!going_up && !App->enemies->shot)
+			{
+				if (position.y >= App->render->up_limit + App->render->camera.h - 78)
+				{
+					going_up = true;
+				}
+
+				else
+				{
+					position.y += 2;
+				}
+				cd++;
+			}
 		}
-
-		cd2++;
-	}
-
-	else if (going_up && !App->enemies->shot)
-	{
-		if (position.y <= App->render->up_limit)
-		{
-			going_up = false;
-		}
-
 		else
 		{
-			position.y -= 2;
-		}
-	}
-
-	else if (!going_up && !App->enemies->shot)
-	{
-		if (position.y >= App->render->up_limit + App->render->camera.h - 78)
-		{
-			going_up = true;
+			App->enemies->queue->enemy_life = 80;
 		}
 
-		else
-		{
-			position.y += 2;
-		}
-		cd++;
+		MoveEye();
 	}
-	MoveEye();
+	else
+		boss.current_frame = 3;
 }
 void Enemy_Boss::OnCollision(Collider* collider)
 {
+	App->background->fight_boss = false;
+	App->background->boss_wakeup = false;
 	App->background->bossx = position.x;
 	App->background->bossy = position.y;
 	App->background->expboss = true;

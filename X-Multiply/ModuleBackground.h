@@ -46,6 +46,7 @@ public:
 	int bossy;
 	int bossx;
 	bool expboss, boss_wakeup = false;
+	bool fight_boss = false;
 };
 
 #endif
