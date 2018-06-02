@@ -209,6 +209,18 @@ update_status ModuleParticles::Update()
 		}
 	}
 
+	if (boost)
+	{
+		if (cd < 50)
+		{
+			App->particles->AddParticle(App->particles->speedpowerup, App->player->position.x - 40, App->player->position.y, COLLIDER_NONE);
+			cd++;
+		}
+
+		else
+			boost = false;
+	}
+
 	return UPDATE_CONTINUE;
 }
 

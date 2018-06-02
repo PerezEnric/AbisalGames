@@ -32,6 +32,8 @@ void PowerUp_SpeedUp::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(boost_sound);
 	App->player->turbo = true;
+
+	App->particles->boost = true;
 }
 
 bool  PowerUp_SpeedUp::CleanUp()

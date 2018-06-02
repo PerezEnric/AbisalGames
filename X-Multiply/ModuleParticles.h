@@ -54,6 +54,8 @@ private:
 	
 public:
 
+	int cd = 0;
+	bool boost = false;
 	Particle laser;
 	Particle explosion_shot;
 	Particle explosion;
