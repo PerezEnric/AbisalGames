@@ -41,11 +41,11 @@ public:
 	bool taildown;
 	bool win;
 	int move_cont = 0;
-	bool go_back = false;
+	bool go_back;
 	int cont = 0;
 	int bossy;
 	int bossx;
-	bool expboss = false;
+	bool expboss, boss_wakeup = false;
 };
 
 #endif
