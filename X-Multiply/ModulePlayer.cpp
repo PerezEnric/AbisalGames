@@ -236,9 +236,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		destroyed = true;
 		live--;
 		bomb = false;
+		wave = false;
 		tentacles = false;
+		App->tentacle->Disable();
 		App->audio->PlaySoundEffect(player_death);
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
+		App->background->die();
 	}
 }

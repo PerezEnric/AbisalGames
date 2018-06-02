@@ -11,6 +11,7 @@
 #include "ModuleUI.h"
 #include "ModuleParticles.h"
 #include "Enemy_Boss.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -303,6 +304,8 @@ update_status ModuleBackground::Update()
 	if (expboss == true)
 	{
 		bossexplosions();
+		win = true;
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 	}
 
 
@@ -579,4 +582,18 @@ void ModuleBackground::bossexplosions()
 	}
 
 	cont++;
+}
+
+
+void ModuleBackground::die()
+{
+	if (App->player->live > 0)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
+	}
+	else if (App->player->live == 0)
+	{
+		win = false;
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+	}
 }

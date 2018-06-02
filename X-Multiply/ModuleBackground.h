@@ -19,6 +19,7 @@ public:
 	void camera();
 	void cameralimit();
 	void bossexplosions();
+	void die();
 
 public:
 	
