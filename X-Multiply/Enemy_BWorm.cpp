@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
-
+#include "ModuleRender.h"
 Enemy_BWorm::Enemy_BWorm(int x, int y) : Enemy(x, y)
 {
 	brown_down.PushBack({480,240,22,27});
@@ -27,143 +27,152 @@ Enemy_BWorm::Enemy_BWorm(int x, int y) : Enemy(x, y)
 }
 void Enemy_BWorm::Move()
 {
-	if (dspawn == true)
-	{
-		position.y -= 0;
-		position.x += 0;
-		cd++;
-		if (cd == 50)
-		{
-			dspawn = false;
-			down = true;
-			animation = &brown_down;
-			cd = 0;
-		}
-	}
 
-	if (down == true)
+	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
 	{
-		position.y += 1;
-		position.x += 0;
-		cd++;
-		if(cd == 50)
-		{
-			down = false;
-			downr = true;
-			animation = &brown_rdown1;
-			cd = 0;
-		}
+		action = true;
 	}
-	if(downr == true)
+	if (action == true)
 	{
-		position.y += 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (dspawn == true)
 		{
-			downr = false;
-			downr2 = true;
-			animation = &brown_rdown2;
-			cd = 0;
+			position.y -= 0;
+			position.x += 0;
+			cd++;
+			if (cd == 50)
+			{
+				dspawn = false;
+				down = true;
+				animation = &brown_down;
+				cd = 0;
+			}
 		}
-	}
 
-	if (downr2 == true)
-	{
-		position.y += 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (down == true)
 		{
-			downr2 = false;
-			downr3 = true;
-			animation = &brown_rdown3;
-			cd = 0;
+			position.y += 1;
+			position.x += 0;
+			cd++;
+			if (cd == 50)
+			{
+				down = false;
+				downr = true;
+				animation = &brown_rdown1;
+				cd = 0;
+			}
 		}
-	}
+		if (downr == true)
+		{
+			position.y += 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				downr = false;
+				downr2 = true;
+				animation = &brown_rdown2;
+				cd = 0;
+			}
+		}
 
-	if (downr3 == true)
-	{
-		position.y += 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (downr2 == true)
 		{
-			downr3 = false;
-			hor = true;
-			animation = &brown_hor;
-			cd = 0;
+			position.y += 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				downr2 = false;
+				downr3 = true;
+				animation = &brown_rdown3;
+				cd = 0;
+			}
 		}
-	}
 
-	if (hor == true)
-	{
-		position.y += 0;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (downr3 == true)
 		{
-			hor = false;
-			upr = true;
-			animation = &brown_rup1;
-			cd = 0;
+			position.y += 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				downr3 = false;
+				hor = true;
+				animation = &brown_hor;
+				cd = 0;
+			}
 		}
-	}
 
-	if (upr == true)
-	{
-		position.y -= 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (hor == true)
 		{
-			upr = false;
-			upr2 = true;
-			animation = &brown_rup2;
-			cd = 0;
+			position.y += 0;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				hor = false;
+				upr = true;
+				animation = &brown_rup1;
+				cd = 0;
+			}
 		}
-	}
 
-	if (upr2 == true)
-	{
-		position.y -= 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (upr == true)
 		{
-			upr2 = false;
-			upr3 = true;
-			animation = &brown_rup3;
-			cd = 0;
+			position.y -= 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				upr = false;
+				upr2 = true;
+				animation = &brown_rup2;
+				cd = 0;
+			}
 		}
-	}
 
-	if (upr3 == true)
-	{
-		position.y -= 1;
-		position.x += 1;
-		cd++;
-		if (cd == 50)
+		if (upr2 == true)
 		{
-			upr3 = false;
-			up = true;
-			animation = &brown_up;
-			cd = 0;
+			position.y -= 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				upr2 = false;
+				upr3 = true;
+				animation = &brown_rup3;
+				cd = 0;
+			}
+		}
+
+		if (upr3 == true)
+		{
+			position.y -= 1;
+			position.x += 1;
+			cd++;
+			if (cd == 50)
+			{
+				upr3 = false;
+				up = true;
+				animation = &brown_up;
+				cd = 0;
+			}
+		}
+		if (up == true)
+		{
+			position.y -= 1;
+			position.x += 0;
+			cd++;
+			if (cd == 50)
+			{
+				up = false;
+				dspawn = true;
+				animation = &brown_dspawn;
+				cd = 0;
+			}
 		}
 	}
-	if (up == true)
-	{
-		position.y -= 1;
-		position.x += 0;
-		cd++;
-		if (cd == 50)
-		{
-			up = false;
-			dspawn = true;
-			animation = &brown_dspawn;
-			cd = 0;
-		}
-	}
+	
 
 	
 

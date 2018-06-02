@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUI.h"
+#include "ModuleRender.h"
 
 Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 {
@@ -18,44 +19,52 @@ Enemy_LittleShrimp::Enemy_LittleShrimp(int x, int y) : Enemy(x, y)
 }
 void Enemy_LittleShrimp::Move()
 {
-	if (going_up)
+	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
 	{
-		if (wave > 1.0f)
+		action = true;
+	}
+	if (action == true)
+	{
+		if (going_up)
 		{
-			going_up = false;
-			cd++;
-			if (cd > 2)
+			if (wave > 1.0f)
 			{
-				//shot direction
-				if (App->player->position.x < position.x && App->player->position.y < position.y)
-					App->particles->enemy_shot.speed = { -1,-1 };
+				going_up = false;
+				cd++;
+				if (cd > 2)
+				{
+					//shot direction
+					if (App->player->position.x < position.x && App->player->position.y < position.y)
+						App->particles->enemy_shot.speed = { -1,-1 };
 
-				else if (App->player->position.x > position.x && App->player->position.y < position.y)
-					App->particles->enemy_shot.speed = { 1,-1 };
+					else if (App->player->position.x > position.x && App->player->position.y < position.y)
+						App->particles->enemy_shot.speed = { 1,-1 };
 
-				else if (App->player->position.x > position.x && App->player->position.y > position.y)
-					App->particles->enemy_shot.speed = { 1,1 };
+					else if (App->player->position.x > position.x && App->player->position.y > position.y)
+						App->particles->enemy_shot.speed = { 1,1 };
 
-				else if (App->player->position.x < position.x && App->player->position.y > position.y)
-					App->particles->enemy_shot.speed = { -1,1 };
+					else if (App->player->position.x < position.x && App->player->position.y > position.y)
+						App->particles->enemy_shot.speed = { -1,1 };
 
-				App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-				
-				cd = 0;
+					App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+
+					cd = 0;
+				}
 			}
+			else
+				wave += 0.05f;
 		}
 		else
-			wave += 0.05f;
+		{
+			if (wave < -1.0f)
+				going_up = true;
+			else
+				wave -= 0.05f;
+		}
+		position.y = int(float(original_y) + (25.0f * sinf(wave)));
+		position.x -= 1.5f;
 	}
-	else
-	{
-		if (wave < -1.0f)
-			going_up = true;
-		else
-			wave -= 0.05f;
-	}
-	position.y = int(float(original_y) + (25.0f * sinf(wave)));
-	position.x -= 1.5f;
+	
 }
 
 void Enemy_LittleShrimp::OnCollision(Collider* collider)

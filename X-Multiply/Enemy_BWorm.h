@@ -31,6 +31,7 @@ private:
 	bool upr3 = false;
 	bool up = false;
 	bool dspawn = true;
+	bool action = false;
 public:
 
 	Enemy_BWorm(int x, int y);

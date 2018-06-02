@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
-
+#include "ModuleRender.h"
 Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 {
 	//Basic fly
@@ -46,86 +46,95 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 }
 void Enemy_PU::Move()
 {
-	//Fly movement
-	if (flying == true)
+
+	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
 	{
-
-		fly_robot.current_frame = 1;
-		fly_robot.current_frame = 2;
-
-		position.y = int(float(original_y));;
-		position.x -= 1;
-		cd++;
-		if (cd > 100)
-		{
-			landing = true;
-			flying = false;
-			animation = &landing_robot;
-		}
+		action = true;
 	}
-
-	//Landing movement
-	else if (landing == true && flying == false && walking == false)
+	if (action == true)
 	{
-		fly_robot.current_frame = 3;
-		fly_robot.current_frame = 4;
-		fly_robot.current_frame = 5;
-		fly_robot.current_frame = 6;
-		fly_robot.current_frame = 7;
-		fly_robot.current_frame = 8;
-		fly_robot.current_frame = 9;
-
-		position.y += 1;
-		position.x += 1;
-		cd2++;
-		if (cd2 > 100)
+		//Fly movement
+		if (flying == true)
 		{
-			walking = true;
-			landing = false;
-			animation = &walkingr_robot;
-		}
-	}
 
-	//Walking movement
-	else if (walking == true && landing == false && flying == false)
-	{
-		//Right walking movement
-		if (right == true && left == false)
-		{
-			fly_robot.current_frame = 10;
-			fly_robot.current_frame = 11;
-			fly_robot.current_frame = 12;
-			fly_robot.current_frame = 13;
+			fly_robot.current_frame = 1;
+			fly_robot.current_frame = 2;
 
-			position.x += 1;
-			cd3++;
-			if (cd3 > 100)
+			position.y = int(float(original_y));;
+			position.x -= 1;
+			cd++;
+			if (cd > 100)
 			{
-				left = true;
-				right = false;
-				cd3 = 0;
-				animation = &walking_robot;
+				landing = true;
+				flying = false;
+				animation = &landing_robot;
 			}
 		}
-		//Left walking movement
-		if (left == true && right == false)
+
+		//Landing movement
+		else if (landing == true && flying == false && walking == false)
 		{
-			fly_robot.current_frame = 10;
-			fly_robot.current_frame = 11;
-			fly_robot.current_frame = 12;
-			fly_robot.current_frame = 13;
-			position.x -= 1;
-			cd3++;
-			if (cd3 > 100)
+			fly_robot.current_frame = 3;
+			fly_robot.current_frame = 4;
+			fly_robot.current_frame = 5;
+			fly_robot.current_frame = 6;
+			fly_robot.current_frame = 7;
+			fly_robot.current_frame = 8;
+			fly_robot.current_frame = 9;
+
+			position.y += 1;
+			position.x += 1;
+			cd2++;
+			if (cd2 > 100)
 			{
-				right = true;
-				left = false;
-				cd3 = 0;
+				walking = true;
+				landing = false;
 				animation = &walkingr_robot;
 			}
 		}
 
+		//Walking movement
+		else if (walking == true && landing == false && flying == false)
+		{
+			//Right walking movement
+			if (right == true && left == false)
+			{
+				fly_robot.current_frame = 10;
+				fly_robot.current_frame = 11;
+				fly_robot.current_frame = 12;
+				fly_robot.current_frame = 13;
+
+				position.x += 1;
+				cd3++;
+				if (cd3 > 100)
+				{
+					left = true;
+					right = false;
+					cd3 = 0;
+					animation = &walking_robot;
+				}
+			}
+			//Left walking movement
+			if (left == true && right == false)
+			{
+				fly_robot.current_frame = 10;
+				fly_robot.current_frame = 11;
+				fly_robot.current_frame = 12;
+				fly_robot.current_frame = 13;
+				position.x -= 1;
+				cd3++;
+				if (cd3 > 100)
+				{
+					right = true;
+					left = false;
+					cd3 = 0;
+					animation = &walkingr_robot;
+				}
+			}
+
+		}
 	}
+	
 }
 
 void Enemy_PU::OnCollision(Collider* collider)

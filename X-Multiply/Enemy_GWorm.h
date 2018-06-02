@@ -14,6 +14,7 @@ private:
 	int original_y;
 	bool walk = true;
 	bool stop = false;
+	bool action = false;
 public:
 
 	Enemy_GWorm(int x, int y);

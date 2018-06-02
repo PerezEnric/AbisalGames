@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleRender.h"
 
 Enemy_GWorm::Enemy_GWorm(int x, int y) : Enemy(x, y)
 {
@@ -22,60 +23,69 @@ Enemy_GWorm::Enemy_GWorm(int x, int y) : Enemy(x, y)
 }
 void Enemy_GWorm::Move()
 {
-	if (walk == true)
+	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
 	{
-		if (stop == true)
-		{
-			position.y += 0;
-			position.x -= 0;
-			stop = false;
-		}
-		else
-		{
-			position.y = int(float(original_y) + 0);
-			position.x -= 1.0f;
-			stop = true;
-		}
+		action = true;
+	}
 
-		cd++;
+	if (action == true)
+	{
+		if (walk == true)
+		{
+			if (stop == true)
+			{
+				position.y += 0;
+				position.x -= 0;
+				stop = false;
+			}
+			else
+			{
+				position.y = int(float(original_y) + 0);
+				position.x -= 1.0f;
+				stop = true;
+			}
+
+			cd++;
 			if (cd == 100)
 			{
 				walk = false;
 				animation = &greenw_shoot;
 				cd = 0;
 			}
-	}
-	else if (walk == false)
-	{
-		position.y = int(float(original_y) + 0);
-		position.x += 0;
-		cd2++;
-		if (cd2 == 100)
-		{
-			if (App->player->position.x < position.x && App->player->position.y < position.y)
-				App->particles->enemy_shot.speed = { -1,-1 };
-
-			else if (App->player->position.x > position.x && App->player->position.y < position.y)
-				App->particles->enemy_shot.speed = { 1,-1 };
-
-			else if (App->player->position.x > position.x && App->player->position.y > position.y)
-				App->particles->enemy_shot.speed = { 1,1 };
-
-			else if (App->player->position.x < position.x && App->player->position.y > position.y)
-				App->particles->enemy_shot.speed = { -1,1 };
-
-			App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-			cd2 = 0;
 		}
-		
-		cd++;
-		if (cd == 100)
+		else if (walk == false)
 		{
-			walk = true;
-			animation = &greenw;
-			cd = 0;
+			position.y = int(float(original_y) + 0);
+			position.x += 0;
+			cd2++;
+			if (cd2 == 100)
+			{
+				if (App->player->position.x < position.x && App->player->position.y < position.y)
+					App->particles->enemy_shot.speed = { -1,-1 };
+
+				else if (App->player->position.x > position.x && App->player->position.y < position.y)
+					App->particles->enemy_shot.speed = { 1,-1 };
+
+				else if (App->player->position.x > position.x && App->player->position.y > position.y)
+					App->particles->enemy_shot.speed = { 1,1 };
+
+				else if (App->player->position.x < position.x && App->player->position.y > position.y)
+					App->particles->enemy_shot.speed = { -1,1 };
+
+				App->particles->AddParticle(App->particles->enemy_shot, position.x + 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+				cd2 = 0;
+			}
+
+			cd++;
+			if (cd == 100)
+			{
+				walk = true;
+				animation = &greenw;
+				cd = 0;
+			}
 		}
 	}
+	
 
 }
 

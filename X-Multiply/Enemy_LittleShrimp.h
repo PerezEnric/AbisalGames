@@ -11,7 +11,7 @@ private:
 	int original_y = 0;
 	Animation fly_shrimp;
 	int cd = 0;
-
+	bool action = false;
 public:
 
 	Enemy_LittleShrimp(int x, int y);

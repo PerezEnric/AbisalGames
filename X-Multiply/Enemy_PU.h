@@ -21,6 +21,7 @@ private:
 	int cd2 = 0;
 	int cd3 = 0;
 	int points = 400;
+	bool action = false;
 
 public:
 
