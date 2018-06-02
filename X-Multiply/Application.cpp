@@ -13,6 +13,7 @@
 #include "ModuleFonts.h"
 #include "ModuleUI.h"
 #include "ModuleIntroScene.h"
+#include "ModuleWinLoseScene.h"
 
 Application::Application()
 {
@@ -23,14 +24,15 @@ Application::Application()
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = intro = new ModuleIntroScene();
 	modules[6] = background = new ModuleBackground();
-	modules[7] = tentacle = new ModuleTentacles();
-	modules[8] = player = new ModulePlayer();
-	modules[9] = particles = new ModuleParticles();
-	modules[10] = collision = new ModuleCollision();
-	modules[11] = enemies = new ModuleEnemies();
-	modules[12] = fonts = new ModuleFonts();
-	modules[13] = ui = new ModuleUI();
-	modules[14] = fade = new ModuleFadeToBlack();
+	modules[7] = win_lose = new ModuleWinLoseScene();
+	modules[8] = tentacle = new ModuleTentacles();
+	modules[9] = player = new ModulePlayer();
+	modules[10] = particles = new ModuleParticles();
+	modules[11] = collision = new ModuleCollision();
+	modules[12] = enemies = new ModuleEnemies();
+	modules[13] = fonts = new ModuleFonts();
+	modules[14] = ui = new ModuleUI();
+	modules[15] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -47,6 +49,7 @@ bool Application::Init()
 	player->Disable();
 	background->Disable();
 	ui->Disable();
+	win_lose->Disable();
 	
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

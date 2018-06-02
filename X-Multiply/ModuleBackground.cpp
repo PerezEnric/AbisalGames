@@ -91,6 +91,8 @@ bool ModuleBackground::Start()
 	Enable();
 	App->player->Enable();
 	App->ui->Enable();
+	App->enemies->Enable();
+
 	tailpositionx = 1022;
 	tailpositiony = 270;
 	taildown = false;

@@ -9,7 +9,8 @@
 #include "ModuleIntroScene.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleEnemies.h"
-//#include "ModuleWinLoseScene.h"
+#include "ModuleWinLoseScene.h"
+#include "ModuleUI.h"
 
 
 
@@ -32,7 +33,11 @@ bool ModuleIntroScene::Start()
 	intro_music = App->audio->LoadMusic("Audio_Assets/X-Multiply_Title.ogg");
 	App->audio->PlayMusic(intro_music);
 	/*App->win_lose->Disable();*/
-	
+	App->enemies->Disable();
+	App->background->Disable();
+	App->player->Disable();
+	App->win_lose->Disable();
+	App->ui->Disable();
 
 	App->render->move_front= false;
 	App->render->move_back = false;

@@ -38,7 +38,7 @@ public:
 	SDL_Rect tail2;
 	int tailpositionx, tailpositiony;
 	bool taildown;
-	
+	bool win;
 	int move_cont = 0;
 	bool go_back = false;
 

@@ -7,9 +7,9 @@
 #include "ModulePlayer.h"
 #include "ModuleBackground.h"
 #include "ModuleFonts.h"
-//#include "ModuleFadeToBlack.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
-//#include "ModuleWinLoseScene.h"
+#include "ModuleWinLoseScene.h"
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
 //#include "ModuleFonts.h"
@@ -192,17 +192,17 @@ update_status ModulePlayer::Update()
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;
 
-	//if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
-	//{
-	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
-	//	App->background->win = false;
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		App->background->win = false;
 
-	//}
-	//if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
-	//{
-	//	App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
-	//	App->background->win = true;
-	//}
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		App->background->win = true;
+	}
 	//powerup
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
 	{
