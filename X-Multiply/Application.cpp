@@ -12,6 +12,7 @@
 #include "ModuleTentacles.h"
 #include "ModuleFonts.h"
 #include "ModuleUI.h"
+#include "ModuleIntroScene.h"
 
 Application::Application()
 {
@@ -20,15 +21,16 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
-	modules[5] = background = new ModuleBackground();
-	modules[6] = tentacle = new ModuleTentacles();
-	modules[7] = player = new ModulePlayer();
-	modules[8] = particles = new ModuleParticles();
-	modules[9] = collision = new ModuleCollision();
-	modules[10] = enemies = new ModuleEnemies();
-	modules[11] = fonts = new ModuleFonts();
-	modules[12] = ui = new ModuleUI();
-	modules[13] = fade = new ModuleFadeToBlack();
+	modules[5] = intro = new ModuleIntroScene();
+	modules[6] = background = new ModuleBackground();
+	modules[7] = tentacle = new ModuleTentacles();
+	modules[8] = player = new ModulePlayer();
+	modules[9] = particles = new ModuleParticles();
+	modules[10] = collision = new ModuleCollision();
+	modules[11] = enemies = new ModuleEnemies();
+	modules[12] = fonts = new ModuleFonts();
+	modules[13] = ui = new ModuleUI();
+	modules[14] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -41,12 +43,17 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+	// disable modules
+	player->Disable();
+	background->Disable();
+	ui->Disable();
+	
+
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 
-	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
-		ret = modules[i]->Start();
-
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 	return ret;
 }
 
@@ -54,14 +61,15 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PreUpdate();
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->Update();
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PostUpdate();
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
+
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
 }

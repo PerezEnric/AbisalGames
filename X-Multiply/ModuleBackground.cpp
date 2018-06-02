@@ -88,7 +88,9 @@ bool ModuleBackground::Start()
 	//lvl2_music = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 
 	//App->audio->PlayMusic(lvl2_music);
-
+	Enable();
+	App->player->Enable();
+	App->ui->Enable();
 	tailpositionx = 1022;
 	tailpositiony = 270;
 	taildown = false;
