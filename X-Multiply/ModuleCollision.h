@@ -16,6 +16,7 @@ enum COLLIDER_TYPE
 	COLLIDER_POWER_UP,
 	COLLIDER_HANDS,
 	COLLIDER_ARMS,
+	COLLIDER_SPECIAL_SHOT,
 	COLLIDER_MAX,
 
 };
@@ -56,13 +57,14 @@ public:
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
 	void DebugDraw();
-
+	
 private:
 
 	Collider* colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
 	bool god_mode = false;
+	
 };
 
 #endif // __ModuleCollision_H__

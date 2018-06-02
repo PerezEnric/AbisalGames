@@ -14,7 +14,7 @@
     <ProjectGuid>{746CC4C3-787F-4B0E-AA66-E388FE3FF4F6}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
     <ProjectName>SDL4 Handout</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -81,6 +81,8 @@
     <ClInclude Include="EnemyMiddleLittleDorsal.h" />
     <ClInclude Include="EnemyRightDorsal.h" />
     <ClInclude Include="EnemyRightLittleDorsal.h" />
+    <ClInclude Include="Enemy_Boss.h" />
+    <ClInclude Include="Enemy_BossShot.h" />
     <ClInclude Include="Enemy_BWorm.h" />
     <ClInclude Include="Enemy_GWorm.h" />
     <ClInclude Include="Enemy_LateralFin.h" />
@@ -122,6 +124,8 @@
     <ClCompile Include="EnemyMiddleLittleDorsal.cpp" />
     <ClCompile Include="EnemyRightDorsal.cpp" />
     <ClCompile Include="EnemyRightLittleDorsal.cpp" />
+    <ClCompile Include="Enemy_Boss.cpp" />
+    <ClCompile Include="Enemy_BossShot.cpp" />
     <ClCompile Include="Enemy_BWorm.cpp" />
     <ClCompile Include="Enemy_GWorm.cpp" />
     <ClCompile Include="Enemy_LateralFin.cpp" />

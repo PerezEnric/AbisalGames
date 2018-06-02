@@ -188,6 +188,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_BlueJumping(info.x, info.y);
 				queue[i].enemy_life = 3;
 				break;
+			case ENEMY_TYPES::BOSS:
+				enemies[i] = new Enemy_Boss(info.x, info.y);
+				queue[i].enemy_life = 80;
+				break;
+			case ENEMY_TYPES::BOSS_SHOT:
+				enemies[i] = new Enemy_BossShot(info.x, info.y);
+				queue[i].enemy_life = 1;
+				break;
 			case ENEMY_TYPES::PU:
 				enemies[i] = new Enemy_PU(info.x, info.y);
 				queue[i].enemy_life = 1;

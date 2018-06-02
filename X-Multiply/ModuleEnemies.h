@@ -16,6 +16,8 @@
 #include "Enemy_Mask.h"
 #include "Enemy_PU.h"
 #include "Enemy_BlueJumping.h"
+#include "Enemy_Boss.h"
+#include "Enemy_BossShot.h"
 #include "Enemy_GWorm.h"
 #include "Enemy_BWorm.h"
 #include "PowerUp_SpeedUp.h"
@@ -45,6 +47,8 @@ enum ENEMY_TYPES
 	BWORM,
 	LATERALFIN,
 	BLUE_JUMPING,
+	BOSS,
+	BOSS_SHOT,
 	PU,
 	SPEEDUP,
 	BOMB,
@@ -80,6 +84,7 @@ public:
 	bool lets;
 	bool letb;
 	bool lett;
+	bool shot;
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
@@ -88,7 +93,7 @@ private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
-private:
+public:
 
 	SDL_Texture * sprites;
 };

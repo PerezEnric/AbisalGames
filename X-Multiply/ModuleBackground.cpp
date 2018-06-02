@@ -216,6 +216,8 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 320, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 360, 50);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 0, 0);
+
 	//Camera
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
@@ -273,7 +275,7 @@ void ModuleBackground::camera()
 	{
 		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
-			App->render->move_front = !App->render->move_front;
+			App->render->move_front = false;
 		}
 		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
@@ -370,18 +372,18 @@ void ModuleBackground::camera()
 			App->render->move_back = !App->render->move_back;
 			App->render->move_up = !App->render->move_up;
 		}
-		else if(App->render->camera.x < -680)
+		else if (App->render->camera.x < -680)
 		{
 			App->render->move_up = false;
 			App->render->move_back = !App->render->move_back;
 			App->render->move_down = !App->render->move_down;
 		}
-		else if(App->render->camera.x < -540)
+		else if (App->render->camera.x < -540)
 		{
 			App->render->move_back = !App->render->move_back;
 			App->render->move_down = false;
 		}
-		else if (App->render->camera.x < -450)
+		else if (App->render->camera.x < -470)
 		{
 			App->render->move_back = true;
 			App->render->move_up = true;
@@ -406,6 +408,34 @@ void ModuleBackground::camera()
 			App->render->move_up = !App->render->move_up;
 		}
 
+		else if (App->render->camera.x < 0)
+		{
+			App->render->move_back = true;
+			App->render->move_up = false;
+			App->render->move_down = false;
+			App->render->move_front = false;
+		}
+		else if (App->render->camera.x < 80)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_up = false;
+			App->render->move_down = true;
+			App->render->move_front = false;
+		}
+		else if (App->render->camera.x < 160)
+		{
+			App->render->move_back = !App->render->move_back;
+			App->render->move_up = true;
+			App->render->move_down = false;
+			App->render->move_front = false;
+		}
+		else if (App->render->camera.x < 190)
+		{
+			App->render->move_back = true;
+			App->render->move_up = false;
+			App->render->move_down = false;
+			App->render->move_front = false;
+		}
 		else
 		{
 			App->render->move_back = false;
@@ -415,6 +445,7 @@ void ModuleBackground::camera()
 		}
 	}
 }
+
 
 void ModuleBackground::cameralimit()
 {

@@ -36,6 +36,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_ARMS] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_HANDS] = true;
+	matrix[COLLIDER_ENEMY][COLLIDER_SPECIAL_SHOT] = false;
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER] = false;
@@ -81,6 +82,15 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_HANDS][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_HANDS][COLLIDER_ARMS] = false;
 	matrix[COLLIDER_HANDS][COLLIDER_HANDS] = false;
+
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_WALL] = false;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_ENEMY_SHOT] = true;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_POWER_UP] = false;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_ARMS] = false;
+	matrix[COLLIDER_SPECIAL_SHOT][COLLIDER_HANDS] = false;
 }
 
 // Destructor
@@ -162,8 +172,6 @@ update_status ModuleCollision::Update()
 		matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = false;
 		matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = false;
 	}
-
-
 	return UPDATE_CONTINUE;
 }
 
@@ -209,6 +217,9 @@ void ModuleCollision::DebugDraw()
 			break;
 		case COLLIDER_HANDS:
 			App->render->DrawQuad(colliders[i]->rect, 100, 100, 100, alpha);
+			break;
+		case COLLIDER_SPECIAL_SHOT:
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		}
 	}
