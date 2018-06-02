@@ -47,7 +47,7 @@ public:
 	
 	void speed_waves(iPoint);
 private:
-
+	Animation * current_animation = nullptr;
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
@@ -72,6 +72,7 @@ public:
 	Particle tentacle_shot;
 	Particle boss_explosion;
 	Particle trans;
+	SDL_Rect speedup;
 };
 
 #endif // __MODULEPARTICLES_H__

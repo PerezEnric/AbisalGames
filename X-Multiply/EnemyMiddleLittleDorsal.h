@@ -10,6 +10,7 @@ private:
 	Animation middlelittledorsal;
 	int points = 600;
 	int cd = 0;
+	int cd2 = 0;
 public:
 
 	EnemyMiddleLittleDorsal(int x, int y);

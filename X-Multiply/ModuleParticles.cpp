@@ -41,16 +41,17 @@ ModuleParticles::ModuleParticles()
 
 	speedpowerup.anim.PushBack({ 866, 873, 18, 14 });
 	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
-	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
+	/*speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
 	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
 	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
 	speedpowerup.anim.PushBack({ 892, 873, 24, 13 });
-	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });
+	speedpowerup.anim.PushBack({ 921, 874, 42, 11 });*/
 	speedpowerup.anim.loop = false;
-	speedpowerup.anim.speed = 0.05f;
+	speedpowerup.anim.speed = 0.1f;
 	speedpowerup.life = 50;
 
 
+	speedup = { 921, 874, 42, 11 };
 	//Enemy shot
 
 	enemy_shot.anim.PushBack({ 774,894,8,8 });
@@ -210,17 +211,25 @@ update_status ModuleParticles::Update()
 			}
 		}
 	}
-
+	current_animation = &speedpowerup.anim;
+	
 	if (boost)
 	{
-		if (cd < 50)
+
+	App->render->Blit(graphics, App->player->position.x - 20, App->player->position.y, &(current_animation->GetCurrentFrame()));
+		
+		if((cd > 8 && cd < 16) || (cd > 32 && cd < 64) )
 		{
-			App->particles->AddParticle(App->particles->speedpowerup, App->player->position.x - 20, App->player->position.y, COLLIDER_NONE);
-			cd++;
+			App->render->Blit(graphics, App->player->position.x - 35, App->player->position.y, &speedup);
+		}
+		
+		else if (cd == 64)
+		{
+			boost = false;
+			cd = 0;
 		}
 
-		else
-			boost = false;
+		cd++;
 	}
 
 	return UPDATE_CONTINUE;

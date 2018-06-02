@@ -30,7 +30,6 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 	going_up = true;
 	App->background->fight_boss = false;
-	going_front = false;
 
 
 	//go front
@@ -52,27 +51,24 @@ void Enemy_Boss::Move()
 	if (App->background->boss_wakeup)
 	{
 		boss.current_frame = 0;
-		if (App->render->move_back)
-		{
-			position.x -= 2;
-		}
 
-		if (App->render->move_up)
+		if (!App->background->fight_boss)
 		{
-			position.y -= 1;
-		}
+			if (App->render->back_limit + App->render->camera.w - 35 < position.x + 123)
+			{
+				position.x = App->render->back_limit + App->render->camera.w - 123;
+			}
 
-		if (App->render->move_down)
-		{
-			position.y += 1;
-		}
+			if (App->render->up_limit + App->render->camera.h - 42 < position.y - 90)
+			{
+				position.y = App->render->up_limit + App->render->camera.h + 90;
+			}
 
-		if (position.x < original_x)
-		{
-			position.x++;
+			if (App->render->up_limit > App->player->position.y)
+			{
+				position.y = App->render->up_limit;
+			}
 		}
-		
-
 		if (App->background->fight_boss)
 		{
 			if (cd == 100)
@@ -85,6 +81,7 @@ void Enemy_Boss::Move()
 				if (shot_num == 2)
 				{
 					going_front = true;
+
 				}
 			}
 
@@ -132,7 +129,7 @@ void Enemy_Boss::Move()
 
 			else if (!going_up && !App->enemies->shot)
 			{
-				if (position.y >= App->render->up_limit + App->render->camera.h - 78)
+				if (position.y >= App->render->up_limit + App->render->camera.h - 123)
 				{
 					going_up = true;
 				}
@@ -156,8 +153,6 @@ void Enemy_Boss::Move()
 }
 void Enemy_Boss::OnCollision(Collider* collider)
 {
-	App->background->fight_boss = false;
-	App->background->boss_wakeup = false;
 	App->background->bossx = position.x;
 	App->background->bossy = position.y;
 	App->background->expboss = true;

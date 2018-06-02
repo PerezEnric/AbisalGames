@@ -9,6 +9,7 @@ private:
 
 	Animation middledorsal;
 	int cd = 0;
+	int cd2 = 0;
 	int points = 600;
 public:
 

@@ -227,3 +227,18 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+
+	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
+	{
+		turbo = false;
+		destroyed = true;
+		live--;
+		bomb = false;
+		tentacles = false;
+		App->audio->PlaySoundEffect(player_death);
+		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
+		Disable();
+	}
+}
