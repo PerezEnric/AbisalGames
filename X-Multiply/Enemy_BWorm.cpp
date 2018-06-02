@@ -7,9 +7,9 @@
 Enemy_BWorm::Enemy_BWorm(int x, int y) : Enemy(x, y)
 {
 	brown_down.PushBack({480,240,22,27});
-	brown_rdown1.PushBack({437,196,22,28});
-	brown_rdown2.PushBack({460,198,25,26});
-	brown_rdown3.PushBack({487,201,29,21});
+	brown_rdown1.PushBack({430,197,22,28});
+	brown_rdown2.PushBack({458,198,26,26});
+	brown_rdown3.PushBack({488,201,28,21});
 	brown_hor.PushBack({626,202,27,22});
 	brown_up.PushBack({657,199,22,27});
 	brown_rup1.PushBack({529,196,28,21});
