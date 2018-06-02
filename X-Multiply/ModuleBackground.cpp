@@ -9,7 +9,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
 #include "ModuleUI.h"
-
+#include "ModuleParticles.h"
+#include "Enemy_Boss.h"
 
 
 
@@ -267,6 +268,11 @@ update_status ModuleBackground::Update()
 
 	camera();
 	cameralimit();
+	if (expboss == true)
+	{
+		bossexplosions();
+	}
+
 
 	return UPDATE_CONTINUE;
 }
@@ -473,4 +479,65 @@ void ModuleBackground::cameralimit()
 	{
 		App->player->position.y = App->render->up_limit + App->render->camera.h - 14;
 	}
+}
+
+void ModuleBackground::bossexplosions()
+{
+	if (cont == 0)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx, bossy);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 40, bossy + 50);
+
+	}
+	if (cont == 20)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 10, bossy + 20);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 30, bossy + 10);
+
+	}
+	if (cont == 30)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 20, bossy + 30);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 5, bossy + 15);
+
+	}
+	if (cont == 40)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx, bossy);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 40, bossy + 50);
+
+	}
+	if (cont == 50)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 30, bossy);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 20, bossy + 60);
+	}
+	if (cont == 60)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 3, bossy + 43);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 4, bossy - 30);
+	}
+	if (cont == 70)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 17, bossy - 32);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 30, bossy - 12);
+	}
+	if (cont == 80)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 13, bossy - 12);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 40, bossy + 10);
+	}
+	if (cont == 90)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 15, bossy - 37);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 20, bossy - 50);
+	}
+	if (cont == 100)
+	{
+		App->particles->AddParticle(App->particles->boss_explosion, bossx + 18, bossy - 34);
+		App->particles->AddParticle(App->particles->boss_explosion, bossx - 40, bossy + 25);
+		expboss = false;
+	}
+
+	cont++;
 }

@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
+#include "ModuleBackground.h"
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
@@ -117,7 +118,9 @@ void Enemy_Boss::Move()
 }
 void Enemy_Boss::OnCollision(Collider* collider)
 {
-
+	App->background->bossx = position.x;
+	App->background->bossy = position.y;
+	App->background->expboss = true;
 }
 
 void Enemy_Boss::MoveEye()

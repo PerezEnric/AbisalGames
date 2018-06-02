@@ -18,6 +18,7 @@ public:
 	bool CleanUp();
 	void camera();
 	void cameralimit();
+	void bossexplosions();
 
 public:
 	
@@ -41,7 +42,10 @@ public:
 	bool win;
 	int move_cont = 0;
 	bool go_back = false;
-
+	int cont = 0;
+	int bossy;
+	int bossx;
+	bool expboss = false;
 };
 
 #endif

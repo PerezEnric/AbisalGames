@@ -143,6 +143,8 @@ ModuleParticles::ModuleParticles()
 	boss_explosion.anim.PushBack({ 478,870,61,63 });
 	boss_explosion.anim.PushBack({ 545,876,60,50 });
 	boss_explosion.anim.PushBack({ 354,938,58,56 });
+	boss_explosion.anim.loop = false;
+	boss_explosion.anim.speed = 0.2f;
 }
 
 ModuleParticles::~ModuleParticles()
