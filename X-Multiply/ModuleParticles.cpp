@@ -133,8 +133,16 @@ ModuleParticles::ModuleParticles()
 	tentacle_shot.speed.x = 20;
 	tentacle_shot.life = 1000;
 
-	//Missile shot
-
+	//Boss Explosion
+	boss_explosion.anim.PushBack({350,817,46,40});
+	boss_explosion.anim.PushBack({ 398,817,46,40 });
+	boss_explosion.anim.PushBack({ 448,810,57,49 });
+	boss_explosion.anim.PushBack({ 509,811,60,56 });
+	boss_explosion.anim.PushBack({ 350,869,63,63 });
+	boss_explosion.anim.PushBack({ 414,874,62,54 });
+	boss_explosion.anim.PushBack({ 478,870,61,63 });
+	boss_explosion.anim.PushBack({ 545,876,60,50 });
+	boss_explosion.anim.PushBack({ 354,938,58,56 });
 }
 
 ModuleParticles::~ModuleParticles()

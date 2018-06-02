@@ -67,8 +67,8 @@ public:
 	Particle rightdorsal_shot;
 	Particle bluejumping_shot;
 	Particle waves_shot;
-	Particle missile_shot;
 	Particle tentacle_shot;
+	Particle boss_explosion;
 };
 
 #endif // __MODULEPARTICLES_H__

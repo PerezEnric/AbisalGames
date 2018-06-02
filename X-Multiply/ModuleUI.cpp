@@ -27,6 +27,7 @@ bool ModuleUI::CleanUp()
 	LOG("Unloading UI");
 
 	App->textures->Unload(u_interface);
+	
 
 	return true;
 }
