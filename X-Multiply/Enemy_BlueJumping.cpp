@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
+#include "ModuleBackground.h"
 
 Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 {
@@ -20,19 +21,21 @@ Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 }
 void Enemy_BlueJumping::Move()
 {
-	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
-	{
-		action = true;
-	}
-	if (action == true)
-	{
-		if (go_down && position.y < 100)
+	
+		if (go_down && position.y < 400)
 		{
 			position.y += speed;
 			speed += 0.1;
 		}
+		if (App->background->moredown && position.y >= 220)
+		{
+			go_down = false;
+			jumping.current_frame = 1;
+			original_y = position.y;
+			App->background->moredown = false;
+		}
 
-		else if (go_down && position.y >= 90)
+		else if (go_down && position.y >= 90 && !App->background->moredown)
 		{
 			go_down = false;
 			jumping.current_frame = 1;
@@ -50,7 +53,7 @@ void Enemy_BlueJumping::Move()
 		{
 			position.x -= 1;
 			position.y = original_y;
-			if (cd == 70)
+			if (cd == 90)
 			{
 				App->particles->bluejumping_shot.speed = { -2 , 1 };
 				App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
@@ -63,7 +66,6 @@ void Enemy_BlueJumping::Move()
 			}
 			cd++;
 		}
-	}
 }
 
 void Enemy_BlueJumping::OnCollision(Collider* collider)

@@ -205,43 +205,9 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 290, -70);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 300, -55);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 460, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 400, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::PU, 520, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 550, -55);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 740, -55);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 992, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 993, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 994, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 995, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 996, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 997, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 998, 230);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1000, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1075, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1075, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1082, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1082, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1070, 150);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 1075, 150);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 750, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 720, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 690, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 660, 310);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 630, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 600, 310);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 490, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 460, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 430, 300);
-	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 400, 300);
-
-
-
-
 	//Power Ups
 	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 460, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 400, 50);
@@ -286,6 +252,7 @@ bool ModuleBackground::CleanUp()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
+	spawnenemies();
 	// Draw everything --------------------------------------
 	
 	App->render->Blit(black_background, -201, 0, &background); // background
@@ -307,7 +274,6 @@ update_status ModuleBackground::Update()
 		win = true;
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 	}
-
 
 	return UPDATE_CONTINUE;
 }
@@ -591,10 +557,49 @@ void ModuleBackground::die()
 	{
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->background);
 		App->enemies->Disable();
+		cdenemys = 0;
 	}
 	else if (App->player->live == 0)
 	{
 		win = false;
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
+		cdenemys = 0;
 	}
+	
+}
+
+void ModuleBackground::spawnenemies()
+{
+	if(cdenemys == 430)
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 300, -55);
+	if(cdenemys == 450)
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 330, -55);
+	if (cdenemys == 900)
+	{
+		moredown = true;
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 600, -10);
+	}
+	if (cdenemys == 1080)
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 731, -10);
+	if (cdenemys == 1300)
+		App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
+
+	if (cdenemys == 1600)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1100, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 180);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 150);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 150);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 200);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1190, 230);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1220, 250);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 250);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 280);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 250);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 280);
+
+	}
+
+	cdenemys++;
 }

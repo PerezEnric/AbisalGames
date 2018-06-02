@@ -242,6 +242,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->audio->PlaySoundEffect(player_death);
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
+		App->render->move_back = false;
+		App->render->move_up = false;
+		App->render->move_down = false;
 		App->background->die();
 	}
 }

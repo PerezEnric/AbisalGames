@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 
 Enemy_SpawnWorms::Enemy_SpawnWorms(int x, int y) : Enemy(x, y)
 {
@@ -15,6 +16,12 @@ Enemy_SpawnWorms::Enemy_SpawnWorms(int x, int y) : Enemy(x, y)
 }
 void Enemy_SpawnWorms::Move()
 {
+	if (cd == 110)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 993, 230);
+		cd = 0;
+	}
+	cd++;
 
 }
 

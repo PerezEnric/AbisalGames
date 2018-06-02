@@ -8,7 +8,7 @@ class Enemy_SpawnWorms : public Enemy
 private:
 	Animation spawn;
 	int points = 400;
-
+	int cd = 0;
 public:
 
 	Enemy_SpawnWorms(int x, int y);

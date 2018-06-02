@@ -20,6 +20,7 @@ public:
 	void cameralimit();
 	void bossexplosions();
 	void die();
+	void spawnenemies();
 
 public:
 	
@@ -48,6 +49,8 @@ public:
 	int bossx;
 	bool expboss, boss_wakeup = false;
 	bool fight_boss = false;
+	bool moredown;
+	int cdenemys = 0;
 };
 
 #endif
