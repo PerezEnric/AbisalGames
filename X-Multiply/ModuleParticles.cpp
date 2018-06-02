@@ -128,6 +128,11 @@ ModuleParticles::ModuleParticles()
 	waves_shot.speed.x = 20;
 	waves_shot.life = 1000;
 
+	//tentacle shot
+	tentacle_shot.anim.PushBack({ 842,766,13,5 });
+	tentacle_shot.speed.x = 20;
+	tentacle_shot.life = 1000;
+
 	//Missile shot
 
 }
@@ -263,4 +268,33 @@ bool Particle::Update()
 
 
 	return ret;
+}
+
+void ModuleParticles::speed_waves(iPoint p1)
+{
+	if (p1.x < App->player->position.x - 15 && p1.y < App->player->position.y - 15)
+		waves_shot.speed = { -15,-15 };
+
+	else if (p1.x < App->player->position.x - 15 && p1.y > App->player->position.y + 15)
+		waves_shot.speed = { -15, 15 };
+
+	else if (p1.x > App->player->position.x + 15 && p1.y > App->player->position.y + 15)
+		waves_shot.speed = { 15, 15 };
+
+	else if (p1.x > App->player->position.x + 15 && p1.y < App->player->position.y - 15)
+		waves_shot.speed = { 15, -15 };
+
+	else if (p1.y > App->player->position.y && p1.x < App->player->position.x + 15 && p1.x > App->player->position.x - 15)
+		waves_shot.speed = { 0 , 15 };
+
+	else if (p1.y < App->player->position.y && p1.x < App->player->position.x + 15 && p1.x > App->player->position.x - 15)
+		waves_shot.speed = { 0 , -15 };
+
+	else if (p1.x > App->player->position.x && p1.y < App->player->position.y + 15 && p1.y > App->player->position.y - 15)
+		waves_shot.speed = { 15 , 0 };
+
+	else if (p1.x < App->player->position.x && p1.y < App->player->position.y + 15 && p1.y > App->player->position.y - 15)
+			waves_shot.speed = { -15 , 0 };
+
+	else waves_shot.speed = { 0 , 0 };
 }

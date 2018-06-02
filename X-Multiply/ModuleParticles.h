@@ -44,13 +44,14 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-
+	
+	void speed_waves(iPoint);
 private:
 
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
-
+	
 public:
 
 	Particle laser;
@@ -67,6 +68,7 @@ public:
 	Particle bluejumping_shot;
 	Particle waves_shot;
 	Particle missile_shot;
+	Particle tentacle_shot;
 };
 
 #endif // __MODULEPARTICLES_H__

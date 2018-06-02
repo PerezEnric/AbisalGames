@@ -879,14 +879,16 @@ void ModuleTentacles::movetentacle()
 		{
 			if (App->player->wave == false)
 			{
-				App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->tentacle_shot, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->tentacle_shot, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
 				/*App->audio->PlaySoundEffect(shot_particle);*/
 			}
 			if (App->player->wave == true)
 			{
-				App->particles->AddParticle(App->particles->waves_shot, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->waves_shot, hand_down.x + 38, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->speed_waves(position);
+				App->particles->AddParticle(App->particles->waves_shot, position.x + 12, position.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->speed_waves(hand_down);
+				App->particles->AddParticle(App->particles->waves_shot, hand_down.x + 12, hand_down.y + 6, COLLIDER_PLAYER_SHOT);
 				App->audio->PlaySoundEffect(basic_shot);
 			}
 			
