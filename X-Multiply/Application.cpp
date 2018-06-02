@@ -50,6 +50,7 @@ bool Application::Init()
 	background->Disable();
 	ui->Disable();
 	win_lose->Disable();
+	tentacle->Disable();
 	
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

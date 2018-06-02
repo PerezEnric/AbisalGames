@@ -16,7 +16,10 @@ public:
 
 private:
 	Animation ball, ball2;
-	Animation laser;
+	Animation laser,laser2;
+	Animation laservertical, laservertical2;
+	Animation laserpositive, laserpositive2;
+	Animation lasernegative, lasernegative2;
 	int cd = 0;
 	int points = 0;
 	Collider* col;

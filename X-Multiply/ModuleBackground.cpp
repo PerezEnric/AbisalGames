@@ -226,9 +226,9 @@ bool ModuleBackground::Start()
 	//Camera
 	App->render->camera.x += 201;//inical camera position
 	App->render->camera.y += 30;
-	App->render->back_limit -= 201;//inicial limit position
-	App->render->up_limit -= 30;
-	App->player->position.x -= 201;// inicial player position
+	App->render->back_limit = -App->render->camera.x;//inicial limit position
+	App->render->up_limit = -App->render->camera.y;
+	App->player->position.x = -App->render->camera.x;// inicial player position
 
 	return ret;
 }

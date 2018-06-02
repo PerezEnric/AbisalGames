@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleTentacles.h"
 
 
 Tentacles_PowerUp::Tentacles_PowerUp(int x, int y) : Enemy(x, y)
@@ -21,6 +22,7 @@ void Tentacles_PowerUp::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(new_weapon);
 	App->player->tentacles = true;
+	App->tentacle->Enable();
 }
 
 void Tentacles_PowerUp::Move()

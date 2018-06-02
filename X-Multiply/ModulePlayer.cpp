@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
 //#include "ModuleFonts.h"
+#include "ModuleTentacles.h"
 #include <stdio.h>
 
 
@@ -207,6 +208,9 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
 	{
 		tentacles = !tentacles;
+		if (App->tentacle->IsEnabled())
+			App->tentacle->Disable();
+		else App->tentacle->Enable();
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
