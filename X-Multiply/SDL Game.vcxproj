@@ -89,6 +89,8 @@
     <ClInclude Include="Enemy_LittleShrimp.h" />
     <ClInclude Include="Enemy_Mask.h" />
     <ClInclude Include="Enemy_PU.h" />
+    <ClInclude Include="Enemy_PU2.h" />
+    <ClInclude Include="Enemy_PU3.h" />
     <ClInclude Include="Enemy_SpawnWorms.h" />
     <ClInclude Include="Enemy_Tail.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
@@ -134,6 +136,8 @@
     <ClCompile Include="Enemy_LittleShrimp.cpp" />
     <ClCompile Include="Enemy_Mask.cpp" />
     <ClCompile Include="Enemy_PU.cpp" />
+    <ClCompile Include="Enemy_PU2.cpp" />
+    <ClCompile Include="Enemy_PU3.cpp" />
     <ClCompile Include="Enemy_SpawnWorms.cpp" />
     <ClCompile Include="Enemy_Tail.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />

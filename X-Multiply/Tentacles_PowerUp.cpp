@@ -27,15 +27,62 @@ void Tentacles_PowerUp::OnCollision(Collider* collider)
 
 void Tentacles_PowerUp::Move()
 {
-	position.y = int(float(original_y));
-	if (App->enemies->lett == false)
-	{
-		position.x -= 1;
-	}
-	else
-	{
-		position.x -= 0;
-	}
+
+		//Fly movement
+		if (flying == true)
+		{
+			position.x -= 1;
+			cd++;
+			if (cd >= 190)
+			{
+				landing = true;
+				flying = false;
+			}
+		}
+
+		//Landing movement
+		else if (landing == true && flying == false && walking == false)
+		{
+			position.y += 1;
+			position.x -= 0;
+			cd2++;
+			if (cd2 > 100)
+			{
+				walking = true;
+				landing = false;
+			}
+		}
+
+		//Walking movement
+		else if (walking == true && landing == false && flying == false)
+		{
+			//Right walking movement
+			if (right == true && left == false)
+			{
+				position.x += 1;
+				cd3++;
+				if (cd3 > 20)
+				{
+					walking = false;
+					landing = false;
+					flying = false;
+					cd3 = 0;
+				}
+			}
+
+		}
+		else if (walking == false && landing == false && flying == false)
+		{
+
+			if (position.y <= original_y)
+			{
+				position.x += 1;
+			}
+			else
+				position.y -= 1;
+
+			cd3++;
+		}
 }
 
 bool  Tentacles_PowerUp::CleanUp()

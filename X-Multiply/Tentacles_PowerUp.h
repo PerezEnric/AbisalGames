@@ -7,6 +7,14 @@ class Tentacles_PowerUp : public Enemy
 private:
 	Animation tentacleanim;
 	int original_y = 0;
+	bool flying = true;
+	bool landing = false;
+	bool walking = false;
+	bool right = true;
+	bool left = false;
+	int cd = 0;
+	int cd2 = 0;
+	int cd3 = 0;
 
 public:
 	Tentacles_PowerUp(int x, int y);

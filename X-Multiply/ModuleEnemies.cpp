@@ -200,6 +200,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_PU(info.x, info.y);
 				queue[i].enemy_life = 1;
 				break;
+			case ENEMY_TYPES::PU2:
+				enemies[i] = new Enemy_PU2(info.x, info.y);
+				queue[i].enemy_life = 1;
+				break;
+			case ENEMY_TYPES::PU3:
+				enemies[i] = new Enemy_PU3(info.x, info.y);
+				queue[i].enemy_life = 1;
+				break;
 			case ENEMY_TYPES::SPEEDUP:
 				enemies[i] = new PowerUp_SpeedUp(info.x, info.y);
 				break;

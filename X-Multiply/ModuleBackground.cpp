@@ -205,15 +205,15 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 460, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 400, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::PU, 520, 40);
+	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 460, 40);
+	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 400, 40);
+	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 520, 40);
 	//Power Ups
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 460, 50);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 460, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 400, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 520, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1070, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1075, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1075, 160);*/
 
 	// Enemy Boss
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 260, 217);
@@ -359,6 +359,13 @@ void ModuleBackground::camera()
 		{
 			App->render->move_down = !App->render->move_down;
 			App->render->move_front = !App->render->move_front;
+		}
+
+		if (App->render->camera.x == -860)
+		{
+			App->render->move_down = false;
+			App->render->move_front = false;
+			go_back = false;
 		}
 
 		if (App->render->camera.x == -890)
@@ -573,17 +580,38 @@ void ModuleBackground::die()
 
 void ModuleBackground::spawnenemies()
 {
+	if (cdenemys == 50)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 200, 10);
+		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 202, 25);
+	}
 	if(cdenemys == 430)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 300, -55);
+
 	if(cdenemys == 450)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 330, -55);
+
+	if (cdenemys == 700)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 510, 110);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 512, 125);
+	}
+
 	if (cdenemys == 900)
 	{
 		moredown = true;
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 600, -10);
 	}
+
+	if (cdenemys == 1000)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 680, 100);
+		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 682, 115);
+	}
+
 	if (cdenemys == 1080)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 731, -10);
+
 	if (cdenemys == 1300)
 		App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 
