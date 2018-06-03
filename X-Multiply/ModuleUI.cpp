@@ -39,8 +39,10 @@ update_status ModuleUI::Update()
 	score = App->ui->points;
 	sprintf_s(text, 10, "%7d", score);
 
-	App->fonts->BlitText(50, 235, font_score, text);
-	App->fonts->BlitText(32, 150, font_score, "score");
+	App->fonts->BlitText(71, 235, font_score, text);
+	App->fonts->BlitText(177, 235, font_score, top_score);
+	App->fonts->BlitText(290, 235, font_score, second_score);
+
 
 	return UPDATE_CONTINUE;
 }

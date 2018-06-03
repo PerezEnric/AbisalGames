@@ -26,6 +26,9 @@ public:
 	uint score = 0;
 	int points = 0;
 	char text[10];
+	char top_score[9] = "00500000";
+	char second_score[9] = "00000000";
+
 };
 
 #endif // MODULE_UI
