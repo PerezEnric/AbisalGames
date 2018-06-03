@@ -14,6 +14,7 @@
 #include "ModuleUI.h"
 #include "ModuleIntroScene.h"
 #include "ModuleWinLoseScene.h"
+#include "ModuleSceneScore.h"
 
 Application::Application()
 {
@@ -33,6 +34,7 @@ Application::Application()
 	modules[13] = fonts = new ModuleFonts();
 	modules[14] = ui = new ModuleUI();
 	modules[15] = fade = new ModuleFadeToBlack();
+	modules[16] = scene_score = new ModuleSceneScore();
 }	
 
 Application::~Application()
@@ -51,6 +53,7 @@ bool Application::Init()
 	ui->Disable();
 	win_lose->Disable();
 	tentacle->Disable();
+	scene_score->Disable();
 	
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)

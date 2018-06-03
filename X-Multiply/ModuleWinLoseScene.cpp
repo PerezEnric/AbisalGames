@@ -11,6 +11,7 @@
 #include "ModuleWinLoseScene.h"
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
+#include "ModuleSceneScore.h"
 
 
 
@@ -93,7 +94,7 @@ update_status ModuleWinLoseScene::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE])
 		{
-			App->fade->FadeToBlack(this, App->intro, 2.0f);
+			App->fade->FadeToBlack(this, App->scene_score, 2.0f);
 		}
 	}
 	else if (App->background->win == true)
@@ -135,7 +136,7 @@ update_status ModuleWinLoseScene::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 		{
-			App->fade->FadeToBlack(this, App->intro, 2.0f);
+			App->fade->FadeToBlack(this, App->scene_score, 2.0f);
 		}
 	}
 	return UPDATE_CONTINUE;
