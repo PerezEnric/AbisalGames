@@ -36,4 +36,4 @@ Enric Pérez Rifà
 
 ## Gameplay
 
-[![GAMEPLAY](https://img.youtube.com/vi/watch?v=ysnwuuDmEww&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
+[![GAMEPLAY](https://www.youtube.com/upload_thumbnail?v=ysnwuuDmEww&t=hqdefault&ts=1528046592440)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
