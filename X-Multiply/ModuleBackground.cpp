@@ -610,10 +610,10 @@ void ModuleBackground::spawnenemies()
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 600, -10);
 	}
 
-	if (cdenemys == 1000)
+	if (cdenemys == 950)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 660, 100);
-		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 662, 115);
+		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 660, 115);
 	}
 
 	if (cdenemys == 1080)
