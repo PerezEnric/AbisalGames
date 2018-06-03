@@ -68,7 +68,7 @@ bool ModuleIntroScene::Start()
 	App->win_lose->Disable();
 	App->ui->Disable();
 	pick = true;
-	conta = 0;
+	credits = 0;
 	App->render->move_front= false;
 	App->render->move_back = false;
 	App->render->move_up = false;
@@ -77,11 +77,10 @@ bool ModuleIntroScene::Start()
 	App->player->position.y = 103;
 	App->player->position.x = 87;
 	App->player->live = 3;
-	App->player->points = 0;
 	App->player->tentacles = false;
 	App->player->bomb = false;
 	App->player->wave = false;
-	coins = false;
+	App->ui->points = 0;
 	return true;
 }
 
@@ -102,36 +101,41 @@ update_status ModuleIntroScene::Update()
 {
 	App->render->camera.x = App->render->camera.y = 0;
 	// Draw everything --------------------------------------
-	
-	
-
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, App->background, 2.0f);
-		flag = true;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_5] || App->input->controller[BUTTON_Y] == KEY_STATE::KEY_DOWN)
-	{
-		App->audio->UnloadMusic(intro_music);
-		App->render->Blit(pickback, 0, 0, &screen_pick);
-		//App->audio->PlaySoundEffect(coins);
-		pick = false;
-		coinsprov = true;
-		if (conta == 0) conta = 1;
-		else if (conta == 1) conta = 2;
-		else if (conta == 2) conta = 3;
-		else if (conta == 3) conta = 4;
-		else conta = 5;
-	}
 	if (pick == true)
 	{
 		App->render->Blit(introBackground, 0, 0, NULL);
 		App->render->Blit(introBackground, 0, 0, &game_title);
 		App->render->Blit(introBackground, 116, 183, &game_company);
 	}
+	
 
-	else 
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, App->background, 2.0f);
+		flag = true;
+	}
+	
+	
+	ready();
+
+	
+	return UPDATE_CONTINUE;
+}
+
+void ModuleIntroScene::ready()
+{
+	if (App->input->keyboard[SDL_SCANCODE_5] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_Y] == KEY_STATE::KEY_DOWN )
+	{
+		App->audio->UnloadMusic(intro_music);
+		App->render->Blit(pickback, 0, 0, &screen_pick);
+		//App->audio->PlaySoundEffect(coins);
+		
+		pick = false;
+		credits++;
+	}
+
+	
+	if (pick == false)
 	{
 		App->render->Blit(introBackground, 49, SCREEN_HEIGHT / 2 - 70, &P);
 		App->render->Blit(introBackground, 65, SCREEN_HEIGHT / 2 - 70, &U);
@@ -148,112 +152,154 @@ update_status ModuleIntroScene::Update()
 		App->render->Blit(introBackground, 257, SCREEN_HEIGHT / 2 - 70, &T);
 		App->render->Blit(introBackground, 273, SCREEN_HEIGHT / 2 - 70, &O);
 		App->render->Blit(introBackground, 289, SCREEN_HEIGHT / 2 - 70, &N);
+		if (credits < 6)
+		{
+			if (credits == 1)
+			{
+				App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
+				App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
+				App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
+				App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
+				App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
+				App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
+				App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
 
-		if ( conta == 1 )
+				App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
+				App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
+				App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
+				App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
+				App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
+				App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
+				App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &ONE);
+			}
+			else if (credits == 2)
+			{
+				App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
+				App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 136, SCREEN_HEIGHT / 2 - 10, &TWO);
+				App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &P);
+				App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 192, SCREEN_HEIGHT / 2 - 10, &A);
+				App->render->Blit(introBackground, 208, SCREEN_HEIGHT / 2 - 10, &Y);
+				App->render->Blit(introBackground, 224, SCREEN_HEIGHT / 2 - 10, &E);
+				App->render->Blit(introBackground, 240, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 256, SCREEN_HEIGHT / 2 - 10, &S);
+				App->render->Blit(introBackground, 280, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 296, SCREEN_HEIGHT / 2 - 10, &N);
+				App->render->Blit(introBackground, 312, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 328, SCREEN_HEIGHT / 2 - 10, &Y);
+
+				App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
+				App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
+				App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
+				App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
+				App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
+				App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
+				App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &TWO);
+			}
+			else if (credits == 3)
+			{
+				App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
+				App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 136, SCREEN_HEIGHT / 2 - 10, &TWO);
+				App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &P);
+				App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 192, SCREEN_HEIGHT / 2 - 10, &A);
+				App->render->Blit(introBackground, 208, SCREEN_HEIGHT / 2 - 10, &Y);
+				App->render->Blit(introBackground, 224, SCREEN_HEIGHT / 2 - 10, &E);
+				App->render->Blit(introBackground, 240, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 256, SCREEN_HEIGHT / 2 - 10, &S);
+				App->render->Blit(introBackground, 280, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 296, SCREEN_HEIGHT / 2 - 10, &N);
+				App->render->Blit(introBackground, 312, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 328, SCREEN_HEIGHT / 2 - 10, &Y);
+
+				App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
+				App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
+				App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
+				App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
+				App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
+				App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
+				App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &THREE);
+			}
+			else if (credits == 4)
+			{
+				App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
+				App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 136, SCREEN_HEIGHT / 2 - 10, &TWO);
+				App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &P);
+				App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 192, SCREEN_HEIGHT / 2 - 10, &A);
+				App->render->Blit(introBackground, 208, SCREEN_HEIGHT / 2 - 10, &Y);
+				App->render->Blit(introBackground, 224, SCREEN_HEIGHT / 2 - 10, &E);
+				App->render->Blit(introBackground, 240, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 256, SCREEN_HEIGHT / 2 - 10, &S);
+				App->render->Blit(introBackground, 280, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 296, SCREEN_HEIGHT / 2 - 10, &N);
+				App->render->Blit(introBackground, 312, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 328, SCREEN_HEIGHT / 2 - 10, &Y);
+
+				App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
+				App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
+				App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
+				App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
+				App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
+				App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
+				App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &FOUR);
+			}
+
+			else if (credits == 5)
+			{
+				App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
+				App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 136, SCREEN_HEIGHT / 2 - 10, &TWO);
+				App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &P);
+				App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 192, SCREEN_HEIGHT / 2 - 10, &A);
+				App->render->Blit(introBackground, 208, SCREEN_HEIGHT / 2 - 10, &Y);
+				App->render->Blit(introBackground, 224, SCREEN_HEIGHT / 2 - 10, &E);
+				App->render->Blit(introBackground, 240, SCREEN_HEIGHT / 2 - 10, &R);
+				App->render->Blit(introBackground, 256, SCREEN_HEIGHT / 2 - 10, &S);
+				App->render->Blit(introBackground, 280, SCREEN_HEIGHT / 2 - 10, &O);
+				App->render->Blit(introBackground, 296, SCREEN_HEIGHT / 2 - 10, &N);
+				App->render->Blit(introBackground, 312, SCREEN_HEIGHT / 2 - 10, &L);
+				App->render->Blit(introBackground, 328, SCREEN_HEIGHT / 2 - 10, &Y);
+
+				App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
+				App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
+				App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
+				App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
+				App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
+				App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
+				App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &FIVE);
+				
+			}
+		}
+		else if (credits >= 6)
 		{
 			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
-			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
-			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
-			App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
-			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
-			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
-			App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
-
-			App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
-			App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
-			App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
-			App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
-			App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
-			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
-			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &ONE);
-		}
-		else if (conta == 2)
-		{
-			App->render->Blit(introBackground, 8, SCREEN_HEIGHT / 2 - 10, &ONE);
-			App->render->Blit(introBackground, 32, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 48, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &TWO);
-			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
-			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
-			App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
-			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
-			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &S);
-			App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
-			App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
-
-			App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
-			App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
-			App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
-			App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
-			App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
-			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
-			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &TWO);
-		}
-		else if (conta == 3)
-		{
-			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
-			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
-			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
-			App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
-			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
-			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
-			App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
-
-			App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
-			App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
-			App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
-			App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
-			App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
-			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
-			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &THREE);
-		}
-		else if (conta == 4)
-		{
-			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
-			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
-			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
-			App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
-			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
-			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
-			App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
-
-			App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
-			App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
-			App->render->Blit(introBackground, 137, SCREEN_HEIGHT / 2 + 40, &E);
-			App->render->Blit(introBackground, 153, SCREEN_HEIGHT / 2 + 40, &D);
-			App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
-			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
-			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &FOUR);
-		}
-		else if(conta >= 5)
-		{
-			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
-			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
-			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 128, SCREEN_HEIGHT / 2 - 10, &A);
-			App->render->Blit(introBackground, 144, SCREEN_HEIGHT / 2 - 10, &Y);
-			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &E);
-			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &R);
-			App->render->Blit(introBackground, 200, SCREEN_HEIGHT / 2 - 10, &O);
-			App->render->Blit(introBackground, 216, SCREEN_HEIGHT / 2 - 10, &N);
-			App->render->Blit(introBackground, 232, SCREEN_HEIGHT / 2 - 10, &L);
-			App->render->Blit(introBackground, 248, SCREEN_HEIGHT / 2 - 10, &Y);
+			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &O);
+			App->render->Blit(introBackground, 112, SCREEN_HEIGHT / 2 - 10, &R);
+			App->render->Blit(introBackground, 136, SCREEN_HEIGHT / 2 - 10, &TWO);
+			App->render->Blit(introBackground, 160, SCREEN_HEIGHT / 2 - 10, &P);
+			App->render->Blit(introBackground, 176, SCREEN_HEIGHT / 2 - 10, &L);
+			App->render->Blit(introBackground, 192, SCREEN_HEIGHT / 2 - 10, &A);
+			App->render->Blit(introBackground, 208, SCREEN_HEIGHT / 2 - 10, &Y);
+			App->render->Blit(introBackground, 224, SCREEN_HEIGHT / 2 - 10, &E);
+			App->render->Blit(introBackground, 240, SCREEN_HEIGHT / 2 - 10, &R);
+			App->render->Blit(introBackground, 256, SCREEN_HEIGHT / 2 - 10, &S);
+			App->render->Blit(introBackground, 280, SCREEN_HEIGHT / 2 - 10, &O);
+			App->render->Blit(introBackground, 296, SCREEN_HEIGHT / 2 - 10, &N);
+			App->render->Blit(introBackground, 312, SCREEN_HEIGHT / 2 - 10, &L);
+			App->render->Blit(introBackground, 328, SCREEN_HEIGHT / 2 - 10, &Y);
 
 			App->render->Blit(introBackground, 104, SCREEN_HEIGHT / 2 + 40, &C);
 			App->render->Blit(introBackground, 121, SCREEN_HEIGHT / 2 + 40, &R);
@@ -262,9 +308,8 @@ update_status ModuleIntroScene::Update()
 			App->render->Blit(introBackground, 169, SCREEN_HEIGHT / 2 + 40, &I);
 			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
 			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &FIVE);
+			credits = 5;
 		}
-
 	}
 	
-	return UPDATE_CONTINUE;
 }
