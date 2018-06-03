@@ -141,6 +141,7 @@ bool ModuleTentacles::Start()
 	colhanddown->damage = 0.1;
 
 	//colliders arms
+	
 	colArm0 = App->collision->AddCollider({ posArm0.x, posArm0.y, 9, 11 }, COLLIDER_ARMS, this);
 	colArm1 = App->collision->AddCollider({ posArm1.x, posArm1.y, 9, 11 }, COLLIDER_ARMS, this);
 	colArm2 = App->collision->AddCollider({ posArm2.x, posArm2.y, 9, 11 }, COLLIDER_ARMS, this);
@@ -161,6 +162,68 @@ bool ModuleTentacles::CleanUp()
 
 	App->audio->UnloadSoundEffect(basic_shot);
 	basic_shot = nullptr;
+
+	if (colArm0 != nullptr)
+	{
+		colArm0->to_delete = true;
+		colArm0 = nullptr;
+	}
+	if (colArm1 != nullptr)
+	{
+		colArm1->to_delete = true;
+		colArm1 = nullptr;
+	}
+	if (colArm2 != nullptr)
+	{
+		colArm2->to_delete = true;
+		colArm2 = nullptr;
+	}
+	if (colArm3 != nullptr)
+	{
+		colArm3->to_delete = true;
+		colArm3 = nullptr;
+	}
+	if (colArm4 != nullptr)
+	{
+		colArm4->to_delete = true;
+		colArm4 = nullptr;
+	}
+	if (colArm10 != nullptr)
+	{
+		colArm10->to_delete = true;
+		colArm10 = nullptr;
+	}
+	if (colArm11 != nullptr)
+	{
+		colArm11->to_delete = true;
+		colArm11 = nullptr;
+	}
+	if (colArm12 != nullptr)
+	{
+		colArm12->to_delete = true;
+		colArm12 = nullptr;
+	}
+	if (colArm13 != nullptr)
+	{
+		colArm13->to_delete = true;
+		colArm13 = nullptr;
+	}
+	if (colArm14 != nullptr)
+	{
+		colArm14->to_delete = true;
+		colArm14 = nullptr;
+	}
+	if (colhandtop != nullptr)
+	{
+		colhandtop->to_delete = true;
+		colhandtop = nullptr;
+	}
+	if (colhanddown != nullptr)
+	{
+		colhanddown->to_delete = true;
+		colhanddown = nullptr;
+	}
+	
 	return true;
 }
 
