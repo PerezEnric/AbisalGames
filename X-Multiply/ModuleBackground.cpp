@@ -295,7 +295,6 @@ void ModuleBackground::camera()
 		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
 			App->render->move_front = !App->render->move_front;
-
 		}
 		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
@@ -364,22 +363,21 @@ void ModuleBackground::camera()
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x <= -720 && App->render->camera.x > -890)
+		if (App->render->camera.x <= -720 && App->render->camera.x > -890 && !tail_powerup)
 		{
 			App->render->move_down = !App->render->move_down;
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x == -860)
+		else if (App->render->camera.x <= -860 && tail_powerup)
 		{
 			App->render->move_down = false;
 			App->render->move_front = false;
-			go_back = false;
 		}
 
 		if (App->render->camera.x == -890)
 		{
-			App->render->move_down = false;
+			App->render->move_down = true;
 			App->render->move_front = false;
 			go_back = true;
 		}
@@ -390,7 +388,7 @@ void ModuleBackground::camera()
 		if (App->render->camera.x < -830)
 		{
 			App->render->move_up = false;
-			App->render->move_down = false;
+			App->render->move_down = !App->render->move_down;
 			App->render->move_front = false;
 			App->render->move_back = true;
 		}
@@ -413,7 +411,7 @@ void ModuleBackground::camera()
 		else if (App->render->camera.x < -470)
 		{
 			App->render->move_back = true;
-			App->render->move_up = false;
+			App->render->move_up = true;
 		}
 
 		else if (App->render->camera.x < -310)
@@ -479,6 +477,7 @@ void ModuleBackground::camera()
 		}
 	}
 }
+
 
 
 void ModuleBackground::cameralimit()
