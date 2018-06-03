@@ -27,7 +27,7 @@ Enric Pérez Rifà
 [Github account](https://github.com/PerezEnric)
 
 ## Team photo
-![Team Photo](https://imgur.com/a/pmfBT0g)
+![Team Photo](https://i.imgur.com/XyX5K04.jpg)
 
 ## Gameplay
 [![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
