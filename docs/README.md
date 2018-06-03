@@ -34,7 +34,7 @@ Enric Pérez Rifà
 [![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww)
 
 
-hola
+
 ## Link to download the latest release of the game
 [CLICK HERE](https://github.com/PerezEnric/AbisalGames/releases)
 
