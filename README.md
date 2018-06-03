@@ -21,18 +21,13 @@ Dídac Llop Serna
 
 [Github account](https://github.com/didaclis)
 
-### Art:
-Héctor Pons Barroso
-
-[Github account](https://github.com/hectorpb32)
-
 ### QA:
 Enric Pérez Rifà
 
 [Github account](https://github.com/PerezEnric)
 
 ## Team photo
-![Team Photo](https://i.imgur.com/g5eWiot.jpg)
+![Team Photo](https://imgur.com/a/pmfBT0g)
 
 ## Gameplay
 [![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
