@@ -33,14 +33,22 @@ bool EnemyMiddleLittleDorsal::CleanUp()
 
 void EnemyMiddleLittleDorsal::Move()
 {
-	if (cd == 400)
+	if (cd == 260)
+	{
+		App->particles->AddParticle(App->particles->loading_shot, position.x - 7, position.y - 11, COLLIDER_ENEMY_SHOT);
+	}
+	if (cd == 300)
 	{
 		App->particles->AddParticle(App->particles->middleleft_shot, position.x, position.y - 90, COLLIDER_ENEMY_SHOT);
 		cd = 0;
 	}
 	cd++;
+	if (cd2 == 260)
+	{
+		App->particles->AddParticle(App->particles->loading_shot, position.x + 70, position.y, COLLIDER_ENEMY_SHOT);
+	}
 
-	if (cd2 == 370)
+	if (cd2 == 300)
 	{
 		App->particles->AddParticle(App->particles->middleright_shot, position.x + 71, position.y - 69, COLLIDER_ENEMY_SHOT);
 		cd2 = 0;

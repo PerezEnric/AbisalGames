@@ -33,6 +33,10 @@ bool EnemyLeftLittleDorsal::CleanUp()
 
 void EnemyLeftLittleDorsal::Move()
 {
+	if (cd == 160)
+	{
+		App->particles->AddParticle(App->particles->loading_shot, position.x - 12, position.y - 11, COLLIDER_ENEMY_SHOT);
+	}
 	if (cd == 200)
 	{
 		App->particles->AddParticle(App->particles->leftdorsal_shot, position.x - 40, position.y - 85, COLLIDER_ENEMY_SHOT);

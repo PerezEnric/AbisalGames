@@ -63,6 +63,7 @@ public:
 	Particle enemy_shot;
 	Particle bombPU;
 	Particle explosion_player;
+	Particle loading_shot;
 	Particle leftdorsal_shot;
 	Particle middleleft_shot;
 	Particle middleright_shot;

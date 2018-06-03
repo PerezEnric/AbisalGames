@@ -565,6 +565,9 @@ void ModuleBackground::die()
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		cdenemys = 0;
 	}
+	App->render->move_back = false;
+	App->render->move_up = false;
+	App->render->move_down = false;
 	
 }
 

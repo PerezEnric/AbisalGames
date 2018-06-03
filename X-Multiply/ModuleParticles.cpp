@@ -84,6 +84,14 @@ ModuleParticles::ModuleParticles()
 	explosion_player.anim.loop = false;
 	explosion_player.anim.speed = 0.5f;
 
+	// loading dorsal shot
+
+	loading_shot.anim.PushBack({ 437,419,24,22 });
+	loading_shot.anim.PushBack({ 486,410,24,22 });
+	loading_shot.anim.loop = true;
+	loading_shot.anim.speed = 0.3f;
+	loading_shot.life = 500;
+
 	// leftdorsal shot
 	leftdorsal_shot.anim.PushBack({ 501, 446, 46, 93 });
 	leftdorsal_shot.anim.PushBack({ 437, 450, 46, 89 });
@@ -105,7 +113,7 @@ ModuleParticles::ModuleParticles()
 	// right dorsal shot
 	rightdorsal_shot.anim.PushBack({ 61, 765, 71, 75 });
 	rightdorsal_shot.anim.PushBack({ 158, 774, 72, 68 });
-	rightdorsal_shot.anim.speed = 0.05f;
+	rightdorsal_shot.anim.speed = 0.1f;
 	rightdorsal_shot.life = 1000;
 
 	//blue jumping shot
