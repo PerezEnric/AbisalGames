@@ -36,5 +36,4 @@ Enric Pérez Rifà
 
 ## Gameplay
 
-[![VIDEO]
-[http://www.theisozone.com/images/screens/playstation-43150-31334417703.png](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
+[![GAMEPLAY](https://img.youtube.com/vi/watch?v=ysnwuuDmEww&feature=youtu.be/0.jpg)](https://www.youtube.com/watchv=ysnwuuDmEww&feature=youtu.be)
