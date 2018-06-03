@@ -195,6 +195,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
+
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		App->background->win = false;
 

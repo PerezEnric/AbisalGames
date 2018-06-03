@@ -12,6 +12,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
 #include "ModuleSceneScore.h"
+#include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 
 
@@ -57,7 +59,9 @@ bool ModuleWinLoseScene::Start()
 		App->audio->PlayMusic(game_over_music);
 	else
 		App->audio->PlayMusic(win_music);
-
+	App->particles->Disable();
+	App->enemies->Disable();
+	App->player->Disable();
 
 	return true;
 }

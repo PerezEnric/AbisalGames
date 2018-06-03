@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleSceneScore.h"
 #include <stdio.h>
 
 ModuleUI::ModuleUI() {}
@@ -46,6 +47,12 @@ update_status ModuleUI::Update()
 	App->fonts->BlitText(177, 235, font_score, text2);
 	/*App->fonts->BlitText(177, 235, font_score, top_score);*/
 	App->fonts->BlitText(290, 235, font_score, second_score);
+
+	if (App->scene_score->IsEnabled())
+	{
+		sprintf_s(text2, 10, "%7d", maxscore);
+		App->fonts->BlitText(105, 105, font_score, text2);
+	}
 
 
 	return UPDATE_CONTINUE;

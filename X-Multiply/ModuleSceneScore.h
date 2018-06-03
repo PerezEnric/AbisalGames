@@ -23,8 +23,10 @@ public:
 
 	SDL_Texture* background_score = nullptr;
 	SDL_Texture* allscores = nullptr;
+	SDL_Texture* infinit = nullptr;
 	Mix_Music* score_music = nullptr;
-
+	SDL_Rect infinitsprite;
+	int infinitepos;
 
 	SDL_Rect camera;
 	iPoint position;

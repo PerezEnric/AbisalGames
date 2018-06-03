@@ -287,6 +287,10 @@ update_status ModuleBackground::Update()
 	{
 		bossexplosions();
 		win = true;
+		Disable();
+		App->particles->Disable();
+		App->enemies->Disable();
+		App->player->Disable();
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 	}
 

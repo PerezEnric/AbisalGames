@@ -26,15 +26,16 @@ Application::Application()
 	modules[5] = intro = new ModuleIntroScene();
 	modules[6] = background = new ModuleBackground();
 	modules[7] = win_lose = new ModuleWinLoseScene();
-	modules[8] = tentacle = new ModuleTentacles();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = particles = new ModuleParticles();
-	modules[11] = collision = new ModuleCollision();
-	modules[12] = enemies = new ModuleEnemies();
-	modules[13] = fonts = new ModuleFonts();
-	modules[14] = ui = new ModuleUI();
-	modules[15] = fade = new ModuleFadeToBlack();
-	modules[16] = scene_score = new ModuleSceneScore();
+	modules[8] = scene_score = new ModuleSceneScore();
+	modules[9] = tentacle = new ModuleTentacles();
+	modules[10] = player = new ModulePlayer();
+	modules[11] = particles = new ModuleParticles();
+	modules[12] = collision = new ModuleCollision();
+	modules[13] = enemies = new ModuleEnemies();
+	modules[14] = fonts = new ModuleFonts();
+	modules[15] = ui = new ModuleUI();
+	modules[16] = fade = new ModuleFadeToBlack();
+	
 }	
 
 Application::~Application()

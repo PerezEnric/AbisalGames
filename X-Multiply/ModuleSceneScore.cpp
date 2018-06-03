@@ -13,9 +13,10 @@
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
 
+
 ModuleSceneScore::ModuleSceneScore()
 {
-
+	infinitsprite = {0,150,179,56};
 }
 
 ModuleSceneScore::~ModuleSceneScore(){}
@@ -24,17 +25,25 @@ bool ModuleSceneScore::Start()
 {
 	background_score = App->textures->Load("Sprites_Assets/highscore_scene.png");
 	allscores = App->textures->Load("Sprites_Assets/all_scores.png");
-
+	infinit = App->textures->Load("Sprites_Assets/UI_3.png");
 	score_music = App->audio->LoadMusic("Audio_Assets/score_music.ogg");
 	App->audio->PlayMusic(score_music);
+	position.x = 0;
+	position.y = 0;
+	infinitepos = 120;
+	App->ui->Enable();
 
 	return true;
+	
 }
 
 bool ModuleSceneScore::CleanUp()
 {
 	App->textures->Unload(background_score);
 	background_score = nullptr;
+
+	App->textures->Unload(infinit);
+	infinit = nullptr;
 
 	App->audio->UnloadMusic(score_music);
 	score_music = nullptr;
@@ -44,13 +53,17 @@ bool ModuleSceneScore::CleanUp()
 
 update_status ModuleSceneScore::Update()
 {
-	App->render->Blit(background_score, 0, 0, NULL, false);
-	App->render->Blit(allscores, 0, 0, NULL, false);
+	infinitepos += 1;
+	App->render->Blit(background_score, position.x, position.y, nullptr, false);
+	App->render->Blit(allscores, 0, 0, nullptr , false);
+	App->render->Blit(infinit, infinitepos, 10, &infinitsprite);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->intro, 2.0f);
 	}
+
+	position.x -= 1;
 
 	return UPDATE_CONTINUE;
 }
