@@ -30,7 +30,7 @@ Enric Pérez Rifà
 ![Team Photo](https://i.imgur.com/XyX5K04.jpg)
 
 ## Gameplay
-[![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww)
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/watch?v=ysnwuuDmEww" frameborder="0" allowfullscreen> </iframe>
 
