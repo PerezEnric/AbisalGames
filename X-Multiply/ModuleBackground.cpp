@@ -355,22 +355,21 @@ void ModuleBackground::camera()
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x <= -720 && App->render->camera.x > -890)
+		if (App->render->camera.x <= -720 && App->render->camera.x > -890 && !tail_powerup)
 		{
 			App->render->move_down = !App->render->move_down;
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x == -860)
+		else if (App->render->camera.x <= -860 && tail_powerup)
 		{
 			App->render->move_down = false;
 			App->render->move_front = false;
-			go_back = false;
 		}
 
 		if (App->render->camera.x == -890)
 		{
-			App->render->move_down = false;
+			App->render->move_down = true;
 			App->render->move_front = false;
 			go_back = true;
 		}
@@ -381,7 +380,7 @@ void ModuleBackground::camera()
 		if (App->render->camera.x < -830)
 		{
 			App->render->move_up = false;
-			App->render->move_down = false;
+			App->render->move_down = !App->render->move_down;
 			App->render->move_front = false;
 			App->render->move_back = true;
 		}
@@ -404,7 +403,7 @@ void ModuleBackground::camera()
 		else if (App->render->camera.x < -470)
 		{
 			App->render->move_back = true;
-			App->render->move_up = false;
+			App->render->move_up = true;
 		}
 
 		else if (App->render->camera.x < -310)
@@ -594,8 +593,8 @@ void ModuleBackground::spawnenemies()
 
 	if (cdenemys == 700)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 510, 110);
-		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 512, 125);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 510, 100);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 512, 115);
 	}
 
 	if (cdenemys == 900)
@@ -606,8 +605,8 @@ void ModuleBackground::spawnenemies()
 
 	if (cdenemys == 1000)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 680, 100);
-		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 682, 115);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 660, 100);
+		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 662, 115);
 	}
 
 	if (cdenemys == 1080)
@@ -649,5 +648,9 @@ void ModuleBackground::spawnenemies()
 		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1290, 235);
 	}
 
+	if (cdenemys == 3000)
+	{
+		tail_powerup = false;
+	}
 	cdenemys++;
 }
