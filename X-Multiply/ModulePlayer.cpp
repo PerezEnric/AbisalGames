@@ -224,7 +224,6 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
 		App->audio->PlaySoundEffect(player_death);

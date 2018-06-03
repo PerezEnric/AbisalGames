@@ -14,6 +14,7 @@
 #include "ModuleSceneScore.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleFonts.h"
 
 
 
@@ -62,6 +63,7 @@ bool ModuleWinLoseScene::Start()
 	App->particles->Disable();
 	App->enemies->Disable();
 	App->player->Disable();
+	App->ui->Disable();
 
 	return true;
 }

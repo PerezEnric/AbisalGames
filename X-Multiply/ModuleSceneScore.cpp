@@ -56,21 +56,20 @@ bool ModuleSceneScore::CleanUp()
 
 update_status ModuleSceneScore::Update()
 {
-	infinitepos += 1;
+	
 	App->render->Blit(background_score, position.x, position.y, nullptr, false);
 	App->render->Blit(allscores, 0, 0, nullptr , false);
 	App->render->Blit(infinit, infinitepos, 10, &infinitsprite);
 
-	/*maxscore1 = App->ui->maxscore;
-	sprintf_s(text1, 10, "%7d", maxscore1);
-	App->fonts->BlitText(71, 235, App->ui->pink_font, text1);*/
+	infinitepos += 1;
+	position.x -= 1;
+
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->intro, 2.0f);
 	}
 
-	position.x -= 1;
 
 	return UPDATE_CONTINUE;
 }
