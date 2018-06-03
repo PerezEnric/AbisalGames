@@ -40,8 +40,12 @@ void Enemy_BlueJumping::Move()
 		else if (go_down && position.y >= 90 && !App->background->moredown)
 		{
 			go_down = false;
-			jumping.current_frame = 1;
 			original_y = position.y;
+			originalplayerposx = App->player->position.x;
+			originalposx = position.x;
+
+			if(originalposx >= originalplayerposx)
+				jumping.current_frame = 1;
 		}
 
 		else if (go_down == false && position.y > 40)
@@ -53,20 +57,41 @@ void Enemy_BlueJumping::Move()
 
 		else if (going_back)
 		{
-			position.x -= 1;
-			position.y = original_y;
-			if (cd == 90)
+			if (originalposx > originalplayerposx)
 			{
-				App->particles->bluejumping_shot.speed = { -2 , 1 };
-				App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-				App->particles->bluejumping_shot.speed = { -2 , 0 };
-				App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
-				App->particles->bluejumping_shot.speed = { -2 , -1 };
-				App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+				position.x -= 1;
+				position.y = original_y;
+				if (cd == 90)
+				{
+					App->particles->bluejumping_shot.speed = { -2 , 1 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+					App->particles->bluejumping_shot.speed = { -2 , 0 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
+					App->particles->bluejumping_shot.speed = { -2 , -1 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x - 30, position.y + 30, COLLIDER_ENEMY_SHOT);
 
-				cd = 0;
+					cd = 0;
+				}
+				cd++;
 			}
-			cd++;
+
+			else
+			{
+				position.x += 1;
+				position.y = original_y;
+				if (cd == 90)
+				{
+					App->particles->bluejumping_shot.speed = { +2 , 1 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x + 20, position.y + 30, COLLIDER_ENEMY_SHOT);
+					App->particles->bluejumping_shot.speed = { +2 , 0 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x + 20, position.y + 30, COLLIDER_ENEMY_SHOT);
+					App->particles->bluejumping_shot.speed = { +2 , -1 };
+					App->particles->AddParticle(App->particles->bluejumping_shot, position.x + 20, position.y + 30, COLLIDER_ENEMY_SHOT);
+
+					cd = 0;
+				}
+				cd++;
+			}
 		}
 }
 

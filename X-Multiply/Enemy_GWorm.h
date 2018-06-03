@@ -15,6 +15,7 @@ private:
 	bool walk = true;
 	bool stop = false;
 	bool action = false;
+	bool firstwalk = true;
 public:
 
 	Enemy_GWorm(int x, int y);

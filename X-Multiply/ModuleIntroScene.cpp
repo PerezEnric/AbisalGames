@@ -81,6 +81,7 @@ bool ModuleIntroScene::Start()
 	App->player->tentacles = false;
 	App->player->bomb = false;
 	App->player->wave = false;
+	coins = false;
 	return true;
 }
 
@@ -101,12 +102,7 @@ update_status ModuleIntroScene::Update()
 {
 	App->render->camera.x = App->render->camera.y = 0;
 	// Draw everything --------------------------------------
-	if (pick == true)
-	{
-		App->render->Blit(introBackground, 0, 0, NULL);
-		App->render->Blit(introBackground, 0, 0, &game_title);
-		App->render->Blit(introBackground, 116, 183, &game_company);
-	}
+	
 	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
@@ -120,14 +116,22 @@ update_status ModuleIntroScene::Update()
 		App->audio->UnloadMusic(intro_music);
 		App->render->Blit(pickback, 0, 0, &screen_pick);
 		//App->audio->PlaySoundEffect(coins);
-		//conta++;
 		pick = false;
-
-		
-
-		
+		coinsprov = true;
+		if (conta == 0) conta = 1;
+		else if (conta == 1) conta = 2;
+		else if (conta == 2) conta = 3;
+		else if (conta == 3) conta = 4;
+		else conta = 5;
 	}
-	if (pick == false)
+	if (pick == true)
+	{
+		App->render->Blit(introBackground, 0, 0, NULL);
+		App->render->Blit(introBackground, 0, 0, &game_title);
+		App->render->Blit(introBackground, 116, 183, &game_company);
+	}
+
+	else 
 	{
 		App->render->Blit(introBackground, 49, SCREEN_HEIGHT / 2 - 70, &P);
 		App->render->Blit(introBackground, 65, SCREEN_HEIGHT / 2 - 70, &U);
@@ -145,7 +149,7 @@ update_status ModuleIntroScene::Update()
 		App->render->Blit(introBackground, 273, SCREEN_HEIGHT / 2 - 70, &O);
 		App->render->Blit(introBackground, 289, SCREEN_HEIGHT / 2 - 70, &N);
 
-		if (conta == 1 && pick == false)
+		if ( conta == 1 )
 		{
 			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
 			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);
@@ -237,7 +241,7 @@ update_status ModuleIntroScene::Update()
 			App->render->Blit(introBackground, 173, SCREEN_HEIGHT / 2 + 40, &T);
 			App->render->Blit(introBackground, 197, SCREEN_HEIGHT / 2 + 40, &FOUR);
 		}
-		else if (conta == 5)
+		else if(conta >= 5)
 		{
 			App->render->Blit(introBackground, 72, SCREEN_HEIGHT / 2 - 10, &ONE);
 			App->render->Blit(introBackground, 96, SCREEN_HEIGHT / 2 - 10, &P);

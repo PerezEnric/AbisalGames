@@ -205,15 +205,17 @@ bool ModuleBackground::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTLITTLEDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIGHTDORSAL, 530, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::MASK, 731, 160);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 460, 40);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 400, 40);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PU, 520, 40);
-	//Power Ups
-	/*App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 460, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 400, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 520, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1070, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1075, 160);*/
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 750, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 720, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 690, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 660, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 630, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 600, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 490, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 460, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 430, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BWORM, 400, 300);
 
 	// Enemy Boss
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 260, 217);
@@ -228,6 +230,7 @@ bool ModuleBackground::Start()
 
 	boss_wakeup = false;
 	go_back = false;
+	cdenemys = 0;
 
 	return ret;
 }
@@ -287,6 +290,10 @@ void ModuleBackground::camera()
 		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
 			App->render->move_front = !App->render->move_front;
+			App->render->move_back = false;
+			App->render->move_up = false;
+			App->render->move_down = false;
+			
 		}
 		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
@@ -571,11 +578,8 @@ void ModuleBackground::die()
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
 		cdenemys = 0;
 	}
-	App->render->move_back = false;
-	App->render->move_up = false;
-	App->render->move_down = false;
-	App->render->move_front = false;
-	
+	App->player->Disable();
+	App->particles->Disable();
 }
 
 void ModuleBackground::spawnenemies()
@@ -612,23 +616,23 @@ void ModuleBackground::spawnenemies()
 	if (cdenemys == 1080)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 731, -10);
 
-	if (cdenemys == 1700)
+	if (cdenemys == 1780)
 		App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 
 	if (cdenemys == 2100)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1100, 220);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 180);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 150);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 150);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 200);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1100, 180);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 140);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 160);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 140);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1160, 160);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1190, 230);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1220, 250);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 250);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 280);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 250);
-		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 280);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1190,180);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1220, 180);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 160);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1260, 180);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 160);
+		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 180);
 
 	}
 

@@ -22,6 +22,7 @@ Enemy_GWorm::Enemy_GWorm(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 29, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
 	points = 200;
+	firstwalk = true;
 }
 void Enemy_GWorm::Move()
 {
@@ -30,8 +31,6 @@ void Enemy_GWorm::Move()
 		action = true;
 	}
 
-	if (action == true)
-	{
 		if (walk == true)
 		{
 			if (stop == true)
@@ -42,7 +41,12 @@ void Enemy_GWorm::Move()
 			}
 			else
 			{
-				position.y -= 0;
+				if (firstwalk == true)
+				{
+					position.y -= 0;
+				}
+				else
+					position.y -= 0.5f;
 				position.x -= 1.0f;
 				stop = true;
 			}
@@ -84,9 +88,9 @@ void Enemy_GWorm::Move()
 				walk = true;
 				animation = &greenw;
 				cd = 0;
+				firstwalk = false;
 			}
 		}
-	}
 	
 
 }

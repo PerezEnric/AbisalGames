@@ -14,6 +14,8 @@ private:
 	float wave;
 	int original_y;
 	float speed;
+	int originalposx;
+	int originalplayerposx;
 public:
 
 	Enemy_BlueJumping(int x, int y);

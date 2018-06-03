@@ -20,6 +20,7 @@ public:
 public:
 	bool flag = false;
 	bool pick;
+	bool coinsprov;
 	SDL_Texture* introBackground = nullptr;
 	Mix_Music* intro_music = nullptr;
 	Mix_Chunk* coins = nullptr;
