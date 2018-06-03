@@ -21,19 +21,18 @@ Dídac Llop Serna
 
 [Github account](https://github.com/didaclis)
 
-### Art:
-Héctor Pons Barroso
-
-[Github account](https://github.com/hectorpb32)
-
 ### QA:
 Enric Pérez Rifà
 
 [Github account](https://github.com/PerezEnric)
 
 ## Team photo
-![Team Photo](https://i.imgur.com/g5eWiot.jpg)
+![Team Photo](https://i.imgur.com/XyX5K04.jpg)
 
 ## Gameplay
+[![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww)
 
-[![IMAGE](https://www.satakore.com/satengine/screenshots/T-26/T-26110G_4,,Sega-Saturn-Screenshot-4-Image-Fight-and-XMultiply-Arcade-Gears-JPN.jpg)](https://www.youtube.com/watch?v=GcoOZxjrLdk)
+## Link to download the latest release of the game
+[CLICK HERE](https://github.com/PerezEnric/AbisalGames/releases)
+
+
