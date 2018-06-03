@@ -12,6 +12,7 @@
 #include "ModuleParticles.h"
 #include "Enemy_Boss.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleIntroScene.h"
 
 
 
@@ -87,9 +88,9 @@ bool ModuleBackground::Start()
 	// Loading Monster's right dorsal && Loading Green Worm Spawn && Loading Monster's mini boss eye
 	enemy_parts = App->textures->Load("Sprites_Assets/all_enemies.png");
 	//Loading Level Music
-	//lvl2_music = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
+	lvl2_music = App->audio->LoadMusic("Audio_Assets/Stage_2_Music.ogg");
 
-	//App->audio->PlayMusic(lvl2_music);
+	App->audio->PlayMusic(lvl2_music);
 	Enable();
 	App->player->Enable();
 	App->ui->Enable();
@@ -231,7 +232,10 @@ bool ModuleBackground::Start()
 
 	boss_wakeup = false;
 	go_back = false;
-	cdenemys = 0;
+
+	App->render->move_back = false;
+	App->render->move_up = false;
+	App->render->move_down = false;
 
 	return ret;
 }
@@ -248,8 +252,8 @@ bool ModuleBackground::CleanUp()
 	monster_body = nullptr;
 	App->textures->Unload(monster_tail);
 	monster_tail = nullptr;
-	/*App->audio->UnloadMusic(lvl2_music);
-	lvl2_music = nullptr;*/
+	App->audio->UnloadMusic(lvl2_music);
+	lvl2_music = nullptr;
 
 	return ret;
 }
@@ -291,10 +295,7 @@ void ModuleBackground::camera()
 		if (App->render->camera.x <= 250 && App->render->camera.x > -380)
 		{
 			App->render->move_front = !App->render->move_front;
-			App->render->move_back = false;
-			App->render->move_up = false;
-			App->render->move_down = false;
-			
+
 		}
 		if (App->render->camera.x <= -220 && App->render->camera.x > -320)
 		{
@@ -363,21 +364,22 @@ void ModuleBackground::camera()
 			App->render->move_front = !App->render->move_front;
 		}
 
-		if (App->render->camera.x <= -720 && App->render->camera.x > -890 && !tail_powerup)
+		if (App->render->camera.x <= -720 && App->render->camera.x > -890)
 		{
 			App->render->move_down = !App->render->move_down;
 			App->render->move_front = !App->render->move_front;
 		}
 
-		else if (App->render->camera.x <= -860 && tail_powerup)
+		if (App->render->camera.x == -860)
 		{
 			App->render->move_down = false;
 			App->render->move_front = false;
+			go_back = false;
 		}
 
 		if (App->render->camera.x == -890)
 		{
-			App->render->move_down = true;
+			App->render->move_down = false;
 			App->render->move_front = false;
 			go_back = true;
 		}
@@ -388,7 +390,7 @@ void ModuleBackground::camera()
 		if (App->render->camera.x < -830)
 		{
 			App->render->move_up = false;
-			App->render->move_down = !App->render->move_down;
+			App->render->move_down = false;
 			App->render->move_front = false;
 			App->render->move_back = true;
 		}
@@ -411,7 +413,7 @@ void ModuleBackground::camera()
 		else if (App->render->camera.x < -470)
 		{
 			App->render->move_back = true;
-			App->render->move_up = true;
+			App->render->move_up = false;
 		}
 
 		else if (App->render->camera.x < -310)
@@ -430,7 +432,7 @@ void ModuleBackground::camera()
 		{
 			App->render->move_down = false;
 			App->render->move_back = !App->render->move_back;
-			App->render->move_up =true;
+			App->render->move_up = true;
 		}
 
 		else if (App->render->camera.x < 0)
@@ -577,7 +579,7 @@ void ModuleBackground::die()
 	{
 		win = false;
 		App->fade->FadeToBlack((Module*)App->background, (Module*)App->win_lose);
-		cdenemys = 0;
+		App->intro->credits--;
 	}
 	App->player->Disable();
 	App->particles->Disable();
@@ -596,7 +598,7 @@ void ModuleBackground::spawnenemies()
 	if (cdenemys == 450)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 330, -55);
 
-	if (cdenemys == 700)
+	if (cdenemys == 600)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 510, 100);
 		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 512, 115);

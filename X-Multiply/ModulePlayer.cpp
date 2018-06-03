@@ -74,8 +74,8 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnloadSoundEffect(shot_particle);
 	shot_particle = nullptr;
 
-	/*App->audio->UnloadSoundEffect(player_death);
-	player_death = nullptr;*/
+	App->audio->UnloadSoundEffect(player_death);
+	player_death = nullptr;
 
 	if (col != nullptr)
 	{
@@ -167,7 +167,7 @@ update_status ModulePlayer::Update()
 		{
 			App->particles->AddParticle(App->particles->explosion_shot, position.x + 37, position.y + 1);
 			App->particles->AddParticle(App->particles->laser, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
-			//App->audio->PlaySoundEffect(shot_particle);
+			App->audio->PlaySoundEffect(shot_particle);
 		}
 		if (cd < 5)
 		{
@@ -242,6 +242,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->audio->PlaySoundEffect(player_death);
 		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
 		Disable();
+		App->background->cdenemys = 0;
 		App->background->die();
 	}
 }

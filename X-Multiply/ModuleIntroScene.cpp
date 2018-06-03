@@ -46,6 +46,7 @@ ModuleIntroScene::ModuleIntroScene()
 	THREE = {48,403,16,16};
 	FOUR = {68,409,16,16};
 	FIVE = {86,409,16,16};
+	credits = 0;
 }
 
 ModuleIntroScene::~ModuleIntroScene()
@@ -68,11 +69,7 @@ bool ModuleIntroScene::Start()
 	App->win_lose->Disable();
 	App->ui->Disable();
 	pick = true;
-	credits = 0;
-	App->render->move_front= false;
-	App->render->move_back = false;
-	App->render->move_up = false;
-	App->render->move_down = false;
+	App->background->cdenemys = 0;
 
 	App->player->position.y = 103;
 	App->player->position.x = 87;
@@ -108,13 +105,14 @@ update_status ModuleIntroScene::Update()
 		App->render->Blit(introBackground, 116, 183, &game_company);
 	}
 	
-
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
+	if (credits > 0)
 	{
-		App->fade->FadeToBlack(this, App->background, 2.0f);
-		flag = true;
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, App->background, 2.0f);
+			flag = true;
+		}
 	}
-	
 	
 	ready();
 
