@@ -23,7 +23,8 @@ enum KEY_STATE
 enum BUTTONS {
 
 	BUTTON_A,
-	BUTTON_START
+	BUTTON_START,
+	BUTTON_Y,
 };
 
 class ModuleInput : public Module

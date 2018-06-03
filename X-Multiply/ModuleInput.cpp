@@ -98,6 +98,7 @@ update_status ModuleInput::PreUpdate()
 		{
 			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepads[i], SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
 			controller_state[BUTTON_START] = SDL_GameControllerGetButton(gamepads[i], SDL_CONTROLLER_BUTTON_START);
+			controller_state[BUTTON_Y] = SDL_GameControllerGetButton(gamepads[i], SDL_CONTROLLER_BUTTON_Y);
 		}
 	}
 
