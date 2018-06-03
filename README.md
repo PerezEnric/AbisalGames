@@ -36,4 +36,4 @@ Enric Pérez Rifà
 
 ## Gameplay
 
-[![IMAGE](https://www.satakore.com/satengine/screenshots/T-26/T-26110G_4,,Sega-Saturn-Screenshot-4-Image-Fight-and-XMultiply-Arcade-Gears-JPN.jpg)](https://www.youtube.com/watch?v=GcoOZxjrLdk)
+[![VIDEO](https://www.satakore.com/satengine/screenshots/T-26/T-26110G_4,,Sega-Saturn-Screenshot-4-Image-Fight-and-XMultiply-Arcade-Gears-JPN.jpg)](https://www.youtube.com/watch?v=GcoOZxjrLdk)
