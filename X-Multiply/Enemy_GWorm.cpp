@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
+#include "ModuleUI.h"
 
 Enemy_GWorm::Enemy_GWorm(int x, int y) : Enemy(x, y)
 {
@@ -20,6 +21,7 @@ Enemy_GWorm::Enemy_GWorm(int x, int y) : Enemy(x, y)
 	animation = &greenw;
 	collider = App->collision->AddCollider({ 0, 0, 29, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
+	points = 200;
 }
 void Enemy_GWorm::Move()
 {
@@ -93,7 +95,7 @@ void Enemy_GWorm::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(blue_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 }
 
 bool Enemy_GWorm::CleanUp()

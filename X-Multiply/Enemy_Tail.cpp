@@ -7,6 +7,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleBackground.h"
+#include "ModuleUI.h"
 
 
 Enemy_Tail::Enemy_Tail(int x, int y) : Enemy(x, y)
@@ -15,6 +16,7 @@ Enemy_Tail::Enemy_Tail(int x, int y) : Enemy(x, y)
 	animation = &tail_fall;
 	collider = App->collision->AddCollider({ 0, 0, 219, 57 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	tail_death = App->audio->LoadSoundEffect("Audio_Assets/tumour_death.wav");
+	points = 1000;
 }
 
 
@@ -22,7 +24,7 @@ void Enemy_Tail::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(tail_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 	App->background->taildown = true;
 }
 

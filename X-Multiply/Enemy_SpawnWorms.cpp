@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 Enemy_SpawnWorms::Enemy_SpawnWorms(int x, int y) : Enemy(x, y)
 {
@@ -11,7 +12,7 @@ Enemy_SpawnWorms::Enemy_SpawnWorms(int x, int y) : Enemy(x, y)
 	
 	animation = &spawn;
 	collider = App->collision->AddCollider({ 0, 0, 99, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-
+	points = 1000;
 	/*shrimp_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");*/
 }
 void Enemy_SpawnWorms::Move()
@@ -28,7 +29,7 @@ void Enemy_SpawnWorms::Move()
 void Enemy_SpawnWorms::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 	//App->audio->PlaySoundEffect(shrimp_death);
 }
 

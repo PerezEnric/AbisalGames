@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 EnemyMiddleLittleDorsal::EnemyMiddleLittleDorsal(int x, int y) : Enemy(x, y)
 {
@@ -11,11 +12,12 @@ EnemyMiddleLittleDorsal::EnemyMiddleLittleDorsal(int x, int y) : Enemy(x, y)
 	animation = &middlelittledorsal;
 	collider = App->collision->AddCollider({ 515, 138, 50, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	dorsal_death = App->audio->LoadSoundEffect("Audio_Assets/dorsal_death.wav");
+	points = 1000;
 }
 
 void EnemyMiddleLittleDorsal::OnCollision(Collider* collider)
 {
-
+	App->ui->points += points;
 	App->audio->PlaySoundEffect(dorsal_death);
 }
 

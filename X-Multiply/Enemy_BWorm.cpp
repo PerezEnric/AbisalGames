@@ -4,6 +4,8 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
+#include "ModuleUI.h"
+
 Enemy_BWorm::Enemy_BWorm(int x, int y) : Enemy(x, y)
 {
 	brown_down.PushBack({ 480,240,22,27 });
@@ -28,6 +30,7 @@ Enemy_BWorm::Enemy_BWorm(int x, int y) : Enemy(x, y)
 	animation = &brown_dspawn;
 	collider = App->collision->AddCollider({ 0, 0, 22, 27 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
+	points = 200;
 }
 void Enemy_BWorm::Move()
 {
@@ -201,7 +204,7 @@ void Enemy_BWorm::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(blue_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 }
 
 bool Enemy_BWorm::CleanUp()

@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 Enemy_Mask::Enemy_Mask(int x, int y) : Enemy(x, y)
 {
@@ -13,12 +14,14 @@ Enemy_Mask::Enemy_Mask(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 86, 69 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	tumour_death = App->audio->LoadSoundEffect("Audio_Assets/tumour_death.wav");
+	points = 1000;
 }
 
 void Enemy_Mask::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(tumour_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	App->ui->points += points;
 }
 
 void Enemy_Mask::Move()

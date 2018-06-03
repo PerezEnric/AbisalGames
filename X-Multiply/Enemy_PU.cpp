@@ -4,6 +4,8 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
+#include "ModuleUI.h"
+
 Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 {
 	//Basic fly
@@ -43,6 +45,7 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 28, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	original_y = y;
 	robot_death = App->audio->LoadSoundEffect("Audio_Assets/powerup_death.wav");
+	points = 1000;
 }
 void Enemy_PU::Move()
 {
@@ -140,7 +143,7 @@ void Enemy_PU::Move()
 void Enemy_PU::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 	App->audio->PlaySoundEffect(robot_death);
 }
 

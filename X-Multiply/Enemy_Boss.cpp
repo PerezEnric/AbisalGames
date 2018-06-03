@@ -7,6 +7,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleBackground.h"
 #include "ModuleRender.h"
+#include "ModuleUI.h"
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
@@ -37,7 +38,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 	cd2 = 0;
 	shot_num = 0;
 	original_x = App->render->back_limit + App->render->camera.w - 123;
-
+	points = 25000;
 }
 
 bool Enemy_Boss::CleanUp()
@@ -156,6 +157,7 @@ void Enemy_Boss::OnCollision(Collider* collider)
 	App->background->bossx = position.x;
 	App->background->bossy = position.y;
 	App->background->expboss = true;
+	App->ui->points += points;
 }
 
 void Enemy_Boss::MoveEye()

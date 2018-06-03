@@ -19,7 +19,7 @@ Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 	speed = 0;
 	cd = 40;
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
-	points = 100;
+	points = 1000;
 }
 void Enemy_BlueJumping::Move()
 {
