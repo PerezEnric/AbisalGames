@@ -34,7 +34,9 @@ bool ModuleSceneScore::Start()
 	position.x = 0;
 	position.y = 0;
 	infinitepos = 120;
-	App->ui->Enable();
+
+	App->enemies->Disable();
+	App->ui->Disable();
 
 	return true;
 	
@@ -64,6 +66,8 @@ update_status ModuleSceneScore::Update()
 	infinitepos += 1;
 	position.x -= 1;
 
+	sprintf_s(App->ui->text2, 10, "%6d", App->ui->maxscore);
+	App->fonts->BlitText(105, 101, App->ui->pink_font, App->ui->text2);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{

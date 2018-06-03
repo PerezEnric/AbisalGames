@@ -48,11 +48,11 @@ update_status ModuleUI::Update()
 	/*App->fonts->BlitText(177, 235, font_score, top_score);*/
 	App->fonts->BlitText(290, 235, font_score, second_score);
 
-	if (App->scene_score->IsEnabled())
+	/*if (App->scene_score->IsEnabled())
 	{
 		sprintf_s(text2, 10, "%6d", maxscore);
 		App->fonts->BlitText(105, 101, pink_font, text2);
-	}
+	}*/
 
 
 	return UPDATE_CONTINUE;

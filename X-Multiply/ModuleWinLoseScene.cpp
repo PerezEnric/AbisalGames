@@ -61,9 +61,8 @@ bool ModuleWinLoseScene::Start()
 	else
 		App->audio->PlayMusic(win_music);
 	App->particles->Disable();
-	App->enemies->Disable();
 	App->player->Disable();
-	App->ui->Disable();
+	
 
 	return true;
 }
