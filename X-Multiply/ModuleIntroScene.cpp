@@ -126,7 +126,7 @@ void ModuleIntroScene::ready()
 	{
 		App->audio->UnloadMusic(intro_music);
 		App->render->Blit(pickback, 0, 0, &screen_pick);
-		//App->audio->PlaySoundEffect(coins);
+		App->audio->PlaySoundEffect(coins);
 		
 		pick = false;
 		credits++;

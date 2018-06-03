@@ -64,7 +64,6 @@ void Waves_PowerUp::Move()
 					walking = false;
 					landing = false;
 					flying = false;
-					cd3 = 0;
 				}
 			}
 		}
@@ -73,6 +72,10 @@ void Waves_PowerUp::Move()
 			position.y += 1;
 
 		}
+	}
+	else if (cd3 > 0)
+	{
+		position.y += 1;
 	}
 	else
 		position.x -= 1;

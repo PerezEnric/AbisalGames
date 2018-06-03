@@ -47,8 +47,8 @@ public:
 	int cont = 0;
 	int bossy;
 	int bossx;
-	bool expboss, boss_wakeup = false;
-	bool fight_boss = false;
+	bool expboss, boss_wakeup;
+	bool fight_boss;
 	bool moredown;
 	bool tail_powerup;
 	int cdenemys = 0;

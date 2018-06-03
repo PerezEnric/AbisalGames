@@ -112,7 +112,7 @@ void Enemy_PU4::Move()
 				}
 			}
 		}
-		else if (walking == false && landing == false && flying == false)
+		if (walking == false && landing == false && flying == false)
 		{
 			position.y += 1;
 

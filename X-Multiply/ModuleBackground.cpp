@@ -228,15 +228,22 @@ bool ModuleBackground::Start()
 	App->render->camera.y = 30;
 	App->render->back_limit = -App->render->camera.x;//inicial limit position
 	App->render->up_limit = -App->render->camera.y;
-	App->player->position.x = -App->render->camera.x;// inicial player position
+	App->player->position.x = -App->render->camera.x;
+	fight_boss = false;
+	boss_wakeup = false;
+	// inicial player position
 
 	boss_wakeup = false;
 	go_back = false;
+	App->render->change_move = false;
+	move_cont = 0;
 
 	App->render->move_back = false;
 	App->render->move_up = false;
 	App->render->move_down = false;
 
+	cont = 0;
+	expboss = false;
 	return ret;
 }
 bool ModuleBackground::CleanUp()
@@ -641,17 +648,17 @@ void ModuleBackground::spawnenemies()
 	if (cdenemys == 2500)
 	{
 		tail_powerup = true;
-		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 1190, 220);
-		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1190, 235);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 1190, 200);
+		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1190, 215);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::PU, 1230, 220);
-		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 1230, 235);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU, 1230, 200);
+		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 1230, 215);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1260, 220);
-		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1260, 235);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1260, 200);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1260, 215);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1290, 220);
-		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1290, 235);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1290, 200);
+		App->enemies->AddEnemy(ENEMY_TYPES::WAVES, 1290, 215);
 	}
 
 	if (cdenemys == 3000)

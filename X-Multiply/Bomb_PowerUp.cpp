@@ -81,6 +81,10 @@ void Bomb_PowerUp::Move()
 			position.y += 1;
 
 		}
+		else if (cd3 > 0)
+		{
+			position.y += 1;
+		}
 	}
 	else
 		position.x -= 1;
