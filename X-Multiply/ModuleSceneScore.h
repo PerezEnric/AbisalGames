@@ -22,8 +22,8 @@ public:
 public:
 
 	SDL_Texture* background_score = nullptr;
-	Mix_Music* game_over_music = nullptr;
-	Mix_Music* win_music = nullptr;
+	SDL_Texture* allscores = nullptr;
+	Mix_Music* score_music = nullptr;
 
 
 	SDL_Rect camera;
