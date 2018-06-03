@@ -1,6 +1,6 @@
----
+
 youtubeId: ysnwuuDmEww
----
+
 Welcome to the AbisalGames wiki!
 
 # X-Multiply
