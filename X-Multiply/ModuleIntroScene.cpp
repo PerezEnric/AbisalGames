@@ -62,7 +62,6 @@ bool ModuleIntroScene::Start()
 	pickback = App->textures->Load("Sprites_Assets/Background2.png");
 	coins = App->audio->LoadSoundEffect("Audio_Assets/coin_sound.wav");
 	App->audio->PlayMusic(intro_music);
-	/*App->win_lose->Disable();*/
 	App->enemies->Disable();
 	App->background->Disable();
 	App->player->Disable();
