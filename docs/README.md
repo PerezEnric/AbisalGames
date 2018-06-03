@@ -31,8 +31,7 @@ Enric Pérez Rifà
 
 ## Gameplay
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=ysnwuuDmEww" frameborder="0" allowfullscreen> </iframe>
+[![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww)
 
 ## Link to download the latest release of the game
 [CLICK HERE](https://github.com/PerezEnric/AbisalGames/releases)
