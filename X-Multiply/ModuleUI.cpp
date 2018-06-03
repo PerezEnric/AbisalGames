@@ -18,7 +18,7 @@ bool ModuleUI::Start()
 
 	u_interface = App->textures->Load("Sprites_Assets/UI_1.png");
 	font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
-
+	pink_font = App->fonts->Load("Sprites_Assets/pinkfonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);
 	
 	return true;
 }
@@ -50,8 +50,8 @@ update_status ModuleUI::Update()
 
 	if (App->scene_score->IsEnabled())
 	{
-		sprintf_s(text2, 10, "%7d", maxscore);
-		App->fonts->BlitText(105, 105, font_score, text2);
+		sprintf_s(text2, 10, "%6d", maxscore);
+		App->fonts->BlitText(105, 101, pink_font, text2);
 	}
 
 

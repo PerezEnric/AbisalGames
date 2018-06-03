@@ -96,7 +96,7 @@ update_status ModuleWinLoseScene::Update()
 		App->render->Blit(lose_screen, 248, SCREEN_HEIGHT / 2, &E);
 		App->render->Blit(lose_screen, 264, SCREEN_HEIGHT / 2, &R);
 
-		if (App->input->keyboard[SDL_SCANCODE_SPACE])
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 		{
 			App->fade->FadeToBlack(this, App->scene_score, 2.0f);
 		}

@@ -12,6 +12,9 @@
 #include "ModuleSceneScore.h"
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
+#include "ModuleFonts.h"
+
+#include <stdio.h>
 
 
 ModuleSceneScore::ModuleSceneScore()
@@ -57,6 +60,10 @@ update_status ModuleSceneScore::Update()
 	App->render->Blit(background_score, position.x, position.y, nullptr, false);
 	App->render->Blit(allscores, 0, 0, nullptr , false);
 	App->render->Blit(infinit, infinitepos, 10, &infinitsprite);
+
+	/*maxscore1 = App->ui->maxscore;
+	sprintf_s(text1, 10, "%7d", maxscore1);
+	App->fonts->BlitText(71, 235, App->ui->pink_font, text1);*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{

@@ -30,6 +30,7 @@ public:
 	char text2[10];
 	char top_score[9] = "00500000";
 	char second_score[9] = "00000000";
+	int pink_font = -1;
 
 };
 

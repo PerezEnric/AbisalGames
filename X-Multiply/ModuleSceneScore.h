@@ -27,7 +27,8 @@ public:
 	Mix_Music* score_music = nullptr;
 	SDL_Rect infinitsprite;
 	int infinitepos;
-
+	char text1[10];
+	//uint maxscore1 = 0;
 	SDL_Rect camera;
 	iPoint position;
 };
