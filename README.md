@@ -1,6 +1,3 @@
-
-youtubeId: ysnwuuDmEww
-
 Welcome to the AbisalGames wiki!
 
 # X-Multiply
@@ -38,5 +35,5 @@ Enric Pérez Rifà
 ![Team Photo](https://i.imgur.com/g5eWiot.jpg)
 
 ## Gameplay
-{% include youtubePlayer.html id=page.youtubeId %}
+[![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
 
