@@ -38,6 +38,17 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 	walkingr_robot.PushBack({ 442, 29, 28, 22 });
 	walkingr_robot.speed = 0.1f;
 
+	//wake up
+	wake_up.PushBack({ 277, 32, 28, 19 });
+	wake_up.PushBack({ 305, 29, 28, 22 });
+	wake_up.PushBack({ 113, 5, 28, 22 });
+	wake_up.PushBack({ 145, 5, 31, 22 });
+	wake_up.PushBack({ 177, 5, 28, 21 });
+	wake_up.PushBack({ 209, 5, 31, 19 });
+	wake_up.PushBack({ 241, 5, 28, 17 });
+	wake_up.speed = 0.1f;
+	wake_up.loop = false;
+
 
 	
 	animation = &fly_robot;
@@ -59,14 +70,9 @@ void Enemy_PU::Move()
 		//Fly movement
 		if (flying == true)
 		{
-
-			fly_robot.current_frame = 1;
-			fly_robot.current_frame = 2;
-
-			position.y = int(float(original_y));;
 			position.x -= 1;
 			cd++;
-			if (cd > 150)
+			if (cd >= 190)
 			{
 				landing = true;
 				flying = false;
@@ -77,18 +83,10 @@ void Enemy_PU::Move()
 		//Landing movement
 		else if (landing == true && flying == false && walking == false)
 		{
-			fly_robot.current_frame = 3;
-			fly_robot.current_frame = 4;
-			fly_robot.current_frame = 5;
-			fly_robot.current_frame = 6;
-			fly_robot.current_frame = 7;
-			fly_robot.current_frame = 8;
-			fly_robot.current_frame = 9;
-
 			position.y += 1;
-			position.x += 1;
+			position.x -= 0;
 			cd2++;
-			if (cd2 > 100)
+			if (cd2 > 30)
 			{
 				walking = true;
 				landing = false;
@@ -102,42 +100,25 @@ void Enemy_PU::Move()
 			//Right walking movement
 			if (right == true && left == false)
 			{
-				fly_robot.current_frame = 10;
-				fly_robot.current_frame = 11;
-				fly_robot.current_frame = 12;
-				fly_robot.current_frame = 13;
-
 				position.x += 1;
 				cd3++;
 				if (cd3 > 100)
 				{
-					left = true;
-					right = false;
+					walking = false;
+					landing = false;
+					flying = false;
 					cd3 = 0;
-					animation = &walking_robot;
-				}
-			}
-			//Left walking movement
-			if (left == true && right == false)
-			{
-				fly_robot.current_frame = 10;
-				fly_robot.current_frame = 11;
-				fly_robot.current_frame = 12;
-				fly_robot.current_frame = 13;
-				position.x -= 1;
-				cd3++;
-				if (cd3 > 100)
-				{
-					right = true;
-					left = false;
-					cd3 = 0;
-					animation = &walkingr_robot;
+					animation = &wake_up;
 				}
 			}
 
 		}
+		else if (walking == false && landing == false && flying == false)
+		{
+			position.y -= 1;
+		}
 	}
-	
+
 }
 
 void Enemy_PU::OnCollision(Collider* collider)

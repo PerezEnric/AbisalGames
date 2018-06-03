@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleUI.h"
+#include "ModuleBackground.h"
 
 Enemy_PU3::Enemy_PU3(int x, int y) : Enemy(x, y)
 {
@@ -95,11 +96,12 @@ void Enemy_PU3::Move()
 			position.y += 1;
 			position.x -= 0;
 			cd2++;
-			if (cd2 > 100)
+			if ((cd2 > 100 && !App->background->tail_powerup) || (cd2 > 30 && App->background->tail_powerup))
 			{
 				walking = true;
 				landing = false;
 				animation = &walkingr_robot;
+				cd2 = 0;
 			}
 		}
 

@@ -582,7 +582,7 @@ void ModuleBackground::spawnenemies()
 {
 	if (cdenemys == 50)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 200, 10);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 200, 10);
 		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 202, 25);
 	}
 	if(cdenemys == 430)
@@ -593,7 +593,7 @@ void ModuleBackground::spawnenemies()
 
 	if (cdenemys == 700)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 510, 110);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 510, 110);
 		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 512, 125);
 	}
 
@@ -630,6 +630,18 @@ void ModuleBackground::spawnenemies()
 		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 250);
 		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1280, 280);
 
+	}
+
+	if (cdenemys == 1750)
+	{
+		tail_powerup = true;
+		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 1190, 220);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::PU, 1210, 220);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1240, 220);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1260, 220);
 	}
 
 	cdenemys++;

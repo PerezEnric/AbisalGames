@@ -50,6 +50,7 @@ public:
 	bool expboss, boss_wakeup = false;
 	bool fight_boss = false;
 	bool moredown;
+	bool tail_powerup;
 	int cdenemys = 0;
 };
 

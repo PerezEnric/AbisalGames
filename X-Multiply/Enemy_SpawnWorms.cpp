@@ -17,7 +17,7 @@ Enemy_SpawnWorms::Enemy_SpawnWorms(int x, int y) : Enemy(x, y)
 }
 void Enemy_SpawnWorms::Move()
 {
-	if (cd == 110)
+	if (cd == 150)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::GWORM, 993, 230);
 		cd = 0;

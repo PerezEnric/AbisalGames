@@ -92,7 +92,7 @@ void Enemy_PU4::Move()
 			position.y += 1;
 			position.x -= 0;
 			cd2++;
-			if (cd2 > 70)
+			if (cd2 > 30)
 			{
 				walking = true;
 				landing = false;
