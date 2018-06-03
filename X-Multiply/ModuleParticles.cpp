@@ -73,14 +73,14 @@ ModuleParticles::ModuleParticles()
 	bombPU.life = 1500;
 
 	//explosion player
-	explosion_player.anim.PushBack({ 112,144,16,16 });
-	explosion_player.anim.PushBack({ 96,144,16,16 });
-	explosion_player.anim.PushBack({ 80,144,16,16 });
-	explosion_player.anim.PushBack({ 64,144,16,16 });
-	explosion_player.anim.PushBack({ 48,144,16,16 });
-	explosion_player.anim.PushBack({ 32,144,16,16 });
-	explosion_player.anim.PushBack({ 16,144,16,16 });
-	explosion_player.anim.PushBack({ 0,144,16,16 });
+	explosion_player.anim.PushBack({ 746,875, 10,10 });
+	explosion_player.anim.PushBack({ 761, 874,12,12 });
+	explosion_player.anim.PushBack({ 776,873,14,14 });
+	explosion_player.anim.PushBack({ 791,872,16,16 });
+	explosion_player.anim.PushBack({ 815,872,16,16 });
+	explosion_player.anim.PushBack({ 832,872,16,16 });
+	explosion_player.anim.PushBack({ 849,872,16,16 });
+	explosion_player.anim.PushBack({ 732, 877,6,6 });
 	explosion_player.anim.loop = false;
 	explosion_player.anim.speed = 0.5f;
 

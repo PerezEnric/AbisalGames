@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleUI.h"
 
 Enemy_PU2::Enemy_PU2(int x, int y) : Enemy(x, y)
 {
@@ -17,6 +18,7 @@ Enemy_PU2::Enemy_PU2(int x, int y) : Enemy(x, y)
 	App->enemies->lets = false;
 	App->enemies->letb = false;
 	App->enemies->lett = false;
+	points = 1000;
 }
 void Enemy_PU2::Move()
 {
@@ -29,7 +31,7 @@ void Enemy_PU2::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 
-	App->player->points += points;
+	App->ui->points += points;
 	App->audio->PlaySoundEffect(powerup_death);
 
 }
