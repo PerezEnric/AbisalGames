@@ -582,7 +582,7 @@ void ModuleBackground::spawnenemies()
 {
 	if (cdenemys == 50)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 200, 10);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 200, 10);
 		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 202, 25);
 	}
 	if(cdenemys == 430)

@@ -17,6 +17,7 @@
 #include "Enemy_PU.h"
 #include "Enemy_PU2.h"
 #include "Enemy_PU3.h"
+#include "Enemy_PU4.h"
 #include "Enemy_BlueJumping.h"
 #include "Enemy_Boss.h"
 #include "Enemy_BossShot.h"
@@ -54,6 +55,7 @@ enum ENEMY_TYPES
 	PU,
 	PU2,
 	PU3,
+	PU4,
 	SPEEDUP,
 	BOMB,
 	TENTACLES,
