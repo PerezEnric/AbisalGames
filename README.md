@@ -1,5 +1,5 @@
 ---
-youtubeId: https://www.youtube.com/watch?v=ysnwuuDmEww
+youtubeId: ysnwuuDmEww
 ---
 Welcome to the AbisalGames wiki!
 
