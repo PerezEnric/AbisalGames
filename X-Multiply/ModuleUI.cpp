@@ -36,8 +36,8 @@ update_status ModuleUI::Update()
 {
 	App->render->Blit(u_interface, 0, 220, NULL, false);
 
-	score = App->enemies->points;
-	sprintf_s(text, 10, "%7d", App->player->score);
+	score = App->ui->points;
+	sprintf_s(text, 10, "%7d", score);
 
 	App->fonts->BlitText(50, 235, font_score, text);
 	App->fonts->BlitText(32, 150, font_score, "score");

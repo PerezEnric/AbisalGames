@@ -184,10 +184,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	sprintf_s(text, 10, "%7d", score);
+	/*sprintf_s(text, 10, "%7d", score);
 
 	App->fonts->BlitText(50, 235, font_score, text);
-	App->fonts->BlitText(32, 150, font_score, "score");
+	App->fonts->BlitText(32, 150, font_score, "score");*/
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)

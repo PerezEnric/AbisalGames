@@ -5,6 +5,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
+#include "ModuleUI.h"
 
 Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 {
@@ -18,6 +19,7 @@ Enemy_BlueJumping::Enemy_BlueJumping(int x, int y) : Enemy(x, y)
 	speed = 0;
 	cd = 40;
 	blue_death = App->audio->LoadSoundEffect("Audio_Assets/Ball_Death.wav");
+	points = 100;
 }
 void Enemy_BlueJumping::Move()
 {
@@ -72,7 +74,7 @@ void Enemy_BlueJumping::OnCollision(Collider* collider)
 {
 	App->audio->PlaySoundEffect(blue_death);
 	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->player->points += points;
+	App->ui->points += points;
 }
 
 bool Enemy_BlueJumping::CleanUp()
