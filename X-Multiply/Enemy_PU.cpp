@@ -61,12 +61,7 @@ Enemy_PU::Enemy_PU(int x, int y) : Enemy(x, y)
 void Enemy_PU::Move()
 {
 
-	if (action == false && position.x < SCREEN_WIDTH + App->render->back_limit + 40)
-	{
-		action = true;
-	}
-	if (action == true)
-	{
+
 		//Fly movement
 		if (flying == true)
 		{
@@ -117,7 +112,7 @@ void Enemy_PU::Move()
 		{
 			position.y -= 1;
 		}
-	}
+
 
 }
 

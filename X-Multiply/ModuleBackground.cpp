@@ -575,6 +575,7 @@ void ModuleBackground::die()
 	App->render->move_back = false;
 	App->render->move_up = false;
 	App->render->move_down = false;
+	App->render->move_front = false;
 	
 }
 
@@ -585,10 +586,10 @@ void ModuleBackground::spawnenemies()
 		App->enemies->AddEnemy(ENEMY_TYPES::PU2, 200, 10);
 		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 202, 25);
 	}
-	if(cdenemys == 430)
+	if (cdenemys == 430)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 300, -55);
 
-	if(cdenemys == 450)
+	if (cdenemys == 450)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 330, -55);
 
 	if (cdenemys == 700)
@@ -612,10 +613,10 @@ void ModuleBackground::spawnenemies()
 	if (cdenemys == 1080)
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_JUMPING, 731, -10);
 
-	if (cdenemys == 1300)
+	if (cdenemys == 1700)
 		App->enemies->AddEnemy(ENEMY_TYPES::SPAWN, 992, 252);
 
-	if (cdenemys == 1600)
+	if (cdenemys == 2100)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1100, 220);
 		App->enemies->AddEnemy(ENEMY_TYPES::SHRIMP, 1130, 180);
@@ -632,16 +633,20 @@ void ModuleBackground::spawnenemies()
 
 	}
 
-	if (cdenemys == 1750)
+	if (cdenemys == 2500)
 	{
 		tail_powerup = true;
 		App->enemies->AddEnemy(ENEMY_TYPES::PU3, 1190, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::SPEEDUP, 1190, 235);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::PU, 1210, 220);
-
-		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1240, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::PU, 1230, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::TENTACLES, 1230, 235);
 
 		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1260, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1260, 235);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::PU4, 1290, 220);
+		App->enemies->AddEnemy(ENEMY_TYPES::BOMB, 1290, 235);
 	}
 
 	cdenemys++;

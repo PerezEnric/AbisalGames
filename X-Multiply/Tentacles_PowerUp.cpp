@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleTentacles.h"
+#include "ModuleBackground.h"
 
 
 Tentacles_PowerUp::Tentacles_PowerUp(int x, int y) : Enemy(x, y)
@@ -27,8 +28,8 @@ void Tentacles_PowerUp::OnCollision(Collider* collider)
 
 void Tentacles_PowerUp::Move()
 {
-
-		//Fly movement
+	if (App->background->tail_powerup)
+	{
 		if (flying == true)
 		{
 			position.x -= 1;
@@ -46,6 +47,72 @@ void Tentacles_PowerUp::Move()
 			position.y += 1;
 			position.x -= 0;
 			cd2++;
+
+			if (cd2 == 1)
+			{
+				position.y -= 15;
+				position.x += 20;
+			}
+			if (cd2 > 30)
+			{
+				walking = true;
+				landing = false;
+			}
+		}
+
+		//Walking movement
+		else if (walking == true && landing == false && flying == false)
+		{
+			//Right walking movement
+			if (right == true && left == false)
+			{
+				position.x += 1;
+				cd3++;
+
+				if (cd3 == 1)
+				{
+					position.x -= 30;
+				}
+
+				if (cd3 > 100)
+				{
+					walking = false;
+					landing = false;
+					flying = false;
+					cd3 = 0;
+				}
+			}
+		}
+		else if (walking == false && landing == false && flying == false)
+		{
+			position.y -= 1;
+		}
+	}
+
+	else
+	{		//Fly movement
+		if (flying == true)
+		{
+			position.x -= 1;
+			cd++;
+			if (cd >= 190)
+			{
+				landing = true;
+				flying = false;
+			}
+		}
+
+		//Landing movement
+		else if (landing == true && flying == false && walking == false)
+		{
+			position.y += 1;
+			position.x -= 0;
+			cd2++;
+			if (cd2 == 1)
+			{
+				position.y -= 15;
+				position.x += 20;
+			}
 			if (cd2 > 100)
 			{
 				walking = true;
@@ -61,6 +128,12 @@ void Tentacles_PowerUp::Move()
 			{
 				position.x += 1;
 				cd3++;
+
+				if (cd3 == 1)
+				{
+					position.x -= 30;
+				}
+
 				if (cd3 > 20)
 				{
 					walking = false;
@@ -74,15 +147,28 @@ void Tentacles_PowerUp::Move()
 		else if (walking == false && landing == false && flying == false)
 		{
 
-			if (position.y <= original_y)
+			if (position.y <= original_y || left)
 			{
+
+				if (position.y == original_y && !left)
+				{
+					position.x -= 30;
+				}
 				position.x += 1;
+				left = true;
 			}
 			else
+			{
 				position.y -= 1;
+			}
 
+			if (cd3 == 1)
+			{
+				position.x += 30;
+			}
 			cd3++;
 		}
+	}
 }
 
 bool  Tentacles_PowerUp::CleanUp()
