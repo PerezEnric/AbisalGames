@@ -1,5 +1,7 @@
 ﻿Welcome to the AbisalGames wiki!
-
+---
+youtubeId: https://www.youtube.com/watch?v=ysnwuuDmEww
+---
 # X-Multiply
 
 ## Short Description of the game
@@ -35,5 +37,5 @@ Enric Pérez Rifà
 ![Team Photo](https://i.imgur.com/g5eWiot.jpg)
 
 ## Gameplay
-
+{% include youtubePlayer.html id=page.youtubeId %}
 [![GAMEPLAY](https://i.ytimg.com/vi/ysnwuuDmEww/hqdefault.jpg)](https://www.youtube.com/watch?v=ysnwuuDmEww&feature=youtu.be)
