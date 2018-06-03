@@ -20,8 +20,8 @@
 
 ModulePlayer::ModulePlayer()
 {
-	graphics = NULL;
-	current_animation = NULL;
+	graphics = nullptr;
+	current_animation = nullptr;
 
 	position.x = 10;
 	position.y = 10;
@@ -57,9 +57,7 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Sprites_Assets/all_enemies.png"); // arcade version
 	shot_particle = App->audio->LoadSoundEffect("Audio_Assets/shotp.wav");
 	player_death = App->audio->LoadSoundEffect("Audio_Assets/player_death.wav");
-	/*font_score = App->fonts->Load("Sprites_Assets/fonts.png", "0123456789ם.-=יט()ףעבת`´!?abcdefghijklmnopqrstuvwxyz", 2);*/
 	col = App->collision->AddCollider({ position.x, position.y, 35, 14 }, COLLIDER_PLAYER, this);
-
 	return ret;
 }
 
@@ -184,11 +182,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	/*sprintf_s(text, 10, "%7d", score);
-
-	App->fonts->BlitText(50, 235, font_score, text);
-	App->fonts->BlitText(32, 150, font_score, "score");*/
-
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;
@@ -220,6 +213,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
 	{
 		turbo = !turbo;
+		App->particles->boost = true;
 	}
 
 	col->SetPos(position.x, position.y);
@@ -233,6 +227,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
+		App->audio->PlaySoundEffect(player_death);
+		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE);
 		turbo = false;
 		destroyed = true;
 		live--;
@@ -240,9 +236,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		wave = false;
 		tentacles = false;
 		App->tentacle->Disable();
-		App->audio->PlaySoundEffect(player_death);
-		App->particles->AddParticle(App->particles->explosion_player, position.x, position.y, COLLIDER_NONE, 150);
-		Disable();
 		App->background->cdenemys = 0;
 		App->background->die();
 	}

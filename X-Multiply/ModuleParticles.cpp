@@ -82,7 +82,8 @@ ModuleParticles::ModuleParticles()
 	explosion_player.anim.PushBack({ 849,872,16,16 });
 	explosion_player.anim.PushBack({ 732, 877,6,6 });
 	explosion_player.anim.loop = false;
-	explosion_player.anim.speed = 0.5f;
+	explosion_player.anim.speed = 0.2f;
+	explosion_player.life = 1000;
 
 	// loading dorsal shot
 
